@@ -19,11 +19,11 @@ struct ApplicationsView: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: true) {
                     HStack {
-                        Text("All").padding()
-                        Text("Draft").padding()
-                        Text("Process").padding()
-                        Text("Complete").padding()
-                    }
+                        Text("Все").padding()
+                        Text("Черновики").padding()
+                        Text("В процессе").padding()
+                        Text("Выполнены").padding()
+                        Text("Завершены").padding()                    }
                 }
                 List(mViewModel.Applications) { application in
                     VStack {
@@ -37,6 +37,6 @@ struct ApplicationsView: View {
                 }
             }
             .navigationBarHidden(true)
-        }
+        }.onAppear { self.mViewModel.loadData() }
     }
 }

@@ -10,13 +10,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            Text("Тут карта...")
+            MapView()
             .tabItem {
+                Image("map-marked-alt")
                 Text("Карта")
             }
-            Text("Тут заявки...")
+            ApplicationsView()
             .tabItem {
-                Image("")
                 Text("Заявки")
             }
             Text("Тут заказы...")

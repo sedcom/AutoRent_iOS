@@ -18,7 +18,6 @@ class ApplicationsViewModel: ObservableObject {
     init(maxItems: Int, skipCount: Int) {
         self.mMaxItems = maxItems
         self.mSkipCount = skipCount
-        self.loadData();
     }
 
     func loadData() {
