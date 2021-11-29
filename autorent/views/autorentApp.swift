@@ -11,7 +11,7 @@ import SwiftUI
 struct autorentApp: App {
     var body: some Scene {
         WindowGroup {
-            ApplicationsView()
+            MainView()
         }
     }
 }

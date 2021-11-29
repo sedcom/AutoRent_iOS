@@ -8,15 +8,9 @@
 import Foundation
 
 class Application: Codable, Identifiable {
-    var Id: Int = 0
+    var Id: Int
     var CreatedDate: String
     var Notes: String
-    
-    init (id: Int, createdDate: String, notes: String) {
-        self.Id = id
-        self.CreatedDate = createdDate
-        self.Notes = notes
-    }
     
     enum CodingKeys: String, CodingKey {
         case Id = "id"

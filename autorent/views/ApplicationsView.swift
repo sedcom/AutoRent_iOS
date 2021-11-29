@@ -8,30 +8,35 @@
 import SwiftUI
 
 struct ApplicationsView: View {
-    @ObservedObject var mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
+    @ObservedObject var mViewModel: ApplicationsViewModel
     
+    init() {
+        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
+    }
+
     var body: some View {
-        VStack {
-            HStack {
-                Text("All").padding()
-                Text("Draft").padding()
-                Text("Process").padding()
-                Text("Complete").padding()
-            }
-            List(mViewModel.Applications) { application in
-                VStack {
-                    HStack  {
-                        Text(String(application.Id)).padding()
-                        Text(application.Notes)
+        NavigationView {
+            VStack {
+                ScrollView(.horizontal, showsIndicators: true) {
+                    HStack {
+                        Text("All").padding()
+                        Text("Draft").padding()
+                        Text("Process").padding()
+                        Text("Complete").padding()
+                    }
+                }
+                List(mViewModel.Applications) { application in
+                    VStack {
+                        NavigationLink(destination: ApplicationView(entityId: application.Id)) {
+                            HStack  {
+                                Text(String(application.Id)).padding()
+                                Text(application.Notes)
+                            }
+                        }
                     }
                 }
             }
+            .navigationBarHidden(true)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ApplicationsView()
     }
 }
