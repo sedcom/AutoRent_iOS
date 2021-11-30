@@ -26,13 +26,13 @@ struct ApplicationsView: View {
                         Text("Завершены").padding()
                     }
                 }
-                List(mViewModel.Applications) { application in
+                List(self.mViewModel.Applications) { application in
                     VStack {
-                        NavigationLink(destination: ApplicationView(entityId: application.Id)) {
-                            HStack  {
-                                Text(String(application.Id)).padding()
-                                Text(application.Notes)
-                            }
+                        ApplicationsRowView(application)
+                    }.onAppear {
+                        if application == self.mViewModel.Applications.last {
+                            self.mViewModel.mSkipCount = self.mViewModel.Applications.count
+                            self.mViewModel.loadData()
                         }
                     }
                 }

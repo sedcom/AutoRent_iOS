@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Application: Codable, Identifiable {
+class Application: Codable, Identifiable, Equatable {
     var Id: Int
     var CreatedDate: String
     var Notes: String
@@ -16,6 +16,10 @@ class Application: Codable, Identifiable {
         case Id = "id"
         case CreatedDate = "createdDate"
         case Notes = "notes"
+    }
+    
+    static func == (lhs: Application, rhs: Application) -> Bool {
+        return lhs.Id == rhs.Id
     }
 }
 

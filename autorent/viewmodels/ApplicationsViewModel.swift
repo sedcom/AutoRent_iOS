@@ -27,7 +27,7 @@ class ApplicationsViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                self.Applications = result.Elements;
+                self.Applications.append(contentsOf: result.Elements);
         })
     }
 }
