@@ -13,6 +13,7 @@
 		E2589B0C27523A4F00BFF698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2589B0B27523A4F00BFF698 /* Assets.xcassets */; };
 		E2589B0F27523A4F00BFF698 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2589B0E27523A4F00BFF698 /* Preview Assets.xcassets */; };
 		E28538812754DE3D0008F6FB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28538802754DE3D0008F6FB /* MapView.swift */; };
+		E285388327558FE80008F6FB /* map-marker-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = E285388227558FE70008F6FB /* map-marker-alt.png */; };
 		E29B397027539BC5004CE06A /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B396F27539BC5004CE06A /* Application.swift */; };
 		E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397227539DD6004CE06A /* ApplicationRepository.swift */; };
 		E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */; };
@@ -32,6 +33,7 @@
 		E2589B0E27523A4F00BFF698 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E2589B1027523A4F00BFF698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E28538802754DE3D0008F6FB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E285388227558FE70008F6FB /* map-marker-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-marker-alt.png"; path = "../../../Downloads/map-marker-alt.png"; sourceTree = "<group>"; };
 		E29B396F27539BC5004CE06A /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		E29B397227539DD6004CE06A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
 		E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewModel.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		E2589AFB27523A4100BFF698 = {
 			isa = PBXGroup;
 			children = (
+				E285388227558FE70008F6FB /* map-marker-alt.png */,
 				E2589B0627523A4100BFF698 /* autorent */,
 				E2589B0527523A4100BFF698 /* Products */,
 				E974207F4B18AAB0C31B1E8E /* Pods */,
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2589B0F27523A4F00BFF698 /* Preview Assets.xcassets in Resources */,
+				E285388327558FE80008F6FB /* map-marker-alt.png in Resources */,
 				E2589B0C27523A4F00BFF698 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

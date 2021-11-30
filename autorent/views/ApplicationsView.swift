@@ -23,7 +23,8 @@ struct ApplicationsView: View {
                         Text("Черновики").padding()
                         Text("В процессе").padding()
                         Text("Выполнены").padding()
-                        Text("Завершены").padding()                    }
+                        Text("Завершены").padding()
+                    }
                 }
                 List(mViewModel.Applications) { application in
                     VStack {
