@@ -19,7 +19,12 @@ class ApplicationsViewModel: ObservableObject {
         self.mMaxItems = maxItems
         self.mSkipCount = skipCount
     }
-
+    
+    func clearData() {
+        self.mSkipCount = 0
+        self.Applications = []
+    }
+    
     func loadData() {
         self.cancellation = self.mApplicationRepository.loadItems(self.mMaxItems, self.mSkipCount)
             .mapError({ (error) -> Error in

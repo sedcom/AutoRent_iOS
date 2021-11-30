@@ -13,7 +13,7 @@ struct ApplicationView: View {
     
     init(entityId: Int) {
         self.mEntityId = entityId
-        self.mViewModel = ApplicationViewModel(entityId: entityId, include: "")
+        self.mViewModel = ApplicationViewModel(entityId: entityId, include: "items")
     }
     
     var body: some View {

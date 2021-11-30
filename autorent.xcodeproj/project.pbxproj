@@ -15,6 +15,7 @@
 		E28538812754DE3D0008F6FB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28538802754DE3D0008F6FB /* MapView.swift */; };
 		E285388327558FE80008F6FB /* map-marker-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = E285388227558FE70008F6FB /* map-marker-alt.png */; };
 		E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28538842755BE560008F6FB /* ApplicationsRowView.swift */; };
+		E2853889275658F50008F6FB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2853888275658F50008F6FB /* Color.swift */; };
 		E29B397027539BC5004CE06A /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B396F27539BC5004CE06A /* Application.swift */; };
 		E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397227539DD6004CE06A /* ApplicationRepository.swift */; };
 		E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */; };
@@ -36,6 +37,7 @@
 		E28538802754DE3D0008F6FB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E285388227558FE70008F6FB /* map-marker-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-marker-alt.png"; path = "../../../Downloads/map-marker-alt.png"; sourceTree = "<group>"; };
 		E28538842755BE560008F6FB /* ApplicationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsRowView.swift; sourceTree = "<group>"; };
+		E2853888275658F50008F6FB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E29B396F27539BC5004CE06A /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		E29B397227539DD6004CE06A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
 		E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		E2589B0627523A4100BFF698 /* autorent */ = {
 			isa = PBXGroup;
 			children = (
+				E2853887275658E20008F6FB /* utils */,
 				E29B397127539DB3004CE06A /* repositories */,
 				E219C28A2752ECC200870896 /* views */,
 				E219C2892752ECB900870896 /* viewmodels */,
@@ -141,6 +144,14 @@
 				E29B397B27543257004CE06A /* ApplicationView.swift */,
 			);
 			path = applications;
+			sourceTree = "<group>";
+		};
+		E2853887275658E20008F6FB /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E2853888275658F50008F6FB /* Color.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		E29B397127539DB3004CE06A /* repositories */ = {
@@ -276,6 +287,7 @@
 			files = (
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				E29B397E2754498C004CE06A /* MainView.swift in Sources */,
+				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,

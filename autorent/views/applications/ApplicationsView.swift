@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ApplicationsView: View {
     @ObservedObject var mViewModel: ApplicationsViewModel
-    
+    @State private var mSelectedFilter = 0
+    @State private var mId = 0
+
     init() {
         self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
     }
@@ -17,15 +19,28 @@ struct ApplicationsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView(.horizontal, showsIndicators: true) {
-                    HStack {
-                        Text("Все").padding()
-                        Text("Черновики").padding()
-                        Text("В процессе").padding()
-                        Text("Выполнены").padding()
-                        Text("Завершены").padding()
-                    }
+                VStack(alignment: .leading){
+                    Text("Заявки на услуги").padding()
                 }
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        Button(action: {}) {
+                            Text("Все").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
+                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
+                        Button(action: {}) {
+                            Text("Черновики").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
+                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
+                        Button(action: {}) {
+                            Text("В процессе").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
+                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
+                        Button(action: {}) {
+                            Text("Выполнены").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
+                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
+                        Button(action: {}) {
+                            Text("Завершены").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
+                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
+                    }
+                }.padding(.horizontal, 8)
                 List(self.mViewModel.Applications) { application in
                     VStack {
                         ApplicationsRowView(application)
@@ -38,6 +53,9 @@ struct ApplicationsView: View {
                 }
             }
             .navigationBarHidden(true)
-        }.onAppear { self.mViewModel.loadData() }
+        }.onAppear {
+            self.mViewModel.clearData()
+            self.mViewModel.loadData()
+        }
     }
 }
