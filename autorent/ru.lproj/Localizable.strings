@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  autorent
+
+  Created by Semyon Kravchenko on 01.12.2021.
+  
+*/
+
+"message_connection_error" = "Ошибка соединения!";
+"message_nothing_found" = "Ничего не найдено";

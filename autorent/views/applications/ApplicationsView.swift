@@ -9,50 +9,66 @@ import SwiftUI
 
 struct ApplicationsView: View {
     @ObservedObject var mViewModel: ApplicationsViewModel
-    @State private var mSelectedFilter = 0
-    @State private var mId = 0
-
+    
     init() {
         self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
+        UITableView.appearance().backgroundColor = UIColor(Color.primary)
+        UITableView.appearance().separatorStyle = .none
     }
 
     var body: some View {
         NavigationView {
-            VStack {
-                VStack(alignment: .leading){
-                    Text("Заявки на услуги").padding()
-                }
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        Button(action: {}) {
-                            Text("Все").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
-                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
-                        Button(action: {}) {
-                            Text("Черновики").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
-                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
-                        Button(action: {}) {
-                            Text("В процессе").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
-                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
-                        Button(action: {}) {
-                            Text("Выполнены").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
-                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
-                        Button(action: {}) {
-                            Text("Завершены").foregroundColor(Color(UIColor(hex: "495057"))).padding(.all, 8)
-                        }.background(Color(UIColor(hex: "E7E7E7"))).cornerRadius(10.0)
-                    }
-                }.padding(.horizontal, 8)
-                List(self.mViewModel.Applications) { application in
+            if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
+                LoadingView()
+            }
+            else if self.mViewModel.IsError {
+                ErrorView()
+            }
+            else {
+                VStack (spacing: 0){
                     VStack {
-                        ApplicationsRowView(application)
-                    }.onAppear {
-                        if application == self.mViewModel.Applications.last {
-                            self.mViewModel.mSkipCount = self.mViewModel.Applications.count
-                            self.mViewModel.loadData()
+                        Text("Заявки на услуги")
+                            .foregroundColor(Color.textLight)
+                            .padding(.all, 8)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }.background(Color.primary)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack () {
+                            ButtonFilter(label: "Все")
+                            ButtonFilter(label: "Черновики")
+                            ButtonFilter(label: "В процессе")
+                            ButtonFilter(label: "Выполнены")
+                            ButtonFilter(label: "Завершены")
+                        }.padding(.all, 8)
+                    }.background(Color.primaryDark)
+                    if self.mViewModel.Data.Elements.count == 0 {
+                        EmptyView()
+                    }
+                    else {
+                        List {
+                            ForEach(self.mViewModel.Data.Elements) { application in
+                                VStack {
+                                    if application.Id == 0 {
+                                        LoadingRowView()
+                                    }
+                                    else {
+                                        ApplicationsRowView(application)
+                                    }
+                                }.onAppear {
+                                    if self.mViewModel.IsLoading == false {
+                                        if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
+                                            if application == self.mViewModel.Data.Elements.last {
+                                                self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
+                                                self.mViewModel.loadData()
+                                           }
+                                        }
+                                    }
+                                }
+                            }.listRowBackground(Color.primaryDark)
                         }
                     }
-                }
+                }.navigationBarHidden(true)
             }
-            .navigationBarHidden(true)
         }.onAppear {
             self.mViewModel.clearData()
             self.mViewModel.loadData()

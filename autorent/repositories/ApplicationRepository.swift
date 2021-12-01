@@ -13,11 +13,11 @@ class ApplicationRepository {
     let url = "https://autorent.sedcom.ru/api"
     let token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmFtZWlkIjoiMSIsInJvbGUiOlsiYWRtaW4iLCJkaXNwYXRjaGVyIiwic3VwcG9ydCJdLCJuYmYiOjE1OTEzNTE3MjUsImV4cCI6MTU5MTM1NTMyNSwiaWF0IjoxNTkxMzUxNzI1fQ.8u1qBGPpCrTS2SPrDHFoM6nWPLmqYYzTEkSMc3fUWng"
 
-    func loadItems(_ maxItems: Int, _ skipCount: Int) -> AnyPublisher<ApplicationsResponse, AFError> {
+    func loadItems(_ maxItems: Int, _ skipCount: Int) -> AnyPublisher<Pagination<Application>, AFError> {
         let headers: HTTPHeaders = [
             .authorization(self.token)
         ]
-        let publisher = AF.request(self.url + "/applications", method: HTTPMethod.get, parameters: ["maxItems": maxItems, "skipCount": skipCount], headers: headers).publishDecodable(type: ApplicationsResponse.self);
+        let publisher = AF.request(self.url + "/applications", method: HTTPMethod.get, parameters: ["maxItems": maxItems, "skipCount": skipCount], headers: headers).publishDecodable(type: Pagination<Application>.self);
         return publisher.value();
     }
     

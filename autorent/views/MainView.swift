@@ -8,30 +8,34 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    init() {
+        let itemAppearance = UITabBarItemAppearance()
+        itemAppearance.normal.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.lightText,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+        ]
+        let tabAppearance = UITabBarAppearance()
+        tabAppearance.configureWithOpaqueBackground()
+        tabAppearance.backgroundColor = UIColor(Color.primaryDark)
+        tabAppearance.stackedLayoutAppearance = itemAppearance
+        UITabBar.appearance().standardAppearance = tabAppearance
+    }
+    
     var body: some View {
         TabView {
             MapView()
-            .tabItem {
-                Image("map-marked-alt")
-                Text("Карта")
-            }
+            .tabItem { TabBarItemView(label: "Карта", image: "map-marked-alt") }
             ApplicationsView()
-            .tabItem {
-                Text("Заявки")
-            }
+            .tabItem { TabBarItemView(label: "Заявки", image: "map-marked-alt") }
             Text("Тут заказы...")
-            .tabItem {
-                Text("Заказы")
-            }
+            .tabItem { TabBarItemView(label: "Заказы", image: "map-marked-alt") }
             Text("Тут счета...")
-            .tabItem {
-                Text("Платежи")
-            }
+            .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
             Text("Тут профиль...")
-            .tabItem {
-                Text("Профиль")
-            }
+            .tabItem { TabBarItemView(label: "Профиль", image: "map-marked-alt") }
         }
+        .accentColor(Color.secondary)
     }
 }
 

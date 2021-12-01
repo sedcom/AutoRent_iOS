@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension UIColor {
-    
     convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var hexInt: UInt32 = 0
@@ -20,4 +19,13 @@ extension UIColor {
         let blue = CGFloat(Int(hexInt) & mask) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
+}
+
+extension Color {
+    static var primary: Color = Color(UIColor.init(hex: "2A3F54"))
+    static var primaryDark: Color = Color(UIColor.init(hex: "172D44"))
+    static var primaryLight: Color = Color(UIColor.init(hex: "E7E7E7"))
+    static var secondary: Color = Color(UIColor.init(hex: "FFA500"))
+    static var textLight: Color = Color(UIColor.init(hex: "E7E7E7"))
+    static var textDark: Color = Color(UIColor.init(hex: "495057"))
 }
