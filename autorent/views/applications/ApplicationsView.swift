@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ApplicationsView: View {
     @ObservedObject var mViewModel: ApplicationsViewModel
+    @State var mCurrentFilter: Int
     
     init() {
-        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filters: "")
+        self.mCurrentFilter = 1
+        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
         UITableView.appearance().backgroundColor = UIColor(Color.primary)
         UITableViewCell.appearance().selectedBackgroundView = UIView()
     }
@@ -28,38 +30,44 @@ struct ApplicationsView: View {
                 VStack (spacing: 0){
                     VStack {
                         Text("Заявки на услуги")
+                            .font(Font.system(size: 20, weight: .bold))
                             .foregroundColor(Color.textLight)
-                            .padding(.all, 8)
-                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.all, 10)
                     }
                     .background(Color.primary)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
                             Button(NSLocalizedString("status_all", comment: ""), action: {
-                                self.mViewModel.mFilters = ""
+                                self.mCurrentFilter = 1
+                                self.mViewModel.setFilter("")
                                 self.mViewModel.clearData()
                                 self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle())
+                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
                             Button(NSLocalizedString("status_draft", comment: ""), action: {
-                                self.mViewModel.mFilters = "statusId==1"
+                                self.mCurrentFilter = 2
+                                self.mViewModel.setFilter("statusId==1")
                                 self.mViewModel.clearData()
                                 self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle())
+                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
                             Button(NSLocalizedString("status_application_process", comment: ""), action: {
-                                self.mViewModel.mFilters = "statusId==2,3,4,5,6,8"
+                                self.mCurrentFilter = 3
+                                self.mViewModel.setFilter("statusId==2,3,4,5,6,8")
                                 self.mViewModel.clearData()
                                 self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle())
+                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
                             Button(NSLocalizedString("status_application_completed", comment: ""), action: {
-                                self.mViewModel.mFilters = "statusId==7"
+                                self.mCurrentFilter = 4
+                                self.mViewModel.setFilter("statusId==7")
                                 self.mViewModel.clearData()
                                 self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle())
+                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 4))
                             Button(NSLocalizedString("status_application_closed", comment: ""), action: {
-                                self.mViewModel.mFilters = "statusId==9,10"
+                                self.mCurrentFilter = 5
+                                self.mViewModel.setFilter("statusId==9,10")
                                 self.mViewModel.clearData()
                                 self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle())
+                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 5))
                         }
                         .padding(.all, 8)
                     }

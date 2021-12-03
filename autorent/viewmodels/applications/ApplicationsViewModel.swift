@@ -16,20 +16,24 @@ class ApplicationsViewModel: ObservableObject {
     var mSkipCount: Int
     var mOrderBy: String
     var mInclude: String
-    var mFilters: String
+    var mFilter: String
     var IsLoading: Bool
     var IsError: Bool
     
-    init(maxItems: Int, skipCount: Int, orderBy: String, include: String, filters: String) {
+    init(maxItems: Int, skipCount: Int, orderBy: String, include: String, filter: String) {
         self.Data = Pagination<Application>()
         self.mApplicationRepository = ApplicationRepository()
         self.mMaxItems = maxItems
         self.mSkipCount = skipCount
         self.mOrderBy = orderBy
         self.mInclude = include
-        self.mFilters = filters
+        self.mFilter = filter
         self.IsLoading = false
         self.IsError = false
+    }
+    
+    func setFilter(_ filter: String) {
+        self.mFilter = filter
     }
     
     func clearData() {
@@ -38,12 +42,12 @@ class ApplicationsViewModel: ObservableObject {
     }
     
     func loadData() {
-        debugPrint("Start loadData with filters " + self.mFilters)
+        debugPrint("Start loadData")
         self.IsLoading = true
         self.IsError = false
         self.Data.Elements.append(Application())
         self.objectWillChange.send()
-        self.cancellation = self.mApplicationRepository.loadItems(self.mMaxItems, self.mSkipCount, self.mOrderBy, self.mInclude, self.mFilters)
+        self.cancellation = self.mApplicationRepository.loadItems(self.mMaxItems, self.mSkipCount, self.mOrderBy, self.mInclude, self.mFilter)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.Data.Elements.remove(at: self.Data.Elements.count - 1)

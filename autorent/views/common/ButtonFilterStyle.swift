@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct FilterButtonStyle: ButtonStyle {
+    var mSelected: Bool
+    
+    init(selected: Bool) {
+        self.mSelected = selected
+    }
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: 100)
             .padding(.all, 6)
-            .background(Color.primaryLight)
+            .background(self.mSelected ? Color.primary : Color.primaryLight)
             .cornerRadius(10)
-            .foregroundColor(Color.textDark)
+            .foregroundColor(self.mSelected ? Color.textLight : Color.textDark)
     }
 }
