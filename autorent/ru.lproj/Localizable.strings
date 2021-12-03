@@ -8,3 +8,8 @@
 
 "message_connection_error" = "Ошибка соединения!";
 "message_nothing_found" = "Ничего не найдено";
+"status_all" = "Все";
+"status_application_closed" = "Завершены";
+"status_application_completed" = "Выполнены";
+"status_application_process" = "В процессе";
+"status_draft" = "Черновики";

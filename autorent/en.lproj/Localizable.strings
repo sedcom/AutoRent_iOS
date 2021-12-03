@@ -8,3 +8,8 @@
 
 "message_connection_error" = "Connection error!";
 "message_nothing_found" = "Nothing found";
+"status_all" = "All";
+"status_application_closed" = "Close";
+"status_application_completed" = "Completed";
+"status_application_process" = "In process";
+"status_draft" = "Draft";

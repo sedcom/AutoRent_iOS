@@ -11,7 +11,7 @@ struct ApplicationsView: View {
     @ObservedObject var mViewModel: ApplicationsViewModel
     
     init() {
-        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
+        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filters: "")
         UITableView.appearance().backgroundColor = UIColor(Color.primary)
         UITableViewCell.appearance().selectedBackgroundView = UIView()
     }
@@ -35,11 +35,31 @@ struct ApplicationsView: View {
                     .background(Color.primary)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
-                            ButtonFilter(label: "Все")
-                            ButtonFilter(label: "Черновики")
-                            ButtonFilter(label: "В процессе")
-                            ButtonFilter(label: "Выполнены")
-                            ButtonFilter(label: "Завершены")
+                            Button(NSLocalizedString("status_all", comment: ""), action: {
+                                self.mViewModel.mFilters = ""
+                                self.mViewModel.clearData()
+                                self.mViewModel.loadData()
+                            }).buttonStyle(FilterButtonStyle())
+                            Button(NSLocalizedString("status_draft", comment: ""), action: {
+                                self.mViewModel.mFilters = "statusId==1"
+                                self.mViewModel.clearData()
+                                self.mViewModel.loadData()
+                            }).buttonStyle(FilterButtonStyle())
+                            Button(NSLocalizedString("status_application_process", comment: ""), action: {
+                                self.mViewModel.mFilters = "statusId==2,3,4,5,6,8"
+                                self.mViewModel.clearData()
+                                self.mViewModel.loadData()
+                            }).buttonStyle(FilterButtonStyle())
+                            Button(NSLocalizedString("status_application_completed", comment: ""), action: {
+                                self.mViewModel.mFilters = "statusId==7"
+                                self.mViewModel.clearData()
+                                self.mViewModel.loadData()
+                            }).buttonStyle(FilterButtonStyle())
+                            Button(NSLocalizedString("status_application_closed", comment: ""), action: {
+                                self.mViewModel.mFilters = "statusId==9,10"
+                                self.mViewModel.clearData()
+                                self.mViewModel.loadData()
+                            }).buttonStyle(FilterButtonStyle())
                         }
                         .padding(.all, 8)
                     }
@@ -55,21 +75,23 @@ struct ApplicationsView: View {
                                         LoadingRowView()
                                     }
                                     else {
-                                        ApplicationsRowView(application)     }
+                                        ApplicationsRowView(application)
+                                    }
                                 }
                                 .onAppear {
+                                    //TODO
                                     if self.mViewModel.IsLoading == false {
                                         if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
-                                            if application == self.mViewModel.Data.Elements.last {
+                                            if  application == self.mViewModel.Data.Elements.last {
                                                 self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
                                                 self.mViewModel.loadData()
                                            }
                                         }
                                     }
                                 }
-                                .listRowBackground(Color.primary)
                                 
                             }
+                            .listRowBackground(Color.primary)
                             .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 10))
                         }
                         .listStyle(PlainListStyle())
