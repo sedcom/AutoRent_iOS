@@ -12,7 +12,8 @@ struct TabBarItemView: View {
     var image: String
     
     var body: some View {
-        Image(self.image).renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+        Image(self.image)
+            .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
         Text(self.label)
     }
 }

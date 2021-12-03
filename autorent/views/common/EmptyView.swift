@@ -11,6 +11,7 @@ struct EmptyView: View {
     var body: some View {
         VStack {
             Text(NSLocalizedString("message_nothing_found", comment: ""))
+                .foregroundColor(Color.textLight)
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
         .background(Color.primary)

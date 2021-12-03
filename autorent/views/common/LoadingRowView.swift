@@ -10,7 +10,9 @@ import SwiftUI
 struct LoadingRowView: View {
     var body: some View {
         GeometryReader { geometry in
-            ProgressView().frame(width: geometry.size.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            ProgressView()
+                .frame(width: geometry.size.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .progressViewStyle(CircularProgressViewStyle(tint: Color.secondary))
         }
     }
 }

@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ErrorView: View {
     var body: some View {
-        Text(NSLocalizedString("message_connection_error", comment: ""))
+        VStack {
+            Text(NSLocalizedString("message_connection_error", comment: ""))
+                .foregroundColor(Color.textLight)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+        .background(Color.primary)
+        .navigationBarHidden(true)
     }
 }
 

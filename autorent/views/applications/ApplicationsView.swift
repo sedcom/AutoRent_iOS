@@ -13,7 +13,7 @@ struct ApplicationsView: View {
     init() {
         self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0)
         UITableView.appearance().backgroundColor = UIColor(Color.primary)
-        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().selectedBackgroundView = UIView()
     }
 
     var body: some View {
@@ -31,7 +31,8 @@ struct ApplicationsView: View {
                             .foregroundColor(Color.textLight)
                             .padding(.all, 8)
                             .frame(minWidth: 0, maxWidth: .infinity)
-                    }.background(Color.primary)
+                    }
+                    .background(Color.primary)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
                             ButtonFilter(label: "Все")
@@ -39,8 +40,10 @@ struct ApplicationsView: View {
                             ButtonFilter(label: "В процессе")
                             ButtonFilter(label: "Выполнены")
                             ButtonFilter(label: "Завершены")
-                        }.padding(.all, 8)
-                    }.background(Color.primaryDark)
+                        }
+                        .padding(.all, 8)
+                    }
+                    .background(Color.primaryDark)
                     if self.mViewModel.Data.Elements.count == 0 {
                         EmptyView()
                     }
@@ -52,9 +55,9 @@ struct ApplicationsView: View {
                                         LoadingRowView()
                                     }
                                     else {
-                                        ApplicationsRowView(application)
-                                    }
-                                }.onAppear {
+                                        ApplicationsRowView(application)     }
+                                }
+                                .onAppear {
                                     if self.mViewModel.IsLoading == false {
                                         if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
                                             if application == self.mViewModel.Data.Elements.last {
@@ -64,10 +67,17 @@ struct ApplicationsView: View {
                                         }
                                     }
                                 }
-                            }.listRowBackground(Color.primaryDark)
+                                .listRowBackground(Color.primary)
+                                
+                            }
+                            .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 10))
                         }
+                        .listStyle(PlainListStyle())
+                        .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
                     }
-                }.navigationBarHidden(true)
+                }
+                .background(Color.primary)
+                .navigationBarHidden(true)
             }
         }.onAppear {
             self.mViewModel.clearData()

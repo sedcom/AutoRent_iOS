@@ -15,11 +15,18 @@ struct ApplicationsRowView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id)) {
-            HStack  {
-                Text(String(self.mApplication.Id)).foregroundColor(Color.textLight).padding()
-                Text(self.mApplication.Notes).foregroundColor(Color.textLight)
+        VStack {
+            NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id)) {
+                HStack {
+                    Text(String(self.mApplication.Id))
+                        .foregroundColor(Color.textLight).padding()
+                    Text(self.mApplication.Notes)
+                        .foregroundColor(Color.textLight)
+                }
+                .padding(.all, 8)
             }
         }
+        .background(Color.primaryDark)
+        .cornerRadius(5)
     }
 }

@@ -13,11 +13,13 @@ struct ButtonFilter: View {
     var body: some View {
         Button(action: {}) {
             Text(self.label)
-            .foregroundColor(Color.textDark)
-            .font(Font.system(size: 14))
-            .padding(.all, 8)
-            .frame(minWidth: 100)
-        }.background(Color.primaryLight).cornerRadius(10.0)
+                .font(Font.system(size: 14))
+                .foregroundColor(Color.textDark)
+                .frame(minWidth: 100)
+                .padding(.all, 8)
+                
+        }
+        .background(Color.primaryLight).cornerRadius(10.0)
     }
 }
 
