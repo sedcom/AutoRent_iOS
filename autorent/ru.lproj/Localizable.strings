@@ -6,6 +6,7 @@
   
 */
 
+"menu_map" = "Карта";
 "message_connection_error" = "Ошибка соединения!";
 "message_nothing_found" = "Ничего не найдено";
 "status_all" = "Все";

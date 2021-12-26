@@ -8,17 +8,33 @@
 import SwiftUI
 
 struct ApplicationView: View {
-    @ObservedObject var mViewModel: ApplicationViewModel
     var mEntityId: Int
     
     init(entityId: Int) {
         self.mEntityId = entityId
-        self.mViewModel = ApplicationViewModel(entityId: entityId, include: "items")
+        //
+        let itemAppearance = UITabBarItemAppearance()
+        itemAppearance.normal.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.lightText,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+        ]
+        let tabAppearance = UITabBarAppearance()
+        tabAppearance.configureWithOpaqueBackground()
+        tabAppearance.backgroundColor = UIColor(Color.primaryDark)
+        tabAppearance.stackedLayoutAppearance = itemAppearance
+        UITabBar.appearance().standardAppearance = tabAppearance
     }
     
     var body: some View {
-        VStack {
-            Text(self.mViewModel.Application?.Notes ?? "")
-        }.onAppear { self.mViewModel.loadData() }
+        TabView {
+            ApplicationMainView(entityId: self.mEntityId)
+                .tabItem { TabBarItemView(label: "Заявка", image: "map-marked-alt") }
+            Text("Тут документы...")
+                .tabItem { TabBarItemView(label: "Документы", image: "map-marked-alt") }
+            Text("Тут платежи...")
+                .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
+            Text("Тут история...")
+                .tabItem { TabBarItemView(label: "История", image: "map-marked-alt") }        }
+        .accentColor(Color.secondary).navigationBarHidden(true)
     }
 }

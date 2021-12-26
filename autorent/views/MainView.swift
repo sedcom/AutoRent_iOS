@@ -23,19 +23,22 @@ struct MainView: View {
     }
     
     var body: some View {
-        TabView {
-            MapView()
-            .tabItem { TabBarItemView(label: "Карта", image: "map-marked-alt") }
-            ApplicationsView()
-            .tabItem { TabBarItemView(label: "Заявки", image: "map-marked-alt") }
-            Text("Тут заказы...")
-            .tabItem { TabBarItemView(label: "Заказы", image: "map-marked-alt") }
-            Text("Тут счета...")
-            .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
-            Text("Тут профиль...")
-            .tabItem { TabBarItemView(label: "Профиль", image: "map-marked-alt") }
+        NavigationView {
+            TabView {
+                MapView()
+                    .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
+                    .navigationBarHidden(true)
+                ApplicationsView()
+                    .tabItem { TabBarItemView(label: "Заявки", image: "map-marked-alt") }
+                Text("Тут заказы...")
+                    .tabItem { TabBarItemView(label: "Заказы", image: "map-marked-alt") }
+                Text("Тут счета...")
+                    .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
+                Text("Тут профиль...")
+                    .tabItem { TabBarItemView(label: "Профиль", image: "map-marked-alt") }
+            }
+            .accentColor(Color.secondary).navigationBarHidden(true)
         }
-        .accentColor(Color.secondary)
     }
 }
 

@@ -6,6 +6,7 @@
   
 */
 
+"menu_map" = "Map";
 "message_connection_error" = "Connection error!";
 "message_nothing_found" = "Nothing found";
 "status_all" = "All";

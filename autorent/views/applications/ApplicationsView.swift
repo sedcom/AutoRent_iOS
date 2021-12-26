@@ -19,7 +19,7 @@ struct ApplicationsView: View {
     }
 
     var body: some View {
-        NavigationView {
+        VStack {
             if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
                 LoadingView()
             }

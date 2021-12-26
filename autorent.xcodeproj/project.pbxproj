@@ -30,6 +30,7 @@
 		E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B3979275430D3004CE06A /* ApplicationViewModel.swift */; };
 		E29B397C27543257004CE06A /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397B27543257004CE06A /* ApplicationView.swift */; };
 		E29B397E2754498C004CE06A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397D2754498B004CE06A /* MainView.swift */; };
+		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		E29B3979275430D3004CE06A /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
 		E29B397B27543257004CE06A /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 		E29B397D2754498B004CE06A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
 				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E29B397B27543257004CE06A /* ApplicationView.swift */,
+				F6927865277920B2003BD0D5 /* ApplicationMainView.swift */,
 			);
 			path = applications;
 			sourceTree = "<group>";
@@ -257,7 +260,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					E2589B0327523A4100BFF698 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -351,6 +354,7 @@
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
+				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
@@ -384,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -445,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
