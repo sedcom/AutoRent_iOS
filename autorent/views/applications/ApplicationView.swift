@@ -12,17 +12,6 @@ struct ApplicationView: View {
     
     init(entityId: Int) {
         self.mEntityId = entityId
-        //
-        let itemAppearance = UITabBarItemAppearance()
-        itemAppearance.normal.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.lightText,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
-        ]
-        let tabAppearance = UITabBarAppearance()
-        tabAppearance.configureWithOpaqueBackground()
-        tabAppearance.backgroundColor = UIColor(Color.primaryDark)
-        tabAppearance.stackedLayoutAppearance = itemAppearance
-        UITabBar.appearance().standardAppearance = tabAppearance
     }
     
     var body: some View {
@@ -34,7 +23,8 @@ struct ApplicationView: View {
             Text("Тут платежи...")
                 .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
             Text("Тут история...")
-                .tabItem { TabBarItemView(label: "История", image: "history") }        }
+                .tabItem { TabBarItemView(label: "История", image: "history") }
+        }
         .accentColor(Color.secondary).navigationBarHidden(true)
     }
 }

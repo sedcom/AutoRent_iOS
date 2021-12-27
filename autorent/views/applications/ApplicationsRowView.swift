@@ -18,9 +18,9 @@ struct ApplicationsRowView: View {
         NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id)) {
             VStack {
                 HStack {
-                    Text("Зяв ;" + String(self.mApplication.Id))
+                    Text("Заявка №" + String(self.mApplication.Id))
                         .foregroundColor(Color.textLight).padding()
-                    Text(self.mApplication.CreatedDate)
+                    Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
                         .foregroundColor(Color.textLight)
                         
                 }

@@ -33,6 +33,7 @@
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
+		F692786E277947C6003BD0D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786D277947C6003BD0D5 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F692786D277947C6003BD0D5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +94,9 @@
 		E219C2882752EC9600870896 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				F692786727793B6E003BD0D5 /* user */,
-				E2550F122757C6B20059B96C /* common */,
 				E2550F112757C6A60059B96C /* applications */,
+				E2550F122757C6B20059B96C /* common */,
+				F692786727793B6E003BD0D5 /* user */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F102757C68D0059B96C /* applications */,
+				F692786D277947C6003BD0D5 /* Utils.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -112,9 +115,9 @@
 			children = (
 				E2550F0F2757C66B0059B96C /* common */,
 				E28538862755BE800008F6FB /* applications */,
+				F692786C27794466003BD0D5 /* map */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				E29B397D2754498B004CE06A /* MainView.swift */,
-				E28538802754DE3D0008F6FB /* MapView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -243,6 +246,14 @@
 				F692786A27793BE6003BD0D5 /* UserProfile.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		F692786C27794466003BD0D5 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				E28538802754DE3D0008F6FB /* MapView.swift */,
+			);
+			path = map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +386,7 @@
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
 				E2550F162757E60C0059B96C /* TabBarItemView.swift in Sources */,
+				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,

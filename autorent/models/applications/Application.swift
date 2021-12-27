@@ -8,12 +8,12 @@
 import Foundation
 
 class Application: Entity {
-    var CreatedDate: String
+    var CreatedDate: Date
     var User: autorent.User
     var Notes: String
     
     override init() {
-        self.CreatedDate = ""
+        self.CreatedDate = Date()
         self.User = autorent.User()
         self.Notes = ""
         super.init()
@@ -21,7 +21,8 @@ class Application: Entity {
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.CreatedDate = try container.decode(String.self, forKey: .CreatedDate)
+        let dateString = try container.decode(String.self, forKey: .CreatedDate)
+        self.CreatedDate = Utils.convertDate(value: dateString)
         self.User = try container.decode(autorent.User.self, forKey: .User)
         self.Notes = try container.decode(String.self, forKey: .Notes)
         try super.init(from: decoder)

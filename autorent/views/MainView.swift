@@ -8,22 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    
-    init() {
-        let itemAppearance = UITabBarItemAppearance()
-        itemAppearance.normal.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.lightText,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
-        ]
-        let tabAppearance = UITabBarAppearance()
-        tabAppearance.configureWithOpaqueBackground()
-        tabAppearance.backgroundColor = UIColor(Color.primaryDark)
-        tabAppearance.stackedLayoutAppearance = itemAppearance
-        UITabBar.appearance().standardAppearance = tabAppearance
-    }
-    
     var body: some View {
         NavigationView {
+            VStack {
             TabView {
                 MapView()
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
@@ -38,6 +25,7 @@ struct MainView: View {
                     .tabItem { TabBarItemView(label: "Профиль", image: "user") }
             }
             .accentColor(Color.secondary).navigationBarHidden(true)
+            }//.padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
         }
     }
 }
