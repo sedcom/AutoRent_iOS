@@ -100,7 +100,7 @@ struct ApplicationsView: View {
                                 
                             }
                             .listRowBackground(Color.primary)
-                            .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 10))
+                            .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
                         }
                         .listStyle(PlainListStyle())
                         .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))

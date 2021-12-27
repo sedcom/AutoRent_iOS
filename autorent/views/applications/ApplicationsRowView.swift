@@ -15,33 +15,39 @@ struct ApplicationsRowView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id)) {
+        NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id))  { }
+            .frame(width: 0, height: 0)
+        VStack {
             VStack {
                 HStack {
                     Text("Заявка №" + String(self.mApplication.Id))
                         .foregroundColor(Color.textLight)
                         .font(Font.headline.weight(.bold))
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
                     HStack {
-                        //Image("copy")
-                        //    .renderingMode(.template)
-                        //    .foregroundColor(Color.textLight)
-                        //    .padding(.all, 2)
+                        Image("copy")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
                         Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
                             .foregroundColor(Color.textLight)
                             .font(Font.headline.weight(.bold))
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .trailing)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                             .lineLimit(1)
                     }
                 }
-                .padding(.all, 0)
+                .padding(.bottom, 4)
                 HStack {
-                    Text(self.mApplication.User.Profile.FirstName)
+                    Image("copy")
+                        .renderingMode(.template)
                         .foregroundColor(Color.textLight)
+                    Text(self.mApplication.User.Profile.getUserName())
+                        .foregroundColor(Color.textLight)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.all, 4)
+                .padding(.bottom, 4)
             }
+            .padding(.all, 8)
         }
         .background(Color.primaryDark)
         .cornerRadius(5)
