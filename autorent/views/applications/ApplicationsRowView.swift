@@ -16,13 +16,21 @@ struct ApplicationsRowView: View {
     
     var body: some View {
         NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id)) {
-            HStack {
-                Text(String(self.mApplication.Id))
-                    .foregroundColor(Color.textLight).padding()
-                Text(self.mApplication.Notes)
-                    .foregroundColor(Color.textLight)
+            VStack {
+                HStack {
+                    Text("Зяв ;" + String(self.mApplication.Id))
+                        .foregroundColor(Color.textLight).padding()
+                    Text(self.mApplication.CreatedDate)
+                        .foregroundColor(Color.textLight)
+                        
+                }
+                .padding(.all, 4)
+                HStack {
+                    Text(self.mApplication.User.Profile.FirstName)
+                        .foregroundColor(Color.textLight)
+                }
+                .padding(.all, 4)
             }
-            .padding(.all, 8)
         }
         .background(Color.primaryDark)
         .cornerRadius(5)

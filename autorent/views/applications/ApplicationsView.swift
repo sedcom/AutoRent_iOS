@@ -33,7 +33,7 @@ struct ApplicationsView: View {
                             .font(Font.system(size: 20, weight: .bold))
                             .foregroundColor(Color.textLight)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.all, 10)
+                            .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
                     }
                     .background(Color.primary)
                     ScrollView(.horizontal, showsIndicators: false) {
