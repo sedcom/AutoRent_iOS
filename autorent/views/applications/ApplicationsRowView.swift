@@ -45,6 +45,14 @@ struct ApplicationsRowView: View {
                         .foregroundColor(Color.textLight)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                HStack {
+                    Image("copy")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)
+                    Text(self.mApplication.Address.getAddressName())
+                        .foregroundColor(Color.textLight)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 .padding(.bottom, 4)
             }
             .padding(.all, 8)

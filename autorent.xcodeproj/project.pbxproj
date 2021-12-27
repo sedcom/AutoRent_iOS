@@ -34,6 +34,11 @@
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
 		F692786E277947C6003BD0D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786D277947C6003BD0D5 /* Utils.swift */; };
+		F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927870277A83E7003BD0D5 /* AddressRegion.swift */; };
+		F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927872277A8445003BD0D5 /* AddressCity.swift */; };
+		F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927874277A8465003BD0D5 /* AddressDistrict.swift */; };
+		F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927876277A8493003BD0D5 /* AddressStreet.swift */; };
+		F6927879277A84C6003BD0D5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927878277A84C6003BD0D5 /* Address.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +74,11 @@
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F692786D277947C6003BD0D5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F6927870277A83E7003BD0D5 /* AddressRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRegion.swift; sourceTree = "<group>"; };
+		F6927872277A8445003BD0D5 /* AddressCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCity.swift; sourceTree = "<group>"; };
+		F6927874277A8465003BD0D5 /* AddressDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDistrict.swift; sourceTree = "<group>"; };
+		F6927876277A8493003BD0D5 /* AddressStreet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStreet.swift; sourceTree = "<group>"; };
+		F6927878277A84C6003BD0D5 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 		E219C2882752EC9600870896 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				F692786F277A83BE003BD0D5 /* address */,
 				E2550F112757C6A60059B96C /* applications */,
 				E2550F122757C6B20059B96C /* common */,
 				F692786727793B6E003BD0D5 /* user */,
@@ -256,6 +267,18 @@
 			path = map;
 			sourceTree = "<group>";
 		};
+		F692786F277A83BE003BD0D5 /* address */ = {
+			isa = PBXGroup;
+			children = (
+				F6927878277A84C6003BD0D5 /* Address.swift */,
+				F6927870277A83E7003BD0D5 /* AddressRegion.swift */,
+				F6927874277A8465003BD0D5 /* AddressDistrict.swift */,
+				F6927872277A8445003BD0D5 /* AddressCity.swift */,
+				F6927876277A8493003BD0D5 /* AddressStreet.swift */,
+			);
+			path = address;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +399,8 @@
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
+				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
+				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
@@ -387,9 +412,12 @@
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
 				E2550F162757E60C0059B96C /* TabBarItemView.swift in Sources */,
 				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,
+				F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */,
+				F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */,
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
+				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,

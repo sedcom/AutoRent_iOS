@@ -34,7 +34,9 @@ class UserProfile: Entity {
     }
     
     public func getUserName() -> String {
-        let parts: [String] = [self.LastName, self.FirstName, self.MiddleName != nil ? self.MiddleName! : ""]
+        let parts: [String] = [self.LastName,
+                               self.FirstName,
+                               self.MiddleName != nil ? self.MiddleName! : ""]
         return parts.filter{ $0 != "" }.joined(separator: " ")
     }
 }
