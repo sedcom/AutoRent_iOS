@@ -19,12 +19,23 @@ struct ApplicationsRowView: View {
             VStack {
                 HStack {
                     Text("Заявка №" + String(self.mApplication.Id))
-                        .foregroundColor(Color.textLight).padding()
-                    Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
                         .foregroundColor(Color.textLight)
-                        
+                        .font(Font.headline.weight(.bold))
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                    HStack {
+                        //Image("copy")
+                        //    .renderingMode(.template)
+                        //    .foregroundColor(Color.textLight)
+                        //    .padding(.all, 2)
+                        Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
+                            .foregroundColor(Color.textLight)
+                            .font(Font.headline.weight(.bold))
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .trailing)
+                            .lineLimit(1)
+                    }
                 }
-                .padding(.all, 4)
+                .padding(.all, 0)
                 HStack {
                     Text(self.mApplication.User.Profile.FirstName)
                         .foregroundColor(Color.textLight)

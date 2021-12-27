@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         NavigationView {
-            VStack {
             TabView {
                 MapView()
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
@@ -24,8 +23,7 @@ struct MainView: View {
                 Text("Тут профиль...")
                     .tabItem { TabBarItemView(label: "Профиль", image: "user") }
             }
-            .accentColor(Color.secondary).navigationBarHidden(true)
-            }//.padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
+            .accentColor(Color.secondary)
         }
     }
 }
