@@ -29,13 +29,13 @@ struct MainView: View {
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
                     .navigationBarHidden(true)
                 ApplicationsView()
-                    .tabItem { TabBarItemView(label: "Заявки", image: "map-marked-alt") }
+                    .tabItem { TabBarItemView(label: "Заявки", image: "clipboard-list") }
                 Text("Тут заказы...")
-                    .tabItem { TabBarItemView(label: "Заказы", image: "map-marked-alt") }
+                    .tabItem { TabBarItemView(label: "Заказы", image: "copy") }
                 Text("Тут счета...")
-                    .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
+                    .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
                 Text("Тут профиль...")
-                    .tabItem { TabBarItemView(label: "Профиль", image: "map-marked-alt") }
+                    .tabItem { TabBarItemView(label: "Профиль", image: "user") }
             }
             .accentColor(Color.secondary).navigationBarHidden(true)
         }

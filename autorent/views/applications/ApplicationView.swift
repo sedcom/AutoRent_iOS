@@ -28,13 +28,13 @@ struct ApplicationView: View {
     var body: some View {
         TabView {
             ApplicationMainView(entityId: self.mEntityId)
-                .tabItem { TabBarItemView(label: "Заявка", image: "map-marked-alt") }
+                .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             Text("Тут документы...")
-                .tabItem { TabBarItemView(label: "Документы", image: "map-marked-alt") }
+                .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
             Text("Тут платежи...")
-                .tabItem { TabBarItemView(label: "Платежи", image: "map-marked-alt") }
+                .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
             Text("Тут история...")
-                .tabItem { TabBarItemView(label: "История", image: "map-marked-alt") }        }
+                .tabItem { TabBarItemView(label: "История", image: "history") }        }
         .accentColor(Color.secondary).navigationBarHidden(true)
     }
 }
