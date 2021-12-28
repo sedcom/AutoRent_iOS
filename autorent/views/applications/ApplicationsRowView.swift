@@ -26,7 +26,7 @@ struct ApplicationsRowView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
                     HStack {
-                        Image("copy")
+                        Image("calendar-alt")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                         Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
@@ -38,7 +38,7 @@ struct ApplicationsRowView: View {
                 }
                 .padding(.bottom, 4)
                 HStack {
-                    Image("copy")
+                    Image("user")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
                     Text(self.mApplication.User.Profile.getUserName())
@@ -46,12 +46,12 @@ struct ApplicationsRowView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 HStack {
-                    Image("copy")
+                    Image("map-marker-alt")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
                     Text(self.mApplication.Address.getAddressName())
                         .foregroundColor(Color.textLight)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 4)
             }

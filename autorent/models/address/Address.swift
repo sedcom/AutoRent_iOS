@@ -41,7 +41,7 @@ class Address: Entity {
         case Region = "region"
         case District = "district"
         case City = "city"
-        case Street = "Street"
+        case Street = "street"
         case House = "house"
     }
     

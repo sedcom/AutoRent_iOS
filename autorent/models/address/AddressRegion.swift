@@ -7,18 +7,16 @@
 
 import Foundation
 
-class AddressRegion: Entity {
+class AddressRegion: Codable {
     var Name: String
     
-    override init() {
+    init() {
         self.Name = ""
-        super.init()
     }
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.Name = try container.decode(String.self, forKey: .Name)
-        try super.init(from: decoder)
     }
     
     private enum CodingKeys: String, CodingKey {

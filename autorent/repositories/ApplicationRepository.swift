@@ -17,10 +17,18 @@ class ApplicationRepository {
         let headers: HTTPHeaders = [
             .authorization(self.token)
         ]
+        
+        AF.request(self.url + "/applications", method: HTTPMethod.get,
+                                   parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters],
+                                   headers: headers).responseJSON { response in
+                                    var s = response.value as? String ?? ""
+                                    var ss = s
+                                   }
+        
         let publisher = AF.request(self.url + "/applications", method: HTTPMethod.get,
                                    parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters],
                                    headers: headers)
-                            .publishDecodable(type: Pagination<Application>.self);
+                            .publishDecodable(type: Pagination<Application>.self)
         return publisher.value();
     }
     
@@ -31,6 +39,6 @@ class ApplicationRepository {
         let publisher = AF.request(self.url + "/application", method: HTTPMethod.get,
                                    parameters: ["applicationId": applicationId, "include": include],
                                    headers: headers)
-                            .publishDecodable(type: Application.self);
+                            .publishDecodable(type: Application.self)
         return publisher.value();
     }}
