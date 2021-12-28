@@ -39,6 +39,9 @@
 		F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927874277A8465003BD0D5 /* AddressDistrict.swift */; };
 		F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927876277A8493003BD0D5 /* AddressStreet.swift */; };
 		F6927879277A84C6003BD0D5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927878277A84C6003BD0D5 /* Address.swift */; };
+		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
+		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
+		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,9 @@
 		F6927874277A8465003BD0D5 /* AddressDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDistrict.swift; sourceTree = "<group>"; };
 		F6927876277A8493003BD0D5 /* AddressStreet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStreet.swift; sourceTree = "<group>"; };
 		F6927878277A84C6003BD0D5 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
+		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
+		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				F692786F277A83BE003BD0D5 /* address */,
-				E2550F112757C6A60059B96C /* applications */,
+				E2550F112757C6A60059B96C /* application */,
 				E2550F122757C6B20059B96C /* common */,
+				F6ADCC2C277B311400A1CE80 /* vehicle */,
 				F692786727793B6E003BD0D5 /* user */,
 			);
 			path = models;
@@ -155,12 +162,14 @@
 			path = applications;
 			sourceTree = "<group>";
 		};
-		E2550F112757C6A60059B96C /* applications */ = {
+		E2550F112757C6A60059B96C /* application */ = {
 			isa = PBXGroup;
 			children = (
 				E29B396F27539BC5004CE06A /* Application.swift */,
+				F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */,
+				F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */,
 			);
-			path = applications;
+			path = application;
 			sourceTree = "<group>";
 		};
 		E2550F122757C6B20059B96C /* common */ = {
@@ -279,6 +288,14 @@
 			path = address;
 			sourceTree = "<group>";
 		};
+		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */,
+			);
+			path = vehicle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
+				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
 				E29B397E2754498C004CE06A /* MainView.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
@@ -408,7 +426,9 @@
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
+				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
+				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
 				E2550F162757E60C0059B96C /* TabBarItemView.swift in Sources */,
 				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,

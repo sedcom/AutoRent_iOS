@@ -12,12 +12,14 @@ class Application: Entity {
     var User: autorent.User
     var Address: autorent.Address
     var Notes: String
+    var Items: [ApplicationItem]
     
     override init() {
         self.CreatedDate = Date()
         self.User = autorent.User()
         self.Address = autorent.Address()
         self.Notes = ""
+        self.Items = []
         super.init()
     }
     
@@ -27,6 +29,7 @@ class Application: Entity {
         self.User = try container.decode(autorent.User.self, forKey: .User)
         self.Address = try container.decode(autorent.Address.self, forKey: .Address)
         self.Notes = try container.decode(String.self, forKey: .Notes)
+        self.Items = try container.decode([ApplicationItem].self, forKey: .Items)
         try super.init(from: decoder)
     }
     
@@ -35,5 +38,11 @@ class Application: Entity {
         case User = "user"
         case Address = "address"
         case Notes = "notes"
+        case Items = "items"
+    }
+    
+    
+    public func getVehicles() -> String {
+        self.Items.map { (item) -> String in return item.VehicleParams.VehicleType.Name }.joined(separator: ", ")
     }
 }

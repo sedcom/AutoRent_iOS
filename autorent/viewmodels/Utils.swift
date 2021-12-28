@@ -20,4 +20,10 @@ class Utils {
         return dateFormatter.date(from: value)!
     }
     
+    static func convertOffsetDate(value: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter.date(from: value)!
+    }
+    
 }
