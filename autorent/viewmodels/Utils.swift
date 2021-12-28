@@ -17,7 +17,12 @@ class Utils {
     static func convertDate(value: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        return dateFormatter.date(from: value)!
+        var date = dateFormatter.date(from: value)
+        if date == nil {
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            date = dateFormatter.date(from: value)
+        }
+        return date!
     }
     
     static func convertOffsetDate(value: String) -> Date {

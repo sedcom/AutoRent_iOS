@@ -64,6 +64,24 @@ class ApplicationsViewModel: ObservableObject {
                 self.Data.Total = result.Total
                 self.Data.Elements.append(contentsOf: result.Elements)
                 self.IsLoading = false
+                self.loadVehicleTypes(applications: self.Data.Elements)
+            })
+    }
+    
+    private func loadVehicleTypes(applications: [Application]) {
+        self.cancellation = self.mApplicationRepository.loadVehicleTypes(0, 0, "", "options")
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                let vehicleTypes = result.Elements
+                for application in applications {
+                    for item in application.Items {
+                        let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
+                        item.VehicleParams.VehicleType = vehicleType!
+                    }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     self.objectWillChange.send()
                 }

@@ -43,6 +43,7 @@ struct ApplicationsRowView: View {
                         .foregroundColor(Color.textLight)
                     Text(self.mApplication.User.Profile.getUserName())
                         .foregroundColor(Color.textLight)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 HStack {
@@ -51,7 +52,18 @@ struct ApplicationsRowView: View {
                         .foregroundColor(Color.textLight)
                     Text(self.mApplication.Address.getAddressName())
                         .foregroundColor(Color.textLight)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.bottom, 4)
+                HStack {
+                    Image("truck-monster")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)
+                    Text(self.mApplication.getVehicles())
+                        .foregroundColor(Color.textLight)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 4)
             }

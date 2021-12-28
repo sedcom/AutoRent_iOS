@@ -22,6 +22,20 @@ class ApplicationRepository {
                                    parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters],
                                    headers: headers)
                             .publishDecodable(type: Pagination<Application>.self)
+        
+        return publisher.value();
+    }
+    
+    func loadVehicleTypes(_ maxItems: Int, _ skipCount: Int, _ orderBy: String, _ include: String) -> AnyPublisher<Pagination<VehicleType>, AFError>  {
+        let headers: HTTPHeaders = [
+            .authorization(self.token)
+        ]
+        
+        let publisher = AF.request(self.url + "/dictionary?type=vehicletypes", method: HTTPMethod.get,
+                                   parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include],
+                                   headers: headers)
+                            .publishDecodable(type: Pagination<VehicleType>.self)
+        
         return publisher.value();
     }
     

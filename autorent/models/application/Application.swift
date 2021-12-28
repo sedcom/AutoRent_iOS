@@ -43,6 +43,6 @@ class Application: Entity {
     
     
     public func getVehicles() -> String {
-        self.Items.map { (item) -> String in return item.VehicleParams.VehicleType.Name }.joined(separator: ", ")
+        return Set(self.Items.map { (item) -> String in return item.VehicleParams.VehicleType.Name }).joined(separator: ", ")
     }
 }
