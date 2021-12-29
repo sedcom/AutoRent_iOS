@@ -14,23 +14,34 @@ class ApplicationViewModel: ObservableObject {
     var mApplicationRepository: ApplicationRepository = ApplicationRepository()
     var mEntityId: Int
     var mInclude: String
+    var IsLoading: Bool
+    var IsError: Bool
     
     init(entityId: Int, include: String) {
         self.mEntityId = entityId
         self.mInclude = include
+        self.IsLoading = false
+        self.IsError = false
     }
 
     func loadData() {
         debugPrint("Start loadData")
+        self.IsLoading = true
+        self.IsError = false
+        self.objectWillChange.send()
         self.cancellation = self.mApplicationRepository.loadItem(self.mEntityId, self.mInclude)
             .mapError({ (error) -> Error in
                 debugPrint(error)
+                self.IsLoading = false
+                self.IsError = true
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish loadData")
-                self.Application = result;
-                self.objectWillChange.send()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.Application = result;
+                    self.IsLoading = false
+                }
         })
     }
 }

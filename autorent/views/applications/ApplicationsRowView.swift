@@ -25,21 +25,18 @@ struct ApplicationsRowView: View {
                         .font(Font.headline.weight(.bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
-                    HStack(spacing: 0) {
+                    HStack(spacing: 8) {
                         Image("calendar-alt")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
-                            .frame(width: 20, height: 20)
-                            .background(Color.red)
                         Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
                             .foregroundColor(Color.textLight)
                             .font(Font.headline.weight(.bold))
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .frame(alignment: .trailing)
                             .lineLimit(1)
-                            .background(Color.green)
                     }
                 }
-                .padding(.bottom, 2)
+                .padding(.bottom, 8)
                 HStack {
                     Image("user")
                         .renderingMode(.template)
@@ -58,7 +55,6 @@ struct ApplicationsRowView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.bottom, 2)
                 HStack {
                     Image("truck-monster")
                         .renderingMode(.template)
@@ -68,7 +64,7 @@ struct ApplicationsRowView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.bottom, 4)
+                .padding(.bottom, 8)
                 HStack {
                     Text(self.mApplication.getStatus())
                         .foregroundColor(Color.textLight)

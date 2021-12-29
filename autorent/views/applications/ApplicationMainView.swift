@@ -18,10 +18,19 @@ struct ApplicationMainView: View {
     
     var body: some View {
         VStack {
-            Text(self.mViewModel.Application?.Notes ?? "")
+            VStack {
+                Text("Заказчик")
+                    .foregroundColor(Color.textLight)
+                    .font(Font.headline.weight(.bold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .lineLimit(1)
+                Text(self.mViewModel.Application?.Notes ?? "")
+            }
+            .padding(.all, 8)
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.primary)
-        //.navigationBarHidden(true)
+        .navigationBarHidden(false)
         .onAppear {
             self.mViewModel.loadData()
         }

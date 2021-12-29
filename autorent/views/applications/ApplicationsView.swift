@@ -96,14 +96,17 @@ struct ApplicationsView: View {
                                            }
                                         }
                                     }
+                                    
                                 }
-                                
+                            
                             }
                             .listRowBackground(Color.primary)
                             .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+                            
                         }
                         .listStyle(PlainListStyle())
                         .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
+                        
                     }
                 }
                 .background(Color.primary)
