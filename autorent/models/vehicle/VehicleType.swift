@@ -29,4 +29,8 @@ class VehicleType: BaseDictionary {
     private enum CodingKeys: String, CodingKey {
         case VehicleGroup = "vehicleGroup"
     }
+    
+    public func getVehicleTypeName() -> String {
+        return self.VehicleGroup != nil ? String(format: "%@ / %@", self.VehicleGroup!.Name, self.Name) : self.Name
+    }
 }

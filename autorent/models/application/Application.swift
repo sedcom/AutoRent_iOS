@@ -52,8 +52,11 @@ class Application: Entity {
         case History = "history"
     }
     
+    public func getStatus () -> String {
+        return self.History.sorted {a, b in a.Id < b.Id }.first!.Status.Name
+    }
     
     public func getVehicles() -> String {
-        return Set(self.Items.map { (item) -> String in return item.VehicleParams.VehicleType.Name }).joined(separator: ", ")
+        return Set(self.Items.map { (item) -> String in return item.VehicleParams.VehicleType.getVehicleTypeName() }).joined(separator: ", ")
     }
 }

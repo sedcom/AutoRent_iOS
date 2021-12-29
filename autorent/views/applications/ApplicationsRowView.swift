@@ -36,7 +36,7 @@ struct ApplicationsRowView: View {
                             .lineLimit(1)
                     }
                 }
-                .padding(.bottom, 4)
+                .padding(.bottom, 2)
                 HStack {
                     Image("user")
                         .renderingMode(.template)
@@ -55,7 +55,7 @@ struct ApplicationsRowView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.bottom, 4)
+                .padding(.bottom, 2)
                 HStack {
                     Image("truck-monster")
                         .renderingMode(.template)
@@ -66,6 +66,16 @@ struct ApplicationsRowView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 4)
+                HStack {
+                    Text(self.mApplication.getStatus())
+                        .foregroundColor(Color.textLight)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                   Text(Utils.formatDate(format: "dd.MM.yyyy HH:mm", date: self.mApplication.CreatedDate))
+                        .foregroundColor(Color.textLight)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                }
             }
             .padding(.all, 8)
         }
