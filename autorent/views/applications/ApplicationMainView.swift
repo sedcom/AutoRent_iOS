@@ -20,6 +20,10 @@ struct ApplicationMainView: View {
         VStack {
             Text(self.mViewModel.Application?.Notes ?? "")
         }
-        .onAppear { self.mViewModel.loadData() }
+        .background(Color.primary)
+        //.navigationBarHidden(true)
+        .onAppear {
+            self.mViewModel.loadData()
+        }
     }
 }

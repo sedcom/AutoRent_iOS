@@ -22,7 +22,7 @@ struct ApplicationView: View {
                 .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
             Text("Тут платежи...")
                 .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
-            Text("Тут история...")
+            ApplicationHistoryView(entityId: self.mEntityId)
                 .tabItem { TabBarItemView(label: "История", image: "history") }
         }
         .accentColor(Color.secondary).navigationBarHidden(true)

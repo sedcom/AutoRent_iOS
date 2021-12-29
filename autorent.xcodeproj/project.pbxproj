@@ -42,6 +42,11 @@
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
+		F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2D277BE8D000A1CE80 /* BaseStatus.swift */; };
+		F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2F277BE96500A1CE80 /* BaseDictionary.swift */; };
+		F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */; };
+		F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */; };
+		F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +90,11 @@
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
+		F6ADCC2D277BE8D000A1CE80 /* BaseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStatus.swift; sourceTree = "<group>"; };
+		F6ADCC2F277BE96500A1CE80 /* BaseDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDictionary.swift; sourceTree = "<group>"; };
+		F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHistory.swift; sourceTree = "<group>"; };
+		F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistory.swift; sourceTree = "<group>"; };
+		F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,11 +153,11 @@
 		E2550F0F2757C66B0059B96C /* common */ = {
 			isa = PBXGroup;
 			children = (
+				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
+				E2550F042757B9AC0059B96C /* EmptyView.swift */,
+				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
 				E27EA41827577CCD001F7BB4 /* LoadingView.swift */,
-				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
-				E2550F042757B9AC0059B96C /* EmptyView.swift */,
-				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
 				E2550F152757E60C0059B96C /* TabBarItemView.swift */,
 			);
 			path = common;
@@ -168,6 +178,7 @@
 				E29B396F27539BC5004CE06A /* Application.swift */,
 				F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */,
 				F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */,
+				F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -177,6 +188,9 @@
 			children = (
 				E27EA4122756AB03001F7BB4 /* Entity.swift */,
 				E27EA41427575623001F7BB4 /* Pagination.swift */,
+				F6ADCC2F277BE96500A1CE80 /* BaseDictionary.swift */,
+				F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */,
+				F6ADCC2D277BE8D000A1CE80 /* BaseStatus.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -226,10 +240,11 @@
 		E28538862755BE800008F6FB /* applications */ = {
 			isa = PBXGroup;
 			children = (
-				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
-				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E29B397B27543257004CE06A /* ApplicationView.swift */,
 				F6927865277920B2003BD0D5 /* ApplicationMainView.swift */,
+				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
+				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
+				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
 			);
 			path = applications;
 			sourceTree = "<group>";
@@ -417,10 +432,14 @@
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
+				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
+				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
+				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
+				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
@@ -437,6 +456,7 @@
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
+				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,

@@ -7,27 +7,26 @@
 
 import Foundation
 
-class VehicleType: Entity {
-    var Name: String
+class VehicleType: BaseDictionary {
+    var VehicleGroup: VehicleType?
     
-    override init() {
-        self.Name = ""
+    override init () {
         super.init()
     }
     
     init(id: Int, name: String) {
-        self.Name = name
         super.init()
         self.Id = id
+        self.Name = name
     }
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.Name = try container.decode(String.self, forKey: .Name)
+        self.VehicleGroup = try container.decode(VehicleType?.self, forKey: .VehicleGroup)
         try super.init(from: decoder)
     }
     
     private enum CodingKeys: String, CodingKey {
-        case Name = "name"
+        case VehicleGroup = "vehicleGroup"
     }
 }

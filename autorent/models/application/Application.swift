@@ -13,6 +13,8 @@ class Application: Entity {
     var Address: autorent.Address
     var Notes: String
     var Items: [ApplicationItem]
+    var History: [ApplicationHistory]
+    
     
     override init() {
         self.CreatedDate = Date()
@@ -20,6 +22,7 @@ class Application: Entity {
         self.Address = autorent.Address()
         self.Notes = ""
         self.Items = []
+        self.History = []
         super.init()
     }
     
@@ -29,7 +32,14 @@ class Application: Entity {
         self.User = try container.decode(autorent.User.self, forKey: .User)
         self.Address = try container.decode(autorent.Address.self, forKey: .Address)
         self.Notes = try container.decode(String.self, forKey: .Notes)
-        self.Items = try container.decode([ApplicationItem].self, forKey: .Items)
+        self.Items = []
+        if container.contains(.Items) {
+            self.Items = try container.decode([ApplicationItem].self, forKey: .Items)
+        }
+        self.History = []
+        if container.contains(.History) {
+            self.History = try container.decode([ApplicationHistory].self, forKey: .History)
+        }
         try super.init(from: decoder)
     }
     
@@ -39,6 +49,7 @@ class Application: Entity {
         case Address = "address"
         case Notes = "notes"
         case Items = "items"
+        case History = "history"
     }
     
     

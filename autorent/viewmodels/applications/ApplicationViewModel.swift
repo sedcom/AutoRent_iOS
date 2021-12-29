@@ -21,13 +21,16 @@ class ApplicationViewModel: ObservableObject {
     }
 
     func loadData() {
+        debugPrint("Start loadData")
         self.cancellation = self.mApplicationRepository.loadItem(self.mEntityId, self.mInclude)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadData")
                 self.Application = result;
+                self.objectWillChange.send()
         })
     }
 }

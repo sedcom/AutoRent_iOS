@@ -14,6 +14,11 @@ class Entity: Codable, Identifiable, Equatable {
         self.Id = 0
     }
     
+    required init(from decoder: Decoder) throws  {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.Id = try container.decode(Int.self, forKey: .Id)
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case Id = "id"
     }

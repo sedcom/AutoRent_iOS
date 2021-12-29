@@ -27,7 +27,7 @@ struct ApplicationsView: View {
                 ErrorView()
             }
             else {
-                VStack (spacing: 0){
+                VStack (spacing: 0) {
                     VStack {
                         Text("Заявки на услуги")
                             .font(Font.system(size: 20, weight: .bold))
