@@ -25,15 +25,18 @@ struct ApplicationsRowView: View {
                         .font(Font.headline.weight(.bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
-                    HStack {
+                    HStack(spacing: 0) {
                         Image("calendar-alt")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
+                            .frame(width: 20, height: 20)
+                            .background(Color.red)
                         Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
                             .foregroundColor(Color.textLight)
                             .font(Font.headline.weight(.bold))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .lineLimit(1)
+                            .background(Color.green)
                     }
                 }
                 .padding(.bottom, 2)
