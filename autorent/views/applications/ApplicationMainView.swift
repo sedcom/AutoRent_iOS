@@ -58,8 +58,13 @@ struct ApplicationMainView: View {
                         }
                         .padding(.bottom, 4)
                         ForEach(self.mViewModel.Application!.Items) { item in
+                            let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
                             VStack {
                                 VStack {
+                                    Text("Position #\(index)")
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
                                     HStack {
                                         HStack {
                                             Image("calendar-alt")
@@ -69,12 +74,15 @@ struct ApplicationMainView: View {
                                                 .frame(width: 30, height: 35)
                                             VStack {
                                                 Text(Utils.formatDate(format: "dd MMMM yyyy", date: item.StartDate))
+                                                    .foregroundColor(Color.textLight)
                                                 Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: item.StartDate))
+                                                    .foregroundColor(Color.textLight)
+                                                    .font(Font.headline.weight(.bold))
                                             }
                                         }
+                                        .padding(.all, 8)
                                         .frame(minWidth: 0, maxWidth: .infinity)
                                         .background(Color.primary)
-                                        .padding(.all, 8)
                                         HStack {
                                             Image("calendar-alt")
                                                 .renderingMode(.template)
@@ -83,16 +91,21 @@ struct ApplicationMainView: View {
                                                 .frame(width: 30, height: 35)
                                             VStack {
                                                 Text(Utils.formatDate(format: "dd MMMM yyyy", date: item.FinishDate))
+                                                    .foregroundColor(Color.textLight)
                                                 Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: item.StartDate))
+                                                    .foregroundColor(Color.textLight)
+                                                    .font(Font.headline.weight(.bold))
                                             }
                                         }
+                                        .padding(.all, 8)
                                         .frame(minWidth: 0, maxWidth: .infinity)
                                         .background(Color.primary)
-                                        .padding(.all, 8)
                                     }
+                                    Text(item.VehicleParams.VehicleType.getVehicleTypeName())
+                                        .foregroundColor(Color.textLight)
                                     
                                 }
-                                .padding(.all, 8)
+                                .padding(.all, 12)
                             }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .background(Color.primaryDark)

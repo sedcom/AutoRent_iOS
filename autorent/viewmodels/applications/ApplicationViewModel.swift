@@ -38,10 +38,29 @@ class ApplicationViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish loadData")
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    self.Application = result;
-                    self.IsLoading = false
-                }
+                self.Application = result;
+                self.IsLoading = false
+                self.loadVehicleTypes(application: self.Application!)
         })
     }
+    
+    private func loadVehicleTypes(application: Application) {
+        self.cancellation = self.mApplicationRepository.loadVehicleTypes(0, 0, "", "options")
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                let vehicleTypes = result.Elements
+                for item in application.Items {
+                    let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
+                    item.VehicleParams.VehicleType = vehicleType!
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.objectWillChange.send()
+                }
+            })
+    }
+    
+    
 }
