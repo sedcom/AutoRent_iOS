@@ -76,37 +76,47 @@ struct ApplicationsView: View {
                         EmptyView()
                     }
                     else {
-                        List {
-                            ForEach(self.mViewModel.Data.Elements) { application in
-                                VStack {
-                                    if application.Id == 0 {
-                                        LoadingRowView()
-                                    }
-                                    else {
-                                        ApplicationsRowView(application)
-                                    }
-                                }
-                                .onAppear {
-                                    //TODO
-                                    if self.mViewModel.IsLoading == false {
-                                        if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
-                                            if  application == self.mViewModel.Data.Elements.last {
-                                                self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
-                                                self.mViewModel.loadData()
-                                           }
+                        ZStack {
+                            List {
+                                ForEach(self.mViewModel.Data.Elements) { application in
+                                    VStack {
+                                        if application.Id == 0 {
+                                            LoadingRowView()
+                                        }
+                                        else {
+                                            ApplicationsRowView(application)
                                         }
                                     }
-                                    
+                                    .onAppear {
+                                        //TODO
+                                        if self.mViewModel.IsLoading == false {
+                                            if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
+                                                if  application == self.mViewModel.Data.Elements.last {
+                                                    self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
+                                                    self.mViewModel.loadData()
+                                               }
+                                            }
+                                        }
+                                        
+                                    }
+                                
                                 }
-                            
+                                .listRowBackground(Color.primary)
+                                .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+                                
                             }
-                            .listRowBackground(Color.primary)
-                            .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
-                            
+                            .listStyle(PlainListStyle())
+                            .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
+                            GeometryReader { geo in
+                                Image("plus")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .background(Circle().fill(Color.secondary).frame(width: 60, height: 60))
+                                    .foregroundColor(Color(UIColor.darkGray))
+                                    .frame(width: 30, height: 30)
+                                    .offset(x: geo.size.width - 50, y: geo.size.height - 50)
+                            }
                         }
-                        .listStyle(PlainListStyle())
-                        .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
-                        
                     }
                 }
                 .background(Color.primary)

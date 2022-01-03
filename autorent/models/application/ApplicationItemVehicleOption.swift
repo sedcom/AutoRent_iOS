@@ -40,4 +40,22 @@ class ApplicationItemVehicleOption: Codable, Identifiable {
         case ValueInt = "ValueInt"
         case ValueString = "ValueString"
     }
+    
+    public func getOptionValue() -> String? {
+        switch self.VehicleOption.VehicleOptionType.ValueType {
+            case "bool":
+                return (self.ValueBoolean != nil) ? (self.ValueBoolean!) ? "+" : "-" : nil
+            case "int":
+                return (self.ValueInt != nil) ? String(self.ValueInt!) : nil
+            case "string":
+                return self.ValueString
+            case "list":
+                let jsonData = self.VehicleOption.VehicleOptionType.ValueParams!.data(using: .utf8)
+                let params = try! JSONDecoder().decode([String: String].self, from: jsonData!)
+                return params.first(where: { $0.key == String(self.ValueInt!) })!.value
+            default:
+                return nil
+        }
+    }
 }
+
