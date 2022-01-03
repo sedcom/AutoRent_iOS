@@ -15,6 +15,11 @@ class BaseDictionary: Entity {
         super.init()
     }
     
+    init(id: Int, name: String) {
+        self.Name = name
+        super.init(id: id)
+    }
+    
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.Name = try container.decode(String.self, forKey: .Name)

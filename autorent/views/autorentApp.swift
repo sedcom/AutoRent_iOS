@@ -20,10 +20,7 @@ struct autorentApp: App {
         tabAppearance.backgroundColor = UIColor(Color.primaryDark)
         tabAppearance.stackedLayoutAppearance = itemAppearance
         UITabBar.appearance().standardAppearance = tabAppearance
-        
-        UITableView.appearance().separatorColor = .clear
-        UITableView.appearance().separatorStyle = .none
-        UITableView.appearance().tableFooterView = UIView()
+
     }
     
     var body: some Scene {

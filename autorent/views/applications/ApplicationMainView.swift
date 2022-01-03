@@ -58,9 +58,9 @@ struct ApplicationMainView: View {
                         }
                         .padding(.bottom, 4)
                         ForEach(self.mViewModel.Application!.Items) { item in
-                            let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
-                            VStack {
+                           VStack {
                                 VStack {
+                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
                                     Text("Position #\(index)")
                                         .foregroundColor(Color.textLight)
                                         .font(Font.headline.weight(.bold))
@@ -101,9 +101,26 @@ struct ApplicationMainView: View {
                                         .frame(minWidth: 0, maxWidth: .infinity)
                                         .background(Color.primary)
                                     }
-                                    Text(item.VehicleParams.VehicleType.getVehicleTypeName())
-                                        .foregroundColor(Color.textLight)
-                                    
+                                    HStack {
+                                        Image("truck-monster")
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.textLight)
+                                        Text(item.VehicleParams.VehicleType.getVehicleTypeName())
+                                            .foregroundColor(Color.textLight)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    ForEach(item.VehicleParams.VehicleOptions) { option in
+                                        HStack {
+                                            Image("iconmonstr-gear")
+                                                .renderingMode(.template)
+                                                .foregroundColor(Color.textLight)
+                                            Text(option.VehicleOption.VehicleOptionType.Name)
+                                                .foregroundColor(Color.textLight)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                        }
+                                    }
                                 }
                                 .padding(.all, 12)
                             }

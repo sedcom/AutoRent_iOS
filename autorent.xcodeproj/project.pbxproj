@@ -47,6 +47,9 @@
 		F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */; };
 		F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */; };
 		F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */; };
+		F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3A2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift */; };
+		F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */; };
+		F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +98,9 @@
 		F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHistory.swift; sourceTree = "<group>"; };
 		F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistory.swift; sourceTree = "<group>"; };
 		F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistoryView.swift; sourceTree = "<group>"; };
+		F6ADCC3A2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleOption.swift; sourceTree = "<group>"; };
+		F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOption.swift; sourceTree = "<group>"; };
+		F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOptionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +184,7 @@
 				E29B396F27539BC5004CE06A /* Application.swift */,
 				F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */,
 				F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */,
+				F6ADCC3A2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift */,
 				F6ADCC33277BEADB00A1CE80 /* ApplicationHistory.swift */,
 			);
 			path = application;
@@ -307,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */,
+				F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */,
+				F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */,
 			);
 			path = vehicle;
 			sourceTree = "<group>";
@@ -437,11 +446,14 @@
 				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
+				F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
+				F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */,
 				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
+				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,

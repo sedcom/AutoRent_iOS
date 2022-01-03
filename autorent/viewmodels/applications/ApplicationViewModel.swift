@@ -55,6 +55,17 @@ class ApplicationViewModel: ObservableObject {
                 for item in application.Items {
                     let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
                     item.VehicleParams.VehicleType = vehicleType!
+                    var options: [ApplicationItemVehicleOption] = []
+                    for option in item.VehicleParams.VehicleType.VehicleOptions {
+                        var itemOption = item.VehicleParams.VehicleOptions.first(where: { $0.Id == option.Id})
+                        if (itemOption == nil) {
+                            itemOption = ApplicationItemVehicleOption()
+                            itemOption!.Id = option.Id
+                        }
+                        itemOption!.VehicleOption = option
+                        options.append(itemOption!)
+                    }
+                    item.VehicleParams.VehicleOptions = options
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     self.objectWillChange.send()
