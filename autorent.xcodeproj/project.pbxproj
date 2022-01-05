@@ -50,6 +50,8 @@
 		F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3A2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift */; };
 		F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */; };
 		F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */; };
+		F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */; };
+		F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,8 @@
 		F6ADCC3A2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleOption.swift; sourceTree = "<group>"; };
 		F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOption.swift; sourceTree = "<group>"; };
 		F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOptionType.swift; sourceTree = "<group>"; };
+		F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainEditView.swift; sourceTree = "<group>"; };
+		F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,8 @@
 			children = (
 				E29B397B27543257004CE06A /* ApplicationView.swift */,
 				F6927865277920B2003BD0D5 /* ApplicationMainView.swift */,
+				F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */,
+				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
 				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
@@ -465,6 +471,7 @@
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
+				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
@@ -482,6 +489,7 @@
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,
+				F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

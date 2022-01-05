@@ -17,8 +17,15 @@ struct ApplicationView: View {
     var body: some View {
         NavigationView {
             TabView {
-                ApplicationMainView(entityId: self.mEntityId)
-                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+                if self.mEntityId > 0 {
+                    ApplicationMainView(entityId: self.mEntityId)
+                        .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+                }
+                else {
+                    ApplicationMainEditView(entityId: self.mEntityId)
+                        .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+                }
+        
                 Text("Тут документы...")
                     .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
                 Text("Тут платежи...")
@@ -32,10 +39,13 @@ struct ApplicationView: View {
         .navigationBarTitle("Заявка №\(self.mEntityId)", displayMode: .inline)
         .navigationBarItems(trailing:
             HStack {
-                Image("iconmonstr-gear")
+                Image("iconmonstr-edit")
                     .renderingMode(.template)
                     .foregroundColor(Color.textLight)
-                Image("iconmonstr-gear")
+                Image("save")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                Image("paper-plane")
                     .renderingMode(.template)
                     .foregroundColor(Color.textLight)
             }

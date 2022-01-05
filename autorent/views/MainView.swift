@@ -34,10 +34,10 @@ struct MainView: View {
             .navigationBarTitle(getTitle(), displayMode: .inline)
             .navigationBarItems(trailing:
                 HStack {
-                    Image("iconmonstr-gear")
+                    Image("comment-dots")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
-                    Image("iconmonstr-gear")
+                    Image("bell")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
                 })

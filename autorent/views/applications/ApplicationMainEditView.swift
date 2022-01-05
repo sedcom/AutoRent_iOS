@@ -1,18 +1,20 @@
 //
-//  ApplicationMainView.swift
+//  ApplicationMainEditView.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 26.12.2021.
+//  Created by Viacheslav Lazarev on 05.01.2022.
 //
 
 import SwiftUI
 
-struct ApplicationMainView: View {
+struct ApplicationMainEditView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
+    @State var mNotes: String
     var mEntityId: Int
     
     init(entityId: Int) {
         self.mEntityId = entityId
+        self.mNotes = ""
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
     
@@ -49,13 +51,10 @@ struct ApplicationMainView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
                             HStack {
-                                Image("map-marker-alt")
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color.textLight)
-                                Text(self.mViewModel.Application!.Address.getAddressName())
-                                    .foregroundColor(Color.textLight)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                TextField("", text: $mNotes)
+                                    .frame(minHeight: 30, maxHeight: 30)
+                                    .background(Color.inputBackgroud)
+                                    .cornerRadius(4)
                             }
                             .padding(.bottom, 4)
                             ForEach(self.mViewModel.Application!.Items) { item in
@@ -67,10 +66,10 @@ struct ApplicationMainView: View {
                                 .font(Font.headline.weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
-                            Text(self.mViewModel.Application!.Notes)
-                                .foregroundColor(Color.textLight)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            TextEditor(text: $mNotes)
+                                .frame(minHeight: 100, maxHeight: 100)
+                                .background(Color.inputBackgroud)
+                                .cornerRadius(4)
                         }
                     }
                     .padding(.all, 8)
@@ -84,3 +83,4 @@ struct ApplicationMainView: View {
         }
     }
 }
+

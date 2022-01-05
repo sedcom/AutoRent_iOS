@@ -28,4 +28,5 @@ extension Color {
     static var secondary: Color = Color(UIColor.init(hex: "FFA500"))
     static var textLight: Color = Color(UIColor.init(hex: "E7E7E7"))
     static var textDark: Color = Color(UIColor.init(hex: "495057"))
+    static var inputBackgroud: Color = Color(UIColor.init(hex: "FFF9F9F9"))
 }
