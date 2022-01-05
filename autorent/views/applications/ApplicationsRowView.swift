@@ -15,12 +15,10 @@ struct ApplicationsRowView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: ApplicationView(entityId: self.mApplication.Id))  { }
-            .frame(width: 0, height: 0)
         VStack {
             VStack {
                 HStack {
-                    Text("Заявка №" + String(self.mApplication.Id))
+                    Text("Заявка №\(self.mApplication.Id)")
                         .foregroundColor(Color.textLight)
                         .font(Font.headline.weight(.bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -80,5 +78,7 @@ struct ApplicationsRowView: View {
         }
         .background(Color.primaryDark)
         .cornerRadius(5)
+        .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
+
 }

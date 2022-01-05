@@ -14,11 +14,10 @@ struct ApplicationsView: View {
     init() {
         self.mCurrentFilter = 1
         self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
-        UITableView.appearance().backgroundColor = UIColor(Color.primary)
-        UITableViewCell.appearance().selectedBackgroundView = UIView()
     }
 
     var body: some View {
+        //NavigationView {
         VStack {
             if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
                 LoadingView()
@@ -28,14 +27,14 @@ struct ApplicationsView: View {
             }
             else {
                 VStack (spacing: 0) {
-                    VStack {
+                    /*VStack {
                         Text("Заявки на услуги")
                             .font(Font.system(size: 20, weight: .bold))
                             .foregroundColor(Color.textLight)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
                     }
-                    .background(Color.primary)
+                    .background(Color.primary)*/
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
                             Button(NSLocalizedString("status_all", comment: ""), action: {
@@ -84,7 +83,9 @@ struct ApplicationsView: View {
                                             LoadingRowView()
                                         }
                                         else {
-                                            ApplicationsRowView(application)
+                                            NavigationLink(destination: ApplicationView(entityId: application.Id))  {
+                                                ApplicationsRowView(application)
+                                            }
                                         }
                                     }
                                     .onAppear {
@@ -99,14 +100,13 @@ struct ApplicationsView: View {
                                         }
                                         
                                     }
-                                
                                 }
                                 .listRowBackground(Color.primary)
-                                .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
                                 
                             }
-                            .listStyle(PlainListStyle())
-                            .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
+                            .listStyle(DefaultListStyle())
+                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                             GeometryReader { geo in
                                 Image("plus")
                                     .renderingMode(.template)
@@ -115,16 +115,33 @@ struct ApplicationsView: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                     .frame(width: 30, height: 30)
                                     .offset(x: geo.size.width - 50, y: geo.size.height - 50)
-                            }
+                                    NavigationLink(destination: ApplicationView(entityId: 0)) {
+                                        Circle().frame(width: 60, height: 60).hidden()
+                                    }
+                                    .offset(x: geo.size.width - 65, y: geo.size.height - 65)
+                                       
+                                }
                         }
                     }
                 }
                 .background(Color.primary)
-                .navigationBarHidden(true)
             }
-        }.onAppear {
+        }
+        .onAppear {
             self.mViewModel.clearData()
             self.mViewModel.loadData()
         }
+        .navigationBarHidden(false)
+        .navigationBarTitle("Заявки", displayMode: .inline)
+        .navigationBarItems(trailing:
+            HStack {
+                Image("iconmonstr-gear")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                Image("iconmonstr-gear")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+            }
+        )
     }
 }

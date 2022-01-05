@@ -20,7 +20,17 @@ struct autorentApp: App {
         tabAppearance.backgroundColor = UIColor(Color.primaryDark)
         tabAppearance.stackedLayoutAppearance = itemAppearance
         UITabBar.appearance().standardAppearance = tabAppearance
-
+        //
+        let titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor(Color.textLight),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold)
+        ]
+        UINavigationBar.appearance().backgroundColor = UIColor(Color.primary)
+        UINavigationBar.appearance().barTintColor = UIColor(Color.primary)
+        UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
+        UINavigationBar.appearance().largeTitleTextAttributes = titleTextAttributes
+        //
+        UITableView.appearance().backgroundColor = UIColor.clear
     }
     
     var body: some Scene {

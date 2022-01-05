@@ -15,16 +15,31 @@ struct ApplicationView: View {
     }
     
     var body: some View {
-        TabView {
-            ApplicationMainView(entityId: self.mEntityId)
-                .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
-            Text("Тут документы...")
-                .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
-            Text("Тут платежи...")
-                .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
-            ApplicationHistoryView(entityId: self.mEntityId)
-                .tabItem { TabBarItemView(label: "История", image: "history") }
+        NavigationView {
+            TabView {
+                ApplicationMainView(entityId: self.mEntityId)
+                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+                Text("Тут документы...")
+                    .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
+                Text("Тут платежи...")
+                    .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
+                ApplicationHistoryView(entityId: self.mEntityId)
+                    .tabItem { TabBarItemView(label: "История", image: "history") }
+            }
+            .accentColor(Color.secondary)
         }
-        .accentColor(Color.secondary).navigationBarHidden(true)
+        .navigationBarHidden(false)
+        .navigationBarTitle("Заявка №\(self.mEntityId)", displayMode: .inline)
+        .navigationBarItems(trailing:
+            HStack {
+                Image("iconmonstr-gear")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                Image("iconmonstr-gear")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+            }
+        )
+        
     }
 }

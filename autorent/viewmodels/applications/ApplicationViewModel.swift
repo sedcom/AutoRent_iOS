@@ -38,9 +38,8 @@ class ApplicationViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish loadData")
-                self.Application = result;
                 self.IsLoading = false
-                self.loadVehicleTypes(application: self.Application!)
+                self.loadVehicleTypes(application: result)
         })
     }
     
@@ -68,7 +67,7 @@ class ApplicationViewModel: ObservableObject {
                     item.VehicleParams.VehicleOptions = options
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    self.objectWillChange.send()
+                    self.Application = application
                 }
             })
     }

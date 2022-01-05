@@ -154,7 +154,6 @@ struct ApplicationMainView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.primary)
-        .navigationBarHidden(false)
         .onAppear {
             self.mViewModel.loadData()
         }

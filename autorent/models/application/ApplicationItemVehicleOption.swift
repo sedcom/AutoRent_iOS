@@ -52,7 +52,7 @@ class ApplicationItemVehicleOption: Codable, Identifiable {
             case "list":
                 let jsonData = self.VehicleOption.VehicleOptionType.ValueParams!.data(using: .utf8)
                 let params = try! JSONDecoder().decode([String: String].self, from: jsonData!)
-                return params.first(where: { $0.key == String(self.ValueInt!) })!.value
+                return (self.ValueInt != nil) ? params.first(where: { $0.key == String(self.ValueInt!) })!.value : nil
             default:
                 return nil
         }

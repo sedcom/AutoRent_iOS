@@ -82,9 +82,9 @@ class ApplicationsViewModel: ObservableObject {
                         item.VehicleParams.VehicleType = vehicleType!
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     self.objectWillChange.send()
-                }
+                //}
             })
     }
 }
