@@ -130,7 +130,7 @@ struct ApplicationMainView: View {
                                             }
                                         }
                                     }
-                                    .padding(.all, 12)
+                                    .padding(.all, 8)
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .background(Color.primaryDark)
@@ -148,7 +148,7 @@ struct ApplicationMainView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
-                    .padding(.all, 8)
+                    .padding(.all, 12)
                 }
             }
         }

@@ -103,9 +103,9 @@ struct ApplicationsView: View {
                                 }
                                 .listRowBackground(Color.primary)
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
-                                
+                    
                             }
-                            .listStyle(DefaultListStyle())
+                            .listStyle(PlainListStyle())
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                             GeometryReader { geo in
                                 Image("plus")

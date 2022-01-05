@@ -50,17 +50,17 @@ struct ApplicationHistoryView: View {
                             }
                             .background(Color.primaryDark)
                             .cornerRadius(5)
+                            .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
                         }
                         .listRowBackground(Color.primary)
-                        .listRowInsets(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 10))
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
                 }
                 .listStyle(PlainListStyle())
-                .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 0))
+                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
             }
         }
         .background(Color.primary)
-        .navigationBarHidden(false)
         .onAppear {
             self.mViewModel.loadData()
         }

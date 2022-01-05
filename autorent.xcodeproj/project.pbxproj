@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F102757C68D0059B96C /* applications */,
-				F692786D277947C6003BD0D5 /* Utils.swift */,
+				F6ADCC402785B08A00A1CE80 /* utils */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -150,6 +150,7 @@
 				E2550F0F2757C66B0059B96C /* common */,
 				E28538862755BE800008F6FB /* applications */,
 				F692786C27794466003BD0D5 /* map */,
+				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				E29B397D2754498B004CE06A /* MainView.swift */,
 			);
@@ -223,7 +224,6 @@
 		E2589B0627523A4100BFF698 /* autorent */ = {
 			isa = PBXGroup;
 			children = (
-				E2853887275658E20008F6FB /* utils */,
 				E29B397127539DB3004CE06A /* repositories */,
 				E219C28A2752ECC200870896 /* views */,
 				E219C2892752ECB900870896 /* viewmodels */,
@@ -318,6 +318,14 @@
 				F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */,
 			);
 			path = vehicle;
+			sourceTree = "<group>";
+		};
+		F6ADCC402785B08A00A1CE80 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F692786D277947C6003BD0D5 /* Utils.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
