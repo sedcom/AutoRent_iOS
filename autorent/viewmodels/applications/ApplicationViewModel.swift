@@ -24,6 +24,14 @@ class ApplicationViewModel: ObservableObject {
         self.IsError = false
     }
 
+    func createItem() {
+        let application = autorent.Application()
+        application.User = User()
+        application.Address = Address()
+        application.Items.append(ApplicationItem())
+        self.Application = application
+    }
+    
     func loadData() {
         debugPrint("Start loadData")
         self.IsLoading = true

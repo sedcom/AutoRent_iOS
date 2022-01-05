@@ -10,10 +10,12 @@ import SwiftUI
 struct ApplicationMainEditView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
     @State var mNotes: String
+    var mCurrentMode: ModeView
     var mEntityId: Int
     
-    init(entityId: Int) {
+    init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
+        self.mCurrentMode = mode
         self.mNotes = ""
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
@@ -79,7 +81,12 @@ struct ApplicationMainEditView: View {
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.primary)
         .onAppear {
-            self.mViewModel.loadData()
+            if self.mCurrentMode == ModeView.Create {
+                self.mViewModel.createItem()
+            }
+            else {
+                self.mViewModel.loadData()
+            }
         }
     }
 }

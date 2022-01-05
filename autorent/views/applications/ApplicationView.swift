@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct ApplicationView: View {
+    var mCurrentMode: ModeView
     var mEntityId: Int
     
-    init(entityId: Int) {
+    init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
+        self.mCurrentMode = mode
     }
     
     var body: some View {
         NavigationView {
             TabView {
-                if self.mEntityId > 0 {
+                if self.mCurrentMode == ModeView.View {
                     ApplicationMainView(entityId: self.mEntityId)
                         .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
                 }
                 else {
-                    ApplicationMainEditView(entityId: self.mEntityId)
+                    ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode)
                         .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
                 }
-        
                 Text("Тут документы...")
                     .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
                 Text("Тут платежи...")
@@ -39,15 +40,21 @@ struct ApplicationView: View {
         .navigationBarTitle("Заявка №\(self.mEntityId)", displayMode: .inline)
         .navigationBarItems(trailing:
             HStack {
-                Image("iconmonstr-edit")
-                    .renderingMode(.template)
-                    .foregroundColor(Color.textLight)
-                Image("save")
-                    .renderingMode(.template)
-                    .foregroundColor(Color.textLight)
-                Image("paper-plane")
-                    .renderingMode(.template)
-                    .foregroundColor(Color.textLight)
+                if self.mCurrentMode == ModeView.View {
+                    NavigationLink(destination: ApplicationView(entityId: self.mEntityId, mode: ModeView.Edit)) {
+                        Image("iconmonstr-edit")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                    }
+                }
+                if self.mCurrentMode == ModeView.Create || self.mCurrentMode == ModeView.Edit  {
+                    Image("save")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)
+                    Image("paper-plane")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)
+                }
             }
         )
         

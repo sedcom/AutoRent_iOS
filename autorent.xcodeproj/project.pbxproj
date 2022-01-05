@@ -52,6 +52,7 @@
 		F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */; };
 		F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */; };
 		F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */; };
+		F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC452785D0CC00A1CE80 /* ModeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOptionType.swift; sourceTree = "<group>"; };
 		F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainEditView.swift; sourceTree = "<group>"; };
 		F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemView.swift; sourceTree = "<group>"; };
+		F6ADCC452785D0CC00A1CE80 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E2853888275658F50008F6FB /* Color.swift */,
+				F6ADCC452785D0CC00A1CE80 /* ModeView.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				E29B397E2754498C004CE06A /* MainView.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
+				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,

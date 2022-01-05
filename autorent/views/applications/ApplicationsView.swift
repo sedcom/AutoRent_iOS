@@ -83,7 +83,7 @@ struct ApplicationsView: View {
                                             LoadingRowView()
                                         }
                                         else {
-                                            NavigationLink(destination: ApplicationView(entityId: application.Id))  {
+                                            NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View))  {
                                                 ApplicationsRowView(application)
                                             }
                                         }
@@ -115,7 +115,7 @@ struct ApplicationsView: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                     .frame(width: 30, height: 30)
                                     .offset(x: geo.size.width - 50, y: geo.size.height - 50)
-                                    NavigationLink(destination: ApplicationView(entityId: 0)) {
+                                NavigationLink(destination: ApplicationView(entityId: 0, mode: ModeView.Create)) {
                                         Circle().frame(width: 60, height: 60).hidden()
                                     }
                                     .offset(x: geo.size.width - 65, y: geo.size.height - 65)
