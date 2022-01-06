@@ -16,9 +16,11 @@ struct MainView: View {
                 MapView()
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
                     .tag(0)
+                    .edgesIgnoringSafeArea(.horizontal)
                 ApplicationsView()
                     .tabItem { TabBarItemView(label: "Заявки", image: "clipboard-list") }
                     .tag(1)
+                    .edgesIgnoringSafeArea(.horizontal)
                 Text("Тут заказы...")
                     .tabItem { TabBarItemView(label: "Заказы", image: "copy") }
                     .tag(2)

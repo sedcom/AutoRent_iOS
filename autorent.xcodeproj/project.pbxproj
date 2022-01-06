@@ -53,6 +53,9 @@
 		F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */; };
 		F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */; };
 		F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC452785D0CC00A1CE80 /* ModeView.swift */; };
+		F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */; };
+		F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */; };
+		F6ADCC4E2787461C00A1CE80 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4D2787461C00A1CE80 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +110,9 @@
 		F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainEditView.swift; sourceTree = "<group>"; };
 		F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemView.swift; sourceTree = "<group>"; };
 		F6ADCC452785D0CC00A1CE80 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
+		F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemEditView.swift; sourceTree = "<group>"; };
+		F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimePicker.swift; sourceTree = "<group>"; };
+		F6ADCC4D2787461C00A1CE80 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				E29B397D2754498B004CE06A /* MainView.swift */,
+				F6ADCC4D2787461C00A1CE80 /* TestView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -172,6 +179,7 @@
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
 				E27EA41827577CCD001F7BB4 /* LoadingView.swift */,
 				E2550F152757E60C0059B96C /* TabBarItemView.swift */,
+				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 				F6927865277920B2003BD0D5 /* ApplicationMainView.swift */,
 				F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */,
 				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
+				F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */,
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
 				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
@@ -458,6 +467,7 @@
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
+				F6ADCC4E2787461C00A1CE80 /* TestView.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
@@ -487,8 +497,10 @@
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
+				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
+				F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,

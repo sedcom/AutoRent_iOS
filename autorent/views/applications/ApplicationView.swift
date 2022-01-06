@@ -17,25 +17,27 @@ struct ApplicationView: View {
     }
     
     var body: some View {
-        NavigationView {
-            TabView {
-                if self.mCurrentMode == ModeView.View {
-                    ApplicationMainView(entityId: self.mEntityId)
-                        .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
-                }
-                else {
-                    ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode)
-                        .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
-                }
-                Text("Тут документы...")
-                    .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
-                Text("Тут платежи...")
-                    .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
-                ApplicationHistoryView(entityId: self.mEntityId)
-                    .tabItem { TabBarItemView(label: "История", image: "history") }
+        //NavigationView {
+        TabView {
+            if self.mCurrentMode == ModeView.View {
+                //NavigationView {
+                ApplicationMainView(entityId: self.mEntityId)
+                //}
+                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             }
-            .accentColor(Color.secondary)
+            else {
+                ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode)
+                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+            }
+            Text("Тут документы...")
+                .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
+            Text("Тут платежи...")
+                .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
+            ApplicationHistoryView(entityId: self.mEntityId)
+                .tabItem { TabBarItemView(label: "История", image: "history") }
         }
+        .accentColor(Color.secondary)
+        //}
         .navigationBarHidden(false)
         .navigationBarTitle("Заявка №\(self.mEntityId)", displayMode: .inline)
         .navigationBarItems(trailing:
@@ -57,6 +59,5 @@ struct ApplicationView: View {
                 }
             }
         )
-        
     }
 }

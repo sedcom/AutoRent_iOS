@@ -1,19 +1,24 @@
 //
-//  ApplicationItemView.swift
+//  ApplicationItemEditView.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 05.01.2022.
+//  Created by Viacheslav Lazarev on 06.01.2022.
 //
 
 import SwiftUI
 
-struct ApplicationItemView: View {
+struct ApplicationItemEditView: View {
+    @Binding var showDatePicker: Bool
     var mApplicationItem: ApplicationItem
     var mIndex: Int
+    @State var mNotes: String = ""
+    @State var mDate: Date = Date()
     
-    init(applicationItem: ApplicationItem, index: Int) {
+    
+    init(applicationItem: ApplicationItem, index: Int, showDatePicker: Binding<Bool>) {
         self.mApplicationItem = applicationItem
         self.mIndex = index
+        _showDatePicker = showDatePicker
     }
     
     var body: some View {
@@ -28,45 +33,51 @@ struct ApplicationItemView: View {
                          Image("calendar-alt")
                              .renderingMode(.template)
                              .resizable()
-                             .foregroundColor(Color.textLight)
+                            .foregroundColor(Color.textDark)
                              .frame(width: 30, height: 35)
                          VStack {
                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.StartDate))
-                                 .foregroundColor(Color.textLight)
+                                 .foregroundColor(Color.textDark)
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.StartDate))
-                                 .foregroundColor(Color.textLight)
+                                 .foregroundColor(Color.textDark)
                                  .font(Font.headline.weight(.bold))
                          }
                      }
                      .padding(.all, 8)
                      .frame(minWidth: 0, maxWidth: .infinity)
-                     .background(Color.primary)
+                     .background(Color.inputBackgroud)
+                     .cornerRadius(4)
                      HStack {
                          Image("calendar-alt")
                              .renderingMode(.template)
                              .resizable()
-                             .foregroundColor(Color.textLight)
+                             .foregroundColor(Color.textDark)
                              .frame(width: 30, height: 35)
                          VStack {
                              Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.FinishDate))
-                                 .foregroundColor(Color.textLight)
+                                 .foregroundColor(Color.textDark)
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.FinishDate))
-                                 .foregroundColor(Color.textLight)
+                                 .foregroundColor(Color.textDark)
                                  .font(Font.headline.weight(.bold))
                          }
                      }
                      .padding(.all, 8)
                      .frame(minWidth: 0, maxWidth: .infinity)
-                     .background(Color.primary)
+                     .background(Color.inputBackgroud)
+                     .cornerRadius(4)
+                     .onTapGesture {
+                        self.showDatePicker.toggle()
+                     }
                  }
-                 HStack {
-                     Image("truck-monster")
-                         .renderingMode(.template)
-                         .foregroundColor(Color.textLight)
-                    Text(self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName())
-                         .foregroundColor(Color.textLight)
-                         .fixedSize(horizontal: false, vertical: true)
-                         .frame(maxWidth: .infinity, alignment: .leading)
+                 VStack {
+                    Text("Тип автотранспорта")
+                        .foregroundColor(Color.textLight)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TextField("", text: $mNotes)
+                        .frame(minHeight: 30, maxHeight: 30)
+                        .background(Color.inputBackgroud)
+                        .cornerRadius(4)
                  }
                  ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
                      if option.getOptionValue() != nil {

@@ -10,6 +10,7 @@ import SwiftUI
 struct ApplicationMainEditView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
     @State var mNotes: String
+    @State var showDatePicker: Bool = false
     var mCurrentMode: ModeView
     var mEntityId: Int
     
@@ -21,6 +22,7 @@ struct ApplicationMainEditView: View {
     }
     
     var body: some View {
+        ZStack {
         VStack {
             if self.mViewModel.IsLoading == true  {
                 LoadingView()
@@ -41,7 +43,7 @@ struct ApplicationMainEditView: View {
                                 Image("user")
                                     .renderingMode(.template)
                                     .foregroundColor(Color.textLight)
-                                Text(self.mViewModel.Application!.User.Profile.getUserName())
+                                Text("")
                                     .foregroundColor(Color.textLight)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -52,16 +54,14 @@ struct ApplicationMainEditView: View {
                                 .font(Font.headline.weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
-                            HStack {
-                                TextField("", text: $mNotes)
-                                    .frame(minHeight: 30, maxHeight: 30)
-                                    .background(Color.inputBackgroud)
-                                    .cornerRadius(4)
-                            }
-                            .padding(.bottom, 4)
+                            TextField("", text: $mNotes)
+                                .frame(minHeight: 30, maxHeight: 30)
+                                .background(Color.inputBackgroud)
+                                .cornerRadius(4)
+                                .padding(.bottom, 4)
                             ForEach(self.mViewModel.Application!.Items) { item in
                                 let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
-                                ApplicationItemView(applicationItem: item, index: index)
+                                ApplicationItemEditView(applicationItem: item, index: index, showDatePicker: $showDatePicker)
                             }
                             Text("Описание")
                                 .foregroundColor(Color.textLight)
@@ -87,6 +87,10 @@ struct ApplicationMainEditView: View {
             else {
                 self.mViewModel.loadData()
             }
+        }
+        if self.showDatePicker {
+            DatetimePicker(showDatePicker: $showDatePicker)
+        }
         }
     }
 }

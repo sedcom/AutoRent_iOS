@@ -17,7 +17,6 @@ struct ApplicationsView: View {
     }
 
     var body: some View {
-        //NavigationView {
         VStack {
             if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
                 LoadingView()
@@ -103,7 +102,6 @@ struct ApplicationsView: View {
                                 }
                                 .listRowBackground(Color.primary)
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
-                    
                             }
                             .listStyle(PlainListStyle())
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
@@ -119,8 +117,7 @@ struct ApplicationsView: View {
                                         Circle().frame(width: 60, height: 60).hidden()
                                     }
                                     .offset(x: geo.size.width - 65, y: geo.size.height - 65)
-                                       
-                                }
+                            }
                         }
                     }
                 }

@@ -12,7 +12,6 @@ struct LoadingView: View {
         ProgressView()
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             .background(Color.primary)
-            .navigationBarHidden(true)
             .progressViewStyle(CircularProgressViewStyle(tint: Color.secondary))            
     }
 }
