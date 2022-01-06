@@ -55,6 +55,7 @@
 		F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC452785D0CC00A1CE80 /* ModeView.swift */; };
 		F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */; };
 		F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */; };
+		F6ADCC512787A1B100A1CE80 /* PickerVehicleTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		F6ADCC452785D0CC00A1CE80 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
 		F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemEditView.swift; sourceTree = "<group>"; };
 		F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimePicker.swift; sourceTree = "<group>"; };
+		F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVehicleTypesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				E2550F0F2757C66B0059B96C /* common */,
 				E28538862755BE800008F6FB /* applications */,
 				F692786C27794466003BD0D5 /* map */,
+				F6ADCC4F2787A17600A1CE80 /* vehicle */,
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				E29B397D2754498B004CE06A /* MainView.swift */,
@@ -343,6 +346,14 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		F6ADCC4F2787A17600A1CE80 /* vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */,
+			);
+			path = vehicle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6ADCC512787A1B100A1CE80 /* PickerVehicleTypesView.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
 				E29B397E2754498C004CE06A /* MainView.swift in Sources */,
