@@ -55,7 +55,6 @@
 		F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC452785D0CC00A1CE80 /* ModeView.swift */; };
 		F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */; };
 		F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */; };
-		F6ADCC4E2787461C00A1CE80 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4D2787461C00A1CE80 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,7 +111,6 @@
 		F6ADCC452785D0CC00A1CE80 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
 		F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemEditView.swift; sourceTree = "<group>"; };
 		F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimePicker.swift; sourceTree = "<group>"; };
-		F6ADCC4D2787461C00A1CE80 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +163,6 @@
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				E29B397D2754498B004CE06A /* MainView.swift */,
-				F6ADCC4D2787461C00A1CE80 /* TestView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -174,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
+				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E2550F042757B9AC0059B96C /* EmptyView.swift */,
 				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
@@ -239,9 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				E29B397127539DB3004CE06A /* repositories */,
+				E219C2882752EC9600870896 /* models */,
 				E219C28A2752ECC200870896 /* views */,
 				E219C2892752ECB900870896 /* viewmodels */,
-				E219C2882752EC9600870896 /* models */,
 				E2589B0B27523A4F00BFF698 /* Assets.xcassets */,
 				E2589B1027523A4F00BFF698 /* Info.plist */,
 				E2550F0D2757C3780059B96C /* Localizable.strings */,
@@ -267,7 +265,6 @@
 				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
 				F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */,
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
-				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
 			);
 			path = applications;
@@ -467,7 +464,6 @@
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
-				F6ADCC4E2787461C00A1CE80 /* TestView.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,

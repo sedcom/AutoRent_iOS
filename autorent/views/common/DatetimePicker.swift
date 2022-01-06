@@ -9,24 +9,25 @@ import SwiftUI
 
 struct DatetimePicker: View {
     @Binding var showDatePicker: Bool
-    @State var mDate: Date = Date()
+    @Binding var datePicker: Date
     
     var body: some View {
-        VStack {
+        ZStack {
             VStack {
-                DatePicker("", selection: $mDate)
+                DatePicker("", selection: $datePicker)
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding(EdgeInsets(top: 8, leading: 8, bottom: 0, trailing: 8))
-                    .background(Color.white)
+                    .background(Color.white)                    
                 HStack {
-                    Button("Cancel", action: {
-                        showDatePicker = false
-                    })
                     Button("OK", action: {
                         showDatePicker = false
                     })
+                    Button("Cancel", action: {
+                        showDatePicker = false
+                    })
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                .font(Font.headline.weight(.bold))
                 .padding(.all, 8)
                 .background(Color.white)
             }

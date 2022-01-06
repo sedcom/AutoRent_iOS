@@ -9,19 +9,26 @@ import SwiftUI
 
 struct ApplicationMainEditView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
-    @State var mNotes: String
+    @State var mNotes: String = ""
     @State var showDatePicker: Bool = false
+    @State var datePicker: Date = Date()
     var mCurrentMode: ModeView
     var mEntityId: Int
+    @Binding var mTest: String
     
     init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self.mNotes = ""
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
+        _mTest = Binding.constant("_")
     }
     
     var body: some View {
+        /*$mTest = Binding(
+            get: { "123" },
+            set: { self.mViewModel.Application!.Notes = $0 }
+        )*/
+        
         ZStack {
         VStack {
             if self.mViewModel.IsLoading == true  {
@@ -54,21 +61,26 @@ struct ApplicationMainEditView: View {
                                 .font(Font.headline.weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
-                            TextField("", text: $mNotes)
+                            TextField("", text: Binding(
+                                        get: { self.mViewModel.Application!.Address.getAddressName() },
+                                        set: { _ in }))
                                 .frame(minHeight: 30, maxHeight: 30)
                                 .background(Color.inputBackgroud)
                                 .cornerRadius(4)
+                                .disabled(true)
                                 .padding(.bottom, 4)
                             ForEach(self.mViewModel.Application!.Items) { item in
                                 let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
-                                ApplicationItemEditView(applicationItem: item, index: index, showDatePicker: $showDatePicker)
+                                ApplicationItemEditView(applicationItem: item, index: index, showDatePicker: $showDatePicker, datePicker: $datePicker)
                             }
                             Text("Описание")
                                 .foregroundColor(Color.textLight)
                                 .font(Font.headline.weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
-                            TextEditor(text: $mNotes)
+                            TextEditor(text: Binding(
+                                        get: { self.mViewModel.Application!.Notes },
+                                        set: { self.mViewModel.Application!.Notes  = $0 }))
                                 .frame(minHeight: 100, maxHeight: 100)
                                 .background(Color.inputBackgroud)
                                 .cornerRadius(4)
@@ -89,7 +101,8 @@ struct ApplicationMainEditView: View {
             }
         }
         if self.showDatePicker {
-            DatetimePicker(showDatePicker: $showDatePicker)
+            DatetimePicker(showDatePicker: $showDatePicker, datePicker: $datePicker)
+                
         }
         }
     }

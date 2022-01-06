@@ -10,6 +10,7 @@ import Combine
 
 class ApplicationViewModel: ObservableObject {
     @Published var Application: Application?
+    var Notes: String = ""
     var cancellation: AnyCancellable?
     var mApplicationRepository: ApplicationRepository = ApplicationRepository()
     var mEntityId: Int
