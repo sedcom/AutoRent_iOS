@@ -15,6 +15,7 @@ struct ApplicationItemEditView: View {
     @State var mNotes: String = ""
     @State var mDate: Int = 1
     @State var showAlert: Bool = false
+    @State var mVehicleType: VehicleType = VehicleType()
     
     init(applicationItem: ApplicationItem, index: Int, showDatePicker: Binding<Bool>, datePicker: Binding<Date>) {
         self.mApplicationItem = applicationItem
@@ -93,7 +94,7 @@ struct ApplicationItemEditView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                         .foregroundColor(Color.textLight)
-                    NavigationLink(destination: PickerVehicleTypesView()) {
+                    NavigationLink(destination: PickerVehicleTypesView(vehicleType: $mVehicleType)) {
                         TextField("", text: Binding(
                                     get: { self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName() },
                                     set: { _ in }))
@@ -102,8 +103,16 @@ struct ApplicationItemEditView: View {
                             .foregroundColor(Color.textDark)
                             .cornerRadius(4)
                             .disabled(true)
+                            .onChange(of:  $mVehicleType.wrappedValue, perform: { value in
+                                self.mApplicationItem.VehicleParams.VehicleType = value
+                            })
+                        
                     }
                  }
+                Text(self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName())
+                    .onChange(of:  $mVehicleType.wrappedValue, perform: { value in
+                        self.mApplicationItem.VehicleParams.VehicleType = value
+                    })
                  ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
                      if option.getOptionValue() != nil {
                          HStack {
