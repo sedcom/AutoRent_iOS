@@ -13,7 +13,7 @@ struct ApplicationsView: View {
     
     init() {
         self.mCurrentFilter = 1
-        self.mViewModel = ApplicationsViewModel(maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
+        self.mViewModel = ApplicationsViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
     }
 
     var body: some View {
@@ -26,14 +26,6 @@ struct ApplicationsView: View {
             }
             else {
                 VStack (spacing: 0) {
-                    /*VStack {
-                        Text("Заявки на услуги")
-                            .font(Font.system(size: 20, weight: .bold))
-                            .foregroundColor(Color.textLight)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
-                    }
-                    .background(Color.primary)*/
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
                             Button(NSLocalizedString("status_all", comment: ""), action: {
@@ -87,6 +79,8 @@ struct ApplicationsView: View {
                                             }
                                         }
                                     }
+                                    .listRowBackground(Color.primary)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
                                     .onAppear {
                                         //TODO
                                         if self.mViewModel.IsLoading == false {
@@ -99,9 +93,7 @@ struct ApplicationsView: View {
                                         }
                                         
                                     }
-                                }
-                                .listRowBackground(Color.primary)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                                }                               
                             }
                             .listStyle(PlainListStyle())
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
@@ -128,17 +120,5 @@ struct ApplicationsView: View {
             self.mViewModel.clearData()
             self.mViewModel.loadData()
         }
-        .navigationBarHidden(false)
-        .navigationBarTitle("Заявки", displayMode: .inline)
-        .navigationBarItems(trailing:
-            HStack {
-                Image("iconmonstr-gear")
-                    .renderingMode(.template)
-                    .foregroundColor(Color.textLight)
-                Image("iconmonstr-gear")
-                    .renderingMode(.template)
-                    .foregroundColor(Color.textLight)
-            }
-        )
     }
 }

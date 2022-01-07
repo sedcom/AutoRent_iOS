@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ApplicationMainEditView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
-    @State var showDatePicker: Bool = false
-    @State var datePicker: Date = Date()
     var mCurrentMode: ModeView
     var mEntityId: Int
-    
+    @State var showDatePicker: Bool = false
+    @State var selectedDate: Date = Date()
+
     init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
@@ -58,10 +58,10 @@ struct ApplicationMainEditView: View {
                                     .background(Color.inputBackgroud)
                                     .cornerRadius(4)
                                     .disabled(true)
-                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 4)                                    
                                 ForEach(self.mViewModel.Application!.Items) { item in
-                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
-                                    ApplicationItemEditView(applicationItem: item, index: index, showDatePicker: $showDatePicker, datePicker: $datePicker)
+                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
+                                    ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate)
                                 }
                                 Text("Описание")
                                     .foregroundColor(Color.textLight)
@@ -91,7 +91,7 @@ struct ApplicationMainEditView: View {
                 }
             }
             if self.showDatePicker {
-                DatetimePicker(showDatePicker: $showDatePicker, datePicker: $datePicker)
+                DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
             }
         }
     }

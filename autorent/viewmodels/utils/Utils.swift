@@ -8,10 +8,10 @@
 import Foundation
 
 class Utils {
-    static func formatDate(format: String, date: Date) -> String {
+    static func formatDate(format: String, date: Date?) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
+        return date != nil ? dateFormatter.string(from: date!) : ""
     }
     
     static func convertDate(value: String) -> Date {

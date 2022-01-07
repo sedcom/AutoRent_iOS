@@ -12,6 +12,7 @@ class ApplicationsViewModel: ObservableObject {
     var Data: Pagination<Application>
     var cancellation: AnyCancellable?
     var mApplicationRepository: ApplicationRepository
+    var mUserId: Int
     var mMaxItems: Int
     var mSkipCount: Int
     var mOrderBy: String
@@ -20,9 +21,10 @@ class ApplicationsViewModel: ObservableObject {
     var IsLoading: Bool
     var IsError: Bool
     
-    init(maxItems: Int, skipCount: Int, orderBy: String, include: String, filter: String) {
+    init(userId: Int, maxItems: Int, skipCount: Int, orderBy: String, include: String, filter: String) {
         self.Data = Pagination<Application>()
         self.mApplicationRepository = ApplicationRepository()
+        self.mUserId = userId
         self.mMaxItems = maxItems
         self.mSkipCount = skipCount
         self.mOrderBy = orderBy
@@ -32,22 +34,22 @@ class ApplicationsViewModel: ObservableObject {
         self.IsError = false
     }
     
-    func setFilter(_ filter: String) {
+    public func setFilter(_ filter: String) {
         self.mFilter = filter
     }
     
-    func clearData() {
+    public func clearData() {
         self.mSkipCount = 0
         self.Data.Elements.removeAll()
     }
     
-    func loadData() {
+    public func loadData() {
         debugPrint("Start loadData")
         self.IsLoading = true
         self.IsError = false
         self.Data.Elements.append(Application())
         self.objectWillChange.send()
-        self.cancellation = self.mApplicationRepository.loadItems(self.mMaxItems, self.mSkipCount, self.mOrderBy, self.mInclude, self.mFilter)
+        self.cancellation = self.mApplicationRepository.loadItems(self.mUserId, self.mMaxItems, self.mSkipCount, self.mOrderBy, self.mInclude, self.mFilter)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.Data.Elements.remove(at: self.Data.Elements.count - 1)

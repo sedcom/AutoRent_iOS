@@ -56,6 +56,9 @@
 		F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */; };
 		F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */; };
 		F6ADCC512787A1B100A1CE80 /* PickerVehicleTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */; };
+		F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */; };
+		F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC542788512F00A1CE80 /* NetworkService.swift */; };
+		F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +116,9 @@
 		F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemEditView.swift; sourceTree = "<group>"; };
 		F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimePicker.swift; sourceTree = "<group>"; };
 		F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVehicleTypesView.swift; sourceTree = "<group>"; };
+		F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepository.swift; sourceTree = "<group>"; };
+		F6ADCC542788512F00A1CE80 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F102757C68D0059B96C /* applications */,
+				F6ADCC56278859D300A1CE80 /* vehicle */,
 				F6ADCC402785B08A00A1CE80 /* utils */,
 			);
 			path = viewmodels;
@@ -174,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
-				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E2550F042757B9AC0059B96C /* EmptyView.swift */,
 				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
@@ -268,6 +274,7 @@
 				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
 				F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */,
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
+				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
 			);
 			path = applications;
@@ -285,7 +292,9 @@
 		E29B397127539DB3004CE06A /* repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F6ADCC542788512F00A1CE80 /* NetworkService.swift */,
 				E29B397227539DD6004CE06A /* ApplicationRepository.swift */,
+				F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -350,6 +359,14 @@
 			isa = PBXGroup;
 			children = (
 				F6ADCC502787A1B100A1CE80 /* PickerVehicleTypesView.swift */,
+			);
+			path = vehicle;
+			sourceTree = "<group>";
+		};
+		F6ADCC56278859D300A1CE80 /* vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */,
 			);
 			path = vehicle;
 			sourceTree = "<group>";
@@ -476,18 +493,21 @@
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
+				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
 				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
+				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
 				F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */,
 				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
+				F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
 				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,

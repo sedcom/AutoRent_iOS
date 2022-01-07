@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 class ApplicationViewModel: ObservableObject {
-    @Published var Application: Application?
-    var Notes: String = ""
+    var Application: Application?
     var cancellation: AnyCancellable?
     var mApplicationRepository: ApplicationRepository = ApplicationRepository()
     var mEntityId: Int
@@ -25,15 +24,15 @@ class ApplicationViewModel: ObservableObject {
         self.IsError = false
     }
 
-    func createItem() {
-        let application = autorent.Application()
-        application.User = User()
-        application.Address = Address()
-        application.Items.append(ApplicationItem())
-        self.Application = application
+    public func createItem() {
+        self.Application = autorent.Application()
+        self.Application!.User = User()
+        self.Application!.Address = Address()
+        self.Application!.Items.append(ApplicationItem())
+        self.objectWillChange.send()
     }
     
-    func loadData() {
+    public func loadData() {
         debugPrint("Start loadData")
         self.IsLoading = true
         self.IsError = false
@@ -48,7 +47,8 @@ class ApplicationViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish loadData")
                 self.IsLoading = false
-                self.loadVehicleTypes(application: result)
+                self.Application = result
+                self.loadVehicleTypes(application: self.Application!)
         })
     }
     
@@ -75,9 +75,9 @@ class ApplicationViewModel: ObservableObject {
                     }
                     item.VehicleParams.VehicleOptions = options
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    self.Application = application
-                }
+                //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.objectWillChange.send()
+                //}
             })
     }
     

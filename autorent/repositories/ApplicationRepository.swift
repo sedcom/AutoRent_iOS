@@ -10,42 +10,18 @@ import Alamofire
 import Combine
 
 class ApplicationRepository {
-    let url = "https://autorent.sedcom.ru/api"
-    let token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmFtZWlkIjoiMSIsInJvbGUiOlsiYWRtaW4iLCJkaXNwYXRjaGVyIiwic3VwcG9ydCJdLCJuYmYiOjE1OTEzNTE3MjUsImV4cCI6MTU5MTM1NTMyNSwiaWF0IjoxNTkxMzUxNzI1fQ.8u1qBGPpCrTS2SPrDHFoM6nWPLmqYYzTEkSMc3fUWng"
-
-    func loadItems(_ maxItems: Int, _ skipCount: Int, _ orderBy: String, _ include: String, _ filters: String) -> AnyPublisher<Pagination<Application>, AFError> {
-        let headers: HTTPHeaders = [
-            .authorization(self.token)
-        ]
-        
-        let publisher = AF.request(self.url + "/applications", method: HTTPMethod.get,
-                                   parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters],
-                                   headers: headers)
-                            .publishDecodable(type: Pagination<Application>.self)
-        
+    func loadItems(_ userId: Int,_ maxItems: Int, _ skipCount: Int, _ orderBy: String, _ include: String, _ filters: String) -> AnyPublisher<Pagination<Application>, AFError> {
+        let publisher = NetworkService.getInstance().request(url: "/applications", method: HTTPMethod.get, parameters: ["userId": userId, "maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters]).publishDecodable(type: Pagination<Application>.self)
         return publisher.value();
     }
     
-    func loadVehicleTypes(_ maxItems: Int, _ skipCount: Int, _ orderBy: String, _ include: String) -> AnyPublisher<Pagination<VehicleType>, AFError>  {
-        let headers: HTTPHeaders = [
-            .authorization(self.token)
-        ]
-        
-        let publisher = AF.request(self.url + "/dictionary?type=vehicletypes", method: HTTPMethod.get,
-                                   parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include],
-                                   headers: headers)
-                            .publishDecodable(type: Pagination<VehicleType>.self)
-        
+    func loadVehicleTypes(_ maxItems: Int, _ skipCount: Int, _ orderBy: String, _ include: String) -> AnyPublisher<Pagination<VehicleType>, AFError> {
+        let publisher = NetworkService.getInstance().request(url: "/dictionary?type=vehicletypes", method: HTTPMethod.get, parameters: ["maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include]).publishDecodable(type: Pagination<VehicleType>.self)
         return publisher.value();
     }
     
     func loadItem(_ applicationId: Int, _ include: String) -> AnyPublisher<Application, AFError> {
-        let headers: HTTPHeaders = [
-            .authorization(self.token)
-        ]
-        let publisher = AF.request(self.url + "/application", method: HTTPMethod.get,
-                                   parameters: ["applicationId": applicationId, "include": include],
-                                   headers: headers)
-                            .publishDecodable(type: Application.self)
+        let publisher = NetworkService.getInstance().request(url: "/application", method: HTTPMethod.get, parameters: ["applicationId": applicationId, "include": include]).publishDecodable(type: Application.self)
         return publisher.value();
-    }}
+    }
+}

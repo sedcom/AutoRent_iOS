@@ -8,13 +8,11 @@
 import Foundation
 
 class ApplicationItem: Entity {
-    var StartDate: Date
-    var FinishDate: Date
+    var StartDate: Date?
+    var FinishDate: Date?
     var VehicleParams: ApplicationItemVehicleParams
     
     override init() {
-        self.StartDate = Date()
-        self.FinishDate = Date()
         self.VehicleParams = ApplicationItemVehicleParams()
         super.init()
     }

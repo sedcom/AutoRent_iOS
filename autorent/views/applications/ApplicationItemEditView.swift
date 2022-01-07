@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct ApplicationItemEditView: View {
-    @Binding var showDatePicker: Bool
-    @Binding var datePicker: Date
-    var mApplicationItem: ApplicationItem
+    @ObservedObject var mViewModel : ApplicationViewModel
+    var mCurrentMode: ModeView
     var mIndex: Int
-    @State var mNotes: String = ""
-    @State var mDate: Int = 1
-    @State var showAlert: Bool = false
-    @State var mVehicleType: VehicleType = VehicleType()
+    @Binding var showDatePicker: Bool
+    @Binding var selectedDate: Date
+    @State var mDatePickerIndex: Int = 0
+    @State var mSelectedVehicleType: VehicleType = VehicleType()
     
-    init(applicationItem: ApplicationItem, index: Int, showDatePicker: Binding<Bool>, datePicker: Binding<Date>) {
-        self.mApplicationItem = applicationItem
+    init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>) {
+        self.mViewModel = viewModel
+        self.mCurrentMode = mode
         self.mIndex = index
-        _showDatePicker = showDatePicker
-        _datePicker = datePicker
+        self._showDatePicker = showDatePicker
+        self._selectedDate = selectedDate
     }
     
     var body: some View {
         VStack {
              VStack {
-                Text("Position #\(self.mIndex)")
+                Text("Position #\(self.mIndex + 1)")
                      .frame(maxWidth: .infinity, alignment: .trailing)
                      .foregroundColor(Color.textLight)
                      .font(Font.headline.weight(.bold))
@@ -38,15 +38,16 @@ struct ApplicationItemEditView: View {
                              .resizable()
                              .frame(width: 30, height: 35)
                              .foregroundColor(Color.textDark)
-                         VStack {
-                            Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.StartDate))
+                         VStack {                            
+                            Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
                                 .foregroundColor(Color.textDark)
-                                .onChange(of:  $datePicker.wrappedValue, perform: { value in
-                                    if self.mDate == 1 {
-                                        self.mApplicationItem.StartDate = value
+                                .onChange(of:  $selectedDate.wrappedValue, perform: { value in
+                                    if self.mDatePickerIndex == 1 {
+                                        self.mViewModel.Application!.Items[self.mIndex].StartDate = value
+                                        self.mViewModel.objectWillChange.send()
                                     }
                                 })
-                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.StartDate))
+                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
                                 .foregroundColor(Color.textDark)
                                 .font(Font.headline.weight(.bold))
                          }
@@ -56,9 +57,8 @@ struct ApplicationItemEditView: View {
                      .background(Color.inputBackgroud)
                      .cornerRadius(4)
                      .onTapGesture {
-                        self.mDate = 1
+                        self.mDatePickerIndex = 1
                         self.showDatePicker.toggle()
-                        self.datePicker = self.mApplicationItem.FinishDate
                      }
                      HStack {
                          Image("calendar-alt")
@@ -67,14 +67,15 @@ struct ApplicationItemEditView: View {
                              .frame(width: 30, height: 35)
                              .foregroundColor(Color.textDark)
                          VStack {
-                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.FinishDate))
+                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
                                 .foregroundColor(Color.textDark)
-                                .onChange(of:  $datePicker.wrappedValue, perform: { value in
-                                    if self.mDate == 2 {
-                                        self.mApplicationItem.FinishDate = value
+                                .onChange(of:  $selectedDate.wrappedValue, perform: { value in
+                                    if self.mDatePickerIndex == 2 {
+                                        self.mViewModel.Application!.Items[self.mIndex].FinishDate = value
+                                        self.mViewModel.objectWillChange.send()
                                     }
                                 })
-                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.FinishDate))
+                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
                                 .foregroundColor(Color.textDark)
                                 .font(Font.headline.weight(.bold))
                          }
@@ -84,9 +85,8 @@ struct ApplicationItemEditView: View {
                      .background(Color.inputBackgroud)
                      .cornerRadius(4)
                      .onTapGesture {
-                        self.mDate = 2
+                        self.mDatePickerIndex = 2
                         self.showDatePicker.toggle()
-                        self.datePicker = self.mApplicationItem.FinishDate
                      }
                  }
                  VStack {
@@ -94,26 +94,23 @@ struct ApplicationItemEditView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                         .foregroundColor(Color.textLight)
-                    NavigationLink(destination: PickerVehicleTypesView(vehicleType: $mVehicleType)) {
+                    NavigationLink(destination: PickerVehicleTypesView(vehicleType: $mSelectedVehicleType)) {
                         TextField("", text: Binding(
-                                    get: { self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName() },
+                                    get: { self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName() },
                                     set: { _ in }))
                             .frame(minHeight: 30, maxHeight: 30)
                             .background(Color.inputBackgroud)
                             .foregroundColor(Color.textDark)
                             .cornerRadius(4)
                             .disabled(true)
-                            .onChange(of:  $mVehicleType.wrappedValue, perform: { value in
-                                self.mApplicationItem.VehicleParams.VehicleType = value
+                            .onChange(of:  $mSelectedVehicleType.wrappedValue, perform: { value in
+                                self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
+                                self.mViewModel.objectWillChange.send()
                             })
                         
                     }
                  }
-                Text(self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName())
-                    .onChange(of:  $mVehicleType.wrappedValue, perform: { value in
-                        self.mApplicationItem.VehicleParams.VehicleType = value
-                    })
-                 ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
+                 /*ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
                      if option.getOptionValue() != nil {
                          HStack {
                              Image("iconmonstr-gear")
@@ -130,7 +127,7 @@ struct ApplicationItemEditView: View {
                                  .font(Font.headline.weight(.bold))
                          }
                      }
-                 }
+                 }*/
              }
              .padding(.all, 12)
         }

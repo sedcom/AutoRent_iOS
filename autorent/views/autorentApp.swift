@@ -31,6 +31,7 @@ struct autorentApp: App {
         UINavigationBar.appearance().largeTitleTextAttributes = titleTextAttributes
         //
         UITableView.appearance().backgroundColor = UIColor.clear
+        //UITableViewHeaderFooterView.appearance().backgroundView = View() { Rectangle().fill(Color.green) }
     }
     
     var body: some Scene {
