@@ -15,6 +15,7 @@ struct ApplicationItemEditView: View {
     @Binding var selectedDate: Date
     @State var mDatePickerIndex: Int = 0
     @State var selectedVehicleType: VehicleType = VehicleType()
+    @State var mIsSelected: Bool = false
     
     init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>) {
         self.mViewModel = viewModel
@@ -29,7 +30,7 @@ struct ApplicationItemEditView: View {
              VStack {
                 Text("Position #\(self.mIndex + 1)")
                      .frame(maxWidth: .infinity, alignment: .trailing)
-                     .foregroundColor(Color.textLight)
+                     .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                      .font(Font.headline.weight(.bold))
                  HStack {
                      HStack {
@@ -97,7 +98,7 @@ struct ApplicationItemEditView: View {
                     Text("Тип автотранспорта")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
-                        .foregroundColor(Color.textLight)
+                        .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                     NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) {
                         TextField("", text: Binding(
                                     get: { self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName() },
@@ -135,8 +136,11 @@ struct ApplicationItemEditView: View {
              .padding(.all, 12)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.primaryDark)
+        .background(self.mIsSelected ? Color.secondary : Color.primaryDark)
         .cornerRadius(5)
+        .onLongPressGesture {
+            self.mIsSelected.toggle()
+        }
     }
 }
 

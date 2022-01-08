@@ -33,6 +33,12 @@ class ApplicationViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     
+    public func addApplicationItem() {
+        let item = ApplicationItem()
+        self.Application!.Items.append(item)
+        self.objectWillChange.send()
+    }
+    
     public func loadData() {
         debugPrint("Start loadData")
         self.IsLoading = true
@@ -80,25 +86,12 @@ class ApplicationViewModel: ObservableObject {
                     item.VehicleParams.VehicleOptions = options
                 }
                 self.IsLoading = false
-                //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    self.objectWillChange.send()
-                //}
+                self.objectWillChange.send()
             })
     }
     
     public func saveItem() {
         debugPrint("Start saveData")
-        /*let application = autorent.Application()
-        model.Address = Address()
-        model.Address.AddressTypeId = 3
-        model.Address.Region!.Name = "Some region"
-        model.Notes = "New application"
-        let item = ApplicationItem()
-        item.StartDate = Date()
-        item.FinishDate = Date()
-        item.VehicleParams.VehicleType = VehicleType(id: 901, name: "")
-        model.Items.append(item)*/
-        
         self.IsLoading = true
         self.IsError = false
         self.objectWillChange.send()

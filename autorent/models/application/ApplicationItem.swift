@@ -8,6 +8,7 @@
 import Foundation
 
 class ApplicationItem: Entity {
+    var id: UUID = UUID()
     var StartDate: Date?
     var FinishDate: Date?
     var VehicleParams: ApplicationItemVehicleParams

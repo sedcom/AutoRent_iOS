@@ -15,7 +15,6 @@ class Application: Entity {
     var Items: [ApplicationItem]
     var History: [ApplicationHistory]
     
-    
     override init() {
         self.CreatedDate = Date()
         self.User = autorent.User()
@@ -61,8 +60,8 @@ class Application: Entity {
         case History = "history"
     }
     
-    public func getStatus () -> String {
-        return self.History.sorted {a, b in a.Id < b.Id }.first!.Status.Name
+    public func getStatus () -> ApplicationHistory {
+        return self.History.sorted { a, b in a.Id > b.Id }.first!
     }
     
     public func getVehicles() -> String {

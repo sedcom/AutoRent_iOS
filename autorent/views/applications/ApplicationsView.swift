@@ -28,36 +28,16 @@ struct ApplicationsView: View {
                 VStack (spacing: 0) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
-                            Button(NSLocalizedString("status_all", comment: ""), action: {
-                                self.mCurrentFilter = 1
-                                self.mViewModel.setFilter("")
-                                self.mViewModel.clearData()
-                                self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
-                            Button(NSLocalizedString("status_draft", comment: ""), action: {
-                                self.mCurrentFilter = 2
-                                self.mViewModel.setFilter("statusId==1")
-                                self.mViewModel.clearData()
-                                self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
-                            Button(NSLocalizedString("status_application_process", comment: ""), action: {
-                                self.mCurrentFilter = 3
-                                self.mViewModel.setFilter("statusId==2,3,4,5,6,8")
-                                self.mViewModel.clearData()
-                                self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
-                            Button(NSLocalizedString("status_application_completed", comment: ""), action: {
-                                self.mCurrentFilter = 4
-                                self.mViewModel.setFilter("statusId==7")
-                                self.mViewModel.clearData()
-                                self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 4))
-                            Button(NSLocalizedString("status_application_closed", comment: ""), action: {
-                                self.mCurrentFilter = 5
-                                self.mViewModel.setFilter("statusId==9,10")
-                                self.mViewModel.clearData()
-                                self.mViewModel.loadData()
-                            }).buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 5))
+                            Button("status_all", action: { self.setFilter(filterIndex: 1, filter: "") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
+                            Button("status_draft", action: { self.setFilter(filterIndex: 2, filter: "statusId==1") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
+                            Button("status_application_process", action: { self.setFilter(filterIndex: 3, filter: "statusId==2,3,4,5,6,8") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
+                            Button("status_application_completed", action: { self.setFilter(filterIndex: 4, filter: "statusId==7") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 4))
+                            Button("status_application_closed", action: { self.setFilter(filterIndex: 5, filter: "statusId==9,10") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 5))
                         }
                         .padding(.all, 8)
                     }
@@ -123,5 +103,12 @@ struct ApplicationsView: View {
                 self.mViewModel.loadData()
             }
         }
+    }
+    
+    private func setFilter(filterIndex: Int, filter: String) {
+        self.mCurrentFilter = filterIndex
+        self.mViewModel.setFilter(filter)
+        self.mViewModel.clearData()
+        self.mViewModel.loadData()
     }
 }

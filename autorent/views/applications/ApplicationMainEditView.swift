@@ -14,6 +14,7 @@ struct ApplicationMainEditView: View {
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
     @Binding var action: Int?
+    var mIndex: Int = 0
     
     init(entityId: Int, mode: ModeView, action: Binding<Int?>) {
         self.mEntityId = entityId
@@ -32,51 +33,61 @@ struct ApplicationMainEditView: View {
                     ErrorView()
                 }
                 else if self.mViewModel.Application != nil {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
+                    GeometryReader { geo in
+                        ScrollView(.vertical, showsIndicators: false) {
                             VStack {
-                                Text("Заказчик")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                HStack {
-                                    Image("user")
-                                        .renderingMode(.template)
+                                VStack {
+                                    Text("Заказчик")
                                         .foregroundColor(Color.textLight)
-                                    Text("")
-                                        .foregroundColor(Color.textLight)
-                                        .fixedSize(horizontal: false, vertical: true)
+                                        .font(Font.headline.weight(.bold))
                                         .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    HStack {
+                                        Image("user")
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.textLight)
+                                        Text("")
+                                            .foregroundColor(Color.textLight)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    .padding(.bottom, 4)
+                                    Text("Место оказания услуг")
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    TextField("", text: Binding(get: { self.mViewModel.Application!.Address.getAddressName() }, set: { _ in }))
+                                        .frame(minHeight: 30, maxHeight: 30)
+                                        .background(Color.inputBackgroud)
+                                        .cornerRadius(4)
+                                        .disabled(true)
+                                        .padding(.bottom, 4)
+                                    ForEach(self.mViewModel.Application!.Items) { item in
+                                        let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
+                                        ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate)
+                                    }
+                                    Button("Add", action: {
+                                        self.mViewModel.addApplicationItem()
+                                    })
+                                    .frame(width: geo.size.width * 0.6)
+                                    .padding(.all, 12)
+                                    .background(Color.secondary)
+                                    .foregroundColor(Color.textDark)
+                                    .cornerRadius(5)
+                                    Text("Описание")
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes }, set: { self.mViewModel.Application!.Notes  = $0 }))
+                                        .frame(minHeight: 100, maxHeight: 100)
+                                        .background(Color.inputBackgroud)
+                                        .cornerRadius(4)
                                 }
-                                .padding(.bottom, 4)
-                                Text("Место оказания услуг")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                TextField("", text: Binding(get: { self.mViewModel.Application!.Address.getAddressName() }, set: { _ in }))
-                                    .frame(minHeight: 30, maxHeight: 30)
-                                    .background(Color.inputBackgroud)
-                                    .cornerRadius(4)
-                                    .disabled(true)
-                                    .padding(.bottom, 4)                                    
-                                ForEach(self.mViewModel.Application!.Items) { item in
-                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
-                                    ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate)
-                                }
-                                Text("Описание")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes }, set: { self.mViewModel.Application!.Notes  = $0 }))
-                                    .frame(minHeight: 100, maxHeight: 100)
-                                    .background(Color.inputBackgroud)
-                                    .cornerRadius(4)
                             }
+                            .padding(.all, 8)
                         }
-                        .padding(.all, 8)
                     }
                 }
             }

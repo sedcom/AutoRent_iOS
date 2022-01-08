@@ -64,11 +64,11 @@ struct ApplicationsRowView: View {
                 }
                 .padding(.bottom, 8)
                 HStack {
-                    Text(self.mApplication.getStatus())
+                    Text(self.mApplication.getStatus().Status.Name)
                         .foregroundColor(Color.textLight)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
-                   Text(Utils.formatDate(format: "dd.MM.yyyy HH:mm", date: self.mApplication.CreatedDate))
+                   Text(Utils.formatDate(format: "dd.MM.yyyy HH:mm", date: self.mApplication.getStatus().CreatedDate))
                         .foregroundColor(Color.textLight)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .lineLimit(1)
