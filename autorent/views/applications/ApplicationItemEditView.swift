@@ -14,7 +14,7 @@ struct ApplicationItemEditView: View {
     @Binding var showDatePicker: Bool
     @Binding var selectedDate: Date
     @State var mDatePickerIndex: Int = 0
-    @State var mSelectedVehicleType: VehicleType = VehicleType()
+    @State var selectedVehicleType: VehicleType = VehicleType()
     
     init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>) {
         self.mViewModel = viewModel
@@ -98,7 +98,7 @@ struct ApplicationItemEditView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                         .foregroundColor(Color.textLight)
-                    NavigationLink(destination: PickerVehicleTypesView(vehicleType: $mSelectedVehicleType)) {
+                    NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) {
                         TextField("", text: Binding(
                                     get: { self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName() },
                                     set: { _ in }))
@@ -107,7 +107,7 @@ struct ApplicationItemEditView: View {
                             .foregroundColor(Color.textDark)
                             .cornerRadius(4)
                             .disabled(true)
-                            .onChange(of:  $mSelectedVehicleType.wrappedValue, perform: { value in
+                            .onChange(of:  $selectedVehicleType.wrappedValue, perform: { value in
                                 self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
                                 self.mViewModel.objectWillChange.send()
                             })

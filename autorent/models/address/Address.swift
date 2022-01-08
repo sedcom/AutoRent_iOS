@@ -8,6 +8,7 @@
 import Foundation
 
 class Address: Entity {
+    var AddressTypeId: Int?
     var PostIndex: String?
     var Region: AddressRegion?
     var District: AddressDistrict?
@@ -36,7 +37,20 @@ class Address: Entity {
         try super.init(from: decoder)
     }
     
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.AddressTypeId, forKey: .AddressType)
+        try container.encode(self.PostIndex, forKey: .PostIndex)
+        try container.encode(self.Region, forKey: .Region)
+        try container.encode(self.District, forKey: .District)
+        try container.encode(self.City, forKey: .City)
+        try container.encode(self.Street, forKey: .Street)
+        try container.encode(self.House, forKey: .House)
+        try super.encode(to: encoder)
+    }
+    
     private enum CodingKeys: String, CodingKey {
+        case AddressType = "addressTypeId"
         case PostIndex = "postIndex"
         case Region = "region"
         case District = "district"

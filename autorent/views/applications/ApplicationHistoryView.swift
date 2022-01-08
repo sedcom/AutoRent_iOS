@@ -62,7 +62,7 @@ struct ApplicationHistoryView: View {
         }
         .background(Color.primary)
         .onAppear {
-            self.mViewModel.loadData()
+            self.mViewModel.loadData()        
         }
     }
 }

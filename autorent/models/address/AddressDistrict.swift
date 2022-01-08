@@ -19,6 +19,11 @@ class AddressDistrict: Codable {
         self.Name = try container.decode(String.self, forKey: .Name)
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.Name, forKey: .Name)
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case Name = "name"
     }

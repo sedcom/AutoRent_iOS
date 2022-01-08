@@ -32,8 +32,7 @@ struct MainView: View {
                 Text("Тут профиль...")
                     .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Профиль", image: "user") }
-                    .tag(4)
-            
+                    .tag(4)            
             }
             .accentColor(Color.secondary)
             .navigationBarTitle(getTitle(), displayMode: .inline)

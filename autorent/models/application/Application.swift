@@ -43,12 +43,21 @@ class Application: Entity {
         try super.init(from: decoder)
     }
     
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.Address, forKey: .Address)
+        try container.encode(self.Notes, forKey: .Notes)
+        try container.encode(self.Items, forKey: .AddedItems)
+        try super.encode(to: encoder)
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case CreatedDate = "createdDate"
         case User = "user"
         case Address = "address"
         case Notes = "notes"
         case Items = "items"
+        case AddedItems = "addedItems"
         case History = "history"
     }
     

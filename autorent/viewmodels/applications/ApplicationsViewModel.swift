@@ -53,30 +53,32 @@ class ApplicationsViewModel: ObservableObject {
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.Data.Elements.remove(at: self.Data.Elements.count - 1)
-                self.IsLoading = false
                 self.IsError = true
+                self.IsLoading = false
                 self.objectWillChange.send()
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish loadData")
                 self.Data.Elements.remove(at: self.Data.Elements.count - 1)
                 self.Data.MaxItems = result.MaxItems
                 self.Data.SkipCount = result.SkipCount
                 self.Data.Total = result.Total
                 self.Data.Elements.append(contentsOf: result.Elements)
-                self.IsLoading = false
                 self.loadVehicleTypes(applications: self.Data.Elements)
             })
     }
     
     private func loadVehicleTypes(applications: [Application]) {
-        self.cancellation = self.mApplicationRepository.loadVehicleTypes(0, 0, "", "options")
+        self.cancellation = DictionaryRepository().getVehicleTypes("Name asc", "options")
             .mapError({ (error) -> Error in
                 debugPrint(error)
+                self.IsError = true
+                self.IsLoading = false
+                self.objectWillChange.send()
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadData")
                 let vehicleTypes = result.Elements
                 for application in applications {
                     for item in application.Items {
@@ -84,6 +86,7 @@ class ApplicationsViewModel: ObservableObject {
                         item.VehicleParams.VehicleType = vehicleType!
                     }
                 }
+                self.IsLoading = false                
                 //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     self.objectWillChange.send()
                 //}

@@ -17,10 +17,10 @@ class Utils {
     static func convertDate(value: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        var date = dateFormatter.date(from: value)
+        var date = dateFormatter.date(from: value.replacingOccurrences(of: "Z", with: ""))
         if date == nil {
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-            date = dateFormatter.date(from: value)
+            date = dateFormatter.date(from: value.replacingOccurrences(of: "Z", with: ""))
         }
         return date!
     }
@@ -30,5 +30,4 @@ class Utils {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         return dateFormatter.date(from: value)!
     }
-    
 }

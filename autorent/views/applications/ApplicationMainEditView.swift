@@ -13,10 +13,12 @@ struct ApplicationMainEditView: View {
     var mEntityId: Int
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
-
-    init(entityId: Int, mode: ModeView) {
+    @Binding var action: Int?
+    
+    init(entityId: Int, mode: ModeView, action: Binding<Int?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
+        self._action = action
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
     
@@ -94,6 +96,11 @@ struct ApplicationMainEditView: View {
                 DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
             }
         }
+        .onChange(of:  $action.wrappedValue, perform: { value in
+            if value == 1 {
+                self.mViewModel.saveItem()
+            }
+        })
     }
 }
 

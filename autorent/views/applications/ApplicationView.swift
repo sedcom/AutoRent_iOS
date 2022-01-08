@@ -10,6 +10,7 @@ import SwiftUI
 struct ApplicationView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
+    @State var action: Int?
     
     init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
@@ -27,7 +28,7 @@ struct ApplicationView: View {
                     .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             }
             else {
-                ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode)
+                ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $action)
                     .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             }
@@ -58,6 +59,9 @@ struct ApplicationView: View {
                     Image("save")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
+                        .onTapGesture {
+                            self.action = 1
+                        }
                     Image("paper-plane")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)

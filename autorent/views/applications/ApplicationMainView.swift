@@ -80,7 +80,9 @@ struct ApplicationMainView: View {
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.primary)
         .onAppear {
-            self.mViewModel.loadData()
+            if self.mViewModel.Application == nil {
+                self.mViewModel.loadData()
+            }
         }
     }
 }

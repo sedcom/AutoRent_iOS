@@ -118,8 +118,10 @@ struct ApplicationsView: View {
             }
         }
         .onAppear {
-            self.mViewModel.clearData()
-            self.mViewModel.loadData()
+            if self.mViewModel.Data.Elements.count == 0 {
+                self.mViewModel.clearData()
+                self.mViewModel.loadData()
+            }
         }
     }
 }
