@@ -41,6 +41,7 @@ struct ApplicationItemEditView: View {
                          VStack {                            
                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
                                 .foregroundColor(Color.textDark)
+                                .lineLimit(1)
                                 .onChange(of:  $selectedDate.wrappedValue, perform: { value in
                                     if self.mDatePickerIndex == 1 {
                                         self.mViewModel.Application!.Items[self.mIndex].StartDate = value
@@ -50,9 +51,10 @@ struct ApplicationItemEditView: View {
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
                                 .foregroundColor(Color.textDark)
                                 .font(Font.headline.weight(.bold))
+                                .lineLimit(1)
                          }
                      }
-                     .padding(.all, 8)
+                     .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
                      .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.inputBackgroud)
                      .cornerRadius(4)
@@ -69,6 +71,7 @@ struct ApplicationItemEditView: View {
                          VStack {
                              Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
                                 .foregroundColor(Color.textDark)
+                                .lineLimit(1)
                                 .onChange(of:  $selectedDate.wrappedValue, perform: { value in
                                     if self.mDatePickerIndex == 2 {
                                         self.mViewModel.Application!.Items[self.mIndex].FinishDate = value
@@ -78,9 +81,10 @@ struct ApplicationItemEditView: View {
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
                                 .foregroundColor(Color.textDark)
                                 .font(Font.headline.weight(.bold))
+                                .lineLimit(1)
                          }
                      }
-                     .padding(.all, 8)
+                     .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
                      .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.inputBackgroud)
                      .cornerRadius(4)
@@ -107,7 +111,6 @@ struct ApplicationItemEditView: View {
                                 self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
                                 self.mViewModel.objectWillChange.send()
                             })
-                        
                     }
                  }
                  /*ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in

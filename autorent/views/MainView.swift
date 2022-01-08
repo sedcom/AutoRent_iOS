@@ -14,20 +14,23 @@ struct MainView: View {
         NavigationView {
             TabView(selection: $mSelected) {
                 MapView()
+                    .edgesIgnoringSafeArea(.horizontal)
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
                     .tag(0)
-                    .edgesIgnoringSafeArea(.horizontal)
                 ApplicationsView()
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявки", image: "clipboard-list") }
                     .tag(1)
-                    .edgesIgnoringSafeArea(.horizontal)
                 Text("Тут заказы...")
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заказы", image: "copy") }
                     .tag(2)
                 Text("Тут счета...")
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
                     .tag(3)
                 Text("Тут профиль...")
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Профиль", image: "user") }
                     .tag(4)
             

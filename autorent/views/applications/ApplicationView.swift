@@ -23,17 +23,22 @@ struct ApplicationView: View {
                 //NavigationView {
                 ApplicationMainView(entityId: self.mEntityId)
                 //}
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             }
             else {
                 ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode)
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
             }
             Text("Тут документы...")
+                .background(Color.primary.edgesIgnoringSafeArea(.all))
                 .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
             Text("Тут платежи...")
+                .background(Color.primary.edgesIgnoringSafeArea(.all))
                 .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
             ApplicationHistoryView(entityId: self.mEntityId)
+                .background(Color.primary.edgesIgnoringSafeArea(.all))
                 .tabItem { TabBarItemView(label: "История", image: "history") }
         }
         .accentColor(Color.secondary)

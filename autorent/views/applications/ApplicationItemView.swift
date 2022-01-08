@@ -33,12 +33,14 @@ struct ApplicationItemView: View {
                          VStack {
                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.StartDate))
                                  .foregroundColor(Color.textLight)
+                                 .lineLimit(1)
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.StartDate))
                                  .foregroundColor(Color.textLight)
                                  .font(Font.headline.weight(.bold))
+                                 .lineLimit(1)
                          }
                      }
-                     .padding(.all, 8)
+                     .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
                      .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.primary)
                      HStack {
@@ -50,12 +52,14 @@ struct ApplicationItemView: View {
                          VStack {
                              Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.FinishDate))
                                  .foregroundColor(Color.textLight)
+                                .lineLimit(1)
                              Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.FinishDate))
                                  .foregroundColor(Color.textLight)
                                  .font(Font.headline.weight(.bold))
+                                .lineLimit(1)
                          }
                      }
-                     .padding(.all, 8)
+                     .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
                      .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.primary)
                  }

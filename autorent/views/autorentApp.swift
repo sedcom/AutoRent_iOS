@@ -12,7 +12,7 @@ struct autorentApp: App {
     init() {
         let itemAppearance = UITabBarItemAppearance()
         itemAppearance.normal.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.lightText,
+            NSAttributedString.Key.foregroundColor: UIColor(Color.textLight),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
         ]
         let tabAppearance = UITabBarAppearance()
@@ -31,7 +31,8 @@ struct autorentApp: App {
         UINavigationBar.appearance().largeTitleTextAttributes = titleTextAttributes
         //
         UITableView.appearance().backgroundColor = UIColor.clear
-        //UITableViewHeaderFooterView.appearance().backgroundView = View() { Rectangle().fill(Color.green) }
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
+        UITableViewHeaderFooterView.appearance().backgroundView = .init()
     }
     
     var body: some Scene {

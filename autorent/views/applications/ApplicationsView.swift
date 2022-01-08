@@ -62,6 +62,7 @@ struct ApplicationsView: View {
                         .padding(.all, 8)
                     }
                     .background(Color.primaryDark)
+                    .edgesIgnoringSafeArea(.horizontal)
                     if self.mViewModel.Data.Elements.count == 0 {
                         EmptyView()
                     }

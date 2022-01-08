@@ -36,15 +36,17 @@ struct PickerVehicleTypesView: View {
                             ForEach(self.mViewModel.Data.Elements.filter { $0.VehicleGroup == nil }) { vehicleGroup in
                                 Section(header:
                                     Text(vehicleGroup.Name)
-                                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                        .padding(EdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4))
-                                        .background(Color.textLight)
-                                        .foregroundColor(Color.textDark)) {
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                                        .background(Color.primary)
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                        .textCase(nil)) {
                                     ForEach(self.mViewModel.Data.Elements.filter { $0.VehicleGroup != nil && $0.VehicleGroup!.Id == vehicleGroup.Id }) { vehicleType in
                                         VStack {
                                             Text(vehicleType.Name)
                                                 .foregroundColor(self.mSelectedVehicleType == vehicleType ? Color.textDark : Color.textLight)
-                                                .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
                                                 .onTapGesture {
                                                     self.mSelectedVehicleType = vehicleType
                                                 }
@@ -52,8 +54,7 @@ struct PickerVehicleTypesView: View {
                                         .listRowBackground(self.mSelectedVehicleType == vehicleType ? Color.secondary : Color.primaryDark)
                                     }
                                 }
-
-                            }                                                       
+                            }
                         }
                         .listStyle(PlainListStyle())
                     }
@@ -61,9 +62,22 @@ struct PickerVehicleTypesView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.all)
+        .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
         .navigationBarTitle("Выберите тип автотранспорта", displayMode: .inline)
+        .navigationBarItems(trailing:
+            HStack {
+                Image("check-circle")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                    .onTapGesture {
+                        if self.mSelectedVehicleType != nil {                            
+                            self.presentationMode.wrappedValue.dismiss()
+                            self.mVehicleType = self.mSelectedVehicleType!
+                        }
+                    }
+            }
+        )
         .onAppear {
             self.mViewModel.clearData()
             self.mViewModel.loadData()
