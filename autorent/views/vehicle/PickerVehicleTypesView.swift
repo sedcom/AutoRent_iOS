@@ -19,6 +19,7 @@ struct PickerVehicleTypesView: View {
     }
     
     var body: some View {
+        
         VStack {
             if self.mViewModel.IsLoading == true {
                 LoadingView()
@@ -62,7 +63,9 @@ struct PickerVehicleTypesView: View {
                 }
             }
         }
+        
         .background(Color.primary.edgesIgnoringSafeArea(.all))
+        
         .navigationBarHidden(false)
         .navigationBarTitle("Выберите тип автотранспорта", displayMode: .inline)
         .navigationBarItems(trailing:

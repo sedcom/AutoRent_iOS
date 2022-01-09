@@ -37,7 +37,7 @@ struct autorentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView2()
         }
     }
 }

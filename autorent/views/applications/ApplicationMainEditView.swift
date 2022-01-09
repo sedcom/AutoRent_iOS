@@ -13,13 +13,14 @@ struct ApplicationMainEditView: View {
     var mEntityId: Int
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
+    @Binding var selectedItems: [Int]
     @Binding var action: Int?
-    var mIndex: Int = 0
     
-    init(entityId: Int, mode: ModeView, action: Binding<Int?>) {
+    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[Int]>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
         self._action = action
+        self._selectedItems = selectedItems
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
     
@@ -65,7 +66,7 @@ struct ApplicationMainEditView: View {
                                         .padding(.bottom, 4)
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
-                                        ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate)
+                                        ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate, selectedItems: $selectedItems)
                                     }
                                     Button("Add", action: {
                                         self.mViewModel.addApplicationItem()
@@ -103,15 +104,11 @@ struct ApplicationMainEditView: View {
                     }
                 }
             }
-            if self.showDatePicker {
-                DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
-            }
+        
+        if self.showDatePicker {
+            DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
         }
-        .onChange(of:  $action.wrappedValue, perform: { value in
-            if value == 1 {
-                self.mViewModel.saveItem()
-            }
-        })
+        }
     }
 }
 

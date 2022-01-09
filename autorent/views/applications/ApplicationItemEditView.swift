@@ -13,16 +13,18 @@ struct ApplicationItemEditView: View {
     var mIndex: Int
     @Binding var showDatePicker: Bool
     @Binding var selectedDate: Date
+    @Binding var selectedItems: [Int]
     @State var mDatePickerIndex: Int = 0
     @State var selectedVehicleType: VehicleType = VehicleType()
     @State var mIsSelected: Bool = false
     
-    init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>) {
+    init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>, selectedItems: Binding<[Int]>) {
         self.mViewModel = viewModel
         self.mCurrentMode = mode
         self.mIndex = index
         self._showDatePicker = showDatePicker
         self._selectedDate = selectedDate
+        self._selectedItems = selectedItems
     }
     
     var body: some View {
@@ -138,8 +140,16 @@ struct ApplicationItemEditView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(self.mIsSelected ? Color.secondary : Color.primaryDark)
         .cornerRadius(5)
-        .onLongPressGesture {
+        .onTapGesture {
             self.mIsSelected.toggle()
+            if self.mIsSelected {
+                //self.isSelected = true
+                //self.selectedItems.append(self.mIndex)
+            }
+            else {
+                //let index = self.selectedItems.firstIndex(of: self.mIndex)
+                //self.selectedItems.remove(at: index!)
+            }
         }
     }
 }

@@ -11,6 +11,9 @@ struct ApplicationView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var action: Int?
+    @State var isSelected: Bool = false
+    @State var selectedItems: [Int] = []
+    @State var selection: Int?
     
     init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
@@ -18,55 +21,49 @@ struct ApplicationView: View {
     }
     
     var body: some View {
-        //NavigationView {
-        TabView {
-            if self.mCurrentMode == ModeView.View {
-                //NavigationView {
-                ApplicationMainView(entityId: self.mEntityId)
-                //}
+        VStack {
+            TabView {
+                ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode)
                     .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
-            }
-            else {
-                ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $action)
+                Text("Тут документы...")
                     .background(Color.primary.edgesIgnoringSafeArea(.all))
-                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
+                    .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
+                Text("Тут платежи...")
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
+                    .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
+                ApplicationHistoryView(entityId: self.mEntityId)
+                    .background(Color.primary.edgesIgnoringSafeArea(.all))
+                    .tabItem { TabBarItemView(label: "История", image: "history") }
             }
-            Text("Тут документы...")
-                .background(Color.primary.edgesIgnoringSafeArea(.all))
-                .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
-            Text("Тут платежи...")
-                .background(Color.primary.edgesIgnoringSafeArea(.all))
-                .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
-            ApplicationHistoryView(entityId: self.mEntityId)
-                .background(Color.primary.edgesIgnoringSafeArea(.all))
-                .tabItem { TabBarItemView(label: "История", image: "history") }
-        }
-        .accentColor(Color.secondary)
-        //}
-        .navigationBarHidden(false)
-        .navigationBarTitle("Заявка №\(self.mEntityId)", displayMode: .inline)
-        .navigationBarItems(trailing:
-            HStack {
-                if self.mCurrentMode == ModeView.View {
-                    NavigationLink(destination: ApplicationView(entityId: self.mEntityId, mode: ModeView.Edit)) {
-                        Image("iconmonstr-edit")
-                            .renderingMode(.template)
-                            .foregroundColor(Color.textLight)
-                    }
-                }
-                if self.mCurrentMode == ModeView.Create || self.mCurrentMode == ModeView.Edit  {
-                    Image("save")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.action = 1
+            .accentColor(Color.secondary)
+            /*.navigationBarHidden(true)
+            .navigationBarTitle("App2 №\(self.mEntityId)", displayMode: .inline)
+            .navigationBarItems(trailing:
+                    HStack {
+                        if self.mCurrentMode == ModeView.View {
+                            NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit)) {
+                                Image("iconmonstr-edit")
+                                    .renderingMode(.template)
+                                    .foregroundColor(Color.textLight)
+                            }
                         }
-                    Image("paper-plane")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                }
-            }
-        )
+                    })*/
+        }
+        .navigationBarHidden(false)
+        .navigationBarTitle("App №\(self.mEntityId)", displayMode: .inline)
+        .navigationBarItems(trailing:
+                HStack {
+                    if self.mCurrentMode == ModeView.View {
+                        NavigationLink(destination: ApplicationEditView2(entityId: self.mEntityId, mode: ModeView.Edit)) {
+                            Image("iconmonstr-edit")
+                                .renderingMode(.template)
+                                .foregroundColor(Color.textLight)
+                                //.onTapGesture {
+                                //    self.selection = 2
+                                //}
+                        }
+                    }
+                })
     }
 }

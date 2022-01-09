@@ -17,7 +17,10 @@ struct MainView: View {
                     .edgesIgnoringSafeArea(.horizontal)
                     .tabItem { TabBarItemView(label: NSLocalizedString("menu_map", comment: ""), image: "map-marked-alt") }
                     .tag(0)
+                //NavigationView {
                 ApplicationsView()
+                //}
+                
                     .background(Color.primary.edgesIgnoringSafeArea(.all))
                     .tabItem { TabBarItemView(label: "Заявки", image: "clipboard-list") }
                     .tag(1)
@@ -35,8 +38,9 @@ struct MainView: View {
                     .tag(4)            
             }
             .accentColor(Color.secondary)
+            .navigationBarHidden(false)
             .navigationBarTitle(getTitle(), displayMode: .inline)
-            .navigationBarItems(trailing:
+            /*.navigationBarItems(trailing:
                 HStack {
                     Image("comment-dots")
                         .renderingMode(.template)
@@ -44,7 +48,7 @@ struct MainView: View {
                     Image("bell")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
-                })
+                })*/
         }
     }
     

@@ -9,15 +9,18 @@ import SwiftUI
 
 struct ApplicationMainView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
+    var mCurrentMode: ModeView
     var mEntityId: Int
     
-    init(entityId: Int) {
+    init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
+        self.mCurrentMode = mode
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
     
     var body: some View {
         VStack {
+            
             if self.mViewModel.IsLoading == true  {
                 LoadingView()
             }
@@ -84,5 +87,6 @@ struct ApplicationMainView: View {
                 self.mViewModel.loadData()
             }
         }
+        
     }
 }
