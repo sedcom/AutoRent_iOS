@@ -7,21 +7,26 @@
 
 import SwiftUI
 
-struct ApplicationMainEditView: View {
-    @ObservedObject var mViewModel: ApplicationViewModel
+struct ApplicationMainEditView: View, Equatable {
+
+    @ObservedObject public var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
-    @Binding var selectedItems: [Int]
+    @Binding var selectedItems: [UUID]
     @Binding var action: Int?
     
-    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[Int]>) {
+    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
         self._action = action
         self._selectedItems = selectedItems
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
+    }
+    
+    static func == (lhs: ApplicationMainEditView, rhs: ApplicationMainEditView) -> Bool {
+        return true
     }
     
     var body: some View {
@@ -104,10 +109,24 @@ struct ApplicationMainEditView: View {
                     }
                 }
             }
+            .onChange(of: action) { newValue in
+                switch(newValue) {
+                    case 1:
+                        self.mViewModel.saveItem()
+                    case 2:
+                        self.mViewModel.saveItem()
+                    case 3:
+                        self.mViewModel.removeApplicationItems(items: self.selectedItems)                        
+                        self.selectedItems.removeAll()
+                    default:
+                        self.action = 0
+                }
+                self.action = 0
+            }
         
-        if self.showDatePicker {
-            DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
-        }
+            if self.showDatePicker {
+                DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
+            }
         }
     }
 }

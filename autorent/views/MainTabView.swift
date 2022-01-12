@@ -17,7 +17,7 @@ struct MainTabView: View {
     var body: some View {
         HStack {
             Group {
-                Button (action: { self.tabIdx = .tab1}) {
+                Button (action: { self.tabIdx = .tab1 }) {
                     VStack{
                         Image("map-marked-alt")
                             .renderingMode(.template)
@@ -29,7 +29,7 @@ struct MainTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab2}) {
+                Button (action: { self.tabIdx = .tab2 }) {
                     VStack{
                         Image("clipboard-list")
                             .renderingMode(.template)
@@ -41,7 +41,7 @@ struct MainTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab3}) {
+                Button (action: { self.tabIdx = .tab3 }) {
                     VStack{
                         Image("copy")
                             .renderingMode(.template)
@@ -53,7 +53,7 @@ struct MainTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab4}) {
+                Button (action: { self.tabIdx = .tab4 }) {
                     VStack{
                         Image("ruble-sign")
                             .renderingMode(.template)
@@ -65,7 +65,7 @@ struct MainTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab5}) {
+                Button (action: { self.tabIdx = .tab5 }) {
                     VStack{
                         Image("user")
                             .renderingMode(.template)

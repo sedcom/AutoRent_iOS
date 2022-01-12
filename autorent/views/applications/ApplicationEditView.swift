@@ -11,8 +11,9 @@ struct ApplicationEditView: View {
     //@Environment(\.presentationMode) var presentationMode
     var mCurrentMode: ModeView
     var mEntityId: Int
+    @State var tabIdx: TabApplication = .tab1
     @State var action: Int?
-    @State var selectedItems: [Int] = []
+    @State var selectedItems: [UUID] = []
     
     init(entityId: Int, mode: ModeView) {
         self.mEntityId = entityId
@@ -20,66 +21,49 @@ struct ApplicationEditView: View {
     }
     
     var body: some View {
-        NavigationView {
-            TabView {
-                ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $action,selectedItems: $selectedItems)
-                    .background(Color.primary.edgesIgnoringSafeArea(.all))
-                    .tabItem { TabBarItemView(label: "Заявка", image: "clipboard-list") }
-                Text("Тут документы...")
-                    .background(Color.primary.edgesIgnoringSafeArea(.all))
-                    .tabItem { TabBarItemView(label: "Документы", image: "file-signature") }
-                    .disabled(true)
-                Text("Тут платежи...")
-                    .background(Color.primary.edgesIgnoringSafeArea(.all))
-                    .tabItem { TabBarItemView(label: "Платежи", image: "ruble-sign") }
-                    .disabled(true)
-                ApplicationHistoryView(entityId: self.mEntityId)
-                    .background(Color.primary.edgesIgnoringSafeArea(.all))
-                    .tabItem { TabBarItemView(label: "История", image: "history") }
-                    .disabled(true)
+        //NavigationView {
+            VStack(spacing: 0) {
+                if (self.tabIdx == .tab1) {
+                    ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()                    
+                }
+                if (self.tabIdx == .tab2) {
+                    Text("Тут документы...")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
+                if (self.tabIdx == .tab3) {
+                    Text("Тут платежи...")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
+                if (self.tabIdx == .tab4) {
+                    ApplicationHistoryView(entityId: self.mEntityId)
+                }
+                ApplicationTabView(tabIdx: $tabIdx)
             }
-            //.accentColor(Color.secondary)
-            //.navigationBarHidden(false)
-            //.navigationBarTitle("Edit1 №\(self.mEntityId)", displayMode: .inline)
-            //.navigationBarItems(trailing:
-             //       HStack {
-                        
-//})
-            /*.navigationBarItems(leading: HStack(spacing: 0) {
-                /*NavigationLink(destination: ApplicationView(entityId: self.mEntityId, mode: ModeView.View)) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(Color.blue)
-                        .font(Font.title.weight(.medium))
-                        .offset(x: -10, y: 0)
-                        .scaleEffect(0.8)
-                    Text("Back")
-                        .foregroundColor(Color.blue)
-                        .offset(x: -5, y: 0)
-                }*/
-            }, trailing: HStack {
-                    Image("check-circle")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .opacity(self.isSelected ? 1 : 0)
-                        .onTapGesture {
-                            self.action = 3
-                        }
-                    Image("save")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.action = 1
-                        }
-                    Image("paper-plane")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                })*/
+            .accentColor(Color.secondary)
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarHidden(false)
+            .navigationBarTitle("New/Edit", displayMode: .inline)
+            .navigationBarItems(trailing: HStack {
+                Image("check-circle")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                    .opacity(self.selectedItems.count > 0 ? 1 : 0)
+                    .onTapGesture {
+                        self.action = 3
+                    }
+                Image("save")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                    .onTapGesture {
+                        self.action = 1
+                    }
+                Image("paper-plane")
+                    .renderingMode(.template)
+                    .foregroundColor(Color.textLight)
+                    .onTapGesture {
+                        self.action = 2
+                    }
+            })
         }
-        //.navigationBarHidden(true)
-        
-    }
+    //}
 }
-

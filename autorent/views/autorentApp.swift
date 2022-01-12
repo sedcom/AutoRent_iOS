@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct autorentApp: App {
     init() {
-        let itemAppearance = UITabBarItemAppearance()
+        /* let itemAppearance = UITabBarItemAppearance()
         itemAppearance.normal.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor(Color.textLight),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
@@ -19,7 +19,7 @@ struct autorentApp: App {
         tabAppearance.configureWithOpaqueBackground()
         tabAppearance.backgroundColor = UIColor(Color.primaryDark)
         tabAppearance.stackedLayoutAppearance = itemAppearance
-        UITabBar.appearance().standardAppearance = tabAppearance
+        UITabBar.appearance().standardAppearance = tabAppearance */
         //
         let titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor(Color.textLight),
@@ -37,7 +37,7 @@ struct autorentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView2()
+            MainView()
         }
     }
 }

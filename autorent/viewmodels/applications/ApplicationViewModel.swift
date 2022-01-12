@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class ApplicationViewModel: ObservableObject {
-    @Published var OK: String?
     var Application: Application?
     var cancellation: AnyCancellable?
     var mApplicationRepository: ApplicationRepository = ApplicationRepository()
@@ -26,27 +25,26 @@ class ApplicationViewModel: ObservableObject {
     }
 
     public func createItem() {
-        debugPrint("Start createItem")
-        self.IsLoading = true
-        self.objectWillChange.send()
         let application = autorent.Application()
         application.User = User()
         application.Address = Address()
         application.Address.AddressTypeId = 3
         application.Items.append(ApplicationItem())
         self.Application = application
-        self.IsLoading = false
-        self.OK = "1"
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            //self.objectWillChange.send()
-            debugPrint("Finish createItem")
-        }
+        self.objectWillChange.send()
     }
     
     public func addApplicationItem() {
         let item = ApplicationItem()
         self.Application!.Items.append(item)
         self.objectWillChange.send()
+    }
+    
+    public func removeApplicationItems(items: [UUID]) {
+        items.forEach { uuid in
+            let index = self.Application!.Items.firstIndex { $0.id == uuid }!
+            self.Application!.Items.remove(at: index)
+        }
     }
     
     public func loadData() {

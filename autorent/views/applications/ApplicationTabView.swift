@@ -17,7 +17,7 @@ struct ApplicationTabView: View {
     var body: some View {
         HStack {
             Group {
-                Button (action: { self.tabIdx = .tab1}) {
+                Button (action: { self.tabIdx = .tab1 }) {
                     VStack{
                         Image("clipboard-list")
                             .renderingMode(.template)
@@ -29,7 +29,7 @@ struct ApplicationTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab2}) {
+                Button (action: { self.tabIdx = .tab2 }) {
                     VStack{
                         Image("file-signature")
                             .renderingMode(.template)
@@ -41,7 +41,7 @@ struct ApplicationTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab3}) {
+                Button (action: { self.tabIdx = .tab3 }) {
                     VStack{
                         Image("ruble-sign")
                             .renderingMode(.template)
@@ -53,7 +53,7 @@ struct ApplicationTabView: View {
                     }
                 }
                 Spacer()
-                Button (action: { self.tabIdx = .tab4}) {
+                Button (action: { self.tabIdx = .tab4 }) {
                     VStack{
                         Image("history")
                             .renderingMode(.template)

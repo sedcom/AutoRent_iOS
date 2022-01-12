@@ -28,8 +28,6 @@
 		E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397227539DD6004CE06A /* ApplicationRepository.swift */; };
 		E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */; };
 		E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B3979275430D3004CE06A /* ApplicationViewModel.swift */; };
-		E29B397C27543257004CE06A /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397B27543257004CE06A /* ApplicationView.swift */; };
-		E29B397E2754498C004CE06A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397D2754498B004CE06A /* MainView.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -60,12 +58,11 @@
 		F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC542788512F00A1CE80 /* NetworkService.swift */; };
 		F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */; };
 		F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */; };
-		F6ADCC5F278AEF5E00A1CE80 /* ApplicationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC5E278AEF5E00A1CE80 /* ApplicationEditView.swift */; };
 		F6ADCC61278B3D8500A1CE80 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */; };
-		F6ADCC63278B401100A1CE80 /* MainView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC62278B401100A1CE80 /* MainView2.swift */; };
+		F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC62278B401100A1CE80 /* MainView.swift */; };
 		F6ADCC65278B4B4A00A1CE80 /* ApplicationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC64278B4B4A00A1CE80 /* ApplicationTabView.swift */; };
-		F6ADCC67278B4BA600A1CE80 /* ApplicationEditView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC66278B4BA600A1CE80 /* ApplicationEditView2.swift */; };
-		F6ADCC6B278B68A300A1CE80 /* ApplicationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC6A278B68A300A1CE80 /* ApplicationView2.swift */; };
+		F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC66278B4BA600A1CE80 /* ApplicationEditView.swift */; };
+		F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC6A278B68A300A1CE80 /* ApplicationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,8 +92,6 @@
 		E29B397227539DD6004CE06A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
 		E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewModel.swift; sourceTree = "<group>"; };
 		E29B3979275430D3004CE06A /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
-		E29B397B27543257004CE06A /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
-		E29B397D2754498B004CE06A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -127,12 +122,11 @@
 		F6ADCC542788512F00A1CE80 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypesViewModel.swift; sourceTree = "<group>"; };
 		F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
-		F6ADCC5E278AEF5E00A1CE80 /* ApplicationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditView.swift; sourceTree = "<group>"; };
 		F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		F6ADCC62278B401100A1CE80 /* MainView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView2.swift; sourceTree = "<group>"; };
+		F6ADCC62278B401100A1CE80 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F6ADCC64278B4B4A00A1CE80 /* ApplicationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTabView.swift; sourceTree = "<group>"; };
-		F6ADCC66278B4BA600A1CE80 /* ApplicationEditView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditView2.swift; sourceTree = "<group>"; };
-		F6ADCC6A278B68A300A1CE80 /* ApplicationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView2.swift; sourceTree = "<group>"; };
+		F6ADCC66278B4BA600A1CE80 /* ApplicationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditView.swift; sourceTree = "<group>"; };
+		F6ADCC6A278B68A300A1CE80 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +180,7 @@
 				F6ADCC4F2787A17600A1CE80 /* vehicle */,
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
-				E29B397D2754498B004CE06A /* MainView.swift */,
-				F6ADCC62278B401100A1CE80 /* MainView2.swift */,
+				F6ADCC62278B401100A1CE80 /* MainView.swift */,
 				F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */,
 			);
 			path = views;
@@ -284,10 +277,8 @@
 		E28538862755BE800008F6FB /* applications */ = {
 			isa = PBXGroup;
 			children = (
-				E29B397B27543257004CE06A /* ApplicationView.swift */,
-				F6ADCC6A278B68A300A1CE80 /* ApplicationView2.swift */,
-				F6ADCC5E278AEF5E00A1CE80 /* ApplicationEditView.swift */,
-				F6ADCC66278B4BA600A1CE80 /* ApplicationEditView2.swift */,
+				F6ADCC6A278B68A300A1CE80 /* ApplicationView.swift */,
+				F6ADCC66278B4BA600A1CE80 /* ApplicationEditView.swift */,
 				F6927865277920B2003BD0D5 /* ApplicationMainView.swift */,
 				F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */,
 				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
@@ -519,10 +510,9 @@
 				F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
-				E29B397E2754498C004CE06A /* MainView.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
-				F6ADCC6B278B68A300A1CE80 /* ApplicationView2.swift in Sources */,
+				F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
 				F6ADCC65278B4B4A00A1CE80 /* ApplicationTabView.swift in Sources */,
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
@@ -533,7 +523,7 @@
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
-				F6ADCC63278B401100A1CE80 /* MainView2.swift in Sources */,
+				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */,
@@ -543,12 +533,10 @@
 				F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
-				E29B397C27543257004CE06A /* ApplicationView.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
 				F6ADCC61278B3D8500A1CE80 /* MainTabView.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
-				F6ADCC5F278AEF5E00A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
@@ -560,7 +548,7 @@
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
-				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView2.swift in Sources */,
+				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,

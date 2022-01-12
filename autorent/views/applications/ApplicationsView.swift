@@ -56,7 +56,7 @@ struct ApplicationsView: View {
                                                 LoadingRowView()
                                             }
                                             else {
-                                                NavigationLink(destination: ApplicationView2(entityId: application.Id, mode: ModeView.View))  {
+                                                NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View))  {
                                                     ApplicationsRowView(application)
                                                 }
                                             }
@@ -79,7 +79,7 @@ struct ApplicationsView: View {
                                 .listStyle(PlainListStyle())
                                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                                 ZStack {
-                                    NavigationLink(destination: ApplicationEditView2(entityId: 0, mode: ModeView.Create)) {
+                                    NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create)) {
                                         ZStack {
                                             Circle().fill(Color.secondary)
                                             Image("plus")
