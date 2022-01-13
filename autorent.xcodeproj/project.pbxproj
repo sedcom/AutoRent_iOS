@@ -11,7 +11,6 @@
 		E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2550F042757B9AC0059B96C /* EmptyView.swift */; };
 		E2550F0B2757C3780059B96C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2550F0D2757C3780059B96C /* Localizable.strings */; };
 		E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */; };
-		E2550F162757E60C0059B96C /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2550F152757E60C0059B96C /* TabBarItemView.swift */; };
 		E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589B0727523A4100BFF698 /* autorentApp.swift */; };
 		E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589B0927523A4100BFF698 /* ApplicationsView.swift */; };
 		E2589B0C27523A4F00BFF698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2589B0B27523A4F00BFF698 /* Assets.xcassets */; };
@@ -60,9 +59,7 @@
 		F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC542788512F00A1CE80 /* NetworkService.swift */; };
 		F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */; };
 		F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */; };
-		F6ADCC61278B3D8500A1CE80 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */; };
 		F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC62278B401100A1CE80 /* MainView.swift */; };
-		F6ADCC65278B4B4A00A1CE80 /* ApplicationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC64278B4B4A00A1CE80 /* ApplicationTabView.swift */; };
 		F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC66278B4BA600A1CE80 /* ApplicationEditView.swift */; };
 		F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC6A278B68A300A1CE80 /* ApplicationView.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +72,6 @@
 		E2550F0C2757C3780059B96C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2550F0E2757C3DA0059B96C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFilterStyle.swift; sourceTree = "<group>"; };
-		E2550F152757E60C0059B96C /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		E2589B0427523A4100BFF698 /* autorent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autorent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2589B0727523A4100BFF698 /* autorentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = autorentApp.swift; sourceTree = "<group>"; };
 		E2589B0927523A4100BFF698 /* ApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsView.swift; sourceTree = "<group>"; };
@@ -126,9 +122,7 @@
 		F6ADCC542788512F00A1CE80 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypesViewModel.swift; sourceTree = "<group>"; };
 		F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
-		F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F6ADCC62278B401100A1CE80 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		F6ADCC64278B4B4A00A1CE80 /* ApplicationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTabView.swift; sourceTree = "<group>"; };
 		F6ADCC66278B4BA600A1CE80 /* ApplicationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditView.swift; sourceTree = "<group>"; };
 		F6ADCC6A278B68A300A1CE80 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,7 +179,6 @@
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				F6ADCC62278B401100A1CE80 /* MainView.swift */,
-				F6ADCC60278B3D8500A1CE80 /* MainTabView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -194,14 +187,13 @@
 			isa = PBXGroup;
 			children = (
 				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
+				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
+				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
+				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
 				E2550F042757B9AC0059B96C /* EmptyView.swift */,
 				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
 				E27EA41827577CCD001F7BB4 /* LoadingView.swift */,
-				E2550F152757E60C0059B96C /* TabBarItemView.swift */,
-				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
-				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
-				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -292,7 +284,6 @@
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
 				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
-				F6ADCC64278B4B4A00A1CE80 /* ApplicationTabView.swift */,
 			);
 			path = applications;
 			sourceTree = "<group>";
@@ -521,7 +512,6 @@
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
-				F6ADCC65278B4B4A00A1CE80 /* ApplicationTabView.swift in Sources */,
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
@@ -542,14 +532,12 @@
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
-				F6ADCC61278B3D8500A1CE80 /* MainTabView.swift in Sources */,
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
-				E2550F162757E60C0059B96C /* TabBarItemView.swift in Sources */,
 				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,
 				F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */,
 				F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */,

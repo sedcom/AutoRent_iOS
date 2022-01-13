@@ -10,7 +10,7 @@ import SwiftUI
 struct ApplicationEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var mEntityId: Int
-    @State var tabIdx: TabApplication = .tab1
+    @State var SelectedItem: Int = 0
     @State var action: Int?
     @State var mAction: Int?
     @State var selectedItems: [UUID] = []
@@ -24,21 +24,26 @@ struct ApplicationEditView: View {
     var body: some View {
         //NavigationView {
             VStack(spacing: 0) {
-                if (self.tabIdx == .tab1) {
+                if (self.SelectedItem == 0) {
                     ApplicationMainEditView(entityId: self.$mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()
                 }
-                if (self.tabIdx == .tab2) {
+                if (self.SelectedItem == 1) {
                     Text("Тут документы...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                if (self.tabIdx == .tab3) {
+                if (self.SelectedItem == 2) {
                     Text("Тут платежи...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                if (self.tabIdx == .tab4) {
+                if (self.SelectedItem == 3) {
                     ApplicationHistoryView(entityId: self.$mEntityId)
                 }
-                ApplicationTabView(tabIdx: $tabIdx)
+                CustomTabView(items: [
+                    CustomTabItem(index: 0, label: "Заявка", image: "clipboard-list"),
+                    CustomTabItem(index: 1, label: "Документы", image: "file-signature", disabled: true),
+                    CustomTabItem(index: 2, label: "Платежи", image: "ruble-sign", disabled: true),
+                    CustomTabItem(index: 3, label: "История", image: "history", disabled: true),
+                ], selected: $SelectedItem)
             }
             .accentColor(Color.secondary)
             .edgesIgnoringSafeArea(.bottom)
