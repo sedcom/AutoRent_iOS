@@ -10,14 +10,14 @@ import SwiftUI
 struct ApplicationMainEditView: View, Equatable {
     @ObservedObject public var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
-    @Binding var mEntityId: Int
+    var mEntityId: Int
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
     @Binding var selectedItems: [UUID]
     @Binding var action: Int?
     
-    init(entityId: Binding<Int>, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
-        self._mEntityId = entityId
+    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
+        self.mEntityId = entityId
         self.mCurrentMode = mode
         self._action = action
         self._selectedItems = selectedItems
@@ -126,15 +126,14 @@ struct ApplicationMainEditView: View, Equatable {
             .onChange(of: self.mViewModel.saveResult) { newValue in
                 switch(newValue) {
                     case 1:
-                       let _ = print("Event \(self.mViewModel.saveResult)")
+                       print("Event \(self.mViewModel.saveResult)")
                     case 2:
-                        let _ = print("Event \(self.mViewModel.saveResult)")
+                        print("Event \(self.mViewModel.saveResult)")
                         self.action = 5
-                        self.mEntityId = self.mViewModel.Application!.Id
                     case 3:
-                        let _ = print("Event \(self.mViewModel.saveResult)")
+                        print("Event \(self.mViewModel.saveResult)")
                     default:
-                        let _ = print("Event \(self.mViewModel.saveResult)")
+                        print("Event \(self.mViewModel.saveResult)")
                 }
             }
             if self.mViewModel.Application != nil {

@@ -10,16 +10,15 @@ import SwiftUI
 struct PickerVehicleTypesView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: VehicleTypesViewModel
-    @Binding var vehicleType: VehicleType
-    @State var mSelectedVehicleType: VehicleType?
+    @State var mSelectedItem: VehicleType?
+    @Binding var VehicleType: VehicleType
     
     init(vehicleType: Binding<VehicleType>) {
-        self._vehicleType = vehicleType
+        self._VehicleType = vehicleType
         self.mViewModel = VehicleTypesViewModel(orderBy: "Name asc", include: "options")
     }
     
     var body: some View {
-        
         VStack {
             if self.mViewModel.IsLoading == true {
                 LoadingView()
@@ -47,12 +46,12 @@ struct PickerVehicleTypesView: View {
                                     ForEach(self.mViewModel.Data.Elements.filter { $0.VehicleGroup != nil && $0.VehicleGroup!.Id == vehicleGroup.Id }) { vehicleType in
                                         VStack {
                                             Text(vehicleType.Name)
-                                                .foregroundColor(self.mSelectedVehicleType == vehicleType ? Color.textDark : Color.textLight)
+                                                .foregroundColor(self.mSelectedItem == vehicleType ? Color.textDark : Color.textLight)
                                                 .onTapGesture {
-                                                    self.mSelectedVehicleType = vehicleType
+                                                    self.mSelectedItem = vehicleType
                                                 }
                                         }
-                                        .listRowBackground(self.mSelectedVehicleType == vehicleType ? Color.secondary : Color.primaryDark)
+                                        .listRowBackground(self.mSelectedItem == vehicleType ? Color.secondary : Color.primaryDark)
                                     }
                                 }
                             }
@@ -63,20 +62,18 @@ struct PickerVehicleTypesView: View {
                 }
             }
         }
-        
         .background(Color.primary.edgesIgnoringSafeArea(.all))
-        
         .navigationBarHidden(false)
-        .navigationBarTitle("Выберите тип автотранспорта", displayMode: .inline)
+        .navigationBarTitle(NSLocalizedString("title_picker_vehicletypes", comment: ""), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack {
                 Image("check-circle")
                     .renderingMode(.template)
                     .foregroundColor(Color.textLight)
                     .onTapGesture {
-                        if self.mSelectedVehicleType != nil {                            
+                        if self.mSelectedItem != nil {
                             self.presentationMode.wrappedValue.dismiss()
-                            self.vehicleType = self.mSelectedVehicleType!
+                            self.VehicleType = self.mSelectedItem!
                         }
                     }
             }

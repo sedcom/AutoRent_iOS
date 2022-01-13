@@ -29,9 +29,11 @@ struct ApplicationItemEditView: View {
     
     var body: some View {
         VStack {
+            
+            
             if self.mIndex < self.mViewModel.Application!.Items.count {
                 VStack {
-                    Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex)))
+                    Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex + 1)))
                          .frame(maxWidth: .infinity, alignment: .trailing)
                          .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                          .font(Font.headline.weight(.bold))
@@ -97,14 +99,19 @@ struct ApplicationItemEditView: View {
                             self.showDatePicker.toggle()
                          }
                      }
-                     VStack {
+                    VStack {
                         Text("Тип автотранспорта")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
+                                    
+                        NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) { }
+                            .padding(.bottom, 4)
+                            .hidden()
+                        
                         NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) {
                             TextField("", text: Binding(
-                                        get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): ""},
+                                        get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): "" },
                                         set: { _ in }))
                                 .frame(minHeight: 30, maxHeight: 30)
                                 .background(Color.inputBackgroud)
@@ -115,6 +122,7 @@ struct ApplicationItemEditView: View {
                                     self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
                                     self.mViewModel.objectWillChange.send()
                                 })
+                                
                         }
                      }
                      /*ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in

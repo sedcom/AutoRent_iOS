@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ApplicationEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var mEntityId: Int
+    var mCurrentMode: ModeView
+    var mEntityId: Int
     @State var SelectedItem: Int = 0
     @State var action: Int?
     @State var mAction: Int?
     @State var selectedItems: [UUID] = []
-    var mCurrentMode: ModeView = ModeView.View
     
-    init(entityId: Binding<Int>, mode: ModeView) {
-        self._mEntityId = entityId
+    
+    init(entityId: Int, mode: ModeView) {
+        self.mEntityId = entityId
         self.mCurrentMode = mode
     }
     
@@ -25,7 +26,7 @@ struct ApplicationEditView: View {
         //NavigationView {
             VStack(spacing: 0) {
                 switch self.SelectedItem {
-                    case 0: ApplicationMainEditView(entityId: self.$mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()
+                    case 0: ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()
                     default: VStack {}
                 }                
                 CustomTabView(items: [
@@ -35,7 +36,7 @@ struct ApplicationEditView: View {
                     CustomTabItem(index: 3, label: "menu_history", image: "history", disabled: true)
                 ], selected: $SelectedItem)
             }
-            .accentColor(Color.secondary)
+            .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
             .navigationBarTitle(self.mCurrentMode == ModeView.Create ?  NSLocalizedString("title_application_new", comment: "") : String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), displayMode: .inline)
@@ -62,7 +63,7 @@ struct ApplicationEditView: View {
                     }
             })
             
-        NavigationLink(destination: ApplicationView(entityId: Binding(get: { 55475 }, set: {_ in }), mode: ModeView.View), tag: 2, selection: $mAction)  {
+        NavigationLink(destination: ApplicationView(entityId: self.mEntityId, mode: ModeView.View), tag: 2, selection: $mAction)  {
 
             }
             .onChange(of: self.action) { newValue in

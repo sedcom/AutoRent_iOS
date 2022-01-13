@@ -43,7 +43,6 @@ struct ApplicationsView: View {
                             .padding(.all, 8)
                         }
                         .background(Color.primaryDark)
-                        .edgesIgnoringSafeArea(.horizontal)
                         if self.mViewModel.Data.Elements.count == 0 {
                             EmptyView()
                         }
@@ -56,7 +55,7 @@ struct ApplicationsView: View {
                                                 LoadingRowView()
                                             }
                                             else {
-                                                NavigationLink(destination: ApplicationView(entityId: Binding(get: { application.Id }, set: {_ in }), mode: ModeView.View))  {
+                                                NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View))  {
                                                     ApplicationsRowView(application)
                                                 }
                                             }
@@ -79,7 +78,7 @@ struct ApplicationsView: View {
                                 .listStyle(PlainListStyle())
                                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                                 ZStack {
-                                    NavigationLink(destination: ApplicationEditView(entityId: Binding(get: { 0 }, set: {_ in }), mode: ModeView.Create)) {
+                                    NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create)) {
                                         ZStack {
                                             Circle().fill(Color.secondary)
                                             Image("plus")

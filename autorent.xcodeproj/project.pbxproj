@@ -38,6 +38,7 @@
 		F6927879277A84C6003BD0D5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927878277A84C6003BD0D5 /* Address.swift */; };
 		F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066AF2790173E008AC3D5 /* CustomTabView.swift */; };
 		F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B12790178C008AC3D5 /* CustomTabItem.swift */; };
+		F6A066B427903F24008AC3D5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B327903F24008AC3D5 /* ToastView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -101,6 +102,7 @@
 		F6927878277A84C6003BD0D5 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		F6A066AF2790173E008AC3D5 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F6A066B12790178C008AC3D5 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
+		F6A066B327903F24008AC3D5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
 				E27EA41827577CCD001F7BB4 /* LoadingView.swift */,
+				F6A066B327903F24008AC3D5 /* ToastView.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6ADCC512787A1B100A1CE80 /* PickerVehicleTypesView.swift in Sources */,
+				F6A066B427903F24008AC3D5 /* ToastView.swift in Sources */,
 				F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,

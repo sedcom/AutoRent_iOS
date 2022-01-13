@@ -33,6 +33,7 @@ struct DatetimePicker: View {
                 .padding(.all, 8)
                 .background(Color.white)
             }
+            .accentColor(Color.secondary)
             .background(Color.white)
             .frame(width: 300)
         }

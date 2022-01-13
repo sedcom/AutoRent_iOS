@@ -19,7 +19,7 @@ struct ApplicationItemView: View {
     var body: some View {
         VStack {
              VStack {
-                Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex)))
+                Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex + 1)))
                      .foregroundColor(Color.textLight)
                      .font(Font.headline.weight(.bold))
                      .frame(maxWidth: .infinity, alignment: .trailing)

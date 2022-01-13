@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ApplicationHistoryView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
-    @Binding var mEntityId: Int
+    var mEntityId: Int
     
-    init(entityId: Binding<Int>) {
-        self._mEntityId = entityId
+    init(entityId: Int) {
+        self.mEntityId = entityId
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "history")
     }
     

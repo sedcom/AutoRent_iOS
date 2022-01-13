@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct ApplicationView: View {
-    //@Environment(\.presentationMode) var presentationMode
     var mCurrentMode: ModeView
-    @Binding var mEntityId: Int
+    var mEntityId: Int
     @State var SelectedItem: Int = 0
     @State var mAction: Int?
+    @State var ShowToast: Bool = false
     
-    init(entityId: Binding<Int>, mode: ModeView) {
-        self._mEntityId = entityId
+    init(entityId: Int, mode: ModeView) {
+        self.mEntityId = entityId
         self.mCurrentMode = mode
     }
     
     var body: some View {
         //NavigationView {
+        ZStack {
             VStack(spacing: 0) {
                 switch self.SelectedItem {
-                    case 0: ApplicationMainView(entityId: self.$mEntityId, mode: self.mCurrentMode)
+                    case 0: ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode)
                     case 1: Text("Тут документы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 2: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    case 3: ApplicationHistoryView(entityId: self.$mEntityId)
+                    case 3: ApplicationHistoryView(entityId: self.mEntityId)
                     default: VStack {}
                 }                
                 CustomTabView(items: [
@@ -36,7 +37,7 @@ struct ApplicationView: View {
                     CustomTabItem(index: 3, label: "menu_history", image: "history")
                 ], selected: $SelectedItem)
             }
-            .accentColor(Color.secondary)
+            .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
             .navigationBarTitle(String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), displayMode: .inline)
@@ -49,12 +50,15 @@ struct ApplicationView: View {
                     }
             })
         
-            NavigationLink(destination: ApplicationEditView(entityId: self.$mEntityId, mode: ModeView.Edit), tag: 1, selection: $mAction)  {
+            NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit), tag: 1, selection: $mAction)  {
             }
-            .onChange(of: self.mAction) {newValue in
+            .onChange(of: self.mAction) { newValue in
                 //self.mAction = 0
             }
+            ToastView(text: "OOOOOOOOK!", visible: $ShowToast)
         }
+        .edgesIgnoringSafeArea(.bottom)
+    }
     //}
 }
 

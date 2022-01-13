@@ -29,6 +29,7 @@ struct MainView: View {
                     CustomTabItem(index: 4, label: "menu_userprofile", image: "user"),
                 ], selected: $SelectedItem)
             }
+            .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
             .navigationBarTitle(self.getTitle(), displayMode: .inline)

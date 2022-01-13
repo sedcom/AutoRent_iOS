@@ -10,10 +10,10 @@ import SwiftUI
 struct ApplicationMainView: View, Equatable {
     @ObservedObject var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
-    @Binding var mEntityId: Int
+    var mEntityId: Int
     
-    init(entityId: Binding<Int>, mode: ModeView) {
-        self._mEntityId = entityId
+    init(entityId: Int, mode: ModeView) {
+        self.mEntityId = entityId
         self.mCurrentMode = mode
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
@@ -65,7 +65,7 @@ struct ApplicationMainView: View, Equatable {
                             }
                             .padding(.bottom, 4)
                             ForEach(self.mViewModel.Application!.Items) { item in
-                                let index = self.mViewModel.Application!.Items.firstIndex(of: item)! + 1
+                                let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
                                 ApplicationItemView(applicationItem: item, index: index)
                             }
                             Text("Описание")

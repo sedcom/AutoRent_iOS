@@ -7,23 +7,21 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
 class ApplicationViewModel: ObservableObject {
+    var mApplicationRepository: ApplicationRepository
     var Application: Application?
-    var cancellation: AnyCancellable?
-    var mApplicationRepository: ApplicationRepository = ApplicationRepository()
-    @Binding var mEntityId: Int
+    var mEntityId: Int
     var mInclude: String
-    var IsLoading: Bool
-    var IsError: Bool
+    var IsLoading: Bool = false
+    var IsError: Bool = false
+    var cancellation: AnyCancellable?
     @Published var saveResult: Int = 0
     
-    init(entityId: Binding<Int>, include: String) {
-        self._mEntityId = entityId
-        self.mInclude = include
-        self.IsLoading = false
-        self.IsError = false
+    init(entityId: Int, include: String) {
+        self.mApplicationRepository =  ApplicationRepository()
+        self.mEntityId = entityId
+        self.mInclude = include        
     }
 
     public func createItem() {
@@ -32,10 +30,10 @@ class ApplicationViewModel: ObservableObject {
         application.Address = Address()
         application.Address.AddressTypeId = 3
         let item = ApplicationItem()
+        //item.StartDate = Date()
+        //item.FinishDate = Date()
+        //item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Some vehicle")
         application.Items.append(item)
-        item.StartDate = Date()
-        item.FinishDate = Date()
-        item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Some vehicle")
         application.Notes = "Test iOS"
         self.Application = application
         self.objectWillChange.send()
