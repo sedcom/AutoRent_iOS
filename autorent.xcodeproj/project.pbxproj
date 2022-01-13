@@ -37,6 +37,8 @@
 		F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927874277A8465003BD0D5 /* AddressDistrict.swift */; };
 		F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927876277A8493003BD0D5 /* AddressStreet.swift */; };
 		F6927879277A84C6003BD0D5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927878277A84C6003BD0D5 /* Address.swift */; };
+		F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066AF2790173E008AC3D5 /* CustomTabView.swift */; };
+		F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B12790178C008AC3D5 /* CustomTabItem.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -101,6 +103,8 @@
 		F6927874277A8465003BD0D5 /* AddressDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDistrict.swift; sourceTree = "<group>"; };
 		F6927876277A8493003BD0D5 /* AddressStreet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStreet.swift; sourceTree = "<group>"; };
 		F6927878277A84C6003BD0D5 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		F6A066AF2790173E008AC3D5 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		F6A066B12790178C008AC3D5 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				E27EA41827577CCD001F7BB4 /* LoadingView.swift */,
 				E2550F152757E60C0059B96C /* TabBarItemView.swift */,
 				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
+				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
+				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
+				F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
@@ -536,6 +543,7 @@
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
 				F6ADCC61278B3D8500A1CE80 /* MainTabView.swift in Sources */,
+				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,

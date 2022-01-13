@@ -7,15 +7,32 @@
 
 import Foundation
 
-class ApplicationModel {
+class ApplicationModel : Codable {
     var CompanyId: Int?
     var Address: autorent.Address
     var Notes: String
     var AddedItems: [ApplicationItem]
+    var RemovedItems: [Int]
     
-    init() {
-        self.Address = autorent.Address()
-        self.Notes = ""
-        self.AddedItems = []        
+    init(application: Application) {
+        self.Address = application.Address
+        self.Notes = application.Notes
+        self.AddedItems = []
+        self.RemovedItems = []
+    }
+    
+   func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.Address, forKey: .Address)
+        try container.encode(self.Notes, forKey: .Notes)
+        try container.encode(self.AddedItems, forKey: .AddedItems)
+        try container.encode(self.RemovedItems, forKey: .RemovedItems)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case Address = "address"
+        case Notes = "notes"
+        case AddedItems = "addedItems"
+        case RemovedItems = "removedItems"
     }
 }

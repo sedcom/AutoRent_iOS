@@ -31,23 +31,9 @@ class Application: Entity {
         self.User = try container.decode(autorent.User.self, forKey: .User)
         self.Address = try container.decode(autorent.Address.self, forKey: .Address)
         self.Notes = try container.decode(String.self, forKey: .Notes)
-        self.Items = []
-        if container.contains(.Items) {
-            self.Items = try container.decode([ApplicationItem].self, forKey: .Items)
-        }
-        self.History = []
-        if container.contains(.History) {
-            self.History = try container.decode([ApplicationHistory].self, forKey: .History)
-        }
+        self.Items = container.contains(.Items) ? try container.decode([ApplicationItem].self, forKey: .Items) : []
+        self.History = container.contains(.History) ? try container.decode([ApplicationHistory].self, forKey: .History) : []
         try super.init(from: decoder)
-    }
-    
-    override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.Address, forKey: .Address)
-        try container.encode(self.Notes, forKey: .Notes)
-        try container.encode(self.Items, forKey: .AddedItems)
-        try super.encode(to: encoder)
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -56,7 +42,6 @@ class Application: Entity {
         case Address = "address"
         case Notes = "notes"
         case Items = "items"
-        case AddedItems = "addedItems"
         case History = "history"
     }
     

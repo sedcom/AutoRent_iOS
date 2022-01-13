@@ -8,32 +8,36 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var tabIdx: TabMain = .tab1
+    @State var SelectedItem: Int = 0
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if (self.tabIdx == .tab1) {
+                if (self.SelectedItem == 0) {
                     MapView()
                 }
-                if (self.tabIdx == .tab2) {
-                    //NavigationView {
+                if (self.SelectedItem == 1) {
                     ApplicationsView()
-                    //}
                 }
-                if (self.tabIdx == .tab3) {
+                if (self.SelectedItem == 2) {
                     Text("Тут заказы...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                if (self.tabIdx == .tab4) {
+                if (self.SelectedItem == 3) {
                     Text("Тут счета...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                if (self.tabIdx == .tab5) {
+                if (self.SelectedItem == 4) {
                     Text("Тут профиль...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                MainTabView(tabIdx: $tabIdx)
+                CustomTabView(items: [
+                    CustomTabItem(index: 0, label: "menu_map", image: "map-marked-alt"),
+                    CustomTabItem(index: 1, label: "Заявки", image: "clipboard-list"),
+                    CustomTabItem(index: 2, label: "Заказы", image: "copy"),
+                    CustomTabItem(index: 3, label: "Платежи", image: "ruble-sign"),
+                    CustomTabItem(index: 4, label: "Профиль", image: "user"),
+                ], selected: $SelectedItem)
             }
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
@@ -51,12 +55,12 @@ struct MainView: View {
     }
     
     func getTitle() -> String {
-        switch self.tabIdx {
-            case .tab1: return "Карта"
-            case .tab2: return "Заявки"
-            case .tab3: return "Заказы"
-            case .tab4: return "Платежи"
-            case .tab5: return "Профиль"
+        switch self.SelectedItem {
+            case 0: return "Карта"
+            case 1: return "Заявки"
+            case 2: return "Заказы"
+            case 3: return "Платежи"
+            case 4: return "Профиль"
             default: return ""
         }
     }

@@ -10,11 +10,12 @@ import SwiftUI
 struct ApplicationView: View {
     //@Environment(\.presentationMode) var presentationMode
     var mCurrentMode: ModeView
-    var mEntityId: Int
+    @Binding var mEntityId: Int
     @State var tabIdx: TabApplication = .tab1
+    @State var mAction: Int?
     
-    init(entityId: Int, mode: ModeView) {
-        self.mEntityId = entityId
+    init(entityId: Binding<Int>, mode: ModeView) {
+        self._mEntityId = entityId
         self.mCurrentMode = mode
     }
     
@@ -22,7 +23,7 @@ struct ApplicationView: View {
         //NavigationView {
             VStack(spacing: 0) {
                 if (self.tabIdx == .tab1) {
-                    ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode)
+                    ApplicationMainView(entityId: self.$mEntityId, mode: self.mCurrentMode)
                 }
                 if (self.tabIdx == .tab2) {
                     Text("Тут документы...")
@@ -33,7 +34,7 @@ struct ApplicationView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
                 if (self.tabIdx == .tab4) {
-                    ApplicationHistoryView(entityId: self.mEntityId)
+                    ApplicationHistoryView(entityId: self.$mEntityId)
                 }
                 ApplicationTabView(tabIdx: $tabIdx)
             }
@@ -42,12 +43,21 @@ struct ApplicationView: View {
             .navigationBarHidden(false)
             .navigationBarTitle("Application #.\(self.mEntityId)", displayMode: .inline)
             .navigationBarItems(trailing: HStack {
-                NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit)) {
+                //NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit)) {
                     Image("iconmonstr-edit")
                         .renderingMode(.template)
-                        .foregroundColor(Color.textLight)                        
-                }
+                        .foregroundColor(Color.textLight)
+                        .onTapGesture {
+                            self.mAction = 1
+                        }
+                //}
             })
+        
+            NavigationLink(destination: ApplicationEditView(entityId: self.$mEntityId, mode: ModeView.Edit), tag: 1, selection: $mAction)  {
+            }
+            .onChange(of: self.mAction) {newValue in
+                //self.mAction = 0
+            }
         }
     //}
 }

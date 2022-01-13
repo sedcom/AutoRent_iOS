@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ApplicationMainEditView: View, Equatable {
-
     @ObservedObject public var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
-    var mEntityId: Int
+    @Binding var mEntityId: Int
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
     @Binding var selectedItems: [UUID]
     @Binding var action: Int?
     
-    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
-        self.mEntityId = entityId
+    init(entityId: Binding<Int>, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
+        self._mEntityId = entityId
         self.mCurrentMode = mode
         self._action = action
         self._selectedItems = selectedItems
@@ -114,7 +113,8 @@ struct ApplicationMainEditView: View, Equatable {
                     case 1:
                         self.mViewModel.saveItem()
                     case 2:
-                        self.mViewModel.saveItem()
+                        //self.mViewModel.saveItem()
+                        let _ = print("Event 2")
                     case 3:
                         self.mViewModel.removeApplicationItems(items: self.selectedItems)                        
                         self.selectedItems.removeAll()
@@ -123,9 +123,35 @@ struct ApplicationMainEditView: View, Equatable {
                 }
                 self.action = 0
             }
-        
+            .onChange(of: self.mViewModel.saveResult) { newValue in
+                switch(newValue) {
+                    case 1:
+                       let _ = print("Event \(self.mViewModel.saveResult)")
+                    case 2:
+                        let _ = print("Event \(self.mViewModel.saveResult)")
+                        self.action = 5
+                        self.mEntityId = self.mViewModel.Application!.Id
+                    case 3:
+                        let _ = print("Event \(self.mViewModel.saveResult)")
+                    default:
+                        let _ = print("Event \(self.mViewModel.saveResult)")
+                }
+            }
+            if self.mViewModel.Application != nil {
+                //NavigationLink(destination: ApplicationView(entityId: self.mViewModel.Application!.Id, mode: ModeView.View), tag: 2, selection: Binding(get: { self.mViewModel.saveResult}, set: { _ in }))  { }
+            }
+           
+            
             if self.showDatePicker {
                 DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
+            }
+            if self.mViewModel.saveResult == 2 {
+                Text("Result: 2")
+                    .foregroundColor(Color.red)
+            }
+            if self.mViewModel.saveResult == 3 {
+                Text("Result: 3")
+                    .foregroundColor(Color.red)
             }
         }
     }

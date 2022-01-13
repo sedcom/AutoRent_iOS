@@ -7,18 +7,20 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class ApplicationViewModel: ObservableObject {
     var Application: Application?
     var cancellation: AnyCancellable?
     var mApplicationRepository: ApplicationRepository = ApplicationRepository()
-    var mEntityId: Int
+    @Binding var mEntityId: Int
     var mInclude: String
     var IsLoading: Bool
     var IsError: Bool
+    @Published var saveResult: Int = 0
     
-    init(entityId: Int, include: String) {
-        self.mEntityId = entityId
+    init(entityId: Binding<Int>, include: String) {
+        self._mEntityId = entityId
         self.mInclude = include
         self.IsLoading = false
         self.IsError = false
@@ -29,7 +31,12 @@ class ApplicationViewModel: ObservableObject {
         application.User = User()
         application.Address = Address()
         application.Address.AddressTypeId = 3
-        application.Items.append(ApplicationItem())
+        let item = ApplicationItem()
+        application.Items.append(item)
+        item.StartDate = Date()
+        item.FinishDate = Date()
+        item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Some vehicle")
+        application.Notes = "Test iOS"
         self.Application = application
         self.objectWillChange.send()
     }
@@ -101,20 +108,23 @@ class ApplicationViewModel: ObservableObject {
     public func saveItem() {
         debugPrint("Start saveData")
         self.IsLoading = true
-        self.IsError = false
         self.objectWillChange.send()
-        self.cancellation = self.mApplicationRepository.createItem(application: self.Application!)
+        var model = ApplicationModel(application: self.Application!)
+        model.AddedItems = self.Application!.Items
+        self.cancellation = self.mApplicationRepository.createItem(application: model)
             .mapError({ (error) -> Error in
                 debugPrint(error)
-                self.IsError = true
                 self.IsLoading = false
-                self.objectWillChange.send()
+                self.saveResult = 3
+                //self.objectWillChange.send()
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish saveData")
                 self.IsLoading = false
-                self.objectWillChange.send()
+                self.Application!.Id = result.Id
+                self.saveResult = 2
+                //self.objectWillChange.send()
         })
     }    
 }

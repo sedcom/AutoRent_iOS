@@ -20,7 +20,7 @@ class ApplicationRepository {
         return publisher.value();
     }
     
-    public func createItem(application: Application) -> AnyPublisher<Application, AFError> {
+    public func createItem(application: ApplicationModel) -> AnyPublisher<Application, AFError> {
         let jsonData = try! JSONEncoder().encode(application)
         let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]        
         let publisher = NetworkService.getInstance().requestPost(url: "/application", parameters: parameters).publishDecodable(type: Application.self)

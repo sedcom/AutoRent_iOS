@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct ApplicationMainView: View {
+struct ApplicationMainView: View, Equatable {
     @ObservedObject var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
-    var mEntityId: Int
+    @Binding var mEntityId: Int
     
-    init(entityId: Int, mode: ModeView) {
-        self.mEntityId = entityId
+    init(entityId: Binding<Int>, mode: ModeView) {
+        self._mEntityId = entityId
         self.mCurrentMode = mode
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
+    }
+    
+    static func == (lhs: ApplicationMainView, rhs: ApplicationMainView) -> Bool {
+        return true
     }
     
     var body: some View {
