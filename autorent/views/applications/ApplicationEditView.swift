@@ -24,31 +24,21 @@ struct ApplicationEditView: View {
     var body: some View {
         //NavigationView {
             VStack(spacing: 0) {
-                if (self.SelectedItem == 0) {
-                    ApplicationMainEditView(entityId: self.$mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()
-                }
-                if (self.SelectedItem == 1) {
-                    Text("Тут документы...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                }
-                if (self.SelectedItem == 2) {
-                    Text("Тут платежи...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                }
-                if (self.SelectedItem == 3) {
-                    ApplicationHistoryView(entityId: self.$mEntityId)
-                }
+                switch self.SelectedItem {
+                    case 0: ApplicationMainEditView(entityId: self.$mEntityId, mode: self.mCurrentMode, action: $action, selectedItems: $selectedItems).equatable()
+                    default: VStack {}
+                }                
                 CustomTabView(items: [
-                    CustomTabItem(index: 0, label: "Заявка", image: "clipboard-list"),
-                    CustomTabItem(index: 1, label: "Документы", image: "file-signature", disabled: true),
-                    CustomTabItem(index: 2, label: "Платежи", image: "ruble-sign", disabled: true),
-                    CustomTabItem(index: 3, label: "История", image: "history", disabled: true),
+                    CustomTabItem(index: 0, label: "menu_application", image: "clipboard-list"),
+                    CustomTabItem(index: 1, label: "menu_documents", image: "file-signature", disabled: true),
+                    CustomTabItem(index: 2, label: "menu_payments", image: "ruble-sign", disabled: true),
+                    CustomTabItem(index: 3, label: "menu_history", image: "history", disabled: true)
                 ], selected: $SelectedItem)
             }
             .accentColor(Color.secondary)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
-            .navigationBarTitle("New/Edit", displayMode: .inline)
+            .navigationBarTitle(self.mCurrentMode == ModeView.Create ?  NSLocalizedString("title_application_new", comment: "") : String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), displayMode: .inline)
             .navigationBarItems(trailing: HStack {
                 Image("check-circle")
                     .renderingMode(.template)

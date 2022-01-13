@@ -24,7 +24,6 @@ struct ApplicationMainView: View, Equatable {
     
     var body: some View {
         VStack {
-            
             if self.mViewModel.IsLoading == true  {
                 LoadingView()
             }
@@ -90,7 +89,6 @@ struct ApplicationMainView: View, Equatable {
             if self.mViewModel.Application == nil {
                 self.mViewModel.loadData()
             }
-        }
-        
+        }        
     }
 }

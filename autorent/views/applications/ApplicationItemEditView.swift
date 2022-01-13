@@ -31,7 +31,7 @@ struct ApplicationItemEditView: View {
         VStack {
             if self.mIndex < self.mViewModel.Application!.Items.count {
                 VStack {
-                    Text("Position #\(self.mIndex + 1)")
+                    Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex)))
                          .frame(maxWidth: .infinity, alignment: .trailing)
                          .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                          .font(Font.headline.weight(.bold))
