@@ -11,20 +11,20 @@ struct ApplicationItemEditView: View {
     @ObservedObject var mViewModel : ApplicationViewModel
     var mCurrentMode: ModeView
     var mIndex: Int
-    @Binding var showDatePicker: Bool
-    @Binding var selectedDate: Date
-    @Binding var selectedItems: [UUID]
+    @Binding var ShowDatePicker: Bool
+    @Binding var SelectedDate: Date
+    @Binding var SelectedItems: [UUID]
     @State var mDatePickerIndex: Int = 0
-    @State var selectedVehicleType: VehicleType = VehicleType()
+    @State var SelectedVehicleType: VehicleType = VehicleType()
     @State var mIsSelected: Bool = false
     
     init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>, selectedItems: Binding<[UUID]>) {
         self.mViewModel = viewModel
         self.mCurrentMode = mode
         self.mIndex = index
-        self._showDatePicker = showDatePicker
-        self._selectedDate = selectedDate
-        self._selectedItems = selectedItems
+        self._ShowDatePicker = showDatePicker
+        self._SelectedDate = selectedDate
+        self._SelectedItems = selectedItems
     }
     
     var body: some View {
@@ -46,10 +46,10 @@ struct ApplicationItemEditView: View {
                                 Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
                                     .foregroundColor(Color.textDark)
                                     .lineLimit(1)
-                                    .onChange(of:  $selectedDate.wrappedValue, perform: { value in
+                                    .onChange(of:  $SelectedDate.wrappedValue, perform: { value in
                                         if self.mDatePickerIndex == 1 {
                                             self.mViewModel.Application!.Items[self.mIndex].StartDate = value
-                                            self.mViewModel.objectWillChange.send()
+                                            self.mViewModel.updateApplicationItem(item: self.mViewModel.Application!.Items[self.mIndex])
                                         }
                                     })
                                  Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].StartDate))
@@ -64,7 +64,7 @@ struct ApplicationItemEditView: View {
                          .cornerRadius(4)
                          .onTapGesture {
                             self.mDatePickerIndex = 1
-                            self.showDatePicker.toggle()
+                            self.ShowDatePicker.toggle()
                          }
                          HStack {
                              Image("calendar-alt")
@@ -76,10 +76,10 @@ struct ApplicationItemEditView: View {
                                  Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
                                     .foregroundColor(Color.textDark)
                                     .lineLimit(1)
-                                    .onChange(of:  $selectedDate.wrappedValue, perform: { value in
+                                    .onChange(of:  $SelectedDate.wrappedValue, perform: { value in
                                         if self.mDatePickerIndex == 2 {
                                             self.mViewModel.Application!.Items[self.mIndex].FinishDate = value
-                                            self.mViewModel.objectWillChange.send()
+                                            self.mViewModel.updateApplicationItem(item: self.mViewModel.Application!.Items[self.mIndex])
                                         }
                                     })
                                  Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mViewModel.Application!.Items[self.mIndex].FinishDate))
@@ -94,7 +94,7 @@ struct ApplicationItemEditView: View {
                          .cornerRadius(4)
                          .onTapGesture {
                             self.mDatePickerIndex = 2
-                            self.showDatePicker.toggle()
+                            self.ShowDatePicker.toggle()
                          }
                      }
                     VStack {
@@ -103,11 +103,8 @@ struct ApplicationItemEditView: View {
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                                     
-                        NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) { }
-                            .padding(.bottom, 4)
-                            .hidden()
-                        
-                        NavigationLink(destination: PickerVehicleTypesView(vehicleType: $selectedVehicleType)) {
+                                                
+                        NavigationLink(destination: PickerVehicleTypesView(vehicleType: $SelectedVehicleType)) {
                             TextField("", text: Binding(
                                         get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): "" },
                                         set: { _ in }))
@@ -116,11 +113,10 @@ struct ApplicationItemEditView: View {
                                 .foregroundColor(Color.textDark)
                                 .cornerRadius(4)
                                 .disabled(true)
-                                .onChange(of:  $selectedVehicleType.wrappedValue, perform: { value in
+                                .onChange(of:  self.SelectedVehicleType, perform: { value in
                                     self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
-                                    self.mViewModel.objectWillChange.send()
-                                })
-                                
+                                    self.mViewModel.updateApplicationItem(item: self.mViewModel.Application!.Items[self.mIndex])
+                                })                                
                         }
                      }
                      /*ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
@@ -147,17 +143,17 @@ struct ApplicationItemEditView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(self.mIsSelected ? Color.secondary : Color.primaryDark)
-        .cornerRadius(5)
+        .cornerRadius(5)        
         .onTapGesture {
             self.mIsSelected.toggle()
             if self.mIsSelected {
                 let uuid = self.mViewModel.Application!.Items[self.mIndex].id
-                self.selectedItems.append(uuid)
+                self.SelectedItems.append(uuid)
             }
             else {
                 let uuid = self.mViewModel.Application!.Items[self.mIndex].id
-                let index = self.selectedItems.firstIndex(of: uuid)
-                self.selectedItems.remove(at: index!)
+                let index = self.SelectedItems.firstIndex(of: uuid)
+                self.SelectedItems.remove(at: index!)
             }
         }
     }

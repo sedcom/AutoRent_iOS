@@ -47,6 +47,20 @@ class ApplicationViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     
+    public func updateApplicationItem(item: ApplicationItem) {
+        if (item.Id > 0) {
+            var index = self.AddedItems.firstIndex { $0.id == item.id }
+            if (index == nil) {
+                self.AddedItems.append(item)
+            }
+            index = self.RemovedItems.firstIndex { $0 == item.Id }
+            if (index == nil) {
+                self.RemovedItems.append(item.Id)
+            }
+        }
+        self.objectWillChange.send()
+    }
+    
     public func removeApplicationItems(items: [UUID]) {
         items.forEach { uuid in
             var index = self.Application!.Items.firstIndex { $0.id == uuid }

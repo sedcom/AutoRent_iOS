@@ -40,6 +40,7 @@
 		F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B12790178C008AC3D5 /* CustomTabItem.swift */; };
 		F6A066B427903F24008AC3D5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B327903F24008AC3D5 /* ToastView.swift */; };
 		F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B52791EA32008AC3D5 /* AddressType.swift */; };
+		F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B72794A53E008AC3D5 /* PickerMapAddressView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -105,6 +106,7 @@
 		F6A066B12790178C008AC3D5 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		F6A066B327903F24008AC3D5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F6A066B52791EA32008AC3D5 /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
+		F6A066B72794A53E008AC3D5 /* PickerMapAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerMapAddressView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				E28538802754DE3D0008F6FB /* MapView.swift */,
+				F6A066B72794A53E008AC3D5 /* PickerMapAddressView.swift */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
 				F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */,
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
+				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */,

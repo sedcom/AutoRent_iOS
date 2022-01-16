@@ -37,7 +37,7 @@ struct ToastView: View  {
                 .opacity(self.Visible ? 1 : 0)
                 .transition(.slide)
             }
-            .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)            
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
         }
     }
 }

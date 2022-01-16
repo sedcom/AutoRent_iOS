@@ -72,8 +72,9 @@ struct PickerVehicleTypesView: View {
                     .foregroundColor(Color.textLight)
                     .onTapGesture {
                         if self.mSelectedItem != nil {
-                            self.presentationMode.wrappedValue.dismiss()
+                            
                             self.VehicleType = self.mSelectedItem!
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                     }
             }

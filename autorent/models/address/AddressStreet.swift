@@ -14,6 +14,10 @@ class AddressStreet: Codable {
         
     }
     
+    init (name: String) {
+        self.Name = name
+    }
+    
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.Name = try container.decode(String?.self, forKey: .Name)
