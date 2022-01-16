@@ -8,10 +8,10 @@
 import Foundation
 
 class CustomTabItem {
-    public var Index: Int
-    public var Label: String
-    public var Image: String
-    public var Disabled: Bool
+    var Index: Int
+    var Label: String
+    var Image: String
+    var Disabled: Bool
     
     init(index: Int, label: String, image: String, disabled: Bool = false) {
         self.Index = index

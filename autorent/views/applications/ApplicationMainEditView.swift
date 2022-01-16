@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct ApplicationMainEditView: View, Equatable {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject public var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
-    @State var showDatePicker: Bool = false
-    @State var selectedDate: Date = Date()
-    @Binding var selectedItems: [UUID]
-    @Binding var action: Int?
+    @State var ShowDatePicker: Bool = false
+    @State var SelectedDate: Date = Date()
+    @Binding var SelectedItems: [UUID]
+    @Binding var Action: Int?
+    @Binding var ActionResult: OperationResult?
+    @State var ShowToast: Bool = false
+    @State var mToastText: String = ""
     
-    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>) {
+    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._action = action
-        self._selectedItems = selectedItems
+        self._Action = action
+        self._SelectedItems = selectedItems
+        self._ActionResult = result
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
     
@@ -70,7 +75,7 @@ struct ApplicationMainEditView: View, Equatable {
                                         .padding(.bottom, 4)
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
-                                        ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $showDatePicker, selectedDate: $selectedDate, selectedItems: $selectedItems)
+                                        ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate, selectedItems: $SelectedItems)
                                     }
                                     Button("Add", action: {
                                         self.mViewModel.addApplicationItem()
@@ -108,50 +113,41 @@ struct ApplicationMainEditView: View, Equatable {
                     }
                 }
             }
-            .onChange(of: action) { newValue in
+            .onChange(of: Action) { newValue in
                 switch(newValue) {
                     case 1:
                         self.mViewModel.saveItem()
                     case 2:
-                        //self.mViewModel.saveItem()
-                        let _ = print("Event 2")
+                        self.mViewModel.saveItem()
                     case 3:
-                        self.mViewModel.removeApplicationItems(items: self.selectedItems)                        
-                        self.selectedItems.removeAll()
-                    default:
-                        self.action = 0
+                        self.mViewModel.removeApplicationItems(items: self.SelectedItems)
+                        self.SelectedItems.removeAll()
+                    default: ()
                 }
-                self.action = 0
+                self.Action = 0
             }
-            .onChange(of: self.mViewModel.saveResult) { newValue in
-                switch(newValue) {
-                    case 1:
-                       print("Event \(self.mViewModel.saveResult)")
-                    case 2:
-                        print("Event \(self.mViewModel.saveResult)")
-                        self.action = 5
-                    case 3:
-                        print("Event \(self.mViewModel.saveResult)")
-                    default:
-                        print("Event \(self.mViewModel.saveResult)")
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
+                if newValue != nil {
+                    switch(newValue!) {
+                        case OperationResult.Error:
+                                self.mToastText = NSLocalizedString("message_save_error", comment: "")
+                                self.ShowToast = true
+                        case OperationResult.Create:
+                                presentationMode.wrappedValue.dismiss()
+                        case OperationResult.Update:
+                                presentationMode.wrappedValue.dismiss()
+                            default: print()
+                    }
+                    self.ActionResult = newValue
+                    self.mViewModel.ActionResult = nil
                 }
             }
-            if self.mViewModel.Application != nil {
-                //NavigationLink(destination: ApplicationView(entityId: self.mViewModel.Application!.Id, mode: ModeView.View), tag: 2, selection: Binding(get: { self.mViewModel.saveResult}, set: { _ in }))  { }
-            }
-           
             
-            if self.showDatePicker {
-                DatetimePicker(showDatePicker: $showDatePicker, selectedDate: $selectedDate)
+            if self.ShowDatePicker {
+                DatetimePicker(showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate)
             }
-            if self.mViewModel.saveResult == 2 {
-                Text("Result: 2")
-                    .foregroundColor(Color.red)
-            }
-            if self.mViewModel.saveResult == 3 {
-                Text("Result: 3")
-                    .foregroundColor(Color.red)
-            }
+            
+            ToastView(text: self.mToastText, visible: $ShowToast)
         }
     }
 }

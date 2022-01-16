@@ -29,8 +29,6 @@ struct ApplicationItemEditView: View {
     
     var body: some View {
         VStack {
-            
-            
             if self.mIndex < self.mViewModel.Application!.Items.count {
                 VStack {
                     Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex + 1)))

@@ -27,6 +27,7 @@ class Application: Entity {
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        let keys = container.allKeys
         self.CreatedDate = Utils.convertDate(value: try container.decode(String.self, forKey: .CreatedDate))
         self.User = try container.decode(autorent.User.self, forKey: .User)
         self.Address = try container.decode(autorent.Address.self, forKey: .Address)

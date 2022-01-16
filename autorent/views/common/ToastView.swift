@@ -18,7 +18,14 @@ struct ToastView: View  {
     }
     
     var body: some View {
-        GeometryReader { geo in
+        if self.Visible {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                self.Visible = false
+                print("Toast hide...")
+            }
+        }
+        
+        return GeometryReader { geo in
             ZStack {
                 VStack {
                     Text(self.mText)
@@ -30,12 +37,7 @@ struct ToastView: View  {
                 .opacity(self.Visible ? 1 : 0)
                 .transition(.slide)
             }
-            .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
-            .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-                    self.Visible = false
-                }
-            }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)            
         }
     }
 }

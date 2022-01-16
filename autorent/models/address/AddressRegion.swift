@@ -8,15 +8,15 @@
 import Foundation
 
 class AddressRegion: Codable {
-    var Name: String
+    var Name: String?
     
-    init() {
-        self.Name = ""
+    init () {
+        
     }
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.Name = try container.decode(String.self, forKey: .Name)
+        self.Name = try container.decode(String?.self, forKey: .Name)
     }
     
     func encode(to encoder: Encoder) throws {

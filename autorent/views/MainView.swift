@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum OperationResult {
+   case Error, Create, Update, Send
+}
+
 struct MainView: View {
     @State var SelectedItem: Int = 0
     
@@ -34,7 +38,7 @@ struct MainView: View {
             .navigationBarHidden(false)
             .navigationBarTitle(self.getTitle(), displayMode: .inline)
             .navigationBarItems(trailing:
-                HStack {
+                HStack(spacing: 10) {
                     Image("comment-dots")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)

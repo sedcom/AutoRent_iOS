@@ -22,8 +22,15 @@ class ApplicationRepository {
     
     public func createItem(application: ApplicationModel) -> AnyPublisher<Application, AFError> {
         let jsonData = try! JSONEncoder().encode(application)
-        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]        
+        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
         let publisher = NetworkService.getInstance().requestPost(url: "/application", parameters: parameters).publishDecodable(type: Application.self)
+        return publisher.value();
+    }
+    
+    public func updateItem(applicationId: Int, application: ApplicationModel) -> AnyPublisher<Application, AFError> {
+        let jsonData = try! JSONEncoder().encode(application)
+        var parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+        let publisher = NetworkService.getInstance().requestPut(url: String(format: "/application?applicationId=%@", String(applicationId)), parameters: parameters).publishDecodable(type: Application.self)
         return publisher.value();
     }
 }

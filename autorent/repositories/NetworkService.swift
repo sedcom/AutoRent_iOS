@@ -28,4 +28,8 @@ class  NetworkService {
     public func requestPost(url: String, parameters: [String: Any]) -> DataRequest {
         return AF.request(NetworkService.BASE_URL + url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: [.authorization(NetworkService.TOKEN)])
     }
+    
+    public func requestPut(url: String, parameters: [String: Any]) -> DataRequest {
+        return AF.request(NetworkService.BASE_URL + url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: [.authorization(NetworkService.TOKEN)])
+    }
 }

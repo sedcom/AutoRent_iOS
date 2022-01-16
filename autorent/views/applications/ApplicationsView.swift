@@ -10,6 +10,9 @@ import SwiftUI
 struct ApplicationsView: View {
     @ObservedObject var mViewModel: ApplicationsViewModel
     @State var mCurrentFilter: Int
+    @State var ActionResult: OperationResult?
+    @State var ShowToast: Bool = false
+    @State var mToastText: String = ""
     
     init() {
         self.mCurrentFilter = 1
@@ -78,7 +81,7 @@ struct ApplicationsView: View {
                                 .listStyle(PlainListStyle())
                                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                                 ZStack {
-                                    NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create)) {
+                                    NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create, result: $ActionResult)) {
                                         ZStack {
                                             Circle().fill(Color.secondary)
                                             Image("plus")
@@ -92,6 +95,9 @@ struct ApplicationsView: View {
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                                 .offset(x: geo.size.width - 65, y: -5)
+                                ZStack {
+                                    ToastView(text: self.mToastText, visible: $ShowToast)
+                                }
                             }
                         }
                     }
@@ -105,7 +111,17 @@ struct ApplicationsView: View {
                 self.mViewModel.loadData()
             }
         }
-
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                switch(newValue!) {
+                    case OperationResult.Create:
+                        self.mToastText = NSLocalizedString("message_save_success", comment: "")
+                        self.ShowToast = true
+                    default: print()
+                }
+                self.ActionResult = newValue
+            }
+        }
     }
  
     private func setFilter(filterIndex: Int, filter: String) {

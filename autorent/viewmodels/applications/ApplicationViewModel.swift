@@ -11,15 +11,19 @@ import Combine
 class ApplicationViewModel: ObservableObject {
     var mApplicationRepository: ApplicationRepository
     var Application: Application?
+    var AddedItems: [ApplicationItem]
+    var RemovedItems: [Int]
     var mEntityId: Int
     var mInclude: String
     var IsLoading: Bool = false
     var IsError: Bool = false
     var cancellation: AnyCancellable?
-    @Published var saveResult: Int = 0
+    @Published var ActionResult: OperationResult?
     
     init(entityId: Int, include: String) {
         self.mApplicationRepository =  ApplicationRepository()
+        self.AddedItems = []
+        self.RemovedItems = []
         self.mEntityId = entityId
         self.mInclude = include        
     }
@@ -28,27 +32,35 @@ class ApplicationViewModel: ObservableObject {
         let application = autorent.Application()
         application.User = User()
         application.Address = Address()
-        application.Address.AddressTypeId = 3
+        application.Address.AddressType = AddressType(id: 3, name: "")
         let item = ApplicationItem()
-        //item.StartDate = Date()
-        //item.FinishDate = Date()
-        //item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Some vehicle")
         application.Items.append(item)
-        application.Notes = "Test iOS"
         self.Application = application
+        self.AddedItems.append(item)
         self.objectWillChange.send()
     }
     
     public func addApplicationItem() {
         let item = ApplicationItem()
         self.Application!.Items.append(item)
+        self.AddedItems.append(item)
         self.objectWillChange.send()
     }
     
     public func removeApplicationItems(items: [UUID]) {
         items.forEach { uuid in
-            let index = self.Application!.Items.firstIndex { $0.id == uuid }!
-            self.Application!.Items.remove(at: index)
+            var index = self.Application!.Items.firstIndex { $0.id == uuid }
+            if (index != nil) {
+                let item = self.Application!.Items[index!]
+                self.Application!.Items.remove(at: index!)
+                if (item.Id > 0) {
+                    self.RemovedItems.append(item.Id)
+                }
+            }
+            index = self.AddedItems.firstIndex { $0.id == uuid }
+            if (index != nil) {
+                self.AddedItems.remove(at: index!)
+            }
         }
     }
     
@@ -107,22 +119,46 @@ class ApplicationViewModel: ObservableObject {
         debugPrint("Start saveData")
         self.IsLoading = true
         self.objectWillChange.send()
-        var model = ApplicationModel(application: self.Application!)
-        model.AddedItems = self.Application!.Items
+        let model = ApplicationModel(application: self.Application!)
+        model.AddedItems = self.AddedItems
+        model.RemovedItems = self.RemovedItems
+        if self.Application!.Id == 0 {
+            self.createItem(model: model)
+        }
+        else {
+            self.updateItem(applicationId: self.Application!.Id, model: model)
+        }
+    }
+    
+    private func createItem(model: ApplicationModel) {
         self.cancellation = self.mApplicationRepository.createItem(application: model)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.IsLoading = false
-                self.saveResult = 3
-                //self.objectWillChange.send()
+                self.ActionResult = OperationResult.Error
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish saveData")
                 self.IsLoading = false
                 self.Application!.Id = result.Id
-                self.saveResult = 2
-                //self.objectWillChange.send()
+                self.ActionResult = OperationResult.Create
         })
-    }    
+    }
+    
+    private func updateItem(applicationId: Int, model: ApplicationModel) {
+        self.cancellation = self.mApplicationRepository.updateItem(applicationId: applicationId, application: model)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Error
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish saveData")
+                self.IsLoading = false
+                self.Application!.Id = result.Id
+                self.ActionResult = OperationResult.Update
+        })
+    }
 }
