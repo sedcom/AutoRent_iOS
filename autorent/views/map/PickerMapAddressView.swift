@@ -9,17 +9,14 @@ import SwiftUI
 
 struct PickerMapAddressView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var SelectedMapAddress: autorent.Address
+    @ObservedObject var SelectedMapAddress: AddressObservable
     
-    init(address: Binding<autorent.Address>) {
-        self._SelectedMapAddress = address
+    init(selectedMapAddress: AddressObservable) {
+        self.SelectedMapAddress = selectedMapAddress
     }
     
     var body: some View {
-        //MapView()
-        VStack {
-        
-        }
+        MapView()
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)
@@ -37,12 +34,9 @@ struct PickerMapAddressView: View {
                         address.City = AddressCity(name: "Moscow")
                         address.Street = AddressStreet(name: "Lenina")
                         address.House = "1"
-                        self.SelectedMapAddress = address
+                        self.SelectedMapAddress.Address = address
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    .onChange(of:  $SelectedMapAddress.wrappedValue, perform: { value in
-                        print("OK")
-                    })
             }
         )
     }

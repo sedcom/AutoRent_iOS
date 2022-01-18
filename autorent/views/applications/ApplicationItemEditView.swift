@@ -15,8 +15,8 @@ struct ApplicationItemEditView: View {
     @Binding var SelectedDate: Date
     @Binding var SelectedItems: [UUID]
     @State var mDatePickerIndex: Int = 0
-    @State var SelectedVehicleType: VehicleType = VehicleType()
     @State var mIsSelected: Bool = false
+    @StateObject var SelectedVehicleType = VehicleTypeObservable()
     
     init(viewModel: ApplicationViewModel, mode: ModeView, index: Int, showDatePicker: Binding<Bool>, selectedDate: Binding<Date>, selectedItems: Binding<[UUID]>) {
         self.mViewModel = viewModel
@@ -104,7 +104,7 @@ struct ApplicationItemEditView: View {
                             .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
                                     
                                                 
-                        NavigationLink(destination: PickerVehicleTypesView(vehicleType: $SelectedVehicleType)) {
+                        NavigationLink(destination: PickerVehicleTypesView(selectedVehicleType: self.SelectedVehicleType)) {
                             TextField("", text: Binding(
                                         get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): "" },
                                         set: { _ in }))
@@ -113,8 +113,8 @@ struct ApplicationItemEditView: View {
                                 .foregroundColor(Color.textDark)
                                 .cornerRadius(4)
                                 .disabled(true)
-                                .onChange(of:  self.SelectedVehicleType, perform: { value in
-                                    self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value
+                                .onChange(of:  self.SelectedVehicleType.VehicleType, perform: { value in
+                                    self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value!
                                     self.mViewModel.updateApplicationItem(item: self.mViewModel.Application!.Items[self.mIndex])
                                 })                                
                         }

@@ -14,7 +14,7 @@ struct ApplicationMainEditView: View, Equatable {
     var mEntityId: Int
     @State var ShowDatePicker: Bool = false
     @State var SelectedDate: Date = Date()
-    @State var SelectedMapAddress: Address = autorent.Address()
+    @StateObject var SelectedMapAddress = AddressObservable()
     @Binding var SelectedItems: [UUID]
     @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
@@ -69,7 +69,7 @@ struct ApplicationMainEditView: View, Equatable {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .lineLimit(1)
                                     
-                                    NavigationLink(destination: PickerMapAddressView(address: $SelectedMapAddress)) {
+                                    NavigationLink(destination: PickerMapAddressView(selectedMapAddress: self.SelectedMapAddress)) {
                                         TextField("", text: Binding(
                                                     get: { self.mViewModel.Application!.Address.getAddressName() },
                                                     set: { _ in }))
@@ -78,16 +78,12 @@ struct ApplicationMainEditView: View, Equatable {
                                             .foregroundColor(Color.textDark)
                                             .cornerRadius(4)
                                             .disabled(true)
-                                            .onChange(of:  self.SelectedMapAddress, perform: { value in
-                                                self.mViewModel.Application!.Address = value
+                                            .onChange(of:  self.SelectedMapAddress.Address, perform: { value in
+                                                self.mViewModel.Application!.Address = value!
                                                 self.mViewModel.objectWillChange.send()
                                             })
-                                    }
-                                    .onChange(of:  self.SelectedMapAddress, perform: { value in
-                                        self.mViewModel.Application!.Address = value
-                                        self.mViewModel.objectWillChange.send()
-                                    })
-                                    
+                                        
+                                    }                                    
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
                                         ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate, selectedItems: $SelectedItems)
@@ -127,10 +123,6 @@ struct ApplicationMainEditView: View, Equatable {
                         self.mViewModel.loadData()
                     }
                 }
-            }
-            .onChange(of: self.SelectedMapAddress) { newValue in
-                self.mViewModel.Application!.Address = newValue
-                self.mViewModel.objectWillChange.send()
             }
             .onChange(of: self.Action) { newValue in
                 switch(newValue) {

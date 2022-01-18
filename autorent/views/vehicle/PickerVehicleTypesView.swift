@@ -10,11 +10,11 @@ import SwiftUI
 struct PickerVehicleTypesView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: VehicleTypesViewModel
+    @ObservedObject var SelectedVehicleType: VehicleTypeObservable
     @State var mSelectedItem: VehicleType?
-    @Binding var VehicleType: VehicleType
-    
-    init(vehicleType: Binding<VehicleType>) {
-        self._VehicleType = vehicleType
+
+    init(selectedVehicleType: VehicleTypeObservable) {
+        self.SelectedVehicleType = selectedVehicleType
         self.mViewModel = VehicleTypesViewModel(orderBy: "Name asc", include: "options")
     }
     
@@ -72,8 +72,7 @@ struct PickerVehicleTypesView: View {
                     .foregroundColor(Color.textLight)
                     .onTapGesture {
                         if self.mSelectedItem != nil {
-                            
-                            self.VehicleType = self.mSelectedItem!
+                            self.SelectedVehicleType.VehicleType = self.mSelectedItem!
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
