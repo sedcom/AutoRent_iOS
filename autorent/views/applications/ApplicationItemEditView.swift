@@ -102,13 +102,13 @@ struct ApplicationItemEditView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(self.mIsSelected ? Color.textDark : Color.textLight)
-                                    
-                                                
+                                                                                    
                         NavigationLink(destination: PickerVehicleTypesView(selectedVehicleType: self.SelectedVehicleType)) {
                             TextField("", text: Binding(
                                         get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): "" },
                                         set: { _ in }))
                                 .frame(minHeight: 30, maxHeight: 30)
+                                .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
                                 .background(Color.inputBackgroud)
                                 .foregroundColor(Color.textDark)
                                 .cornerRadius(4)

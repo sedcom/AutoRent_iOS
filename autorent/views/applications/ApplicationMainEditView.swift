@@ -18,8 +18,7 @@ struct ApplicationMainEditView: View, Equatable {
     @Binding var SelectedItems: [UUID]
     @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
-    @State var ShowToast: Bool = false
-    @State var mToastText: String = ""
+    @State var ToastMessage: String?
     
     init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
@@ -74,6 +73,7 @@ struct ApplicationMainEditView: View, Equatable {
                                                     get: { self.mViewModel.Application!.Address.getAddressName() },
                                                     set: { _ in }))
                                             .frame(minHeight: 30, maxHeight: 30)
+                                            .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
                                             .background(Color.inputBackgroud)
                                             .foregroundColor(Color.textDark)
                                             .cornerRadius(4)
@@ -129,7 +129,7 @@ struct ApplicationMainEditView: View, Equatable {
                     case 1:
                         self.mViewModel.saveItem()
                     case 2:
-                        self.mViewModel.saveItem()
+                        self.mViewModel.changeStatus(statusId: 2)
                     case 3:
                         self.mViewModel.removeApplicationItems(items: self.SelectedItems)
                         self.SelectedItems.removeAll()
@@ -141,13 +141,14 @@ struct ApplicationMainEditView: View, Equatable {
                 if newValue != nil {
                     switch(newValue!) {
                         case OperationResult.Error:
-                                self.mToastText = NSLocalizedString("message_save_error", comment: "")
-                                self.ShowToast = true
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
                         case OperationResult.Create:
-                                presentationMode.wrappedValue.dismiss()
+                            presentationMode.wrappedValue.dismiss()
                         case OperationResult.Update:
-                                presentationMode.wrappedValue.dismiss()
-                            default: print()
+                            presentationMode.wrappedValue.dismiss()
+                        case OperationResult.Send:
+                            presentationMode.wrappedValue.dismiss()
+                        default: ()
                     }
                     self.ActionResult = newValue
                     self.mViewModel.ActionResult = nil
@@ -158,7 +159,7 @@ struct ApplicationMainEditView: View, Equatable {
                 DatetimePicker(showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate)
             }
             
-            ToastView(text: self.mToastText, visible: $ShowToast)
+            ToastView($ToastMessage)
         }
     }
 }

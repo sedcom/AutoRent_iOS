@@ -79,7 +79,7 @@ class ApplicationViewModel: ObservableObject {
     }
     
     public func loadData() {
-        debugPrint("Start loadData")
+        debugPrint("Start loadItem")
         self.IsLoading = true
         self.IsError = false
         self.objectWillChange.send()
@@ -107,7 +107,7 @@ class ApplicationViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish loadData")
+                debugPrint("Finish loadItem")
                 let vehicleTypes = result.Elements
                 for item in application.Items {
                     let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
@@ -130,7 +130,7 @@ class ApplicationViewModel: ObservableObject {
     }
     
     public func saveItem() {
-        debugPrint("Start saveData")
+        debugPrint("Start saveItem")
         self.IsLoading = true
         self.objectWillChange.send()
         let model = ApplicationModel(application: self.Application!)
@@ -153,8 +153,9 @@ class ApplicationViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish saveData")
+                debugPrint("Finish saveItem")
                 self.IsLoading = false
+                self.mEntityId = result.Id
                 self.Application!.Id = result.Id
                 self.ActionResult = OperationResult.Create
         })
@@ -169,10 +170,27 @@ class ApplicationViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish saveData")
+                debugPrint("Finish saveItem")
                 self.IsLoading = false
-                self.Application!.Id = result.Id
                 self.ActionResult = OperationResult.Update
+        })
+    }
+    
+    public func changeStatus(statusId: Int) {
+        debugPrint("Start changeStatus")
+        self.IsLoading = true
+        self.objectWillChange.send()
+        self.cancellation = self.mApplicationRepository.changeStatus(applicationId: self.mEntityId, statusId: statusId)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Error
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish changeStatus")
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Send
         })
     }
 }

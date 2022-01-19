@@ -10,18 +10,14 @@ import Foundation
 class Address: Entity {
     var AddressType: AddressType
     var PostIndex: String?
-    var Region: AddressRegion
-    var District: AddressDistrict
-    var City: AddressCity
-    var Street: AddressStreet
+    var Region: AddressRegion?
+    var District: AddressDistrict?
+    var City: AddressCity?
+    var Street: AddressStreet?
     var House: String?
     
     override init() {
         self.AddressType = autorent.AddressType()
-        self.Region = AddressRegion()
-        self.District = AddressDistrict()
-        self.City = AddressCity()
-        self.Street = AddressStreet()
         super.init()
     }
     
@@ -29,10 +25,10 @@ class Address: Entity {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.AddressType = try container.decode(autorent.AddressType.self, forKey: .AddressType)
         self.PostIndex = try container.decode(String?.self, forKey: .PostIndex)
-        self.Region = try container.decode(AddressRegion.self, forKey: .Region)
-        self.District = try container.decode(AddressDistrict.self, forKey: .District)
-        self.City = try container.decode(AddressCity.self, forKey: .City)
-        self.Street = try container.decode(AddressStreet.self, forKey: .Street)
+        self.Region = try container.decode(AddressRegion?.self, forKey: .Region)
+        self.District = try container.decode(AddressDistrict?.self, forKey: .District)
+        self.City = try container.decode(AddressCity?.self, forKey: .City)
+        self.Street = try container.decode(AddressStreet?.self, forKey: .Street)
         self.House = try container.decode(String?.self, forKey: .House)
         try super.init(from: decoder)
     }
@@ -62,10 +58,10 @@ class Address: Entity {
     
     public func getAddressName() -> String {
         let parts: [String] = [self.PostIndex ?? "",
-                               self.Region.Name ?? "",
-                               self.District.Name ?? "",
-                               self.City.Name ?? "",
-                               self.Street.Name ??  "",
+                               self.Region != nil ? self.Region!.Name ?? "" : "",
+                               self.District != nil ?  self.District!.Name ?? "" : "",
+                               self.City != nil ?  self.City!.Name ?? "" : "",
+                               self.Street != nil ?  self.Street!.Name ??  "" : "",
                                self.House ?? ""]
         return parts.filter { $0 != "" }.joined(separator: ", ")
     }

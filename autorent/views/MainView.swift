@@ -12,14 +12,15 @@ enum OperationResult {
 }
 
 struct MainView: View {
-    @State var SelectedItem: Int = 0
+    @StateObject var Toast = ToastObservable()
+    @State private var SelectedTab: Int = 0
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                switch self.SelectedItem {
+                switch self.SelectedTab {
                     case 0: MapView()
-                    case 1: ApplicationsView()
+                case 1: ApplicationsView().environmentObject(self.Toast)
                     case 2: Text("Тут заказы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 3: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 4: Text("Тут профиль...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -31,7 +32,7 @@ struct MainView: View {
                     CustomTabItem(index: 2, label: "menu_orders", image: "copy"),
                     CustomTabItem(index: 3, label: "menu_payments", image: "ruble-sign"),
                     CustomTabItem(index: 4, label: "menu_userprofile", image: "user"),
-                ], selected: $SelectedItem)
+                ], selected: $SelectedTab)
             }
             .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
@@ -50,7 +51,7 @@ struct MainView: View {
     }
     
     func getTitle() -> String {
-        switch self.SelectedItem {
+        switch self.SelectedTab {
             case 0: return NSLocalizedString("title_map", comment: "")
             case 1: return NSLocalizedString("title_applications", comment: "")
             case 2: return NSLocalizedString("title_orders", comment: "")

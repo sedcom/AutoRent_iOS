@@ -11,13 +11,14 @@ struct ApplicationMainView: View, Equatable {
     @ObservedObject var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
+    @Binding var SelectedStatus: Int?
     @Binding var ActionResult: OperationResult?
-    @State var ShowToast: Bool = false
-    @State var mToastText: String = ""
+    @State var ToastMessage: String?
     
-    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, status: Binding<Int?>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
+        self._SelectedStatus = status
         self._ActionResult = result
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
@@ -95,20 +96,27 @@ struct ApplicationMainView: View, Equatable {
                     self.mViewModel.loadData()
                 }
             }
+            .onChange(of: self.mViewModel.Application) { newValue in
+                if (newValue != nil) {
+                    self.SelectedStatus = newValue!.getStatus().Status.Id
+                }
+            }
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
                         case OperationResult.Update:
-                                self.mToastText = NSLocalizedString("message_save_success", comment: "")
-                                self.ShowToast = true
-                                self.mViewModel.loadData()
-                            default: print()
+                            self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
+                            self.mViewModel.loadData()
+                        case OperationResult.Send:
+                            self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
+                            self.mViewModel.loadData()
+                        default: print()
                     }
                     self.ActionResult = nil
                 }
             }
             
-            ToastView(text: self.mToastText, visible: $ShowToast)
+            ToastView($ToastMessage)
         }
     }
 }

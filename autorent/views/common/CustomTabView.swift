@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CustomTabView: View {
     var mItems: [CustomTabItem]
-    @Binding var SelectedItem: Int
+    @Binding var SelectedTab: Int
     
     init(items: [CustomTabItem], selected: Binding<Int>) {
         self.mItems = items
-        self._SelectedItem = selected
+        self._SelectedTab = selected
     }
     
     var body: some View {
@@ -23,15 +23,15 @@ struct CustomTabView: View {
                     let item = self.mItems[index]
                     Button (action: {
                         if item.Disabled == false {
-                            self.SelectedItem = item.Index
+                            self.SelectedTab = item.Index
                         }
                     }) {
                         VStack {
                             Image(item.Image)
                                 .renderingMode(.template)
-                                .foregroundColor(item.Disabled == false ? self.SelectedItem  == item.Index ? Color.secondary : Color.textLight :  Color.textDark)
+                                .foregroundColor(item.Disabled == false ? self.SelectedTab  == item.Index ? Color.secondary : Color.textLight :  Color.textDark)
                             Text(LocalizedStringKey(item.Label))
-                                .foregroundColor(item.Disabled == false ? self.SelectedItem  == item.Index ? Color.secondary : Color.textLight :  Color.textDark)
+                                .foregroundColor(item.Disabled == false ? self.SelectedTab  == item.Index ? Color.secondary : Color.textLight :  Color.textDark)
                                 .font(.system(size: 16))
                                 .font(Font.headline.weight(.bold))
                         }

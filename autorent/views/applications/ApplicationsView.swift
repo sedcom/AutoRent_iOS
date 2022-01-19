@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct ApplicationsView: View {
+struct ApplicationsView: View  {
     @ObservedObject var mViewModel: ApplicationsViewModel
     @State var mCurrentFilter: Int
     @State var ActionResult: OperationResult?
-    @State var ShowToast: Bool = false
-    @State var mToastText: String = ""
-    
+    @State var ToastMessage: String?
+     
     init() {
         self.mCurrentFilter = 1
         self.mViewModel = ApplicationsViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
@@ -58,7 +57,7 @@ struct ApplicationsView: View {
                                                 LoadingRowView()
                                             }
                                             else {
-                                                NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View))  {
+                                                NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View, result: $ActionResult))  {
                                                     ApplicationsRowView(application)
                                                 }
                                             }
@@ -89,14 +88,14 @@ struct ApplicationsView: View {
                                                 .resizable()
                                                 .frame(width: 30, height: 30)
                                                 .foregroundColor(Color(UIColor.darkGray))
-                                            }
+                                            }                                        
                                     }
                                     .frame(width: 60, height: 60, alignment: .bottomLeading)
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                                 .offset(x: geo.size.width - 65, y: -5)
                                 ZStack {
-                                    ToastView(text: self.mToastText, visible: $ShowToast)
+                                    ToastView($ToastMessage)
                                 }
                             }
                         }
@@ -107,27 +106,31 @@ struct ApplicationsView: View {
         }
         .onAppear {
             if self.mViewModel.Data.Elements.count == 0 {
-                self.mViewModel.clearData()
-                self.mViewModel.loadData()
+                self.loadData()
             }
         }
         .onChange(of: self.ActionResult) { newValue in
             if newValue != nil {
                 switch(newValue!) {
                     case OperationResult.Create:
-                        self.mToastText = NSLocalizedString("message_save_success", comment: "")
-                        self.ShowToast = true
-                    default: print()
+                        self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
+                        self.loadData()
+                    case OperationResult.Update:
+                        self.loadData()                    
+                    default: ()
                 }
-                self.ActionResult = newValue
             }
         }
     }
  
+    private func loadData() {
+        self.mViewModel.clearData()
+        self.mViewModel.loadData()
+    }
+    
     private func setFilter(filterIndex: Int, filter: String) {
         self.mCurrentFilter = filterIndex
         self.mViewModel.setFilter(filter)
-        self.mViewModel.clearData()
-        self.mViewModel.loadData()
+        self.loadData()
     }
 }
