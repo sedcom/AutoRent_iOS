@@ -16,7 +16,7 @@ struct PickerMapAddressView: View {
     }
     
     var body: some View {
-        MapView()
+        MapView(selectedMapAddress: self.SelectedMapAddress)
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)
@@ -26,15 +26,6 @@ struct PickerMapAddressView: View {
                     .renderingMode(.template)
                     .foregroundColor(Color.textLight)
                     .onTapGesture {
-                        let address = autorent.Address()
-                        address.AddressType = AddressType(id: 3, name: "")
-                        address.PostIndex = "123456"
-                        address.Region = AddressRegion(name: "Moscow")
-                        address.District = AddressDistrict()
-                        address.City = AddressCity(name: "Moscow")
-                        address.Street = AddressStreet(name: "Lenina")
-                        address.House = "1"
-                        self.SelectedMapAddress.Address = address
                         self.presentationMode.wrappedValue.dismiss()
                     }
             }

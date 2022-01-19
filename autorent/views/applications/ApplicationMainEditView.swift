@@ -78,11 +78,13 @@ struct ApplicationMainEditView: View, Equatable {
                                             .foregroundColor(Color.textDark)
                                             .cornerRadius(4)
                                             .disabled(true)
-                                            .onChange(of:  self.SelectedMapAddress.Address, perform: { value in
-                                                self.mViewModel.Application!.Address = value!
-                                                self.mViewModel.objectWillChange.send()
-                                            })
-                                        
+                                            .onChange(of: self.SelectedMapAddress.Address) { newValue in
+                                                if newValue != nil {
+                                                    self.mViewModel.Application!.Address = newValue!
+                                                    self.SelectedMapAddress.Address = nil
+                                                    self.mViewModel.objectWillChange.send()
+                                                }
+                                            }
                                     }                                    
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!

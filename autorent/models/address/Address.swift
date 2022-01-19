@@ -63,6 +63,6 @@ class Address: Entity {
                                self.City != nil ?  self.City!.Name ?? "" : "",
                                self.Street != nil ?  self.Street!.Name ??  "" : "",
                                self.House ?? ""]
-        return parts.filter { $0 != "" }.joined(separator: ", ")
+        return NSOrderedSet(array: parts.filter { $0 != "" }).map({ $0 as! String}).joined(separator: ", ")
     }
 }

@@ -11,7 +11,8 @@ enum OperationResult {
    case Error, Create, Update, Send
 }
 
-struct MainView: View {
+struct MainView: View {    
+    @StateObject var SelectedMapAddress = AddressObservable()
     @StateObject var Toast = ToastObservable()
     @State private var SelectedTab: Int = 0
     
@@ -19,7 +20,7 @@ struct MainView: View {
         NavigationView {
             VStack(spacing: 0) {
                 switch self.SelectedTab {
-                    case 0: MapView()
+                    case 0: MapView(selectedMapAddress: self.SelectedMapAddress)
                 case 1: ApplicationsView().environmentObject(self.Toast)
                     case 2: Text("Тут заказы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 3: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

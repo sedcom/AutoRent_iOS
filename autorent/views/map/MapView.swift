@@ -7,12 +7,18 @@
 
 import SwiftUI
 import MapKit
+import Alamofire
 
 struct MapView: UIViewRepresentable {
+    @ObservedObject var SelectedMapAddress: AddressObservable
     let mMap = MKMapView()
     
+    init(selectedMapAddress: AddressObservable) {
+        self.SelectedMapAddress = selectedMapAddress
+    }
+    
     func makeCoordinator() -> MapViewCoordinator {
-        MapViewCoordinator(self.mMap)
+        MapViewCoordinator(self.mMap, self.SelectedMapAddress)
     }
     
     func makeUIView(context: Context) -> MKMapView {
@@ -34,9 +40,11 @@ struct MapView: UIViewRepresentable {
 
 class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelegate {
     var mMap: MKMapView
+    @ObservedObject var SelectedMapAddress: AddressObservable
     
-    init (_ map: MKMapView) {
+    init (_ map: MKMapView, _ selectedMapAddress: AddressObservable) {
         self.mMap = map
+        self.SelectedMapAddress = selectedMapAddress
         super.init()
     }
     
@@ -56,19 +64,27 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelega
         guard gesture.state == .ended else { return }
         let location = gesture.location(in: self.mMap)
         let coordinate = self.mMap.convert(location, toCoordinateFrom: self.mMap)
-        let marker = MKPointAnnotation()
-        marker.coordinate = coordinate
-        marker.title = "Место оказания услуг"
-        marker.subtitle = "Место оказания услуг"
-        self.mMap.removeAnnotations(self.mMap.annotations)
-        self.mMap.addAnnotation(marker)
+        self.setAddressMarker(coordinate)
+    }
+    
+    func setAddressMarker(_ coordinate: CLLocationCoordinate2D){
+        let url = "https://nominatim.openstreetmap.org/reverse"
+        try AF.request(url, method: .get, parameters: ["lat": String(coordinate.latitude), "lon": String(coordinate.longitude), "format": "json", "accept-languange": "ru"], headers: [.userAgent("autorent/1.0")]).responseJSON { response in
+            var address: autorent.Address?
+            if response.value != nil {
+                let jsonElement = (response.value as! [String:Any])["address"]
+                let jsonData = try? JSONSerialization.data(withJSONObject: jsonElement!, options: .prettyPrinted)
+                let addressModel = try! JSONDecoder().decode(MapAddressModel.self, from: jsonData!)
+                address = addressModel.convertToAddress()
+                self.SelectedMapAddress.Address = address
+            }
+            let marker = MKPointAnnotation()
+            marker.coordinate = coordinate
+            marker.title = address != nil ? address!.getAddressName() : NSLocalizedString("message_address_error", comment: "")
+            marker.subtitle = nil
+            self.mMap.removeAnnotations(self.mMap.annotations)
+            self.mMap.addAnnotation(marker)
+        }
     }
 }
-
-struct Mapiew_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
-    }
-}
-
 

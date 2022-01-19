@@ -44,6 +44,7 @@
 		F6A066BD27973E23008AC3D5 /* VehicleTypeObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066BC27973E23008AC3D5 /* VehicleTypeObservable.swift */; };
 		F6A066BF279740E5008AC3D5 /* ToastObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066BE279740E5008AC3D5 /* ToastObservable.swift */; };
 		F6A066C527975079008AC3D5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C427975079008AC3D5 /* ToastView.swift */; };
+		F6A066C7279868A3008AC3D5 /* MapAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -113,6 +114,7 @@
 		F6A066BC27973E23008AC3D5 /* VehicleTypeObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypeObservable.swift; sourceTree = "<group>"; };
 		F6A066BE279740E5008AC3D5 /* ToastObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastObservable.swift; sourceTree = "<group>"; };
 		F6A066C427975079008AC3D5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddressModel.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */,
+				F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				F6A066BD27973E23008AC3D5 /* VehicleTypeObservable.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
+				F6A066C7279868A3008AC3D5 /* MapAddressModel.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
