@@ -14,6 +14,7 @@ struct ApplicationMainEditView: View, Equatable {
     var mEntityId: Int
     @State var ShowDatePicker: Bool = false
     @State var SelectedDate: Date = Date()
+    @State var SelectedUserType: Int = 1
     @StateObject var SelectedMapAddress = AddressObservable()
     @Binding var SelectedItems: [UUID]
     @Binding var Action: Int?
@@ -52,14 +53,35 @@ struct ApplicationMainEditView: View, Equatable {
                                         .font(Font.headline.weight(.bold))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .lineLimit(1)
+                                    Picker("", selection: $SelectedUserType) {
+                                        Text("string_client_person").tag(1)
+                                        Text("string_client_company").tag(2)
+                                    }
+                                    .pickerStyle(SegmentedPickerStyle())
+                                    .padding(.bottom, 4)
                                     HStack {
-                                        Image("user")
-                                            .renderingMode(.template)
-                                            .foregroundColor(Color.textLight)
-                                        Text("")
-                                            .foregroundColor(Color.textLight)
-                                            .fixedSize(horizontal: false, vertical: true)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        if self.SelectedUserType == 1 {
+                                            TextField("", text: Binding(
+                                                        get: { self.mViewModel.Application!.User.Profile.getUserName() },
+                                                        set: { _ in }))
+                                                .frame(minHeight: 30, maxHeight: 30)
+                                                .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+                                                .background(Color.inputBackgroud)
+                                                .foregroundColor(Color.textDark)
+                                                .cornerRadius(4)
+                                                .disabled(true)
+                                        }
+                                        else {                                            
+                                            TextField("", text: Binding(
+                                                        get: { self.mViewModel.Application!.User.Profile.getUserName() },
+                                                        set: { _ in }))
+                                                .frame(minHeight: 30, maxHeight: 30)
+                                                .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+                                                .background(Color.inputBackgroud)
+                                                .foregroundColor(Color.textDark)
+                                                .cornerRadius(4)
+                                                .disabled(true)
+                                        }
                                     }
                                     .padding(.bottom, 4)
                                     Text("Место оказания услуг")
@@ -67,7 +89,6 @@ struct ApplicationMainEditView: View, Equatable {
                                         .font(Font.headline.weight(.bold))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .lineLimit(1)
-                                    
                                     NavigationLink(destination: PickerMapAddressView(selectedMapAddress: self.SelectedMapAddress)) {
                                         TextField("", text: Binding(
                                                     get: { self.mViewModel.Application!.Address.getAddressName() },
@@ -81,6 +102,7 @@ struct ApplicationMainEditView: View, Equatable {
                                             .onChange(of: self.SelectedMapAddress.Address) { newValue in
                                                 if newValue != nil {
                                                     self.mViewModel.Application!.Address = newValue!
+                                                    self.mViewModel.Application!.Address.AddressType = AddressType(id: 3, name: "")
                                                     self.SelectedMapAddress.Address = nil
                                                     self.mViewModel.objectWillChange.send()
                                                 }

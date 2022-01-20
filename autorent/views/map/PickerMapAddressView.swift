@@ -25,7 +25,7 @@ struct PickerMapAddressView: View {
                 Image("check-circle")
                     .renderingMode(.template)
                     .foregroundColor(Color.textLight)
-                    .onTapGesture {
+                    .onTapGesture {                    
                         self.presentationMode.wrappedValue.dismiss()
                     }
             }

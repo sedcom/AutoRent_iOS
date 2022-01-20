@@ -33,6 +33,10 @@ struct autorentApp: App {
         UITableView.appearance().backgroundColor = UIColor.clear
         UITableViewCell.appearance().backgroundColor = UIColor.clear
         UITableViewHeaderFooterView.appearance().backgroundView = .init()
+        //
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.secondary)
+        UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textDark)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textLight)], for: .normal)
     }
     
     var body: some Scene {
