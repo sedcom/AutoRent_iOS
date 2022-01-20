@@ -45,6 +45,9 @@
 		F6A066BF279740E5008AC3D5 /* ToastObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066BE279740E5008AC3D5 /* ToastObservable.swift */; };
 		F6A066C527975079008AC3D5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C427975079008AC3D5 /* ToastView.swift */; };
 		F6A066C7279868A3008AC3D5 /* MapAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */; };
+		F6A066CA27998860008AC3D5 /* CompanyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C927998860008AC3D5 /* CompanyType.swift */; };
+		F6A066CC27998879008AC3D5 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066CB27998879008AC3D5 /* Company.swift */; };
+		F6A066CE279988A6008AC3D5 /* OwnershipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066CD279988A6008AC3D5 /* OwnershipType.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -115,6 +118,9 @@
 		F6A066BE279740E5008AC3D5 /* ToastObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastObservable.swift; sourceTree = "<group>"; };
 		F6A066C427975079008AC3D5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddressModel.swift; sourceTree = "<group>"; };
+		F6A066C927998860008AC3D5 /* CompanyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyType.swift; sourceTree = "<group>"; };
+		F6A066CB27998879008AC3D5 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		F6A066CD279988A6008AC3D5 /* OwnershipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnershipType.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 			children = (
 				F692786F277A83BE003BD0D5 /* address */,
 				E2550F112757C6A60059B96C /* application */,
+				F6A066C827998828008AC3D5 /* company */,
 				E2550F122757C6B20059B96C /* common */,
 				F6ADCC2C277B311400A1CE80 /* vehicle */,
 				F692786727793B6E003BD0D5 /* user */,
@@ -374,6 +381,16 @@
 			path = observable;
 			sourceTree = "<group>";
 		};
+		F6A066C827998828008AC3D5 /* company */ = {
+			isa = PBXGroup;
+			children = (
+				F6A066CB27998879008AC3D5 /* Company.swift */,
+				F6A066C927998860008AC3D5 /* CompanyType.swift */,
+				F6A066CD279988A6008AC3D5 /* OwnershipType.swift */,
+			);
+			path = company;
+			sourceTree = "<group>";
+		};
 		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +572,7 @@
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6A066BA27973AB3008AC3D5 /* AddressObservable.swift in Sources */,
+				F6A066CC27998879008AC3D5 /* Company.swift in Sources */,
 				F6ADCC3B2781A12B00A1CE80 /* ApplicationItemVehicleOption.swift in Sources */,
 				E2589B0A27523A4100BFF698 /* ApplicationsView.swift in Sources */,
 				F6ADCC3D2782DC8700A1CE80 /* VehicleOption.swift in Sources */,
@@ -562,6 +580,7 @@
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
 				F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */,
+				F6A066CA27998860008AC3D5 /* CompanyType.swift in Sources */,
 				F6A066BD27973E23008AC3D5 /* VehicleTypeObservable.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
@@ -586,6 +605,7 @@
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
+				F6A066CE279988A6008AC3D5 /* OwnershipType.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,

@@ -14,7 +14,6 @@ class UserProfile: Entity {
     
     override init() {
         self.FirstName = ""
-        self.MiddleName = ""
         self.LastName = ""
         super.init()
     }
@@ -36,7 +35,7 @@ class UserProfile: Entity {
     public func getUserName() -> String {
         let parts: [String] = [self.LastName,
                                self.FirstName,
-                               self.MiddleName != nil ? self.MiddleName! : ""]
+                               self.MiddleName ?? ""]
         return parts.filter{ $0 != "" }.joined(separator: " ")
     }
 }

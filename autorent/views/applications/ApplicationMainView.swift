@@ -46,13 +46,24 @@ struct ApplicationMainView: View, Equatable {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .lineLimit(1)
                                 HStack {
-                                    Image("user")
-                                        .renderingMode(.template)
-                                        .foregroundColor(Color.textLight)
-                                    Text(self.mViewModel.Application!.User.Profile.getUserName())
-                                        .foregroundColor(Color.textLight)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    if self.mViewModel.Application!.Company == nil {
+                                        Image("user")
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.textLight)
+                                        Text(self.mViewModel.Application!.User.Profile.getUserName())
+                                            .foregroundColor(Color.textLight)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    else {
+                                        Image("address-book")
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.textLight)
+                                        Text(self.mViewModel.Application!.Company!.getCompanyName())
+                                            .foregroundColor(Color.textLight)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
                                 }
                                 .padding(.bottom, 4)
                                 Text("Место оказания услуг")

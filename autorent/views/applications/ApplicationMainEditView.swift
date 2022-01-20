@@ -73,7 +73,7 @@ struct ApplicationMainEditView: View, Equatable {
                                         }
                                         else {                                            
                                             TextField("", text: Binding(
-                                                        get: { self.mViewModel.Application!.User.Profile.getUserName() },
+                                                        get: { self.mViewModel.Application!.Company != nil ? self.mViewModel.Application!.Company!.getCompanyName() : "" },
                                                         set: { _ in }))
                                                 .frame(minHeight: 30, maxHeight: 30)
                                                 .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
@@ -146,6 +146,11 @@ struct ApplicationMainEditView: View, Equatable {
                     else {
                         self.mViewModel.loadData()
                     }
+                }
+            }
+            .onChange(of: self.mViewModel.Application) { newValue in
+                if (newValue != nil) {
+                    self.SelectedUserType = newValue!.Company == nil ? 1 : 2
                 }
             }
             .onChange(of: self.Action) { newValue in

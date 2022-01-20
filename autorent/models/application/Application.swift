@@ -10,6 +10,7 @@ import Foundation
 class Application: Entity {
     var CreatedDate: Date
     var User: autorent.User
+    var Company: autorent.Company?
     var Address: autorent.Address
     var Notes: String
     var Items: [ApplicationItem]
@@ -27,9 +28,9 @@ class Application: Entity {
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let keys = container.allKeys
         self.CreatedDate = Utils.convertDate(value: try container.decode(String.self, forKey: .CreatedDate))
         self.User = try container.decode(autorent.User.self, forKey: .User)
+        self.Company = try container.decode(autorent.Company?.self, forKey: .Company)
         self.Address = try container.decode(autorent.Address.self, forKey: .Address)
         self.Notes = try container.decode(String.self, forKey: .Notes)
         self.Items = container.contains(.Items) ? try container.decode([ApplicationItem].self, forKey: .Items) : []
@@ -40,6 +41,7 @@ class Application: Entity {
     private enum CodingKeys: String, CodingKey {
         case CreatedDate = "createdDate"
         case User = "user"
+        case Company = "company"
         case Address = "address"
         case Notes = "notes"
         case Items = "items"
