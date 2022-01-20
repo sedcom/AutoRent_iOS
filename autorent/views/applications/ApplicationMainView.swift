@@ -40,60 +40,68 @@ struct ApplicationMainView: View, Equatable {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
                             VStack {
-                                Text("Заказчик")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                HStack {
-                                    if self.mViewModel.Application!.Company == nil {
-                                        Image("user")
-                                            .renderingMode(.template)
-                                            .foregroundColor(Color.textLight)
-                                        Text(self.mViewModel.Application!.User.Profile.getUserName())
-                                            .foregroundColor(Color.textLight)
-                                            .fixedSize(horizontal: false, vertical: true)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                VStack {
+                                    Text("Заказчик")
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    HStack {
+                                        if self.mViewModel.Application!.Company == nil {
+                                            Image("user")
+                                                .renderingMode(.template)
+                                                .foregroundColor(Color.textLight)
+                                            Text(self.mViewModel.Application!.User.Profile.getUserName())
+                                                .foregroundColor(Color.textLight)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                        }
+                                        else {
+                                            Image("address-book")
+                                                .renderingMode(.template)
+                                                .foregroundColor(Color.textLight)
+                                            Text(self.mViewModel.Application!.Company!.getCompanyName())
+                                                .foregroundColor(Color.textLight)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                        }
                                     }
-                                    else {
-                                        Image("address-book")
+                                }
+                                .padding(.bottom, 4)
+                                VStack {
+                                    Text("Место оказания услуг")
+                                        .foregroundColor(Color.textLight)
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    HStack {
+                                        Image("map-marker-alt")
                                             .renderingMode(.template)
                                             .foregroundColor(Color.textLight)
-                                        Text(self.mViewModel.Application!.Company!.getCompanyName())
+                                        Text(self.mViewModel.Application!.Address.getAddressName())
                                             .foregroundColor(Color.textLight)
                                             .fixedSize(horizontal: false, vertical: true)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     }
                                 }
                                 .padding(.bottom, 4)
-                                Text("Место оказания услуг")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                HStack {
-                                    Image("map-marker-alt")
-                                        .renderingMode(.template)
+                                VStack {
+                                    ForEach(self.mViewModel.Application!.Items) { item in
+                                        let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
+                                        ApplicationItemView(applicationItem: item, index: index)
+                                    }
+                                }
+                                VStack {
+                                    Text("Описание")
                                         .foregroundColor(Color.textLight)
-                                    Text(self.mViewModel.Application!.Address.getAddressName())
+                                        .font(Font.headline.weight(.bold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                    Text(self.mViewModel.Application!.Notes)
                                         .foregroundColor(Color.textLight)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                                .padding(.bottom, 4)
-                                ForEach(self.mViewModel.Application!.Items) { item in
-                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
-                                    ApplicationItemView(applicationItem: item, index: index)
-                                }
-                                Text("Описание")
-                                    .foregroundColor(Color.textLight)
-                                    .font(Font.headline.weight(.bold))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                                Text(self.mViewModel.Application!.Notes)
-                                    .foregroundColor(Color.textLight)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                         .padding(.all, 8)

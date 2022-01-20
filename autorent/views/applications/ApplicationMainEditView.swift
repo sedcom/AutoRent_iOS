@@ -192,4 +192,3 @@ struct ApplicationMainEditView: View, Equatable {
         }
     }
 }
-
