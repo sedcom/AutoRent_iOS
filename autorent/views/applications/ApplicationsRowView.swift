@@ -24,14 +24,14 @@ struct ApplicationsRowView: View {
                 .padding(.bottom, 8)
                 VStack {
                     if self.mApplication.Company == nil {
-                        CustomText(self.mApplication.User.Profile.getUserName(), image: "user")
+                        CustomText(self.mApplication.User!.Profile.getUserName(), image: "user")
                     }
                     else {
                         CustomText(self.mApplication.Company!.getCompanyName(), image: "address-book")
                     }
                 }
                 VStack {
-                    CustomText(self.mApplication.Address.getAddressName(), image: "map-marker-alt")
+                    CustomText(self.mApplication.Address!.getAddressName(), image: "map-marker-alt")
                 }
                 VStack {
                     CustomText(self.mApplication.getVehicles(), image: "truck-monster")
@@ -48,5 +48,4 @@ struct ApplicationsRowView: View {
         .cornerRadius(5)
         .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
-
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum OperationResult {
-   case Error, Create, Update, Send
+   case Error, Create, Update, Send, Approve, Reject
 }
 
 struct MainView: View {    
@@ -20,8 +20,8 @@ struct MainView: View {
             VStack(spacing: 0) {
                 switch self.SelectedTab {
                     case 0: MapView(selectedMapAddress: self.SelectedMapAddress)
-                case 1: ApplicationsView()
-                    case 2: Text("Тут заказы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    case 1: ApplicationsView()
+                    case 2: OrdersView()
                     case 3: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 4: Text("Тут профиль...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     default: VStack {}

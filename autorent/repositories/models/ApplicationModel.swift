@@ -16,8 +16,8 @@ class ApplicationModel : Codable {
     
     init(application: Application) {
         self.CompanyId = application.Company != nil ? application.Company!.Id : nil
-        self.Address = application.Address
-        self.Notes = application.Notes
+        self.Address = application.Address!
+        self.Notes = application.Notes!
         self.AddedItems = []
         self.RemovedItems = []
     }

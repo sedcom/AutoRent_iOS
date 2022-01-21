@@ -53,6 +53,19 @@
 		F6A066DD279B1ECE008AC3D5 /* CompaniesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066DC279B1ECE008AC3D5 /* CompaniesViewModel.swift */; };
 		F6A066DF279B1F93008AC3D5 /* CompanyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066DE279B1F93008AC3D5 /* CompanyRepository.swift */; };
 		F6A066E1279B205D008AC3D5 /* CompanyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066E0279B205D008AC3D5 /* CompanyObservable.swift */; };
+		F6A066E3279B5529008AC3D5 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066E2279B5529008AC3D5 /* OrderRepository.swift */; };
+		F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066E5279B55D6008AC3D5 /* Order.swift */; };
+		F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066E7279B5632008AC3D5 /* OrderItem.swift */; };
+		F6A066EA279B5703008AC3D5 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066E9279B5703008AC3D5 /* Vehicle.swift */; };
+		F6A066EC279B58E4008AC3D5 /* OrderHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066EB279B58E4008AC3D5 /* OrderHistory.swift */; };
+		F6A066EF279B595B008AC3D5 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066EE279B595B008AC3D5 /* OrdersViewModel.swift */; };
+		F6A066F2279B59F1008AC3D5 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F1279B59F1008AC3D5 /* OrdersView.swift */; };
+		F6A066F4279B5A01008AC3D5 /* OrdersRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F3279B5A01008AC3D5 /* OrdersRowView.swift */; };
+		F6A066F6279B5F19008AC3D5 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F5279B5F19008AC3D5 /* OrderView.swift */; };
+		F6A066F8279B5FF5008AC3D5 /* OrderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F7279B5FF5008AC3D5 /* OrderMainView.swift */; };
+		F6A066FA279B60D1008AC3D5 /* OrderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */; };
+		F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066FB279B67C4008AC3D5 /* OrderViewModel.swift */; };
+		F6A066FE279B774F008AC3D5 /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -131,6 +144,19 @@
 		F6A066DC279B1ECE008AC3D5 /* CompaniesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesViewModel.swift; sourceTree = "<group>"; };
 		F6A066DE279B1F93008AC3D5 /* CompanyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyRepository.swift; sourceTree = "<group>"; };
 		F6A066E0279B205D008AC3D5 /* CompanyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyObservable.swift; sourceTree = "<group>"; };
+		F6A066E2279B5529008AC3D5 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
+		F6A066E5279B55D6008AC3D5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		F6A066E7279B5632008AC3D5 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		F6A066E9279B5703008AC3D5 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		F6A066EB279B58E4008AC3D5 /* OrderHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistory.swift; sourceTree = "<group>"; };
+		F6A066EE279B595B008AC3D5 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		F6A066F1279B59F1008AC3D5 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		F6A066F3279B5A01008AC3D5 /* OrdersRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersRowView.swift; sourceTree = "<group>"; };
+		F6A066F5279B5F19008AC3D5 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		F6A066F7279B5FF5008AC3D5 /* OrderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMainView.swift; sourceTree = "<group>"; };
+		F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemView.swift; sourceTree = "<group>"; };
+		F6A066FB279B67C4008AC3D5 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -184,6 +210,7 @@
 				E2550F112757C6A60059B96C /* application */,
 				F6A066C827998828008AC3D5 /* company */,
 				E2550F122757C6B20059B96C /* common */,
+				F6A066E4279B55BD008AC3D5 /* order */,
 				F6ADCC2C277B311400A1CE80 /* vehicle */,
 				F692786727793B6E003BD0D5 /* user */,
 			);
@@ -195,6 +222,7 @@
 			children = (
 				E2550F102757C68D0059B96C /* applications */,
 				F6A066DB279B1EB8008AC3D5 /* companies */,
+				F6A066ED279B5944008AC3D5 /* orders */,
 				F6ADCC56278859D300A1CE80 /* vehicle */,
 				F6ADCC402785B08A00A1CE80 /* utils */,
 			);
@@ -208,6 +236,7 @@
 				F6A066D7279B1129008AC3D5 /* controls */,
 				E28538862755BE800008F6FB /* applications */,
 				F6A066D8279B1876008AC3D5 /* companies */,
+				F6A066F0279B59D2008AC3D5 /* orders */,
 				F692786C27794466003BD0D5 /* map */,
 				F6A066BB27973DEE008AC3D5 /* observable */,
 				F6ADCC4F2787A17600A1CE80 /* vehicle */,
@@ -336,6 +365,7 @@
 				F6ADCC542788512F00A1CE80 /* NetworkService.swift */,
 				E29B397227539DD6004CE06A /* ApplicationRepository.swift */,
 				F6A066DE279B1F93008AC3D5 /* CompanyRepository.swift */,
+				F6A066E2279B5529008AC3D5 /* OrderRepository.swift */,
 				F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */,
 			);
 			path = repositories;
@@ -430,9 +460,42 @@
 			path = companies;
 			sourceTree = "<group>";
 		};
+		F6A066E4279B55BD008AC3D5 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				F6A066E5279B55D6008AC3D5 /* Order.swift */,
+				F6A066E7279B5632008AC3D5 /* OrderItem.swift */,
+				F6A066EB279B58E4008AC3D5 /* OrderHistory.swift */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		F6A066ED279B5944008AC3D5 /* orders */ = {
+			isa = PBXGroup;
+			children = (
+				F6A066EE279B595B008AC3D5 /* OrdersViewModel.swift */,
+				F6A066FB279B67C4008AC3D5 /* OrderViewModel.swift */,
+			);
+			path = orders;
+			sourceTree = "<group>";
+		};
+		F6A066F0279B59D2008AC3D5 /* orders */ = {
+			isa = PBXGroup;
+			children = (
+				F6A066F5279B5F19008AC3D5 /* OrderView.swift */,
+				F6A066F7279B5FF5008AC3D5 /* OrderMainView.swift */,
+				F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */,
+				F6A066F1279B59F1008AC3D5 /* OrdersView.swift */,
+				F6A066F3279B5A01008AC3D5 /* OrdersRowView.swift */,
+				F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */,
+			);
+			path = orders;
+			sourceTree = "<group>";
+		};
 		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
+				F6A066E9279B5703008AC3D5 /* Vehicle.swift */,
 				F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */,
 				F6ADCC3C2782DC8700A1CE80 /* VehicleOption.swift */,
 				F6ADCC3E2782DCF700A1CE80 /* VehicleOptionType.swift */,
@@ -588,23 +651,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A066F2279B59F1008AC3D5 /* OrdersView.swift in Sources */,
 				F6ADCC512787A1B100A1CE80 /* PickerVehicleTypeView.swift in Sources */,
 				F6A066DA279B18A7008AC3D5 /* PickerCompanyView.swift in Sources */,
 				F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */,
+				F6A066F4279B5A01008AC3D5 /* OrdersRowView.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6A066DF279B1F93008AC3D5 /* CompanyRepository.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
+				F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6A066C527975079008AC3D5 /* ToastView.swift in Sources */,
 				F6A066DD279B1ECE008AC3D5 /* CompaniesViewModel.swift in Sources */,
+				F6A066F8279B5FF5008AC3D5 /* OrderMainView.swift in Sources */,
 				F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
+				F6A066EA279B5703008AC3D5 /* Vehicle.swift in Sources */,
 				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
@@ -621,14 +689,19 @@
 				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
+				F6A066E3279B5529008AC3D5 /* OrderRepository.swift in Sources */,
+				F6A066EC279B58E4008AC3D5 /* OrderHistory.swift in Sources */,
+				F6A066FA279B60D1008AC3D5 /* OrderItemView.swift in Sources */,
 				F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */,
 				F6A066CA27998860008AC3D5 /* CompanyType.swift in Sources */,
 				F6A066BD27973E23008AC3D5 /* VehicleTypeObservable.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,
 				F6A066C7279868A3008AC3D5 /* MapAddressModel.swift in Sources */,
+				F6A066EF279B595B008AC3D5 /* OrdersViewModel.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
+				F6A066FE279B774F008AC3D5 /* OrderHistoryView.swift in Sources */,
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
@@ -645,13 +718,16 @@
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
+				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				F6A066E1279B205D008AC3D5 /* CompanyObservable.swift in Sources */,
 				F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
+				F6A066F6279B5F19008AC3D5 /* OrderView.swift in Sources */,
 				F6A066CE279988A6008AC3D5 /* OwnershipType.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
+				F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,
 				F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */,
 			);

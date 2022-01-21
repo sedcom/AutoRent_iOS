@@ -8,19 +8,15 @@
 import Foundation
 
 class Application: Entity {
-    var CreatedDate: Date
-    var User: autorent.User
+    var CreatedDate: Date?
+    var User: autorent.User?
     var Company: autorent.Company?
-    var Address: autorent.Address
-    var Notes: String
+    var Address: autorent.Address?
+    var Notes: String?
     var Items: [ApplicationItem]
     var History: [ApplicationHistory]
     
     override init() {
-        self.CreatedDate = Date()
-        self.User = autorent.User()
-        self.Address = autorent.Address()
-        self.Notes = ""
         self.Items = []
         self.History = []
         super.init()
@@ -28,11 +24,11 @@ class Application: Entity {
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.CreatedDate = Utils.convertDate(value: try container.decode(String.self, forKey: .CreatedDate))
-        self.User = try container.decode(autorent.User.self, forKey: .User)
-        self.Company = try container.decode(autorent.Company?.self, forKey: .Company)
-        self.Address = try container.decode(autorent.Address.self, forKey: .Address)
-        self.Notes = try container.decode(String.self, forKey: .Notes)
+        self.CreatedDate = container.contains(.CreatedDate) ? Utils.convertDate(value: try container.decode(String.self, forKey: .CreatedDate)) : nil
+        self.User = container.contains(.User) ? try container.decode(autorent.User.self, forKey: .User) : nil
+        self.Company = container.contains(.Company) ? try container.decode(autorent.Company?.self, forKey: .Company) : nil
+        self.Address = container.contains(.Address) ? try container.decode(autorent.Address.self, forKey: .Address) : nil
+        self.Notes = container.contains(.Notes) ? try container.decode(String.self, forKey: .Notes) : nil
         self.Items = container.contains(.Items) ? try container.decode([ApplicationItem].self, forKey: .Items) : []
         self.History = container.contains(.History) ? try container.decode([ApplicationHistory].self, forKey: .History) : []
         try super.init(from: decoder)

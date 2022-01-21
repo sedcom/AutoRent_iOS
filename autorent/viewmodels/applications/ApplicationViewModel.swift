@@ -32,7 +32,7 @@ class ApplicationViewModel: ObservableObject {
         let application = autorent.Application()
         application.User = User()
         application.Address = Address()
-        application.Address.AddressType = AddressType(id: 3, name: "")
+        application.Address!.AddressType = AddressType(id: 3, name: "")
         let item = ApplicationItem()
         application.Items.append(item)
         self.Application = application
