@@ -13,7 +13,6 @@ enum OperationResult {
 
 struct MainView: View {    
     @StateObject var SelectedMapAddress = AddressObservable()
-    @StateObject var Toast = ToastObservable()
     @State private var SelectedTab: Int = 0
     
     var body: some View {
@@ -21,7 +20,7 @@ struct MainView: View {
             VStack(spacing: 0) {
                 switch self.SelectedTab {
                     case 0: MapView(selectedMapAddress: self.SelectedMapAddress)
-                case 1: ApplicationsView().environmentObject(self.Toast)
+                case 1: ApplicationsView()
                     case 2: Text("Тут заказы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 3: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     case 4: Text("Тут профиль...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

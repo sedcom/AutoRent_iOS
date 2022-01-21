@@ -86,7 +86,7 @@ struct ApplicationItemEditView: View {
                     }
                     VStack {
                         CustomText("string_vehicle_type", maxLines: 1, selected: self.mIsSelected)
-                        NavigationLink(destination: PickerVehicleTypesView(selectedVehicleType: self.SelectedVehicleType)) {
+                        NavigationLink(destination: PickerVehicleTypeView(selectedVehicleType: self.SelectedVehicleType)) {
                             CustomTextField(Binding(get: { self.mIndex < self.mViewModel.Application!.Items.count ? self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType.getVehicleTypeName(): "" }, set: { _ in }), disabled: true)
                             .onChange(of:  self.SelectedVehicleType.VehicleType, perform: { value in
                                 self.mViewModel.Application!.Items[self.mIndex].VehicleParams.VehicleType = value!

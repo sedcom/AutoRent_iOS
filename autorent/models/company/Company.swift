@@ -8,7 +8,7 @@
 import Foundation
 
 class Company: Entity {
-    var CompanyType: autorent.CompanyType
+    var CompanyType: autorent.CompanyType?
     var OwnershipType: autorent.OwnershipType?
     var Name: String?
     var FirstName: String?
@@ -21,14 +21,13 @@ class Company: Entity {
     var Addresses: [Address]
     
     override init() {
-        self.CompanyType = autorent.CompanyType()
         self.Addresses = []
         super.init()
     }
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.CompanyType = try container.decode(autorent.CompanyType.self, forKey: .CompanyType)
+        self.CompanyType = container.contains(.CompanyType) ? try container.decode(autorent.CompanyType.self, forKey: .CompanyType): nil
         self.OwnershipType = container.contains(.OwnershipType) ? try container.decode(autorent.OwnershipType.self, forKey: .OwnershipType) : nil
         self.Name = container.contains(.Name) ? try container.decode(String?.self, forKey: .Name) : nil
         self.FirstName = container.contains(.FirstName) ? try container.decode(String?.self, forKey: .FirstName) : nil
@@ -60,6 +59,6 @@ class Company: Entity {
         let parts: [String] = [self.LastName ?? "",
                                self.FirstName ?? "",
                                self.MiddleName ?? ""]
-        return self.CompanyType.Id == 1 ? String(format: "%@ %@", self.OwnershipType!.Name, self.Name!) : parts.filter{ $0 != "" }.joined(separator: " ")
+        return self.CompanyType!.Id == 1 ? String(format: "%@ %@", self.OwnershipType!.Name, self.Name!) : parts.filter{ $0 != "" }.joined(separator: " ")
     }
 }

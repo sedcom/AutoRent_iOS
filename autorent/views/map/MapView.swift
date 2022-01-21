@@ -49,8 +49,14 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelega
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-        annotationView.image = UIImage(named: "map-marker-alt")
+        //let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
+        //var icon = UIImage(named: "map-marker-alt")?.withTintColor(UIColor.red)
+        //annotationView.image = icon?.resize(to: CGSize(width: 25, height: 30))
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
+        annotationView.glyphImage = UIImage(named: "iconmonstr-flag")
+        annotationView.glyphTintColor = UIColor.darkGray
+        annotationView.markerTintColor = UIColor.clear
+        annotationView.clusteringIdentifier = "annotation"
         annotationView.canShowCallout = true
         return annotationView
     }
@@ -88,3 +94,12 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelega
     }
 }
 
+extension UIImage {
+    func resize(to size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+        self.draw(in: CGRect(origin: .zero, size: size))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}

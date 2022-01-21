@@ -103,7 +103,6 @@ struct ApplicationsView: View  {
                 }
                 .background(Color.primary)
             }
-            
         }
         .onAppear {
             if self.mViewModel.Data.Elements.count == 0 {

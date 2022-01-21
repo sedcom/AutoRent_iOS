@@ -1,5 +1,5 @@
 //
-//  PickerVehicleTypesView.swift
+//  PickerVehicleTypeView.swift
 //  autorent
 //
 //  Created by Viacheslav Lazarev on 06.01.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PickerVehicleTypesView: View {
+struct PickerVehicleTypeView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: VehicleTypesViewModel
     @ObservedObject var SelectedVehicleType: VehicleTypeObservable
@@ -84,4 +84,3 @@ struct PickerVehicleTypesView: View {
         }
     }
 }
-
