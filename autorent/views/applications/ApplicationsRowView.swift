@@ -18,60 +18,28 @@ struct ApplicationsRowView: View {
         VStack {
             VStack {
                 HStack {
-                    Text("Заявка №\(self.mApplication.Id)")
-                        .foregroundColor(Color.textLight)
-                        .font(Font.headline.weight(.bold))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .lineLimit(1)
-                    HStack(spacing: 8) {
-                        Image("calendar-alt")
-                            .renderingMode(.template)
-                            .foregroundColor(Color.textLight)
-                        Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate))
-                            .foregroundColor(Color.textLight)
-                            .font(Font.headline.weight(.bold))
-                            .frame(alignment: .trailing)
-                            .lineLimit(1)
+                    CustomText(String(format: NSLocalizedString("title_application", comment: ""), String(self.mApplication.Id)), maxLines: 1, bold: true)
+                    CustomText(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplication.CreatedDate), alignment: .trailing, maxLines: 1, bold:true, image: "calendar-alt")
+                }
+                .padding(.bottom, 8)
+                VStack {
+                    if self.mApplication.Company == nil {
+                        CustomText(self.mApplication.User.Profile.getUserName(), image: "user")
+                    }
+                    else {
+                        CustomText(self.mApplication.Company!.getCompanyName(), image: "address-book")
                     }
                 }
-                .padding(.bottom, 8)
-                HStack {
-                    Image("user")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                    Text(self.mApplication.User.Profile.getUserName())
-                        .foregroundColor(Color.textLight)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                VStack {
+                    CustomText(self.mApplication.Address.getAddressName(), image: "map-marker-alt")
                 }
-                HStack {
-                    Image("map-marker-alt")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                    Text(self.mApplication.Address.getAddressName())
-                        .foregroundColor(Color.textLight)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                HStack {
-                    Image("truck-monster")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                    Text(self.mApplication.getVehicles())
-                        .foregroundColor(Color.textLight)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                VStack {
+                    CustomText(self.mApplication.getVehicles(), image: "truck-monster")
                 }
                 .padding(.bottom, 8)
                 HStack {
-                    Text(self.mApplication.getStatus().Status.Name)
-                        .foregroundColor(Color.textLight)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .lineLimit(1)
-                   Text(Utils.formatDate(format: "dd.MM.yyyy HH:mm", date: self.mApplication.getStatus().CreatedDate))
-                        .foregroundColor(Color.textLight)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .lineLimit(1)
+                    CustomText(self.mApplication.getStatus().Status.Name, maxLines: 1)
+                    CustomText(Utils.formatDate(format: "dd.MM.yyyy HH:mm", date: self.mApplication.getStatus().CreatedDate), alignment: .trailing, maxLines: 1)
                 }
             }
             .padding(.all, 8)

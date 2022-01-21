@@ -20,36 +20,36 @@ struct ApplicationsView: View  {
 
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
-                    LoadingView()
-                }
-                else if self.mViewModel.IsError {
-                    ErrorView()
-                }
-                else {
-                    VStack (spacing: 0) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack () {
-                                Button("status_all", action: { self.setFilter(filterIndex: 1, filter: "") })
-                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
-                                Button("status_draft", action: { self.setFilter(filterIndex: 2, filter: "statusId==1") })
-                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
-                                Button("status_application_process", action: { self.setFilter(filterIndex: 3, filter: "statusId==2,3,4,5,6,8") })
-                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
-                                Button("status_application_completed", action: { self.setFilter(filterIndex: 4, filter: "statusId==7") })
-                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 4))
-                                Button("status_application_closed", action: { self.setFilter(filterIndex: 5, filter: "statusId==9,10") })
-                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 5))
-                            }
-                            .padding(.all, 8)
+            if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
+                LoadingView()
+            }
+            else if self.mViewModel.IsError {
+                ErrorView()
+            }
+            else {
+                VStack (spacing: 0) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack () {
+                            Button("status_all", action: { self.setFilter(filterIndex: 1, filter: "") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
+                            Button("status_draft", action: { self.setFilter(filterIndex: 2, filter: "statusId==1") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
+                            Button("status_application_process", action: { self.setFilter(filterIndex: 3, filter: "statusId==2,3,4,5,6,8") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
+                            Button("status_application_completed", action: { self.setFilter(filterIndex: 4, filter: "statusId==7") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 4))
+                            Button("status_application_closed", action: { self.setFilter(filterIndex: 5, filter: "statusId==9,10") })
+                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 5))
                         }
-                        .background(Color.primaryDark)
-                        if self.mViewModel.Data.Elements.count == 0 {
-                            EmptyView()
-                        }
-                        else {
-                            ZStack {
+                        .padding(.all, 8)
+                    }
+                    .background(Color.primaryDark)
+                    if self.mViewModel.Data.Elements.count == 0 {
+                        EmptyView()
+                    }
+                    else {
+                        ZStack {
+                            GeometryReader { geo in
                                 List {
                                     ForEach(self.mViewModel.Data.Elements) { application in
                                         VStack {
@@ -88,7 +88,7 @@ struct ApplicationsView: View  {
                                                 .resizable()
                                                 .frame(width: 30, height: 30)
                                                 .foregroundColor(Color(UIColor.darkGray))
-                                            }                                        
+                                        }
                                     }
                                     .frame(width: 60, height: 60, alignment: .bottomLeading)
                                 }
@@ -100,9 +100,10 @@ struct ApplicationsView: View  {
                             }
                         }
                     }
-                    .background(Color.primary)
                 }
+                .background(Color.primary)
             }
+            
         }
         .onAppear {
             if self.mViewModel.Data.Elements.count == 0 {

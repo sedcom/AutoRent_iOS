@@ -48,57 +48,25 @@ struct ApplicationMainEditView: View, Equatable {
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack {
                                 VStack {
-                                    Text("Заказчик")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
+                                    CustomText("string_client", maxLines: 1, bold: true)
                                     Picker("", selection: $SelectedUserType) {
                                         Text("string_client_person").tag(1)
                                         Text("string_client_company").tag(2)
                                     }
                                     .pickerStyle(SegmentedPickerStyle())
                                     .padding(.bottom, 4)
-                                    HStack {
-                                        if self.SelectedUserType == 1 {
-                                            TextField("", text: Binding(
-                                                        get: { self.mViewModel.Application!.User.Profile.getUserName() },
-                                                        set: { _ in }))
-                                                .frame(minHeight: 30, maxHeight: 30)
-                                                .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
-                                                .background(Color.inputBackgroud)
-                                                .foregroundColor(Color.textDark)
-                                                .cornerRadius(4)
-                                                .disabled(true)
-                                        }
-                                        else {                                            
-                                            TextField("", text: Binding(
-                                                        get: { self.mViewModel.Application!.Company != nil ? self.mViewModel.Application!.Company!.getCompanyName() : "" },
-                                                        set: { _ in }))
-                                                .frame(minHeight: 30, maxHeight: 30)
-                                                .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
-                                                .background(Color.inputBackgroud)
-                                                .foregroundColor(Color.textDark)
-                                                .cornerRadius(4)
-                                                .disabled(true)
-                                        }
+                                    if self.SelectedUserType == 1 {
+                                        CustomTextField(Binding(get: { self.mViewModel.Application!.User.Profile.getUserName() }, set: { _ in }), disabled: true)
                                     }
-                                    .padding(.bottom, 4)
-                                    Text("Место оказания услуг")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
+                                    else {
+                                        CustomTextField(Binding(get: { self.mViewModel.Application!.Company != nil ? self.mViewModel.Application!.Company!.getCompanyName() : "" }, set: { _ in }), disabled: true)
+                                    }
+                                }
+                                .padding(.bottom, 4)
+                                VStack {
+                                    CustomText("string_application_address", maxLines: 1, bold: true)
                                     NavigationLink(destination: PickerMapAddressView(selectedMapAddress: self.SelectedMapAddress)) {
-                                        TextField("", text: Binding(
-                                                    get: { self.mViewModel.Application!.Address.getAddressName() },
-                                                    set: { _ in }))
-                                            .frame(minHeight: 30, maxHeight: 30)
-                                            .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
-                                            .background(Color.inputBackgroud)
-                                            .foregroundColor(Color.textDark)
-                                            .cornerRadius(4)
-                                            .disabled(true)
+                                        CustomTextField(Binding(get: { self.mViewModel.Application!.Address.getAddressName() }, set: { _ in }), disabled: true)
                                             .onChange(of: self.SelectedMapAddress.Address) { newValue in
                                                 if newValue != nil {
                                                     self.mViewModel.Application!.Address = newValue!
@@ -107,7 +75,9 @@ struct ApplicationMainEditView: View, Equatable {
                                                     self.mViewModel.objectWillChange.send()
                                                 }
                                             }
-                                    }                                    
+                                    }
+                                }
+                                VStack {
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
                                         ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate, selectedItems: $SelectedItems)
@@ -120,11 +90,9 @@ struct ApplicationMainEditView: View, Equatable {
                                     .background(Color.secondary)
                                     .foregroundColor(Color.textDark)
                                     .cornerRadius(5)
-                                    Text("Описание")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
+                                }
+                                VStack {
+                                    CustomText("string_description", maxLines: 1, bold: true)
                                     TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes }, set: { self.mViewModel.Application!.Notes  = $0 }))
                                         .frame(minHeight: 100, maxHeight: 100)
                                         .background(Color.inputBackgroud)
@@ -183,11 +151,9 @@ struct ApplicationMainEditView: View, Equatable {
                     self.mViewModel.ActionResult = nil
                 }
             }
-            
             if self.ShowDatePicker {
                 DatetimePicker(showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate)
             }
-            
             ToastView($ToastMessage)
         }
     }

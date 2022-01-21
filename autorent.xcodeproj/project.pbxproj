@@ -48,6 +48,8 @@
 		F6A066CA27998860008AC3D5 /* CompanyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066C927998860008AC3D5 /* CompanyType.swift */; };
 		F6A066CC27998879008AC3D5 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066CB27998879008AC3D5 /* Company.swift */; };
 		F6A066CE279988A6008AC3D5 /* OwnershipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066CD279988A6008AC3D5 /* OwnershipType.swift */; };
+		F6A066D42799DFCB008AC3D5 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066D32799DFCB008AC3D5 /* CustomText.swift */; };
+		F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066D5279B1116008AC3D5 /* CustomTextField.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -121,6 +123,8 @@
 		F6A066C927998860008AC3D5 /* CompanyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyType.swift; sourceTree = "<group>"; };
 		F6A066CB27998879008AC3D5 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		F6A066CD279988A6008AC3D5 /* OwnershipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnershipType.swift; sourceTree = "<group>"; };
+		F6A066D32799DFCB008AC3D5 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		F6A066D5279B1116008AC3D5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F0F2757C66B0059B96C /* common */,
+				F6A066D7279B1129008AC3D5 /* controls */,
 				E28538862755BE800008F6FB /* applications */,
 				F692786C27794466003BD0D5 /* map */,
 				F6A066BB27973DEE008AC3D5 /* observable */,
@@ -208,10 +213,6 @@
 		E2550F0F2757C66B0059B96C /* common */ = {
 			isa = PBXGroup;
 			children = (
-				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
-				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
-				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
-				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
 				E2550F042757B9AC0059B96C /* EmptyView.swift */,
 				E27EA41A2757806C001F7BB4 /* ErrorView.swift */,
 				E27EA41627576CDB001F7BB4 /* LoadingRowView.swift */,
@@ -391,6 +392,19 @@
 			path = company;
 			sourceTree = "<group>";
 		};
+		F6A066D7279B1129008AC3D5 /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
+				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
+				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
+				F6A066D32799DFCB008AC3D5 /* CustomText.swift */,
+				F6A066D5279B1116008AC3D5 /* CustomTextField.swift */,
+				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
+			);
+			path = controls;
+			sourceTree = "<group>";
+		};
 		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,6 +582,7 @@
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
+				F6A066D42799DFCB008AC3D5 /* CustomText.swift in Sources */,
 				F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */,
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
@@ -599,6 +614,7 @@
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
+				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,

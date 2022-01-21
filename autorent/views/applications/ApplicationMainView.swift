@@ -40,68 +40,29 @@ struct ApplicationMainView: View, Equatable {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
                             VStack {
-                                VStack {
-                                    Text("Заказчик")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
-                                    HStack {
-                                        if self.mViewModel.Application!.Company == nil {
-                                            Image("user")
-                                                .renderingMode(.template)
-                                                .foregroundColor(Color.textLight)
-                                            Text(self.mViewModel.Application!.User.Profile.getUserName())
-                                                .foregroundColor(Color.textLight)
-                                                .fixedSize(horizontal: false, vertical: true)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                        }
-                                        else {
-                                            Image("address-book")
-                                                .renderingMode(.template)
-                                                .foregroundColor(Color.textLight)
-                                            Text(self.mViewModel.Application!.Company!.getCompanyName())
-                                                .foregroundColor(Color.textLight)
-                                                .fixedSize(horizontal: false, vertical: true)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                        }
-                                    }
+                                CustomText("string_client", maxLines: 1, bold: true)
+                                if self.mViewModel.Application!.Company == nil {
+                                    CustomText(self.mViewModel.Application!.User.Profile.getUserName(), image: "user")
                                 }
-                                .padding(.bottom, 4)
-                                VStack {
-                                    Text("Место оказания услуг")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
-                                    HStack {
-                                        Image("map-marker-alt")
-                                            .renderingMode(.template)
-                                            .foregroundColor(Color.textLight)
-                                        Text(self.mViewModel.Application!.Address.getAddressName())
-                                            .foregroundColor(Color.textLight)
-                                            .fixedSize(horizontal: false, vertical: true)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                    }
+                                else {
+                                    CustomText(self.mViewModel.Application!.Company!.getCompanyName(), image: "address-book")
                                 }
-                                .padding(.bottom, 4)
-                                VStack {
-                                    ForEach(self.mViewModel.Application!.Items) { item in
-                                        let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
-                                        ApplicationItemView(applicationItem: item, index: index)
-                                    }
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                CustomText("string_application_address", maxLines: 1, bold: true)
+                                CustomText(self.mViewModel.Application!.Address.getAddressName(), image: "map-marker-alt")
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                ForEach(self.mViewModel.Application!.Items) { item in
+                                    let index = self.mViewModel.Application!.Items.firstIndex(of: item)!
+                                    ApplicationItemView(applicationItem: item, index: index)
                                 }
-                                VStack {
-                                    Text("Описание")
-                                        .foregroundColor(Color.textLight)
-                                        .font(Font.headline.weight(.bold))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .lineLimit(1)
-                                    Text(self.mViewModel.Application!.Notes)
-                                        .foregroundColor(Color.textLight)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
+                            }
+                            VStack {
+                                CustomText("string_description", maxLines: 1, bold: true)
+                                CustomText(self.mViewModel.Application!.Notes)
                             }
                         }
                         .padding(.all, 8)
@@ -133,8 +94,7 @@ struct ApplicationMainView: View, Equatable {
                     }
                     self.ActionResult = nil
                 }
-            }
-            
+            }                
             ToastView($ToastMessage)
         }
     }

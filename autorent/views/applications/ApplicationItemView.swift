@@ -18,78 +18,51 @@ struct ApplicationItemView: View {
     
     var body: some View {
         VStack {
-             VStack {
-                Text(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex + 1)))
-                     .foregroundColor(Color.textLight)
-                     .font(Font.headline.weight(.bold))
-                     .frame(maxWidth: .infinity, alignment: .trailing)
-                 HStack {
-                     HStack {
-                         Image("calendar-alt")
-                             .renderingMode(.template)
-                             .resizable()
-                             .foregroundColor(Color.textLight)
-                             .frame(width: 30, height: 35)
-                         VStack {
-                            Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.StartDate))
-                                 .foregroundColor(Color.textLight)
-                                 .lineLimit(1)
-                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.StartDate))
-                                 .foregroundColor(Color.textLight)
-                                 .font(Font.headline.weight(.bold))
-                                 .lineLimit(1)
+            VStack {
+                VStack {
+                    CustomText(String(format: NSLocalizedString("string_applicationitem_title", comment: ""), String(self.mIndex + 1)), alignment: .trailing, maxLines: 1, bold: true)
+                }
+                HStack {
+                    HStack {
+                        Image("calendar-alt")
+                            .resizable()
+                            .frame(width: 30, height: 35)
+                            .foregroundColor(Color.textLight)
+                        VStack {
+                            CustomText(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.StartDate), alignment: .center, maxLines: 1)
+                            CustomText(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.StartDate), alignment: .center, maxLines: 1, bold: true)
                          }
                      }
+                     .frame(maxWidth: .infinity, alignment: .center)
                      .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
-                     .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.primary)
                      HStack {
-                         Image("calendar-alt")
-                             .renderingMode(.template)
-                             .resizable()
-                             .foregroundColor(Color.textLight)
-                             .frame(width: 30, height: 35)
-                         VStack {
-                             Text(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.FinishDate))
-                                 .foregroundColor(Color.textLight)
-                                .lineLimit(1)
-                             Text(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.FinishDate))
-                                 .foregroundColor(Color.textLight)
-                                 .font(Font.headline.weight(.bold))
-                                .lineLimit(1)
+                        Image("calendar-alt")
+                            .resizable()
+                            .frame(width: 30, height: 35)
+                            .foregroundColor(Color.textLight)
+                        VStack {
+                            CustomText(Utils.formatDate(format: "dd MMMM yyyy", date: self.mApplicationItem.FinishDate), alignment: .center, maxLines: 1)
+                            CustomText(Utils.formatDate(format: "HH:mm ZZZZZ", date: self.mApplicationItem.FinishDate), alignment: .center, maxLines: 1, bold: true)
                          }
                      }
+                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                      .padding(EdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8))
-                     .frame(minWidth: 0, maxWidth: .infinity)
                      .background(Color.primary)
                  }
-                 HStack {
-                     Image("truck-monster")
-                         .renderingMode(.template)
-                         .foregroundColor(Color.textLight)
-                    Text(self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName())
-                         .foregroundColor(Color.textLight)
-                         .fixedSize(horizontal: false, vertical: true)
-                         .frame(maxWidth: .infinity, alignment: .leading)
-                 }
-                 ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
-                     if option.getOptionValue() != nil {
-                         HStack {
-                             Image("iconmonstr-gear")
-                                 .renderingMode(.template)
-                                 .foregroundColor(Color.textLight)
-                             Text(option.VehicleOption.VehicleOptionType.Name)
-                                 .foregroundColor(Color.textLight)
-                                 .fixedSize(horizontal: false, vertical: true)
-                                 .frame(maxWidth: .infinity, alignment: .leading)
-                             Text(option.getOptionValue()!)
-                                 .foregroundColor(Color.textLight)
-                                 .font(Font.headline.weight(.bold))
-                                 .fixedSize(horizontal: false, vertical: true)
-                                 .frame(maxWidth: .infinity, alignment: .leading)
-                         }
-                     }
-                 }
+                VStack {
+                    CustomText(self.mApplicationItem.VehicleParams.VehicleType.getVehicleTypeName(), image: "truck-monster")
+                }
+                VStack {
+                    ForEach(self.mApplicationItem.VehicleParams.VehicleOptions) { option in
+                        if option.getOptionValue() != nil {
+                            HStack {
+                                CustomText(option.VehicleOption.VehicleOptionType.Name, image: "iconmonstr-gear")
+                                CustomText(option.getOptionValue()!, bold: true)
+                            }
+                        }
+                    }
+                }
              }
              .padding(.all, 12)
          }
