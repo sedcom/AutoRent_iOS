@@ -12,10 +12,12 @@ class Order: Entity {
     var Company: autorent.Company?
     var Application: autorent.Application?
     var Items: [OrderItem]
+    var Documents: [Document]
     var History: [OrderHistory]
     
     override init() {
         self.Items = []
+        self.Documents = []
         self.History = []
         super.init()
     }
@@ -26,6 +28,7 @@ class Order: Entity {
         self.Company = container.contains(.Company) ? try container.decode(autorent.Company.self, forKey: .Company) : nil
         self.Application = container.contains(.Application) ? try container.decode(autorent.Application.self, forKey: .Application) : nil
         self.Items = container.contains(.Items) ? try container.decode([OrderItem].self, forKey: .Items) : []
+        self.Documents = container.contains(.Documents) ? try container.decode([Document].self, forKey: .Documents) : []
         self.History = container.contains(.History) ? try container.decode([OrderHistory].self, forKey: .History) : []
         try super.init(from: decoder)
     }
@@ -36,6 +39,7 @@ class Order: Entity {
         case Application = "application"
         case Notes = "notes"
         case Items = "items"
+        case Documents = "documents"
         case History = "history"
     }
     
@@ -43,4 +47,3 @@ class Order: Entity {
         return self.History.sorted { a, b in a.Id > b.Id }.first!
     }
 }
-

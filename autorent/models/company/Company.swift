@@ -29,7 +29,7 @@ class Company: Entity {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.CompanyType = container.contains(.CompanyType) ? try container.decode(autorent.CompanyType.self, forKey: .CompanyType): nil
         self.OwnershipType = container.contains(.OwnershipType) ? try container.decode(autorent.OwnershipType.self, forKey: .OwnershipType) : nil
-        self.Name = container.contains(.Name) ? try container.decode(String?.self, forKey: .Name) : nil
+        self.Name = container.contains(.Name) ? try container.decode(String.self, forKey: .Name) : nil
         self.FirstName = container.contains(.FirstName) ? try container.decode(String?.self, forKey: .FirstName) : nil
         self.MiddleName = container.contains(.MiddleName) ? try container.decode(String?.self, forKey: .MiddleName) : nil
         self.LastName = container.contains(.LastName) ? try container.decode(String?.self, forKey: .LastName) : nil

@@ -57,7 +57,7 @@ struct ApplicationMainEditView: View, Equatable {
                                     .pickerStyle(SegmentedPickerStyle())
                                     .padding(.bottom, 4)
                                     if self.SelectedUserType == 1 {
-                                        CustomTextField(Binding(get: { self.mViewModel.Application!.User.Profile.getUserName() }, set: { _ in }), disabled: true)
+                                        CustomTextField(Binding(get: { self.mViewModel.Application!.User!.Profile.getUserName() }, set: { _ in }), disabled: true)
                                     }
                                     else {
                                         NavigationLink(destination: PickerCompanyView(selectedCompany: self.SelectedCompany)) {
@@ -76,11 +76,11 @@ struct ApplicationMainEditView: View, Equatable {
                                 VStack {
                                     CustomText("string_application_address", maxLines: 1, bold: true)
                                     NavigationLink(destination: PickerMapAddressView(selectedMapAddress: self.SelectedMapAddress)) {
-                                        CustomTextField(Binding(get: { self.mViewModel.Application!.Address.getAddressName() }, set: { _ in }), disabled: true)
+                                        CustomTextField(Binding(get: { self.mViewModel.Application!.Address!.getAddressName() }, set: { _ in }), disabled: true)
                                             .onChange(of: self.SelectedMapAddress.Address) { newValue in
                                                 if newValue != nil {
                                                     self.mViewModel.Application!.Address = newValue!
-                                                    self.mViewModel.Application!.Address.AddressType = AddressType(id: 3, name: "")
+                                                    self.mViewModel.Application!.Address!.AddressType = AddressType(id: 3, name: "")
                                                     self.SelectedMapAddress.Address = nil
                                                     self.mViewModel.objectWillChange.send()
                                                 }
@@ -103,7 +103,7 @@ struct ApplicationMainEditView: View, Equatable {
                                 }
                                 VStack {
                                     CustomText("string_description", maxLines: 1, bold: true)
-                                    TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes }, set: { self.mViewModel.Application!.Notes  = $0 }))
+                                    TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes! }, set: { self.mViewModel.Application!.Notes  = $0 }))
                                         .frame(minHeight: 100, maxHeight: 100)
                                         .background(Color.inputBackgroud)
                                         .cornerRadius(4)

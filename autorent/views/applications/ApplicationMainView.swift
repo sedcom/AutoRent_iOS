@@ -42,7 +42,7 @@ struct ApplicationMainView: View, Equatable {
                             VStack {
                                 CustomText("string_client", maxLines: 1, bold: true)
                                 if self.mViewModel.Application!.Company == nil {
-                                    CustomText(self.mViewModel.Application!.User.Profile.getUserName(), image: "user")
+                                    CustomText(self.mViewModel.Application!.User!.Profile.getUserName(), image: "user")
                                 }
                                 else {
                                     CustomText(self.mViewModel.Application!.Company!.getCompanyName(), image: "address-book")
@@ -51,7 +51,7 @@ struct ApplicationMainView: View, Equatable {
                             .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_application_address", maxLines: 1, bold: true)
-                                CustomText(self.mViewModel.Application!.Address.getAddressName(), image: "map-marker-alt")
+                                CustomText(self.mViewModel.Application!.Address!.getAddressName(), image: "map-marker-alt")
                             }
                             .padding(.bottom, 4)
                             VStack {
@@ -62,7 +62,7 @@ struct ApplicationMainView: View, Equatable {
                             }
                             VStack {
                                 CustomText("string_description", maxLines: 1, bold: true)
-                                CustomText(self.mViewModel.Application!.Notes)
+                                CustomText(self.mViewModel.Application!.Notes!)
                             }
                         }
                         .padding(.all, 8)

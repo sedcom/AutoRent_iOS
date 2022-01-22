@@ -42,7 +42,6 @@ class OrderViewModel: ObservableObject {
         self.objectWillChange.send()
     }
 
-    
     public func loadData() {
         debugPrint("Start loadItem")
         self.IsLoading = true

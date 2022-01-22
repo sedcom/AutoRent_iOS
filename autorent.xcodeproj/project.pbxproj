@@ -66,6 +66,16 @@
 		F6A066FA279B60D1008AC3D5 /* OrderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */; };
 		F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066FB279B67C4008AC3D5 /* OrderViewModel.swift */; };
 		F6A066FE279B774F008AC3D5 /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */; };
+		F6A06702279B7A60008AC3D5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06701279B7A60008AC3D5 /* Document.swift */; };
+		F6A06704279B7A6B008AC3D5 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06703279B7A6B008AC3D5 /* Invoice.swift */; };
+		F6A06706279B7A88008AC3D5 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06705279B7A88008AC3D5 /* DocumentType.swift */; };
+		F6A06708279B7B28008AC3D5 /* DocumentHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06707279B7B28008AC3D5 /* DocumentHistory.swift */; };
+		F6A0670A279B7E1B008AC3D5 /* OrderDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06709279B7E1B008AC3D5 /* OrderDocumentsView.swift */; };
+		F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0670C279B7E6F008AC3D5 /* DocumentsRowView.swift */; };
+		F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0670E279B86E7008AC3D5 /* DocumentView.swift */; };
+		F6A06711279B8764008AC3D5 /* DocumentHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06710279B8764008AC3D5 /* DocumentHistoryView.swift */; };
+		F6A06714279B87C3008AC3D5 /* DocumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06713279B87C3008AC3D5 /* DocumentViewModel.swift */; };
+		F6A06716279B87EA008AC3D5 /* DocumentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06715279B87EA008AC3D5 /* DocumentRepository.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -157,6 +167,16 @@
 		F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemView.swift; sourceTree = "<group>"; };
 		F6A066FB279B67C4008AC3D5 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		F6A06701279B7A60008AC3D5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		F6A06703279B7A6B008AC3D5 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		F6A06705279B7A88008AC3D5 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		F6A06707279B7B28008AC3D5 /* DocumentHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentHistory.swift; sourceTree = "<group>"; };
+		F6A06709279B7E1B008AC3D5 /* OrderDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDocumentsView.swift; sourceTree = "<group>"; };
+		F6A0670C279B7E6F008AC3D5 /* DocumentsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsRowView.swift; sourceTree = "<group>"; };
+		F6A0670E279B86E7008AC3D5 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		F6A06710279B8764008AC3D5 /* DocumentHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentHistoryView.swift; sourceTree = "<group>"; };
+		F6A06713279B87C3008AC3D5 /* DocumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewModel.swift; sourceTree = "<group>"; };
+		F6A06715279B87EA008AC3D5 /* DocumentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRepository.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -210,6 +230,8 @@
 				E2550F112757C6A60059B96C /* application */,
 				F6A066C827998828008AC3D5 /* company */,
 				E2550F122757C6B20059B96C /* common */,
+				F6A06700279B7A4E008AC3D5 /* document */,
+				F6A066FF279B7A29008AC3D5 /* invoice */,
 				F6A066E4279B55BD008AC3D5 /* order */,
 				F6ADCC2C277B311400A1CE80 /* vehicle */,
 				F692786727793B6E003BD0D5 /* user */,
@@ -222,6 +244,7 @@
 			children = (
 				E2550F102757C68D0059B96C /* applications */,
 				F6A066DB279B1EB8008AC3D5 /* companies */,
+				F6A06712279B87A6008AC3D5 /* documents */,
 				F6A066ED279B5944008AC3D5 /* orders */,
 				F6ADCC56278859D300A1CE80 /* vehicle */,
 				F6ADCC402785B08A00A1CE80 /* utils */,
@@ -236,6 +259,7 @@
 				F6A066D7279B1129008AC3D5 /* controls */,
 				E28538862755BE800008F6FB /* applications */,
 				F6A066D8279B1876008AC3D5 /* companies */,
+				F6A0670B279B7E55008AC3D5 /* documents */,
 				F6A066F0279B59D2008AC3D5 /* orders */,
 				F692786C27794466003BD0D5 /* map */,
 				F6A066BB27973DEE008AC3D5 /* observable */,
@@ -365,6 +389,7 @@
 				F6ADCC542788512F00A1CE80 /* NetworkService.swift */,
 				E29B397227539DD6004CE06A /* ApplicationRepository.swift */,
 				F6A066DE279B1F93008AC3D5 /* CompanyRepository.swift */,
+				F6A06715279B87EA008AC3D5 /* DocumentRepository.swift */,
 				F6A066E2279B5529008AC3D5 /* OrderRepository.swift */,
 				F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */,
 			);
@@ -485,11 +510,48 @@
 				F6A066F5279B5F19008AC3D5 /* OrderView.swift */,
 				F6A066F7279B5FF5008AC3D5 /* OrderMainView.swift */,
 				F6A066F9279B60D1008AC3D5 /* OrderItemView.swift */,
+				F6A06709279B7E1B008AC3D5 /* OrderDocumentsView.swift */,
+				F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */,
 				F6A066F1279B59F1008AC3D5 /* OrdersView.swift */,
 				F6A066F3279B5A01008AC3D5 /* OrdersRowView.swift */,
-				F6A066FD279B774F008AC3D5 /* OrderHistoryView.swift */,
 			);
 			path = orders;
+			sourceTree = "<group>";
+		};
+		F6A066FF279B7A29008AC3D5 /* invoice */ = {
+			isa = PBXGroup;
+			children = (
+				F6A06703279B7A6B008AC3D5 /* Invoice.swift */,
+			);
+			path = invoice;
+			sourceTree = "<group>";
+		};
+		F6A06700279B7A4E008AC3D5 /* document */ = {
+			isa = PBXGroup;
+			children = (
+				F6A06701279B7A60008AC3D5 /* Document.swift */,
+				F6A06705279B7A88008AC3D5 /* DocumentType.swift */,
+				F6A06707279B7B28008AC3D5 /* DocumentHistory.swift */,
+			);
+			path = document;
+			sourceTree = "<group>";
+		};
+		F6A0670B279B7E55008AC3D5 /* documents */ = {
+			isa = PBXGroup;
+			children = (
+				F6A0670E279B86E7008AC3D5 /* DocumentView.swift */,
+				F6A0670C279B7E6F008AC3D5 /* DocumentsRowView.swift */,
+				F6A06710279B8764008AC3D5 /* DocumentHistoryView.swift */,
+			);
+			path = documents;
+			sourceTree = "<group>";
+		};
+		F6A06712279B87A6008AC3D5 /* documents */ = {
+			isa = PBXGroup;
+			children = (
+				F6A06713279B87C3008AC3D5 /* DocumentViewModel.swift */,
+			);
+			path = documents;
 			sourceTree = "<group>";
 		};
 		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
@@ -662,7 +724,9 @@
 				F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */,
+				F6A06711279B8764008AC3D5 /* DocumentHistoryView.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
+				F6A0670A279B7E1B008AC3D5 /* OrderDocumentsView.swift in Sources */,
 				F6A066C527975079008AC3D5 /* ToastView.swift in Sources */,
 				F6A066DD279B1ECE008AC3D5 /* CompaniesViewModel.swift in Sources */,
 				F6A066F8279B5FF5008AC3D5 /* OrderMainView.swift in Sources */,
@@ -671,14 +735,18 @@
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
+				F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
 				F6A066EA279B5703008AC3D5 /* Vehicle.swift in Sources */,
+				F6A06704279B7A6B008AC3D5 /* Invoice.swift in Sources */,
 				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
+				F6A06702279B7A60008AC3D5 /* Document.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
 				F6A066D42799DFCB008AC3D5 /* CustomText.swift in Sources */,
 				F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */,
+				F6A06706279B7A88008AC3D5 /* DocumentType.swift in Sources */,
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6A066BA27973AB3008AC3D5 /* AddressObservable.swift in Sources */,
@@ -705,6 +773,7 @@
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
+				F6A06716279B87EA008AC3D5 /* DocumentRepository.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
@@ -718,8 +787,11 @@
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
+				F6A06708279B7B28008AC3D5 /* DocumentHistory.swift in Sources */,
 				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
+				F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */,
+				F6A06714279B87C3008AC3D5 /* DocumentViewModel.swift in Sources */,
 				F6A066E1279B205D008AC3D5 /* CompanyObservable.swift in Sources */,
 				F6ADCC4C278730C900A1CE80 /* DatetimePicker.swift in Sources */,
 				E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */,
