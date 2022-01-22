@@ -1,16 +1,16 @@
 //
-//  DocumentViewModel.swift
+//  InvoiceViewModel.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 21.01.2022.
+//  Created by Viacheslav Lazarev on 22.01.2022.
 //
 
 import Foundation
 import Combine
 
-class DocumentViewModel: ObservableObject {
-    var mDocumentRepository: DocumentRepository
-    var Document: Document?
+class InvoiceViewModel: ObservableObject {
+    var mInvoiceRepository: InvoiceRepository
+    var Invoice: Invoice?
     var mEntityId: Int
     var mInclude: String
     var IsLoading: Bool = false
@@ -19,7 +19,7 @@ class DocumentViewModel: ObservableObject {
     @Published var ActionResult: OperationResult?
     
     init(entityId: Int, include: String) {
-        self.mDocumentRepository =  DocumentRepository()
+        self.mInvoiceRepository =  InvoiceRepository()
         self.mEntityId = entityId
         self.mInclude = include
     }
@@ -29,7 +29,7 @@ class DocumentViewModel: ObservableObject {
         self.IsLoading = true
         self.IsError = false
         self.objectWillChange.send()
-        self.cancellation = self.mDocumentRepository.loadItem(self.mEntityId, self.mInclude)
+        self.cancellation = self.mInvoiceRepository.loadItem(self.mEntityId, self.mInclude)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.IsError = true
@@ -38,13 +38,12 @@ class DocumentViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                self.Document = result
-                //Перелинковка
-                for invoice in self.Document!.Invoices {
-                    invoice.Document = self.Document!
-                }
+                self.Invoice = result
                 self.IsLoading = false
                 self.objectWillChange.send()
         })
     }
 }
+
+
+

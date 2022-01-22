@@ -32,9 +32,9 @@ struct CustomText: View {
             }
             Text(self.mText)
                 .foregroundColor(self.mSelected ? Color.textDark : Color.textLight)
-                .font(Font.headline.weight(self.mBold ? .bold : .regular))
+                .font(Font.headline.weight(self.mBold ? .bold : .regular))                
+                .fixedSize(horizontal: false, vertical: true)
                 .lineLimit(self.mMaxLines)
-            
         }
         .frame(maxWidth: .infinity, alignment: self.mAlignment)
     }

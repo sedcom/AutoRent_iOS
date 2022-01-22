@@ -22,7 +22,7 @@ struct MainView: View {
                     case 0: MapView(selectedMapAddress: self.SelectedMapAddress)
                     case 1: ApplicationsView()
                     case 2: OrdersView()
-                    case 3: Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    case 3: InvoicesView()
                     case 4: Text("Тут профиль...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     default: VStack {}
                 }

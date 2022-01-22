@@ -28,7 +28,7 @@ class OrderViewModel: ObservableObject {
         self.mInclude = include
     }
     
-    public func updateApplicationItem(item: OrderItem) {
+    public func updateOrderItem(item: OrderItem) {
         if (item.Id > 0) {
             var index = self.AddedItems.firstIndex { $0.id == item.id }
             if (index == nil) {
@@ -87,6 +87,13 @@ class OrderViewModel: ObservableObject {
                         options.append(itemOption!)
                     }
                     item.VehicleParams.VehicleOptions = options
+                }
+                //Перелинковка
+                for document in order.Documents {
+                    document.Order = order
+                    for invoice in document.Invoices {
+                        invoice.Document = document
+                    }
                 }
                 self.IsLoading = false
                 self.objectWillChange.send()

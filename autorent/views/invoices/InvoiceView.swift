@@ -1,13 +1,13 @@
 //
-//  OrderView.swift
+//  InvoiceView.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 21.01.2022.
+//  Created by Viacheslav Lazarev on 22.01.2022.
 //
 
 import SwiftUI
 
-struct OrderView: View {
+struct InvoiceView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var SelectedTab: Int = 0
@@ -25,30 +25,24 @@ struct OrderView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
+                    Text("Тут счет...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 case 1:
-                    OrderDocumentsView(entityId: self.mEntityId)
-                case 2:
-                    OrderInvoicesView(entityId: self.mEntityId)
-                case 3:
-                    OrderHistoryView(entityId: self.mEntityId)
+                    InvoiceHistoryView(entityId: self.mEntityId)
                 default:
                     VStack {}
             }
             CustomTabView(items: [
-                CustomTabItem(index: 0, label: "menu_order", image: "copy"),
-                CustomTabItem(index: 1, label: "menu_documents", image: "file-signature"),
-                CustomTabItem(index: 2, label: "menu_payments", image: "ruble-sign"),
-                CustomTabItem(index: 3, label: "menu_history", image: "history")
+                CustomTabItem(index: 0, label: "menu_payments", image: "ruble-sign"),
+                CustomTabItem(index: 1, label: "menu_history", image: "history")
             ], selected: $SelectedTab)
         }
         .edgesIgnoringSafeArea(.horizontal)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(false)
-        .navigationBarTitle(String(format: NSLocalizedString("title_order", comment: ""), String(self.mEntityId)), displayMode: .inline)
+        .navigationBarTitle(String(format: NSLocalizedString("title_invoice", comment: ""), "", String(self.mEntityId)), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
-                if (self.SelectedTab == 0 && self.SelectedStatus == 1) {
+                if (self.SelectedTab == 0 && self.SelectedStatus == 2) {
                     Image("iconmonstr-edit")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
@@ -57,7 +51,6 @@ struct OrderView: View {
                         }
                 }
         })
-        
-        /*NavigationLink(destination: OrderEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: 1, selection: $Action)  { }*/
     }
 }
+

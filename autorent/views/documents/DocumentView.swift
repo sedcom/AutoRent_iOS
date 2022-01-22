@@ -13,11 +13,12 @@ struct DocumentView: View {
     @State var SelectedTab: Int = 0
     @State var SelectedStatus: Int?
     @State var Action: Int?
-    @State var ActionResult: OperationResult?
+    @Binding var ActionResult: OperationResult?
     
-    init(entityId: Int, mode: ModeView) {
+    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
+        self._ActionResult = result
     }
     
     var body: some View {
@@ -26,7 +27,7 @@ struct DocumentView: View {
                 case 0:
                     Text("Тут документ...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 case 1:
-                    Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    DocumentInvoicesView(entityId: self.mEntityId)
                 case 2:
                     DocumentHistoryView(entityId: self.mEntityId)
                 default:
@@ -55,6 +56,3 @@ struct DocumentView: View {
         })
     }
 }
-
-
-

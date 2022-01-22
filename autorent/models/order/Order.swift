@@ -46,4 +46,8 @@ class Order: Entity {
     public func getStatus () -> OrderHistory {
         return self.History.sorted { a, b in a.Id > b.Id }.first!
     }
+    
+    public func getInvoices() -> [Invoice] {
+        return self.Documents.flatMap { (item) -> [Invoice] in return item.Invoices }
+    }
 }
