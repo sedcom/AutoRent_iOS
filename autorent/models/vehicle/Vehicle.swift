@@ -20,7 +20,7 @@ class Vehicle: Entity {
     
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.RegNumber = container.contains(.RegNumber) ? try container.decode(String.self, forKey: .RegNumber) : nil
+        self.RegNumber = container.contains(.RegNumber) ? try container.decode(String?.self, forKey: .RegNumber) : nil
         self.Producer = container.contains(.Producer) ? try container.decode(String.self, forKey: .Producer) : nil
         self.Model = container.contains(.Model) ? try container.decode(String.self, forKey: .Model) : nil
         self.Year = container.contains(.Year) ? try container.decode(Int.self, forKey: .Year) : nil

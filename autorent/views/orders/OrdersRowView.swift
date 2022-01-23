@@ -22,24 +22,34 @@ struct OrdersRowView: View {
                     CustomText(Utils.formatDate(format: "dd MMMM yyyy", date: self.mOrder.CreatedDate), alignment: .trailing, maxLines: 1, bold:true, image: "calendar-alt")
                 }
                 .padding(.bottom, 8)
-                VStack {
-                    if self.mOrder.getStatus(statusId: 3) || self.mOrder.getStatus(statusId: 4) {
-                        if self.mOrder.Application!.Company == nil {
-                            CustomText(self.mOrder.Application!.User!.Profile.getUserName(), image: "user")
+                HStack {
+                    VStack {
+                        VStack {
+                            if self.mOrder.getStatus(statusId: 3) || self.mOrder.getStatus(statusId: 4) {
+                                if self.mOrder.Application!.Company == nil {
+                                    CustomText(self.mOrder.Application!.User!.Profile.getUserName(), image: "user")
+                                }
+                                else {
+                                    CustomText(self.mOrder.Application!.Company!.getCompanyName(), image: "address-book")
+                                }
+                            }
                         }
-                        else {
-                            CustomText(self.mOrder.Application!.Company!.getCompanyName(), image: "address-book")
+                        VStack {
+                            CustomText(self.mOrder.Company!.getCompanyName(), image: "address-book")
+                        }
+                        VStack {
+                            CustomText(self.mOrder.Application!.Address!.getAddressName(), image: "map-marker-alt")
+                        }
+                        VStack {
+                            CustomText(self.mOrder.getVehicles(), image: "truck-monster")
                         }
                     }
-                }
-                VStack {
-                    CustomText(self.mOrder.Company!.getCompanyName(), image: "address-book")
-                }
-                VStack {
-                    CustomText(self.mOrder.Application!.Address!.getAddressName(), image: "map-marker-alt")
-                }
-                VStack {
-                    CustomText(self.mOrder.getVehicles(), image: "truck-monster")
+                    VStack {
+                        VStack {
+                            CustomText(String(format: "%.2f", self.mOrder.getOrderSumma()), image: "ruble-sign")
+                            CustomText(String(format: "%@ %@", String(self.mOrder.getOrderHours()), NSLocalizedString("string_hour", comment: "")), image: "clock")
+                        }
+                    }.fixedSize()
                 }
                 .padding(.bottom, 8)
                 HStack {

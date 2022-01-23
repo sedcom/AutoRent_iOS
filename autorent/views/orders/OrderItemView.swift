@@ -53,6 +53,10 @@ struct OrderItemView: View {
                 VStack {
                     CustomText(String(format: "%@ / %@ %@ (%@)", self.mOrderItem.Vehicle.VehicleType!.getVehicleTypeName(), self.mOrderItem.Vehicle.Producer!, self.mOrderItem.Vehicle.Model!, String(format: NSLocalizedString("string_vehicle_regnumber_text", comment: ""), self.mOrderItem.Vehicle.RegNumber!)), image: "truck-monster")
                 }
+                HStack {
+                    CustomText(String(format: "%@ %@", String(self.mOrderItem.getOrderItemHours()), NSLocalizedString("string_hour", comment: "")), image: "clock")
+                    CustomText(String(format: "%.2f", self.mOrderItem.getOrderItemSumma()), alignment: .trailing, image: "ruble-sign")
+                }
              }
              .padding(.all, 12)
          }

@@ -58,4 +58,12 @@ class Order: Entity {
     public func getInvoices() -> [Invoice] {
         return self.Documents.flatMap { (item) -> [Invoice] in return item.Invoices }
     }
+    
+    public func getOrderHours() -> Int {
+        return self.Items.map { (item) -> Int in return item.getOrderItemHours() }.reduce(0, +)
+    }
+    
+    public func getOrderSumma() -> Double {
+        return self.Items.map { (item) -> Double in return item.getOrderItemSumma() }.reduce(0, +)
+    }
 }

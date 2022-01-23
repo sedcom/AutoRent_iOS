@@ -46,5 +46,15 @@ class OrderItem: Entity {
         case Transfer = "transfer"
         case Price = "price"
     }
+    
+    public func getOrderItemHours() -> Int {
+        return Int(ceil(Double(self.Transfer) * 2 / 60)) + self.Hours
+    }
+    
+    public func getOrderItemSumma() -> Double {
+        let summaTransfer = Double(ceil(Double(self.Transfer) * 2 / 60)) * self.Price
+        let summaPrice = Double(self.Hours) * self.Price
+        return summaTransfer + summaPrice
+    }
 }
 
