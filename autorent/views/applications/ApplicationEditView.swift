@@ -24,7 +24,7 @@ struct ApplicationEditView: View {
     var body: some View {
         VStack(spacing: 0) {
             switch self.SelectedItem {
-            case 0: ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $Action, selectedItems: $SelectedItems, result: $ActionResult).equatable()
+                case 0: ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $Action, selectedItems: $SelectedItems, result: $ActionResult).equatable()
                 default: VStack {}
             }
             CustomTabView(items: [

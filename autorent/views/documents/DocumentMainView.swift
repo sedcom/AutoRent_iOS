@@ -1,14 +1,14 @@
 //
-//  OrderMainView.swift
+//  DocumentMainView.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 21.01.2022.
+//  Created by Viacheslav Lazarev on 23.01.2022.
 //
 
 import SwiftUI
 
-struct OrderMainView: View, Equatable {
-    @ObservedObject var mViewModel: OrderViewModel
+struct DocumentMainView: View, Equatable {
+    @ObservedObject var mViewModel: DocumentViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
     @Binding var SelectedStatus: Int?
@@ -20,10 +20,10 @@ struct OrderMainView: View, Equatable {
         self.mCurrentMode = mode
         self._SelectedStatus = status
         self._ActionResult = result
-        self.mViewModel = OrderViewModel(entityId: entityId, include: "applications,companies,items,history,vehicles")
+        self.mViewModel = DocumentViewModel(entityId: entityId, include: "files,orders,history")
     }
     
-    static func == (lhs: OrderMainView, rhs: OrderMainView) -> Bool {
+    static func == (lhs: DocumentMainView, rhs: DocumentMainView) -> Bool {
         return true
     }
     
@@ -36,39 +36,41 @@ struct OrderMainView: View, Equatable {
                 else if self.mViewModel.IsError {
                     ErrorView()
                 }
-                else if self.mViewModel.Order != nil {
+                else if self.mViewModel.Document != nil {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
                             VStack {
-                                if self.mViewModel.Order!.getStatus(statusId: 3) || self.mViewModel.Order!.getStatus(statusId: 4) {
-                                    CustomText("string_client", maxLines: 1, bold: true)
-                                    if self.mViewModel.Order!.Application!.Company == nil {
-                                        CustomText(self.mViewModel.Order!.Application!.User!.Profile.getUserName(), image: "user")
-                                    }
-                                    else {
-                                        CustomText(self.mViewModel.Order!.Application!.Company!.getCompanyName(), image: "address-book")
-                                    }
+                                CustomText("string_document_type", maxLines: 1, bold: true)
+                                CustomText(self.mViewModel.Document!.DocumentType!.Name)
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                CustomText("string_document_details", maxLines: 1, bold: true)
+                                CustomText(String(format: NSLocalizedString("title_document_details", comment: ""), self.mViewModel.Document!.DocumentType!.Name, self.mViewModel.Document!.Number!, Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Document!.Date!)))
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                CustomText("string_client", maxLines: 1, bold: true)
+                                if self.mViewModel.Document!.Order!.Application!.Company == nil {
+                                    CustomText(self.mViewModel.Document!.Order!.Application!.User!.Profile.getUserName(), image: "user")
+                                }
+                                else {
+                                    CustomText(self.mViewModel.Document!.Order!.Application!.Company!.getCompanyName(), image: "address-book")
                                 }
                             }
                             VStack {
                                 CustomText("string_provider", maxLines: 1, bold: true)
-                                CustomText(self.mViewModel.Order!.Company!.getCompanyName(), image: "address-book")
+                                CustomText(self.mViewModel.Document!.Order!.Company!.getCompanyName(), image: "address-book")
                             }
                             .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_application_address", maxLines: 1, bold: true)
-                                CustomText(self.mViewModel.Order!.Application!.Address!.getAddressName(), image: "map-marker-alt")
+                                CustomText(self.mViewModel.Document!.Order!.Application!.Address!.getAddressName(), image: "map-marker-alt")
                             }
                             .padding(.bottom, 4)
                             VStack {
-                                ForEach(self.mViewModel.Order!.Items) { item in
-                                    let index = self.mViewModel.Order!.Items.firstIndex(of: item)!
-                                    OrderItemView(orderItem: item, index: index)
-                                }
-                            }
-                            VStack {
                                 CustomText("string_description", maxLines: 1, bold: true)
-                                CustomText(self.mViewModel.Order!.Application!.Notes!)
+                                CustomText(self.mViewModel.Document!.Notes!)
                             }
                         }
                         .padding(.all, 8)
@@ -78,11 +80,11 @@ struct OrderMainView: View, Equatable {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .background(Color.primary)
             .onAppear {
-                if self.mViewModel.Order == nil {
+                if self.mViewModel.Document == nil {
                     self.mViewModel.loadData()
                 }
             }
-            .onChange(of: self.mViewModel.Order) { newValue in
+            .onChange(of: self.mViewModel.Document) { newValue in
                 if (newValue != nil) {
                     self.SelectedStatus = newValue!.getStatus().Status.Id
                 }
@@ -90,11 +92,8 @@ struct OrderMainView: View, Equatable {
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
-                        case OperationResult.Update:
-                            self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                            self.mViewModel.loadData()
-                    case OperationResult.Approve:
-                            self.ToastMessage = NSLocalizedString("message_order_approve_success", comment: "")
+                        case OperationResult.Approve:
+                            self.ToastMessage = NSLocalizedString("message_document_approve_success", comment: "")
                             self.mViewModel.loadData()
                         default: print()
                     }
@@ -105,3 +104,4 @@ struct OrderMainView: View, Equatable {
         }
     }
 }
+

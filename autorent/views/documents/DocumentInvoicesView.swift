@@ -11,6 +11,7 @@ struct DocumentInvoicesView: View {
     @ObservedObject var mViewModel: DocumentViewModel
     var mEntityId: Int
     @State var ActionResult: OperationResult?
+    @State var InvoiceId: Int?
     
     init(entityId: Int) {
         self.mEntityId = entityId
@@ -33,7 +34,7 @@ struct DocumentInvoicesView: View {
                     if self.mViewModel.Document != nil {
                         ForEach(self.mViewModel.Document!.Invoices) { invoice in
                             VStack {
-                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, result: $ActionResult))  {
+                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, result: $ActionResult), tag: invoice.Id, selection:  $InvoiceId)  {
                                     InvoicesRowView(invoice)
                                 }
                             }
@@ -48,7 +49,9 @@ struct DocumentInvoicesView: View {
         }
         .background(Color.primary)
         .onAppear {
-            self.mViewModel.loadData()
+            if self.mViewModel.Document == nil {
+                self.mViewModel.loadData()
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ struct DocumentView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    Text("Тут документ...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    DocumentMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
                 case 1:
                     DocumentInvoicesView(entityId: self.mEntityId)
                 case 2:
@@ -45,13 +45,15 @@ struct DocumentView: View {
         .navigationBarTitle(String(format: NSLocalizedString("title_document", comment: ""), "", String(self.mEntityId)), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
-                if (self.SelectedTab == 0 && self.SelectedStatus == 1) {
-                    Image("iconmonstr-edit")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.Action = 1
-                        }
+                if self.SelectedTab == 0 {
+                    if self.SelectedStatus == 2 {
+                        Image("feather")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 1
+                            }
+                    }
                 }
         })
     }

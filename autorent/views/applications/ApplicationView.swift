@@ -48,13 +48,21 @@ struct ApplicationView: View {
         .navigationBarTitle(String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
-                if (self.SelectedTab == 0 && self.SelectedStatus == 1) {
-                    Image("iconmonstr-edit")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.Action = 1
-                        }
+                if self.SelectedTab == 0 {
+                    if self.SelectedStatus == 1 {
+                        Image("iconmonstr-edit")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 1
+                            }
+                        Image("paper-plane")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 2
+                            }
+                    }
                 }
         })
         

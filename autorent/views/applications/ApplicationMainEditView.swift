@@ -103,7 +103,7 @@ struct ApplicationMainEditView: View, Equatable {
                                 }
                                 VStack {
                                     CustomText("string_description", maxLines: 1, bold: true)
-                                    TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes! }, set: { self.mViewModel.Application!.Notes  = $0 }))
+                                    TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes ?? "" }, set: { self.mViewModel.Application!.Notes  = $0 }))
                                         .frame(minHeight: 100, maxHeight: 100)
                                         .background(Color.inputBackgroud)
                                         .cornerRadius(4)

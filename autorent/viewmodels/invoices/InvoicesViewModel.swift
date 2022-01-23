@@ -59,6 +59,7 @@ class InvoicesViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadData")
                 self.Data.Elements.remove(at: self.Data.Elements.count - 1)
                 self.Data.MaxItems = result.MaxItems
                 self.Data.SkipCount = result.SkipCount

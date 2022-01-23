@@ -38,6 +38,7 @@ class DocumentViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadItem")
                 self.Document = result
                 //Перелинковка
                 for invoice in self.Document!.Invoices {

@@ -48,13 +48,29 @@ struct OrderView: View {
         .navigationBarTitle(String(format: NSLocalizedString("title_order", comment: ""), String(self.mEntityId)), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
-                if (self.SelectedTab == 0 && self.SelectedStatus == 1) {
-                    Image("iconmonstr-edit")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.Action = 1
+                if self.SelectedTab == 0 {
+                    if self.SelectedStatus == 2 {
+                        Image("iconmonstr-edit")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 1
                         }
+                        Image("hand-paper")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 2
+                        }
+                    }
+                    if self.SelectedStatus == 5 {
+                        Image("flag-checkered")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 1
+                            }
+                    }
                 }
         })
         

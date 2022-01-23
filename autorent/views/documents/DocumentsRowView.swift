@@ -23,6 +23,14 @@ struct DocumentsRowView: View {
                 }
                 .padding(.bottom, 8)
                 VStack {
+                    if self.mDocument.Order!.Application!.Company == nil {
+                        CustomText(self.mDocument.Order!.Application!.User!.Profile.getUserName(), image: "user")
+                    }
+                    else {
+                        CustomText(self.mDocument.Order!.Application!.Company!.getCompanyName(), image: "address-book")
+                    }
+                }
+                VStack {
                     CustomText(self.mDocument.Order!.Company!.getCompanyName(), image: "address-book")
                 }
                 VStack {

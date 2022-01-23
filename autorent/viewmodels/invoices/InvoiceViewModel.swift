@@ -38,6 +38,7 @@ class InvoiceViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadItem")
                 self.Invoice = result
                 self.IsLoading = false
                 self.objectWillChange.send()

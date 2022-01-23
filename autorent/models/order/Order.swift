@@ -47,6 +47,10 @@ class Order: Entity {
         return self.History.sorted { a, b in a.Id > b.Id }.first!
     }
     
+    public func getStatus (statusId: Int) -> Bool {
+        return self.History.filter { $0.Status.Id == statusId }.count > 0
+    }
+    
     public func getInvoices() -> [Invoice] {
         return self.Documents.flatMap { (item) -> [Invoice] in return item.Invoices }
     }

@@ -11,6 +11,7 @@ struct OrderDocumentsView: View {
     @ObservedObject var mViewModel: OrderViewModel
     var mEntityId: Int
     @State var ActionResult: OperationResult?
+    @State var DocumentId: Int?
     
     init(entityId: Int) {
         self.mEntityId = entityId
@@ -33,7 +34,7 @@ struct OrderDocumentsView: View {
                     if self.mViewModel.Order != nil {
                         ForEach(self.mViewModel.Order!.Documents) { document in
                             VStack {
-                                NavigationLink(destination: DocumentView(entityId: document.Id, mode: ModeView.View, result: $ActionResult))  {
+                                NavigationLink(destination: DocumentView(entityId: document.Id, mode: ModeView.View, result: $ActionResult), tag: document.Id, selection:  $DocumentId)  {
                                     DocumentsRowView(document)
                                 }
                             }
@@ -48,7 +49,9 @@ struct OrderDocumentsView: View {
         }
         .background(Color.primary)
         .onAppear {
-            self.mViewModel.loadData()
+            if self.mViewModel.Order == nil {
+                self.mViewModel.loadData()
+            }
         }
     }
 }

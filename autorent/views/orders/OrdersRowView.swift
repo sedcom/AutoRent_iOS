@@ -23,6 +23,16 @@ struct OrdersRowView: View {
                 }
                 .padding(.bottom, 8)
                 VStack {
+                    if self.mOrder.getStatus(statusId: 3) || self.mOrder.getStatus(statusId: 4) {
+                        if self.mOrder.Application!.Company == nil {
+                            CustomText(self.mOrder.Application!.User!.Profile.getUserName(), image: "user")
+                        }
+                        else {
+                            CustomText(self.mOrder.Application!.Company!.getCompanyName(), image: "address-book")
+                        }
+                    }
+                }
+                VStack {
                     CustomText(self.mOrder.Company!.getCompanyName(), image: "address-book")
                 }
                 VStack {
