@@ -13,10 +13,12 @@ class Invoice: Entity {
     var Date: Date?
     var Notes: String?
     var InvoiceType: autorent.InvoiceType?
+    var Items: [InvoiceItem]
     var Document: autorent.Document?
     var History: [InvoiceHistory]
     
     override init() {
+        self.Items = []
         self.History = []
         super.init()
     }
@@ -29,6 +31,7 @@ class Invoice: Entity {
         self.Notes = container.contains(.Notes) ? try container.decode(String?.self, forKey: .Notes) : nil
         self.InvoiceType = container.contains(.InvoiceType) ? try container.decode(autorent.InvoiceType.self, forKey: .InvoiceType) : nil
         self.Document = container.contains(.Document) ? try container.decode(autorent.Document.self, forKey: .Document) : nil
+        self.Items = container.contains(.Items) ? try container.decode([InvoiceItem].self, forKey: .Items) : []
         self.History = container.contains(.History) ? try container.decode([InvoiceHistory].self, forKey: .History) : []
         try super.init(from: decoder)
     }
@@ -40,6 +43,7 @@ class Invoice: Entity {
         case Notes = "notes"
         case InvoiceType = "invoiceType"
         case Document = "document"
+        case Items = "items"
         case History = "history"
     }
     

@@ -58,6 +58,7 @@ struct InvoiceMainView: View, Equatable {
                                     CustomText(self.mViewModel.Invoice!.Document!.Order!.Application!.Company!.getCompanyName(), image: "address-book")
                                 }
                             }
+                            .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_provider", maxLines: 1, bold: true)
                                 CustomText(self.mViewModel.Invoice!.Document!.Order!.Company!.getCompanyName(), image: "address-book")
@@ -66,6 +67,13 @@ struct InvoiceMainView: View, Equatable {
                             VStack {
                                 CustomText("string_invoice_reason", maxLines: 1, bold: true)
                                 CustomText(String(format: NSLocalizedString("title_document_details", comment: ""), self.mViewModel.Invoice!.Document!.DocumentType!.Name, self.mViewModel.Invoice!.Document!.Number!, Utils.formatDate(format: "dd MMMM yyyy", date: self.mViewModel.Invoice!.Document!.Date!)))
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                ForEach(self.mViewModel.Invoice!.Items) { item in
+                                    let index = self.mViewModel.Invoice!.Items.firstIndex(of: item)!
+                                    InvoiceItemView(invoiceItem: item, index: index)
+                                }
                             }
                             .padding(.bottom, 4)
                             VStack {

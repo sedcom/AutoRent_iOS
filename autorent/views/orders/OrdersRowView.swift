@@ -39,7 +39,7 @@ struct OrdersRowView: View {
                     CustomText(self.mOrder.Application!.Address!.getAddressName(), image: "map-marker-alt")
                 }
                 VStack {
-                    CustomText(self.mOrder.Application!.getVehicles(), image: "truck-monster")
+                    CustomText(self.mOrder.getVehicles(), image: "truck-monster")
                 }
                 .padding(.bottom, 8)
                 HStack {

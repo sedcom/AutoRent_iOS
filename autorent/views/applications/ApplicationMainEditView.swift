@@ -87,6 +87,7 @@ struct ApplicationMainEditView: View, Equatable {
                                             }
                                     }
                                 }
+                                .padding(.bottom, 4)
                                 VStack {
                                     ForEach(self.mViewModel.Application!.Items) { item in
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
@@ -101,6 +102,7 @@ struct ApplicationMainEditView: View, Equatable {
                                     .foregroundColor(Color.textDark)
                                     .cornerRadius(5)
                                 }
+                                .padding(.bottom, 4)
                                 VStack {
                                     CustomText("string_description", maxLines: 1, bold: true)
                                     TextEditor(text: Binding(get: { self.mViewModel.Application!.Notes ?? "" }, set: { self.mViewModel.Application!.Notes  = $0 }))

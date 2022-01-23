@@ -51,7 +51,7 @@ struct OrderItemView: View {
                      .background(Color.primary)
                  }
                 VStack {
-                    CustomText(self.mOrderItem.Vehicle.RegNumber!, image: "truck-monster")
+                    CustomText(String(format: "%@ / %@ %@ (%@)", self.mOrderItem.Vehicle.VehicleType!.getVehicleTypeName(), self.mOrderItem.Vehicle.Producer!, self.mOrderItem.Vehicle.Model!, String(format: NSLocalizedString("string_vehicle_regnumber_text", comment: ""), self.mOrderItem.Vehicle.RegNumber!)), image: "truck-monster")
                 }
              }
              .padding(.all, 12)

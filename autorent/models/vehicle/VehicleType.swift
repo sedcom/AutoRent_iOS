@@ -24,7 +24,7 @@ class VehicleType: BaseDictionary {
     required init(from decoder: Decoder) throws  {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.VehicleGroup = try container.decode(VehicleType?.self, forKey: .VehicleGroup)
-        self.VehicleOptions = try container.decode([VehicleOption].self, forKey: .VehicleOptions)
+        self.VehicleOptions = container.contains(.VehicleOptions) ? try container.decode([VehicleOption].self, forKey: .VehicleOptions) : []
         try super.init(from: decoder)
     }
     

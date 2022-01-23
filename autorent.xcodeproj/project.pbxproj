@@ -91,6 +91,10 @@
 		F6A06732279D50CD008AC3D5 /* ApplicationInvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06731279D50CD008AC3D5 /* ApplicationInvoicesView.swift */; };
 		F6A06734279D62DA008AC3D5 /* DocumentMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06733279D62DA008AC3D5 /* DocumentMainView.swift */; };
 		F6A06736279D6C86008AC3D5 /* InvoiceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06735279D6C86008AC3D5 /* InvoiceMainView.swift */; };
+		F6A06738279D89A0008AC3D5 /* InvoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06737279D89A0008AC3D5 /* InvoiceItem.swift */; };
+		F6A0673A279D8A9C008AC3D5 /* InvoiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06739279D8A9C008AC3D5 /* InvoiceItemView.swift */; };
+		F6A0673C279D8D34008AC3D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0673B279D8D34008AC3D5 /* File.swift */; };
+		F6A0673E279D9037008AC3D5 /* DocumentFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0673D279D9037008AC3D5 /* DocumentFileView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -207,6 +211,10 @@
 		F6A06731279D50CD008AC3D5 /* ApplicationInvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationInvoicesView.swift; sourceTree = "<group>"; };
 		F6A06733279D62DA008AC3D5 /* DocumentMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentMainView.swift; sourceTree = "<group>"; };
 		F6A06735279D6C86008AC3D5 /* InvoiceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceMainView.swift; sourceTree = "<group>"; };
+		F6A06737279D89A0008AC3D5 /* InvoiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItem.swift; sourceTree = "<group>"; };
+		F6A06739279D8A9C008AC3D5 /* InvoiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemView.swift; sourceTree = "<group>"; };
+		F6A0673B279D8D34008AC3D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F6A0673D279D9037008AC3D5 /* DocumentFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -344,6 +352,7 @@
 				F6ADCC2F277BE96500A1CE80 /* BaseDictionary.swift */,
 				F6ADCC31277BE9F400A1CE80 /* BaseHistory.swift */,
 				F6ADCC2D277BE8D000A1CE80 /* BaseStatus.swift */,
+				F6A0673B279D8D34008AC3D5 /* File.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -373,8 +382,8 @@
 				E219C2882752EC9600870896 /* models */,
 				E219C28A2752ECC200870896 /* views */,
 				E219C2892752ECB900870896 /* viewmodels */,
-				E2589B0B27523A4F00BFF698 /* Assets.xcassets */,
 				E2589B1027523A4F00BFF698 /* Info.plist */,
+				E2589B0B27523A4F00BFF698 /* Assets.xcassets */,
 				E2550F0D2757C3780059B96C /* Localizable.strings */,
 				E2589B0D27523A4F00BFF698 /* Preview Content */,
 			);
@@ -559,6 +568,7 @@
 			children = (
 				F6A06703279B7A6B008AC3D5 /* Invoice.swift */,
 				F6A06717279C5685008AC3D5 /* InvoiceType.swift */,
+				F6A06737279D89A0008AC3D5 /* InvoiceItem.swift */,
 				F6A06719279C56A2008AC3D5 /* InvoiceHistory.swift */,
 			);
 			path = invoice;
@@ -579,6 +589,7 @@
 			children = (
 				F6A0670E279B86E7008AC3D5 /* DocumentView.swift */,
 				F6A06733279D62DA008AC3D5 /* DocumentMainView.swift */,
+				F6A0673D279D9037008AC3D5 /* DocumentFileView.swift */,
 				F6A0672D279C6A51008AC3D5 /* DocumentInvoicesView.swift */,
 				F6A06710279B8764008AC3D5 /* DocumentHistoryView.swift */,
 				F6A0670C279B7E6F008AC3D5 /* DocumentsRowView.swift */,
@@ -608,6 +619,7 @@
 			children = (
 				F6A06727279C67A0008AC3D5 /* InvoiceView.swift */,
 				F6A06735279D6C86008AC3D5 /* InvoiceMainView.swift */,
+				F6A06739279D8A9C008AC3D5 /* InvoiceItemView.swift */,
 				F6A06729279C681A008AC3D5 /* InvoiceHistoryView.swift */,
 				F6A06723279C5982008AC3D5 /* InvoicesView.swift */,
 				F6A06721279C58A5008AC3D5 /* InvoicesRowView.swift */,
@@ -781,6 +793,7 @@
 				F6A066F4279B5A01008AC3D5 /* OrdersRowView.swift in Sources */,
 				F6A0672C279C6872008AC3D5 /* InvoiceViewModel.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
+				F6A0673E279D9037008AC3D5 /* DocumentFileView.swift in Sources */,
 				F6A066DF279B1F93008AC3D5 /* CompanyRepository.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
 				F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */,
@@ -815,6 +828,7 @@
 				F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */,
 				F6A06706279B7A88008AC3D5 /* DocumentType.swift in Sources */,
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
+				F6A0673C279D8D34008AC3D5 /* File.swift in Sources */,
 				F6A0671F279C5812008AC3D5 /* InvoicesViewModel.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6A066BA27973AB3008AC3D5 /* AddressObservable.swift in Sources */,
@@ -833,8 +847,10 @@
 				F6A06724279C5982008AC3D5 /* InvoicesView.swift in Sources */,
 				F6ADCC53278850F200A1CE80 /* DictionaryRepository.swift in Sources */,
 				F6A066CA27998860008AC3D5 /* CompanyType.swift in Sources */,
+				F6A0673A279D8A9C008AC3D5 /* InvoiceItemView.swift in Sources */,
 				F6A06728279C67A0008AC3D5 /* InvoiceView.swift in Sources */,
 				F6A0671C279C5775008AC3D5 /* InvoiceRepository.swift in Sources */,
+				F6A06738279D89A0008AC3D5 /* InvoiceItem.swift in Sources */,
 				F6A066BD27973E23008AC3D5 /* VehicleTypeObservable.swift in Sources */,
 				F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */,
 				F6ADCC3F2782DCF700A1CE80 /* VehicleOptionType.swift in Sources */,

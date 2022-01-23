@@ -58,6 +58,7 @@ struct DocumentMainView: View, Equatable {
                                     CustomText(self.mViewModel.Document!.Order!.Application!.Company!.getCompanyName(), image: "address-book")
                                 }
                             }
+                            .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_provider", maxLines: 1, bold: true)
                                 CustomText(self.mViewModel.Document!.Order!.Company!.getCompanyName(), image: "address-book")
@@ -66,6 +67,12 @@ struct DocumentMainView: View, Equatable {
                             VStack {
                                 CustomText("string_application_address", maxLines: 1, bold: true)
                                 CustomText(self.mViewModel.Document!.Order!.Application!.Address!.getAddressName(), image: "map-marker-alt")
+                            }
+                            .padding(.bottom, 4)
+                            VStack {
+                                ForEach(self.mViewModel.Document!.Files) { file in
+                                    DocumentFileView(file: file)
+                                }
                             }
                             .padding(.bottom, 4)
                             VStack {

@@ -57,47 +57,16 @@ class OrderViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 self.Order = result
-                self.loadVehicleTypes(order: self.Order!)
-        })
-    }
-    
-    private func loadVehicleTypes(order: Order) {
-        self.cancellation = DictionaryRepository().getVehicleTypes("Name asc", "options")
-            .mapError({ (error) -> Error in
-                debugPrint(error)
-                self.IsError = true
-                self.IsLoading = false
-                self.objectWillChange.send()
-                return error
-            })
-            .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish loadItem")
-                let vehicleTypes = result.Elements
-                for item in order.Application!.Items {
-                    let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
-                    item.VehicleParams.VehicleType = vehicleType!
-                    var options: [ApplicationItemVehicleOption] = []
-                    for option in item.VehicleParams.VehicleType.VehicleOptions {
-                        var itemOption = item.VehicleParams.VehicleOptions.first(where: { $0.Id == option.Id})
-                        if (itemOption == nil) {
-                            itemOption = ApplicationItemVehicleOption()
-                            itemOption!.Id = option.Id
-                        }
-                        itemOption!.VehicleOption = option
-                        options.append(itemOption!)
-                    }
-                    item.VehicleParams.VehicleOptions = options
-                }
                 //Перелинковка
-                for document in order.Documents {
-                    document.Order = order
+                for document in self.Order!.Documents {
+                    document.Order = self.Order
                     for invoice in document.Invoices {
                         invoice.Document = document
                     }
                 }
                 self.IsLoading = false
                 self.objectWillChange.send()
-            })
+        })
     }
 }
 

@@ -69,7 +69,7 @@ class ApplicationsViewModel: ObservableObject {
     }
     
     private func loadVehicleTypes(applications: [Application]) {
-        self.cancellation = DictionaryRepository().getVehicleTypes("Name asc", "options")
+        self.cancellation = DictionaryRepository().getVehicleTypes()
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.IsError = true

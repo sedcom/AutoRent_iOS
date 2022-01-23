@@ -50,6 +50,7 @@ struct OrderMainView: View, Equatable {
                                     }
                                 }
                             }
+                            .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_provider", maxLines: 1, bold: true)
                                 CustomText(self.mViewModel.Order!.Company!.getCompanyName(), image: "address-book")
@@ -66,6 +67,7 @@ struct OrderMainView: View, Equatable {
                                     OrderItemView(orderItem: item, index: index)
                                 }
                             }
+                            .padding(.bottom, 4)
                             VStack {
                                 CustomText("string_description", maxLines: 1, bold: true)
                                 CustomText(self.mViewModel.Order!.Application!.Notes!)

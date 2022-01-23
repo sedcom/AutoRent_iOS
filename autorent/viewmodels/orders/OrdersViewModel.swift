@@ -64,28 +64,6 @@ class OrdersViewModel: ObservableObject {
                 self.Data.SkipCount = result.SkipCount
                 self.Data.Total = result.Total
                 self.Data.Elements.append(contentsOf: result.Elements)
-                self.loadVehicleTypes(orders: self.Data.Elements)
-            })
-    }
-
-    private func loadVehicleTypes(orders: [Order]) {
-        self.cancellation = DictionaryRepository().getVehicleTypes("Name asc", "options")
-            .mapError({ (error) -> Error in
-                debugPrint(error)
-                self.IsError = true
-                self.IsLoading = false
-                self.objectWillChange.send()
-                return error
-            })
-            .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish loadData")
-                let vehicleTypes = result.Elements
-                for order in orders {
-                    for item in order.Application!.Items {
-                        let vehicleType = vehicleTypes.first(where: { $0.Id == item.VehicleParams.VehicleType.Id })
-                        item.VehicleParams.VehicleType = vehicleType!
-                    }
-                }
                 self.IsLoading = false
                 self.objectWillChange.send()
             })

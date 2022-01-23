@@ -10,7 +10,7 @@ import Alamofire
 import Combine
 
 class DictionaryRepository {
-    public func getVehicleTypes(_ orderBy: String, _ include: String) -> AnyPublisher<Pagination<VehicleType>, AFError> {
+    public func getVehicleTypes(_ orderBy: String = "", _ include: String = "") -> AnyPublisher<Pagination<VehicleType>, AFError> {
         let publisher = NetworkService.getInstance().request(url: "/dictionary?type=vehicletypes", method: .get, parameters: ["maxItems": 0, "skipCount": 0, "orderBy": orderBy, "include": include]).publishDecodable(type: Pagination<VehicleType>.self)
         return publisher.value();
     }

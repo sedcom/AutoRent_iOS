@@ -51,6 +51,10 @@ class Order: Entity {
         return self.History.filter { $0.Status.Id == statusId }.count > 0
     }
     
+    public func getVehicles() -> String {
+        return Set(self.Items.map { (item) -> String in return item.Vehicle.VehicleType!.getVehicleTypeName() }).joined(separator: ", ")
+    }
+    
     public func getInvoices() -> [Invoice] {
         return self.Documents.flatMap { (item) -> [Invoice] in return item.Invoices }
     }

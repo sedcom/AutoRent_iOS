@@ -98,7 +98,7 @@ class ApplicationViewModel: ObservableObject {
     }
     
     private func loadVehicleTypes(application: Application) {
-        self.cancellation = DictionaryRepository().getVehicleTypes("Name asc", "options")
+        self.cancellation = DictionaryRepository().getVehicleTypes("Id asc", "options")
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.IsError = true

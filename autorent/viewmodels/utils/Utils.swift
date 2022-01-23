@@ -30,4 +30,10 @@ class Utils {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         return dateFormatter.date(from: value)!
     }
+    
+    static func formatFileSize(size: Int) -> String {
+        let units = ["B", "kB", "MB", "GB", "TB"]
+        let digitGroups = size > 0 ? Int(log10(Float(size))/log10(1024)) : 0
+        return String(format: "%@ %@", String(size > 0 ? Int(Float(size)/pow(1024, Float(digitGroups))) : 0), units[digitGroups])
+    }
 }

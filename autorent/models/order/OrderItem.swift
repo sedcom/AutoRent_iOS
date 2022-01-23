@@ -9,14 +9,16 @@ import Foundation
 
 class OrderItem: Entity {
     var id: UUID = UUID()
-    var StartDate: Date?
-    var FinishDate: Date?
+    var StartDate: Date
+    var FinishDate: Date
     var Vehicle: autorent.Vehicle
     var Hours: Int
     var Transfer: Int
     var Price: Double
     
     override init() {
+        self.StartDate = Date()
+        self.FinishDate = Date()
         self.Vehicle = autorent.Vehicle()
         self.Hours = 0
         self.Transfer = 0
