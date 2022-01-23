@@ -124,6 +124,16 @@ class ApplicationViewModel: ObservableObject {
                     }
                     item.VehicleParams.VehicleOptions = options
                 }
+                //Перелинковка
+                for order in application.Orders {
+                    order.Application = application
+                    for document in order.Documents {
+                        document.Order = order
+                        for invoice in document.Invoices {
+                            invoice.Document = document
+                        }
+                    }
+                }
                 self.IsLoading = false
                 self.objectWillChange.send()
             })

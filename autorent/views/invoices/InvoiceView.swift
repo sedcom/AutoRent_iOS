@@ -32,7 +32,7 @@ struct InvoiceView: View {
                     VStack {}
             }
             CustomTabView(items: [
-                CustomTabItem(index: 0, label: "menu_payments", image: "ruble-sign"),
+                CustomTabItem(index: 0, label: "menu_payment", image: "ruble-sign"),
                 CustomTabItem(index: 1, label: "menu_history", image: "history")
             ], selected: $SelectedTab)
         }

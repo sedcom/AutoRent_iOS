@@ -27,9 +27,9 @@ struct ApplicationView: View {
                 case 0:
                     ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
                 case 1:
-                    Text("Тут документы...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    ApplicationDocumentsView(entityId: self.mEntityId)
                 case 2:
-                    Text("Тут счета...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    ApplicationInvoicesView(entityId: self.mEntityId)
                 case 3:
                     ApplicationHistoryView(entityId: self.mEntityId)
                 default:

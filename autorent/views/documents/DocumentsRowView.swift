@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct DocumentsRowView: View {
-    var mOrder: Order
     var mDocument: Document
     
-    init (_ order: Order, _ document: Document) {
-        self.mOrder = order
+    init (_ document: Document) {
         self.mDocument = document
     }
     
@@ -25,13 +23,13 @@ struct DocumentsRowView: View {
                 }
                 .padding(.bottom, 8)
                 VStack {
-                    CustomText(self.mOrder.Company!.getCompanyName(), image: "address-book")
+                    CustomText(self.mDocument.Order!.Company!.getCompanyName(), image: "address-book")
                 }
                 VStack {
-                    CustomText(self.mOrder.Application!.Address!.getAddressName(), image: "map-marker-alt")
+                    CustomText(self.mDocument.Order!.Application!.Address!.getAddressName(), image: "map-marker-alt")
                 }
                 VStack {
-                    CustomText(self.mOrder.Application!.getVehicles(), image: "truck-monster")
+                    CustomText(self.mDocument.Order!.Application!.getVehicles(), image: "truck-monster")
                 }
                 .padding(.bottom, 8)
                 HStack {

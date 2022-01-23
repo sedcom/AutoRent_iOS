@@ -1,20 +1,20 @@
 //
-//  OrderDocumentsView.swift
+//  ApplicationDocumentsView.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 21.01.2022.
+//  Created by Viacheslav Lazarev on 22.01.2022.
 //
 
 import SwiftUI
 
-struct OrderDocumentsView: View {
-    @ObservedObject var mViewModel: OrderViewModel
+struct ApplicationDocumentsView: View {
+    @ObservedObject var mViewModel: ApplicationViewModel
     var mEntityId: Int
     @State var ActionResult: OperationResult?
     
     init(entityId: Int) {
         self.mEntityId = entityId
-        self.mViewModel = OrderViewModel(entityId: entityId, include: "applications,companies,documents")
+        self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,documents,userprofiles")
     }
     
     var body: some View {
@@ -25,13 +25,13 @@ struct OrderDocumentsView: View {
             else if self.mViewModel.IsError {
                 ErrorView()
             }
-            else if self.mViewModel.Order?.Documents.count == 0  {
+            else if self.mViewModel.Application?.getDocuments().count == 0  {
                 EmptyView()
             }
             else {
                 List {
-                    if self.mViewModel.Order != nil {
-                        ForEach(self.mViewModel.Order!.Documents) { document in
+                    if self.mViewModel.Application != nil {
+                        ForEach(self.mViewModel.Application!.getDocuments()) { document in
                             VStack {
                                 NavigationLink(destination: DocumentView(entityId: document.Id, mode: ModeView.View, result: $ActionResult))  {
                                     DocumentsRowView(document)

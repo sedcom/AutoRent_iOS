@@ -87,6 +87,8 @@
 		F6A0672A279C681A008AC3D5 /* InvoiceHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06729279C681A008AC3D5 /* InvoiceHistoryView.swift */; };
 		F6A0672C279C6872008AC3D5 /* InvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0672B279C6872008AC3D5 /* InvoiceViewModel.swift */; };
 		F6A0672E279C6A51008AC3D5 /* DocumentInvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0672D279C6A51008AC3D5 /* DocumentInvoicesView.swift */; };
+		F6A06730279C6D7F008AC3D5 /* ApplicationDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0672F279C6D7F008AC3D5 /* ApplicationDocumentsView.swift */; };
+		F6A06732279D50CD008AC3D5 /* ApplicationInvoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06731279D50CD008AC3D5 /* ApplicationInvoicesView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -199,6 +201,8 @@
 		F6A06729279C681A008AC3D5 /* InvoiceHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHistoryView.swift; sourceTree = "<group>"; };
 		F6A0672B279C6872008AC3D5 /* InvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewModel.swift; sourceTree = "<group>"; };
 		F6A0672D279C6A51008AC3D5 /* DocumentInvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInvoicesView.swift; sourceTree = "<group>"; };
+		F6A0672F279C6D7F008AC3D5 /* ApplicationDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDocumentsView.swift; sourceTree = "<group>"; };
+		F6A06731279D50CD008AC3D5 /* ApplicationInvoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationInvoicesView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 				F6ADCC412785B62100A1CE80 /* ApplicationMainEditView.swift */,
 				F6ADCC432785B6A500A1CE80 /* ApplicationItemView.swift */,
 				F6ADCC472786E92A00A1CE80 /* ApplicationItemEditView.swift */,
+				F6A0672F279C6D7F008AC3D5 /* ApplicationDocumentsView.swift */,
+				F6A06731279D50CD008AC3D5 /* ApplicationInvoicesView.swift */,
 				F6ADCC35277BEB3700A1CE80 /* ApplicationHistoryView.swift */,
 				E2589B0927523A4100BFF698 /* ApplicationsView.swift */,
 				E28538842755BE560008F6FB /* ApplicationsRowView.swift */,
@@ -789,6 +795,7 @@
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */,
 				F6A06718279C5685008AC3D5 /* InvoiceType.swift in Sources */,
+				F6A06732279D50CD008AC3D5 /* ApplicationInvoicesView.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,
 				F6A066EA279B5703008AC3D5 /* Vehicle.swift in Sources */,
 				F6A06704279B7A6B008AC3D5 /* Invoice.swift in Sources */,
@@ -841,6 +848,7 @@
 				F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */,
 				F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */,
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
+				F6A06730279C6D7F008AC3D5 /* ApplicationDocumentsView.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
 				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
