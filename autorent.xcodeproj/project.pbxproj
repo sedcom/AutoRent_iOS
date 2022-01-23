@@ -95,6 +95,14 @@
 		F6A0673A279D8A9C008AC3D5 /* InvoiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06739279D8A9C008AC3D5 /* InvoiceItemView.swift */; };
 		F6A0673C279D8D34008AC3D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0673B279D8D34008AC3D5 /* File.swift */; };
 		F6A0673E279D9037008AC3D5 /* DocumentFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0673D279D9037008AC3D5 /* DocumentFileView.swift */; };
+		F6A06741279DDFC3008AC3D5 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06740279DDFC3008AC3D5 /* UserProfileView.swift */; };
+		F6A06744279DE072008AC3D5 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06743279DE072008AC3D5 /* UserProfileViewModel.swift */; };
+		F6A06746279DE0A8008AC3D5 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06745279DE0A8008AC3D5 /* UserRepository.swift */; };
+		F6A06748279DED2F008AC3D5 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06747279DED2F008AC3D5 /* NotificationsView.swift */; };
+		F6A0674A279DEDB5008AC3D5 /* NotificationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06749279DEDB5008AC3D5 /* NotificationsRepository.swift */; };
+		F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674B279DEE4E008AC3D5 /* UserNotification.swift */; };
+		F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */; };
+		F6A06750279DF6DE008AC3D5 /* NotificationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -215,6 +223,14 @@
 		F6A06739279D8A9C008AC3D5 /* InvoiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceItemView.swift; sourceTree = "<group>"; };
 		F6A0673B279D8D34008AC3D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		F6A0673D279D9037008AC3D5 /* DocumentFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileView.swift; sourceTree = "<group>"; };
+		F6A06740279DDFC3008AC3D5 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		F6A06743279DE072008AC3D5 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		F6A06745279DE0A8008AC3D5 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		F6A06747279DED2F008AC3D5 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		F6A06749279DEDB5008AC3D5 /* NotificationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRepository.swift; sourceTree = "<group>"; };
+		F6A0674B279DEE4E008AC3D5 /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
+		F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
+		F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRowView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -286,6 +302,7 @@
 				F6A0671D279C57F2008AC3D5 /* invoices */,
 				F6A066ED279B5944008AC3D5 /* orders */,
 				F6ADCC56278859D300A1CE80 /* vehicle */,
+				F6A06742279DE05F008AC3D5 /* users */,
 				F6ADCC402785B08A00A1CE80 /* utils */,
 			);
 			path = viewmodels;
@@ -296,14 +313,15 @@
 			children = (
 				E2550F0F2757C66B0059B96C /* common */,
 				F6A066D7279B1129008AC3D5 /* controls */,
+				F6A066BB27973DEE008AC3D5 /* observable */,
 				E28538862755BE800008F6FB /* applications */,
 				F6A066D8279B1876008AC3D5 /* companies */,
 				F6A0670B279B7E55008AC3D5 /* documents */,
 				F6A06720279C5889008AC3D5 /* invoices */,
 				F6A066F0279B59D2008AC3D5 /* orders */,
 				F692786C27794466003BD0D5 /* map */,
-				F6A066BB27973DEE008AC3D5 /* observable */,
 				F6ADCC4F2787A17600A1CE80 /* vehicle */,
+				F6A0673F279DDF59008AC3D5 /* users */,
 				E2853887275658E20008F6FB /* utils */,
 				E2589B0727523A4100BFF698 /* autorentApp.swift */,
 				F6ADCC62278B401100A1CE80 /* MainView.swift */,
@@ -435,7 +453,9 @@
 				F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */,
 				F6A06715279B87EA008AC3D5 /* DocumentRepository.swift */,
 				F6A0671B279C5775008AC3D5 /* InvoiceRepository.swift */,
+				F6A06749279DEDB5008AC3D5 /* NotificationsRepository.swift */,
 				F6A066E2279B5529008AC3D5 /* OrderRepository.swift */,
+				F6A06745279DE0A8008AC3D5 /* UserRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -454,6 +474,7 @@
 			children = (
 				F692786827793B89003BD0D5 /* User.swift */,
 				F692786A27793BE6003BD0D5 /* UserProfile.swift */,
+				F6A0674B279DEE4E008AC3D5 /* UserNotification.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -627,6 +648,25 @@
 			path = invoices;
 			sourceTree = "<group>";
 		};
+		F6A0673F279DDF59008AC3D5 /* users */ = {
+			isa = PBXGroup;
+			children = (
+				F6A06740279DDFC3008AC3D5 /* UserProfileView.swift */,
+				F6A06747279DED2F008AC3D5 /* NotificationsView.swift */,
+				F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */,
+			);
+			path = users;
+			sourceTree = "<group>";
+		};
+		F6A06742279DE05F008AC3D5 /* users */ = {
+			isa = PBXGroup;
+			children = (
+				F6A06743279DE072008AC3D5 /* UserProfileViewModel.swift */,
+				F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */,
+			);
+			path = users;
+			sourceTree = "<group>";
+		};
 		F6ADCC2C277B311400A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,14 +832,17 @@
 				F6ADCC5B2789B94B00A1CE80 /* ApplicationModel.swift in Sources */,
 				F6A066F4279B5A01008AC3D5 /* OrdersRowView.swift in Sources */,
 				F6A0672C279C6872008AC3D5 /* InvoiceViewModel.swift in Sources */,
+				F6A06750279DF6DE008AC3D5 /* NotificationsRowView.swift in Sources */,
 				E29B397027539BC5004CE06A /* Application.swift in Sources */,
 				F6A0673E279D9037008AC3D5 /* DocumentFileView.swift in Sources */,
 				F6A066DF279B1F93008AC3D5 /* CompanyRepository.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
+				F6A06748279DED2F008AC3D5 /* NotificationsView.swift in Sources */,
 				F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */,
 				F6A06726279C5FA7008AC3D5 /* OrderInvoicesView.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */,
+				F6A06746279DE0A8008AC3D5 /* UserRepository.swift in Sources */,
 				F6A06711279B8764008AC3D5 /* DocumentHistoryView.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6A06734279D62DA008AC3D5 /* DocumentMainView.swift in Sources */,
@@ -813,6 +856,7 @@
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
+				F6A06744279DE072008AC3D5 /* UserProfileViewModel.swift in Sources */,
 				F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */,
 				F6A06718279C5685008AC3D5 /* InvoiceType.swift in Sources */,
 				F6A06732279D50CD008AC3D5 /* ApplicationInvoicesView.swift in Sources */,
@@ -839,6 +883,7 @@
 				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
+				F6A0674A279DEDB5008AC3D5 /* NotificationsRepository.swift in Sources */,
 				F6A066E3279B5529008AC3D5 /* OrderRepository.swift in Sources */,
 				F6A066EC279B58E4008AC3D5 /* OrderHistory.swift in Sources */,
 				F6A0672E279C6A51008AC3D5 /* DocumentInvoicesView.swift in Sources */,
@@ -862,6 +907,7 @@
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
+				F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */,
 				F6A06716279B87EA008AC3D5 /* DocumentRepository.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
@@ -877,11 +923,13 @@
 				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
+				F6A06741279DDFC3008AC3D5 /* UserProfileView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
 				F6A06708279B7B28008AC3D5 /* DocumentHistory.swift in Sources */,
 				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */,
+				F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */,
 				F6A06714279B87C3008AC3D5 /* DocumentViewModel.swift in Sources */,
 				F6A06736279D6C86008AC3D5 /* InvoiceMainView.swift in Sources */,
 				F6A066E1279B205D008AC3D5 /* CompanyObservable.swift in Sources */,

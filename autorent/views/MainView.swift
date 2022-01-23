@@ -14,6 +14,7 @@ enum OperationResult {
 struct MainView: View {    
     @StateObject var SelectedMapAddress = AddressObservable()
     @State private var SelectedTab: Int = 0
+    @State var Action: Int?
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct MainView: View {
                     case 1: ApplicationsView()
                     case 2: OrdersView()
                     case 3: InvoicesView()
-                    case 4: Text("Тут профиль...").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    case 4: UserProfileView(entityId: 1)
                     default: VStack {}
                 }
                 CustomTabView(items: [
@@ -33,6 +34,8 @@ struct MainView: View {
                     CustomTabItem(index: 3, label: "menu_payments", image: "ruble-sign"),
                     CustomTabItem(index: 4, label: "menu_userprofile", image: "user"),
                 ], selected: $SelectedTab)
+                
+                NavigationLink(destination: NotificationsView(), tag: 2, selection: $Action)  { }
             }
             .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
@@ -46,6 +49,9 @@ struct MainView: View {
                     Image("bell")
                         .renderingMode(.template)
                         .foregroundColor(Color.textLight)
+                        .onTapGesture {
+                            self.Action = 2
+                        }
                 })
         }
     }

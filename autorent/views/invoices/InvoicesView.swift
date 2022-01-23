@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InvoicesView: View  {
+struct InvoicesView: View, Equatable  {
     @ObservedObject var mViewModel: InvoicesViewModel
     @State var mCurrentFilter: Int
     @State var ActionResult: OperationResult?
@@ -18,6 +18,10 @@ struct InvoicesView: View  {
         self.mViewModel = InvoicesViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "documents,items,history", filter: "")
     }
 
+    static func == (lhs: InvoicesView, rhs: InvoicesView) -> Bool {
+        return true
+    }
+    
     var body: some View {
         VStack {
             if self.mViewModel.IsLoading == true && self.mViewModel.mSkipCount == 0 {
