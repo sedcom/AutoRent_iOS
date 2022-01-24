@@ -96,7 +96,7 @@ struct UserProfileEditView: View, Equatable {
                                     Image("save")
                                         .renderingMode(.template)
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 25, height: 30)
                                         .foregroundColor(Color(UIColor.darkGray))
                                 }
                                 .frame(width: 60, height: 60)
