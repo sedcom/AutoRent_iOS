@@ -7,6 +7,10 @@
 
 import Foundation
 
-class AddressObservable: ObservableObject {
+class AddressObservable: ObservableObject, Equatable {
     @Published public var Address: autorent.Address?
+    
+    static func == (lhs: AddressObservable, rhs: AddressObservable) -> Bool {
+        return false
+    }
 }

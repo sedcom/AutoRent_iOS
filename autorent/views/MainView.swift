@@ -11,8 +11,7 @@ enum OperationResult {
    case Error, Create, Update, Send, Accept, Reject
 }
 
-struct MainView: View {    
-    @StateObject var SelectedMapAddress = AddressObservable()
+struct MainView: View {
     @State private var SelectedTab: Int = 0
     @State var Action: Int?
     @State var UserProfileMode: Int?
@@ -21,7 +20,7 @@ struct MainView: View {
         NavigationView {
             VStack(spacing: 0) {
                 switch self.SelectedTab {
-                    case 0: MapView(selectedMapAddress: self.SelectedMapAddress)
+                    case 0: MapWrapperView()
                     case 1: ApplicationsView()
                     case 2: OrdersView()
                     case 3: InvoicesView()
