@@ -37,12 +37,10 @@ struct MapWrapperView: View {
                     CustomText("menu_application_create", bold: true, image: "paper-plane", color: Color.textDark)
                         .padding(.bottom, 8)
                         .onTapGesture {
-                            
-                            self.ShowBottomSheet = false
+                           self.ShowBottomSheet = false
                         }
                     CustomText("menu_point_remove", bold: true, image: "iconmonstr-flag-white", color: Color.textDark)
                         .onTapGesture {
-                            
                             self.ShowBottomSheet = false
                         }
                 }
