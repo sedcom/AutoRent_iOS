@@ -48,7 +48,9 @@ struct MapWrapperView: View {
             }
         }
         .onChange(of: self.SelectedMapAddress) { newValue in
-            self.ShowBottomSheet = true
+            if newValue.Address != nil {
+                self.ShowBottomSheet = true
+            }
         }
     }
 }
