@@ -103,6 +103,7 @@
 		F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674B279DEE4E008AC3D5 /* UserNotification.swift */; };
 		F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */; };
 		F6A06750279DF6DE008AC3D5 /* NotificationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */; };
+		F6A06752279E1546008AC3D5 /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -231,6 +232,7 @@
 		F6A0674B279DEE4E008AC3D5 /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 		F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRowView.swift; sourceTree = "<group>"; };
+		F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				F6A06740279DDFC3008AC3D5 /* UserProfileView.swift */,
+				F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */,
 				F6A06747279DED2F008AC3D5 /* NotificationsView.swift */,
 				F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */,
 			);
@@ -858,6 +861,7 @@
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6A06744279DE072008AC3D5 /* UserProfileViewModel.swift in Sources */,
 				F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */,
+				F6A06752279E1546008AC3D5 /* UserProfileEditView.swift in Sources */,
 				F6A06718279C5685008AC3D5 /* InvoiceType.swift in Sources */,
 				F6A06732279D50CD008AC3D5 /* ApplicationInvoicesView.swift in Sources */,
 				F6927873277A8445003BD0D5 /* AddressCity.swift in Sources */,

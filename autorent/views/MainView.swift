@@ -15,6 +15,7 @@ struct MainView: View {
     @StateObject var SelectedMapAddress = AddressObservable()
     @State private var SelectedTab: Int = 0
     @State var Action: Int?
+    @State var UserProfileMode: Int?
     
     var body: some View {
         NavigationView {
@@ -24,7 +25,13 @@ struct MainView: View {
                     case 1: ApplicationsView()
                     case 2: OrdersView()
                     case 3: InvoicesView()
-                    case 4: UserProfileView(entityId: 1)
+                    case 4:
+                        if self.UserProfileMode == 1 {
+                            UserProfileEditView(entityId: 1, mode: $UserProfileMode)
+                        }
+                        else {
+                            UserProfileView(entityId: 1, mode: $UserProfileMode)
+                        }
                     default: VStack {}
                 }
                 CustomTabView(items: [

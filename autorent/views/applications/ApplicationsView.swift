@@ -94,7 +94,7 @@ struct ApplicationsView: View, Equatable {
                                                 .foregroundColor(Color(UIColor.darkGray))
                                         }
                                     }
-                                    .frame(width: 60, height: 60, alignment: .bottomLeading)
+                                    .frame(width: 60, height: 60)
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                                 .offset(x: geo.size.width - 65, y: -5)
