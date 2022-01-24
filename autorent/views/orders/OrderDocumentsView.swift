@@ -34,7 +34,7 @@ struct OrderDocumentsView: View {
                     if self.mViewModel.Order != nil {
                         ForEach(self.mViewModel.Order!.Documents) { document in
                             VStack {
-                                NavigationLink(destination: DocumentView(entityId: document.Id, mode: ModeView.View, result: $ActionResult), tag: document.Id, selection:  $DocumentId)  {
+                                NavigationLink(destination: DocumentView(entityId: document.Id, names: [document.DocumentType!.Name, document.Number!], mode: ModeView.View, result: $ActionResult), tag: document.Id, selection:  $DocumentId)  {
                                     DocumentsRowView(document)
                                 }
                             }

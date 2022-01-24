@@ -59,7 +59,7 @@ struct InvoicesView: View, Equatable  {
                                                 LoadingRowView()
                                             }
                                             else {
-                                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, result: $ActionResult))  {
+                                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, names: [invoice.InvoiceType!.Name, invoice.Number!], mode: ModeView.View, result: $ActionResult))  {
                                                     InvoicesRowView(invoice)
                                                 }
                                             }

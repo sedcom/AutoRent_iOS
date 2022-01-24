@@ -34,7 +34,7 @@ struct OrderInvoicesView: View {
                     if self.mViewModel.Order != nil {
                         ForEach(self.mViewModel.Order!.getInvoices()) { invoice in
                             VStack {
-                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, result: $ActionResult), tag: invoice.Id, selection:  $InvoiceId)  {
+                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, names: [invoice.InvoiceType!.Name, invoice.Number!], mode: ModeView.View, result: $ActionResult), tag: invoice.Id, selection:  $InvoiceId)  {
                                     InvoicesRowView(invoice)
                                 }
                             }

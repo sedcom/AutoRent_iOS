@@ -50,15 +50,17 @@ struct MainView: View {
             .navigationBarTitle(self.getTitle(), displayMode: .inline)
             .navigationBarItems(trailing:
                 HStack(spacing: 10) {
-                    Image("comment-dots")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                    Image("bell")
-                        .renderingMode(.template)
-                        .foregroundColor(Color.textLight)
-                        .onTapGesture {
-                            self.Action = 2
-                        }
+                    if self.UserProfileMode == nil {
+                        Image("comment-dots")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                        Image("bell")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textLight)
+                            .onTapGesture {
+                                self.Action = 2
+                            }
+                    }
                 })
         }
     }

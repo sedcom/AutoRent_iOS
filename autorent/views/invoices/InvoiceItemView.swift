@@ -25,6 +25,7 @@ struct InvoiceItemView: View {
                 HStack {
                     CustomText(self.mInvoiceItem.Name)
                     CustomText(String(self.mInvoiceItem.Summa), alignment: .trailing, image: "ruble-sign")
+                        .fixedSize()
                 }
              }
              .padding(.all, 12)

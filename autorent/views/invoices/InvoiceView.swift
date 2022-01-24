@@ -10,13 +10,15 @@ import SwiftUI
 struct InvoiceView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
+    var mNames: [String]
     @State var SelectedTab: Int = 0
     @State var SelectedStatus: Int?
     @State var Action: Int?
     @Binding var ActionResult: OperationResult?
     
-    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, names: [String] = [], mode: ModeView, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
+        self.mNames = names
         self.mCurrentMode = mode
         self._ActionResult = result
     }
@@ -39,7 +41,7 @@ struct InvoiceView: View {
         .edgesIgnoringSafeArea(.horizontal)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(false)
-        .navigationBarTitle(String(format: NSLocalizedString("title_invoice", comment: ""), "", String(self.mEntityId)), displayMode: .inline)
+        .navigationBarTitle(String(format: NSLocalizedString("title_invoice", comment: ""), self.mNames[0], self.mNames[1]), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
                 if self.SelectedTab == 0 {
