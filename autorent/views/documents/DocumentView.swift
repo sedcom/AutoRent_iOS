@@ -27,7 +27,7 @@ struct DocumentView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    DocumentMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
+                    DocumentMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
                     DocumentInvoicesView(entityId: self.mEntityId)
                 case 2:

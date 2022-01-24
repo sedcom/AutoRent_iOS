@@ -104,6 +104,7 @@
 		F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */; };
 		F6A06750279DF6DE008AC3D5 /* NotificationsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */; };
 		F6A06752279E1546008AC3D5 /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */; };
+		F6A06754279E9B83008AC3D5 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06753279E9B83008AC3D5 /* BottomSheet.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -233,6 +234,7 @@
 		F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 		F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRowView.swift; sourceTree = "<group>"; };
 		F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
+		F6A06753279E9B83008AC3D5 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				E2550F132757D72D0059B96C /* ButtonFilterStyle.swift */,
+				F6A06753279E9B83008AC3D5 /* BottomSheet.swift */,
 				F6A066AF2790173E008AC3D5 /* CustomTabView.swift */,
 				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
 				F6A066D32799DFCB008AC3D5 /* CustomText.swift */,
@@ -943,6 +946,7 @@
 				F6A066CE279988A6008AC3D5 /* OwnershipType.swift in Sources */,
 				E27EA41527575623001F7BB4 /* Pagination.swift in Sources */,
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
+				F6A06754279E9B83008AC3D5 /* BottomSheet.swift in Sources */,
 				F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,
 				F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */,

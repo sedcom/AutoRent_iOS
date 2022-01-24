@@ -13,25 +13,25 @@ struct CustomText: View {
     let mMaxLines: Int?
     let mBold: Bool
     let mImage: String?
-    let mSelected: Bool
+    let mColor: Color?
     
-    init(_ text: String, alignment: Alignment = .leading, maxLines: Int? = nil, bold: Bool = false, image: String? = nil, selected: Bool = false) {
+    init(_ text: String, alignment: Alignment = .leading, maxLines: Int? = nil, bold: Bool = false, image: String? = nil, color: Color = Color.textLight) {
         self.mText = NSLocalizedString(text, comment: "")
         self.mAlignment = alignment
         self.mMaxLines = maxLines
         self.mBold = bold
         self.mImage = image
-        self.mSelected = selected
+        self.mColor = color
     }
     
     var body: some View {
         HStack(spacing: 8) {
             if mImage != nil {
                 Image(self.mImage!)
-                    .foregroundColor(self.mSelected ? Color.textDark : Color.textLight)
+                    .foregroundColor(self.mColor)
             }
             Text(self.mText)
-                .foregroundColor(self.mSelected ? Color.textDark : Color.textLight)
+                .foregroundColor(self.mColor)
                 .font(Font.headline.weight(self.mBold ? .bold : .regular))                
                 .fixedSize(horizontal: false, vertical: true)
                 .lineLimit(self.mMaxLines)

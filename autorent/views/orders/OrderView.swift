@@ -25,7 +25,7 @@ struct OrderView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
+                    OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
                     OrderDocumentsView(entityId: self.mEntityId)
                 case 2:
@@ -68,7 +68,7 @@ struct OrderView: View {
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
-                                self.Action = 1
+                                self.Action = 3
                             }
                     }
                 }

@@ -12,13 +12,16 @@ struct OrderMainView: View, Equatable {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @Binding var SelectedStatus: Int?
+    @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
+    @State var ShowBottomSheet: Bool = false
     
-    init(entityId: Int, mode: ModeView, status: Binding<Int?>, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, status: Binding<Int?>, action: Binding<Int?>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
         self._SelectedStatus = status
+        self._Action = action
         self._ActionResult = result
         self.mViewModel = OrderViewModel(entityId: entityId, include: "applications,companies,items,history,vehicles")
     }
@@ -89,19 +92,48 @@ struct OrderMainView: View, Equatable {
                     self.SelectedStatus = newValue!.getStatus().Status.Id
                 }
             }
+            .onChange(of: self.Action) { newValue in
+                if (newValue != nil) {
+                    switch(newValue!) {
+                        case 2:
+                            self.ShowBottomSheet.toggle()
+                        default: ()
+                    }
+                    self.Action = nil
+                }
+            }
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
                         case OperationResult.Update:
                             self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
                             self.mViewModel.loadData()
-                    case OperationResult.Approve:
-                            self.ToastMessage = NSLocalizedString("message_order_approve_success", comment: "")
+                        case OperationResult.Accept:
+                            self.ToastMessage = NSLocalizedString("message_order_accept_success", comment: "")
                             self.mViewModel.loadData()
-                        default: print()
+                        case OperationResult.Reject:
+                            self.ToastMessage = NSLocalizedString("message_order_reject_success", comment: "")
+                            self.mViewModel.loadData()
+                        default: ()
                     }
                     self.ActionResult = nil
                 }
+            }
+            BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
+                VStack {
+                    CustomText("menu_order_approve", bold: true, image: "iconmonstr-check", color: Color.textDark)
+                        .padding(.bottom, 8)
+                        .onTapGesture {
+                            self.ActionResult = OperationResult.Accept
+                            self.ShowBottomSheet = false
+                        }
+                    CustomText("menu_order_reject", bold: true, image: "iconmonstr-forbidden", color: Color.textDark)
+                        .onTapGesture {
+                            self.ActionResult = OperationResult.Reject
+                            self.ShowBottomSheet = false
+                        }
+                }
+                .padding(.all, 12)
             }
             ToastView($ToastMessage)
         }
