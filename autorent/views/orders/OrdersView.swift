@@ -53,39 +53,37 @@ struct OrdersView: View, Equatable  {
                     }
                     else {
                         ZStack {
-                            GeometryReader { geo in
-                                List {
-                                    ForEach(self.mViewModel.Data.Elements) { order in
-                                        VStack {
-                                            if order.Id == 0 {
-                                                LoadingRowView()
-                                            }
-                                            else {
-                                                NavigationLink(destination: OrderView(entityId: order.Id, mode: ModeView.View, result: $ActionResult))  {
-                                                    OrdersRowView(order)
-                                                }
+                            List {
+                                ForEach(self.mViewModel.Data.Elements) { order in
+                                    VStack {
+                                        if order.Id == 0 {
+                                            LoadingRowView()
+                                        }
+                                        else {
+                                            NavigationLink(destination: OrderView(entityId: order.Id, mode: ModeView.View, result: $ActionResult))  {
+                                                OrdersRowView(order)
                                             }
                                         }
-                                        .listRowBackground(Color.primary)
-                                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
-                                        .onAppear {
-                                            //TODO
-                                            if self.mViewModel.IsLoading == false {
-                                                if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
-                                                    if  order == self.mViewModel.Data.Elements.last {
-                                                        self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
-                                                        self.mViewModel.loadData()
-                                                   }
-                                                }
+                                    }
+                                    .listRowBackground(Color.primary)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                                    .onAppear {
+                                        //TODO
+                                        if self.mViewModel.IsLoading == false {
+                                            if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
+                                                if  order == self.mViewModel.Data.Elements.last {
+                                                    self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
+                                                    self.mViewModel.loadData()
+                                               }
                                             }
                                         }
                                     }
                                 }
-                                .listStyle(PlainListStyle())
-                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                                ZStack {
-                                    ToastView($ToastMessage)
-                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                            ZStack {
+                                ToastView($ToastMessage)
                             }
                         }
                     }

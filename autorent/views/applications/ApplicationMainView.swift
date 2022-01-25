@@ -115,16 +115,8 @@ struct ApplicationMainView: View, Equatable {
             }
             .onChange(of: self.mViewModel.ActionResult) { newValue in
                 if newValue != nil {
-                    switch(newValue!) {
-                        case OperationResult.Error:
-                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
-                        case OperationResult.Send:
-                            self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
-                            self.mViewModel.Application = Application()
-                            self.mViewModel.loadData()
-                        default: ()
-                    }
-                    self.ActionResult = nil
+                    self.ActionResult = newValue
+                    self.mViewModel.ActionResult = nil
                 }
             }
             ToastView($ToastMessage)

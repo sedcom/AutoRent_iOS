@@ -11,12 +11,11 @@ class InvoiceItem: Entity {
     var id: UUID = UUID()
     var Name: String
     var Summa: Double
-    var Tax: Double
+    var Tax: Double?
     
     override init() {
         self.Name = ""
         self.Summa = 0
-        self.Tax = 0
         super.init()
     }
     
@@ -24,7 +23,7 @@ class InvoiceItem: Entity {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.Name = try container.decode(String.self, forKey: .Name)
         self.Summa = try container.decode(Double.self, forKey: .Summa)
-        self.Tax = try container.decode(Double.self, forKey: .Tax)
+        self.Tax = try container.decode(Double?.self, forKey: .Tax)
         try super.init(from: decoder)
     }
     

@@ -34,7 +34,11 @@ class ApplicationViewModel: ObservableObject {
         application.Address = Address()
         application.Address!.AddressType = AddressType(id: 3, name: "")
         let item = ApplicationItem()
+        item.StartDate = Date()
+        item.FinishDate = Date()
+        item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Test")
         application.Items.append(item)
+        application.Notes = "Test iOS"
         self.Application = application
         self.AddedItems.append(item)
         self.objectWillChange.send()
@@ -139,7 +143,7 @@ class ApplicationViewModel: ObservableObject {
             })
     }
     
-    public func saveItem() {
+    public func saveItem(statusId: Int? = nil) {
         debugPrint("Start saveItem")
         self.IsLoading = true
         self.objectWillChange.send()
@@ -147,14 +151,14 @@ class ApplicationViewModel: ObservableObject {
         model.AddedItems = self.AddedItems
         model.RemovedItems = self.RemovedItems
         if self.Application!.Id == 0 {
-            self.createItem(model: model)
+            self.createItem(model: model, statusId: statusId)
         }
         else {
-            self.updateItem(applicationId: self.Application!.Id, model: model)
+            self.updateItem(applicationId: self.Application!.Id, model: model, statusId: statusId)
         }
     }
     
-    private func createItem(model: ApplicationModel) {
+    private func createItem(model: ApplicationModel, statusId: Int? = nil) {
         self.cancellation = self.mApplicationRepository.createItem(application: model)
             .mapError({ (error) -> Error in
                 debugPrint(error)
@@ -164,14 +168,19 @@ class ApplicationViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish saveItem")
-                self.IsLoading = false
                 self.mEntityId = result.Id
                 self.Application!.Id = result.Id
-                self.ActionResult = OperationResult.Create
+                if (statusId != nil) {
+                    self.changeStatus(statusId: statusId!)
+                }
+                else {
+                    self.IsLoading = false
+                    self.ActionResult = OperationResult.Create
+                }
         })
     }
     
-    private func updateItem(applicationId: Int, model: ApplicationModel) {
+    private func updateItem(applicationId: Int, model: ApplicationModel, statusId: Int? = nil) {
         self.cancellation = self.mApplicationRepository.updateItem(applicationId: applicationId, application: model)
             .mapError({ (error) -> Error in
                 debugPrint(error)
@@ -181,8 +190,13 @@ class ApplicationViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish saveItem")
-                self.IsLoading = false
-                self.ActionResult = OperationResult.Update
+                if (statusId != nil) {
+                    self.changeStatus(statusId: statusId!)
+                }
+                else {
+                    self.IsLoading = false
+                    self.ActionResult = OperationResult.Update
+                }
         })
     }
     

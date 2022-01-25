@@ -143,7 +143,7 @@ struct ApplicationMainEditView: View, Equatable {
                     case 1:
                         self.mViewModel.saveItem()
                     case 2:
-                        self.mViewModel.changeStatus(statusId: 2)
+                        self.mViewModel.saveItem(statusId: 2)
                     case 3:
                         self.mViewModel.removeApplicationItems(items: self.SelectedItems)
                         self.SelectedItems.removeAll()

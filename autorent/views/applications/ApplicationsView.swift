@@ -12,7 +12,7 @@ struct ApplicationsView: View, Equatable {
     @State var mCurrentFilter: Int
     @State var ActionResult: OperationResult?
     @State var ToastMessage: String?
-     
+    
     init() {
         self.mCurrentFilter = 1
         self.mViewModel = ApplicationsViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
@@ -53,54 +53,52 @@ struct ApplicationsView: View, Equatable {
                     }
                     else {
                         ZStack {
-                            GeometryReader { geo in
-                                List {
-                                    ForEach(self.mViewModel.Data.Elements) { application in
-                                        VStack {
-                                            if application.Id == 0 {
-                                                LoadingRowView()
-                                            }
-                                            else {
-                                                NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View, result: $ActionResult))  {
-                                                    ApplicationsRowView(application)
-                                                }
+                            List {
+                                ForEach(self.mViewModel.Data.Elements) { application in
+                                    VStack {
+                                        if application.Id == 0 {
+                                            LoadingRowView()
+                                        }
+                                        else {
+                                            NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View, result: $ActionResult))  {
+                                                ApplicationsRowView(application)
                                             }
                                         }
-                                        .listRowBackground(Color.primary)
-                                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
-                                        .onAppear {
-                                            //TODO
-                                            if self.mViewModel.IsLoading == false {
-                                                if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
-                                                    if  application == self.mViewModel.Data.Elements.last {
-                                                        self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
-                                                        self.mViewModel.loadData()
-                                                   }
-                                                }
+                                    }
+                                    .listRowBackground(Color.primary)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                                    .onAppear {
+                                        //TODO
+                                        if self.mViewModel.IsLoading == false {
+                                            if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
+                                                if  application == self.mViewModel.Data.Elements.last {
+                                                    self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
+                                                    self.mViewModel.loadData()
+                                               }
                                             }
                                         }
                                     }
                                 }
-                                .listStyle(PlainListStyle())
-                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                                ZStack {
-                                    NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create, result: $ActionResult)) {
-                                        ZStack {
-                                            Circle().fill(Color.secondary)
-                                            Image("plus")
-                                                .renderingMode(.template)
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(Color(UIColor.darkGray))
-                                        }
+                            }
+                            .listStyle(PlainListStyle())
+                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                            ZStack {
+                                NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create, result: $ActionResult)) {
+                                    ZStack {
+                                        Circle().fill(Color.secondary)
+                                        Image("plus")
+                                            .renderingMode(.template)
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(Color(UIColor.darkGray))
                                     }
-                                    .frame(width: 60, height: 60)
                                 }
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                                .offset(x: geo.size.width - 65, y: -5)
-                                ZStack {
-                                    ToastView($ToastMessage)
-                                }
+                                .frame(width: 60, height: 60)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                            .offset(x: -10, y: -10)
+                            ZStack {
+                                ToastView($ToastMessage)
                             }
                         }
                     }
@@ -118,9 +116,13 @@ struct ApplicationsView: View, Equatable {
                 switch(newValue!) {
                     case OperationResult.Create:
                         self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                        self.loadData()
+                        self.mViewModel.clearData()
                     case OperationResult.Update:
-                        self.loadData()                    
+                        self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
+                        self.mViewModel.clearData()
+                    case OperationResult.Send:
+                        self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
+                        self.mViewModel.clearData()
                     default: ()
                 }
             }

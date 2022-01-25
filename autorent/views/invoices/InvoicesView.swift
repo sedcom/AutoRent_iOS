@@ -51,39 +51,37 @@ struct InvoicesView: View, Equatable  {
                     }
                     else {
                         ZStack {
-                            GeometryReader { geo in
-                                List {
-                                    ForEach(self.mViewModel.Data.Elements) { invoice in
-                                        VStack {
-                                            if invoice.Id == 0 {
-                                                LoadingRowView()
-                                            }
-                                            else {
-                                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, names: [invoice.InvoiceType!.Name, invoice.Number!], mode: ModeView.View, result: $ActionResult))  {
-                                                    InvoicesRowView(invoice)
-                                                }
+                            List {
+                                ForEach(self.mViewModel.Data.Elements) { invoice in
+                                    VStack {
+                                        if invoice.Id == 0 {
+                                            LoadingRowView()
+                                        }
+                                        else {
+                                            NavigationLink(destination: InvoiceView(entityId: invoice.Id, names: [invoice.InvoiceType!.Name, invoice.Number!], mode: ModeView.View, result: $ActionResult))  {
+                                                InvoicesRowView(invoice)
                                             }
                                         }
-                                        .listRowBackground(Color.primary)
-                                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
-                                        .onAppear {
-                                            //TODO
-                                            if self.mViewModel.IsLoading == false {
-                                                if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
-                                                    if  invoice == self.mViewModel.Data.Elements.last {
-                                                        self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
-                                                        self.mViewModel.loadData()
-                                                   }
-                                                }
+                                    }
+                                    .listRowBackground(Color.primary)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                                    .onAppear {
+                                        //TODO
+                                        if self.mViewModel.IsLoading == false {
+                                            if self.mViewModel.Data.Elements.count < self.mViewModel.Data.Total {
+                                                if  invoice == self.mViewModel.Data.Elements.last {
+                                                    self.mViewModel.mSkipCount = self.mViewModel.Data.Elements.count
+                                                    self.mViewModel.loadData()
+                                               }
                                             }
                                         }
                                     }
                                 }
-                                .listStyle(PlainListStyle())
-                                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                                ZStack {
-                                    ToastView($ToastMessage)
-                                }
+                            }
+                            .listStyle(PlainListStyle())
+                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                            ZStack {
+                                ToastView($ToastMessage)
                             }
                         }
                     }
