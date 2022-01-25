@@ -19,16 +19,15 @@ struct CustomTitle: View {
     var body: some View {
         VStack {
             Text(self.mTitle)
-                .frame(maxWidth: .infinity)
                 .foregroundColor(Color.textLight)
-                .font(.system(size: 20, weight: .bold, design: .default))
+                .font(.system(size: 18, weight: .bold, design: .default))
                 .lineLimit(1)
             Text(self.mSubtitle)
-                .frame(maxWidth: .infinity)
                 .foregroundColor(Color.textLight)
-                .font(.system(size: 16, weight: .regular, design: .default))
+                .font(.system(size: 14, weight: .regular, design: .default))
                 .lineLimit(1)
         }
+        .padding(.top, 8)
         .padding(.bottom, 8)
     }
 }

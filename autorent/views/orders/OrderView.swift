@@ -11,7 +11,7 @@ struct OrderView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var SelectedTab: Int = 0
-    @State var SelectedStatus: Int?
+    @StateObject var SelectedStatus = StatusObservable()
     @State var Action: Int?
     @Binding var ActionResult: OperationResult?
     
@@ -25,7 +25,7 @@ struct OrderView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, action: $Action, result: $ActionResult)
+                    OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
                     OrderDocumentsView(entityId: self.mEntityId)
                 case 2:
@@ -45,11 +45,18 @@ struct OrderView: View {
         .edgesIgnoringSafeArea(.horizontal)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(false)
-        .navigationBarTitle(String(format: NSLocalizedString("title_order", comment: ""), String(self.mEntityId)), displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {}
+            }
+            ToolbarItem(placement: .principal) {
+                CustomTitle(title: String(format: NSLocalizedString("title_order", comment: ""), String(self.mEntityId)), subtitle: self.SelectedStatus.Status?.Name)
+            }
+        }
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
                 if self.SelectedTab == 0 {
-                    if self.SelectedStatus == 2 {
+                    if self.SelectedStatus.Status?.Id == 2 {
                         Image("iconmonstr-edit")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
@@ -63,7 +70,7 @@ struct OrderView: View {
                                 self.Action = 2
                         }
                     }
-                    if self.SelectedStatus == 5 {
+                    if self.SelectedStatus.Status?.Id == 5 {
                         Image("flag-checkered")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)

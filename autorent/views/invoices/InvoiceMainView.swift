@@ -11,14 +11,14 @@ struct InvoiceMainView: View, Equatable {
     @ObservedObject var mViewModel: InvoiceViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
-    @Binding var SelectedStatus: Int?
+    @ObservedObject var SelectedStatus: StatusObservable
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
     
-    init(entityId: Int, mode: ModeView, status: Binding<Int?>, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, selectedStatus: StatusObservable , result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._SelectedStatus = status
+        self.SelectedStatus = selectedStatus
         self._ActionResult = result
         self.mViewModel = InvoiceViewModel(entityId: entityId, include: "documents,items,files,history")
     }
@@ -94,7 +94,9 @@ struct InvoiceMainView: View, Equatable {
             }
             .onChange(of: self.mViewModel.Invoice) { newValue in
                 if (newValue != nil) {
-                    self.SelectedStatus = newValue!.getStatus().Status.Id
+                    if newValue!.History.count > 0 {
+                        self.SelectedStatus.Status = newValue!.getStatus().Status
+                    }
                 }
             }
             .onChange(of: self.ActionResult) { newValue in

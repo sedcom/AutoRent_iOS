@@ -11,16 +11,16 @@ struct OrderMainView: View, Equatable {
     @ObservedObject var mViewModel: OrderViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
-    @Binding var SelectedStatus: Int?
+    @ObservedObject var SelectedStatus: StatusObservable
     @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
     @State var ShowBottomSheet: Bool = false
     
-    init(entityId: Int, mode: ModeView, status: Binding<Int?>, action: Binding<Int?>, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, selectedStatus: StatusObservable, action: Binding<Int?>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._SelectedStatus = status
+        self.SelectedStatus = selectedStatus
         self._Action = action
         self._ActionResult = result
         self.mViewModel = OrderViewModel(entityId: entityId, include: "applications,companies,items,history,vehicles")
@@ -89,7 +89,9 @@ struct OrderMainView: View, Equatable {
             }
             .onChange(of: self.mViewModel.Order) { newValue in
                 if (newValue != nil) {
-                    self.SelectedStatus = newValue!.getStatus().Status.Id
+                    if newValue!.History.count > 0 {
+                        self.SelectedStatus.Status = newValue!.getStatus().Status
+                    }
                 }
             }
             .onChange(of: self.Action) { newValue in

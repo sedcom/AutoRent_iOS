@@ -53,5 +53,16 @@ struct ApplicationDocumentsView: View {
                 self.mViewModel.loadData()
             }
         }
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                switch(newValue!) {
+                    case OperationResult.Accept:
+                        self.mViewModel.Application = nil
+                    case OperationResult.Reject:
+                        self.mViewModel.Application = nil
+                    default: ()
+                }
+            }
+        }
     }
 }
