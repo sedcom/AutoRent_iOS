@@ -19,5 +19,9 @@ class OrderRepository {
         let publisher = NetworkService.getInstance().request(url: "/order", method: .get, parameters: ["orderId": applicationId, "include": include]).publishDecodable(type: Order.self)
         return publisher.value();
     }
-
+    
+    public func changeStatus(orderId: Int, statusId: Int) -> AnyPublisher<Bool, AFError> {
+        let publisher = NetworkService.getInstance().request(url: String(format: "/order/changestatus?orderId=%@&statusId=%@", String(orderId), String(statusId)), method: .post).publishDecodable(type: Bool.self)
+        return publisher.value();
+    }
 }

@@ -114,29 +114,36 @@ struct DocumentMainView: View, Equatable {
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
+                        case OperationResult.Error:
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
                         case OperationResult.Accept:
                             self.ToastMessage = NSLocalizedString("message_document_accept_success", comment: "")
-                            self.mViewModel.loadData()
                         case OperationResult.Reject:
                             self.ToastMessage = NSLocalizedString("message_document_reject_success", comment: "")
-                            self.mViewModel.loadData()
                         default: ()
                     }
+                    self.mViewModel.Document = Document()
+                    self.mViewModel.loadData()
                     self.ActionResult = nil
                 }
             }
-            
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
+                if newValue != nil {
+                    self.ActionResult = newValue
+                    self.mViewModel.ActionResult = nil
+                }
+            }
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
                 VStack {
                     CustomText("menu_document_approve", bold: true, image: "iconmonstr-check", color: Color.textDark)
                         .padding(.bottom, 8)
                         .onTapGesture {
-                            self.ActionResult = OperationResult.Accept
+                            self.mViewModel.changeStatus(statusId: 3)
                             self.ShowBottomSheet = false
                         }
                     CustomText("menu_document_reject", bold: true, image: "iconmonstr-forbidden", color: Color.textDark)
                         .onTapGesture {
-                            self.ActionResult = OperationResult.Reject
+                            self.mViewModel.changeStatus(statusId: 4)
                             self.ShowBottomSheet = false
                         }
                 }

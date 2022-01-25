@@ -11,15 +11,16 @@ struct ApplicationView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var SelectedTab: Int = 0
+    @State var mEditMode: Bool?
     @StateObject var SelectedStatus = StatusObservable()
-    @State var EditMode: Bool?
     @State var Action: Int?
-    @Binding var ActionResult: OperationResult?
+    @State var ActionResult: OperationResult?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._ActionResult = result
+        self._Refresh = refresh
     }
     
     var body: some View {
@@ -28,9 +29,9 @@ struct ApplicationView: View {
                 case 0:
                     ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
-                    ApplicationDocumentsView(entityId: self.mEntityId)
+                    ApplicationDocumentsView(entityId: self.mEntityId, refresh: $Refresh)
                 case 2:
-                    ApplicationInvoicesView(entityId: self.mEntityId)
+                    ApplicationInvoicesView(entityId: self.mEntityId, refresh: $Refresh)
                 case 3:
                     ApplicationHistoryView(entityId: self.mEntityId)
                 default:
@@ -48,6 +49,9 @@ struct ApplicationView: View {
         .navigationBarHidden(false)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {}
+            }
             ToolbarItem(placement: .principal) {
                 CustomTitle(title: String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), subtitle: self.SelectedStatus.Status?.Name)
             }
@@ -60,7 +64,7 @@ struct ApplicationView: View {
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
-                                self.EditMode = true
+                                self.mEditMode = true
                             }
                         Image("paper-plane")
                             .renderingMode(.template)
@@ -71,8 +75,20 @@ struct ApplicationView: View {
                     }
                 }
         })
-    
-        NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: true, selection: $EditMode)  { }
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                if (newValue != OperationResult.Error) {
+                    self.Refresh = true
+                }
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+                
+            }
+        }
+        
+        NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: true, selection: $mEditMode)  { }
     }
 }
 

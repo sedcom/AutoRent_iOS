@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum OperationResult {
-   case Error, Create, Update, Send, Accept, Reject
+   case Error, Create, Update, Send, Accept, Reject, Complete
 }
 
 struct MainView: View {

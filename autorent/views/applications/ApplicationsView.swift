@@ -11,6 +11,7 @@ struct ApplicationsView: View, Equatable {
     @ObservedObject var mViewModel: ApplicationsViewModel
     @State var mCurrentFilter: Int
     @State var ActionResult: OperationResult?
+    @State var Refresh: Bool?
     @State var ToastMessage: String?
     
     init() {
@@ -60,7 +61,7 @@ struct ApplicationsView: View, Equatable {
                                             LoadingRowView()
                                         }
                                         else {
-                                            NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View, result: $ActionResult))  {
+                                            NavigationLink(destination: ApplicationView(entityId: application.Id, mode: ModeView.View, refresh: $Refresh))  {
                                                 ApplicationsRowView(application)
                                             }
                                         }
@@ -107,7 +108,8 @@ struct ApplicationsView: View, Equatable {
             }
         }
         .onAppear {
-            if self.mViewModel.Data.Elements.count == 0 {
+            if self.mViewModel.Data.Elements.count == 0 || self.Refresh ?? false {
+                self.Refresh = nil
                 self.loadData()
             }
         }
@@ -116,15 +118,19 @@ struct ApplicationsView: View, Equatable {
                 switch(newValue!) {
                     case OperationResult.Create:
                         self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                        self.mViewModel.clearData()
                     case OperationResult.Update:
                         self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                        self.mViewModel.clearData()
                     case OperationResult.Send:
                         self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
-                        self.mViewModel.clearData()
                     default: ()
                 }
+                self.Refresh = true
+                self.ActionResult = nil
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+
             }
         }
     }

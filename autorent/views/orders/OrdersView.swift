@@ -10,7 +10,7 @@ import SwiftUI
 struct OrdersView: View, Equatable  {
     @ObservedObject var mViewModel: OrdersViewModel
     @State var mCurrentFilter: Int
-    @State var ActionResult: OperationResult?
+    @State var Refresh: Bool?
     @State var ToastMessage: String?
      
     init() {
@@ -60,7 +60,7 @@ struct OrdersView: View, Equatable  {
                                             LoadingRowView()
                                         }
                                         else {
-                                            NavigationLink(destination: OrderView(entityId: order.Id, mode: ModeView.View, result: $ActionResult))  {
+                                            NavigationLink(destination: OrderView(entityId: order.Id, mode: ModeView.View, refresh: $Refresh))  {
                                                 OrdersRowView(order)
                                             }
                                         }
@@ -92,20 +92,14 @@ struct OrdersView: View, Equatable  {
             }
         }
         .onAppear {
-            if self.mViewModel.Data.Elements.count == 0 {
+            if self.mViewModel.Data.Elements.count == 0 || self.Refresh ?? false {
+                self.Refresh = nil
                 self.loadData()
             }
         }
-        .onChange(of: self.ActionResult) { newValue in
+        .onChange(of: self.Refresh) { newValue in
             if newValue != nil {
-                switch(newValue!) {
-                    case OperationResult.Create:
-                        self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                        self.loadData()
-                    case OperationResult.Update:
-                        self.loadData()
-                    default: ()
-                }
+
             }
         }
     }

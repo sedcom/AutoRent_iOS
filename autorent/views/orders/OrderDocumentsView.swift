@@ -10,11 +10,11 @@ import SwiftUI
 struct OrderDocumentsView: View {
     @ObservedObject var mViewModel: OrderViewModel
     var mEntityId: Int
-    @State var ActionResult: OperationResult?
-    @State var DocumentId: Int?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int) {
+    init(entityId: Int, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
+        self._Refresh = refresh
         self.mViewModel = OrderViewModel(entityId: entityId, include: "applications,companies,documents")
     }
     
@@ -34,7 +34,7 @@ struct OrderDocumentsView: View {
                     if self.mViewModel.Order != nil {
                         ForEach(self.mViewModel.Order!.Documents) { document in
                             VStack {
-                                NavigationLink(destination: DocumentView(entityId: document.Id, names: [document.DocumentType!.Name, document.Number!], mode: ModeView.View, result: $ActionResult), tag: document.Id, selection:  $DocumentId)  {
+                                NavigationLink(destination: DocumentView(entityId: document.Id, names: [document.DocumentType!.Name, document.Number!], mode: ModeView.View, refresh: $Refresh)) {
                                     DocumentsRowView(document)
                                 }
                             }
@@ -51,6 +51,11 @@ struct OrderDocumentsView: View {
         .onAppear {
             if self.mViewModel.Order == nil {
                 self.mViewModel.loadData()
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+                self.mViewModel.Order = nil
             }
         }
     }

@@ -14,13 +14,14 @@ struct InvoiceView: View {
     @State var SelectedTab: Int = 0
     @StateObject var SelectedStatus = StatusObservable()
     @State var Action: Int?
-    @Binding var ActionResult: OperationResult?
+    @State var ActionResult: OperationResult?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int, names: [String] = [], mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, names: [String] = [], mode: ModeView, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
         self.mNames = names
         self.mCurrentMode = mode
-        self._ActionResult = result
+        self._Refresh = refresh
     }
     
     var body: some View {
@@ -68,6 +69,18 @@ struct InvoiceView: View {
                     }
                 }
         })
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                if (newValue != OperationResult.Error) {
+                    self.Refresh = true
+                }
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+                
+            }
+        }
     }
 }
 

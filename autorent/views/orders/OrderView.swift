@@ -13,12 +13,13 @@ struct OrderView: View {
     @State var SelectedTab: Int = 0
     @StateObject var SelectedStatus = StatusObservable()
     @State var Action: Int?
-    @Binding var ActionResult: OperationResult?
+    @State var ActionResult: OperationResult?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._ActionResult = result
+        self._Refresh = refresh
     }
     
     var body: some View {
@@ -27,9 +28,9 @@ struct OrderView: View {
                 case 0:
                     OrderMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
-                    OrderDocumentsView(entityId: self.mEntityId)
+                    OrderDocumentsView(entityId: self.mEntityId, refresh: $Refresh)
                 case 2:
-                    OrderInvoicesView(entityId: self.mEntityId)
+                    OrderInvoicesView(entityId: self.mEntityId, refresh: $Refresh)
                 case 3:
                     OrderHistoryView(entityId: self.mEntityId)
                 default:
@@ -57,12 +58,12 @@ struct OrderView: View {
             HStack(spacing: 10) {
                 if self.SelectedTab == 0 {
                     if self.SelectedStatus.Status?.Id == 2 {
-                        Image("iconmonstr-edit")
+                        /*Image("iconmonstr-edit")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
                                 self.Action = 1
-                        }
+                        }*/
                         Image("hand-paper")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
@@ -80,6 +81,18 @@ struct OrderView: View {
                     }
                 }
         })
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                if (newValue != OperationResult.Error) {
+                    self.Refresh = true
+                }
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+                
+            }
+        }
         
         /*NavigationLink(destination: OrderEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: 1, selection: $Action)  { }*/
     }

@@ -56,6 +56,7 @@ class OrderViewModel: ObservableObject {
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadItem")
                 self.Order = result
                 //Перелинковка
                 for document in self.Order!.Documents {
@@ -67,6 +68,34 @@ class OrderViewModel: ObservableObject {
                 self.IsLoading = false
                 self.objectWillChange.send()
         })
+    }
+
+    public func changeStatus(statusId: Int) {
+        debugPrint("Start changeStatus")
+        self.IsLoading = true
+        self.objectWillChange.send()
+        self.cancellation = self.mOrderRepository.changeStatus(orderId: self.mEntityId, statusId: statusId)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Error
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish changeStatus")
+                self.IsLoading = false
+                if result {
+                    switch (statusId) {
+                        case 3: self.ActionResult = OperationResult.Accept
+                        case 8: self.ActionResult =  OperationResult.Reject
+                        case 6: self.ActionResult =  OperationResult.Complete
+                        default: ()
+                    }
+                }
+                else {
+                    self.ActionResult = OperationResult.Error
+                }
+            })
     }
 }
 

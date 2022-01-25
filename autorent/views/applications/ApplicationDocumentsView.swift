@@ -11,10 +11,11 @@ struct ApplicationDocumentsView: View {
     @ObservedObject var mViewModel: ApplicationViewModel
     var mEntityId: Int
     @State var ActionResult: OperationResult?
-    @State var DocumentId: Int?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int) {
+    init(entityId: Int, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
+        self._Refresh = refresh
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,documents,userprofiles")
     }
     
@@ -34,7 +35,7 @@ struct ApplicationDocumentsView: View {
                     if self.mViewModel.Application != nil {
                         ForEach(self.mViewModel.Application!.getDocuments()) { document in
                             VStack {
-                                NavigationLink(destination: DocumentView(entityId: document.Id, names: [document.DocumentType!.Name, document.Number!], mode: ModeView.View, result: $ActionResult), tag: document.Id, selection:  $DocumentId)  {
+                                NavigationLink(destination: DocumentView(entityId: document.Id, names: [document.DocumentType!.Name, document.Number!], mode: ModeView.View, refresh: $Refresh))  {
                                     DocumentsRowView(document)                                       
                                 }
                             }
@@ -53,15 +54,9 @@ struct ApplicationDocumentsView: View {
                 self.mViewModel.loadData()
             }
         }
-        .onChange(of: self.ActionResult) { newValue in
+        .onChange(of: self.Refresh) { newValue in
             if newValue != nil {
-                switch(newValue!) {
-                    case OperationResult.Accept:
-                        self.mViewModel.Application = nil
-                    case OperationResult.Reject:
-                        self.mViewModel.Application = nil
-                    default: ()
-                }
+                self.mViewModel.Application = nil
             }
         }
     }

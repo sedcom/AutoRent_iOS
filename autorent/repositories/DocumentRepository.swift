@@ -14,4 +14,9 @@ class DocumentRepository {
         let publisher = NetworkService.getInstance().request(url: "/document", method: .get, parameters: ["documentId": documentId, "include": include]).publishDecodable(type: Document.self)
         return publisher.value();
     }
+    
+    public func changeStatus(documentId: Int, statusId: Int) -> AnyPublisher<Bool, AFError> {
+        let publisher = NetworkService.getInstance().request(url: String(format: "/document/changestatus?documentId=%@&statusId=%@", String(documentId), String(statusId)), method: .post).publishDecodable(type: Bool.self)
+        return publisher.value();
+    }
 }

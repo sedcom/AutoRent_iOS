@@ -10,11 +10,11 @@ import SwiftUI
 struct DocumentInvoicesView: View {
     @ObservedObject var mViewModel: DocumentViewModel
     var mEntityId: Int
-    @State var ActionResult: OperationResult?
-    @State var InvoiceId: Int?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int) {
+    init(entityId: Int, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
+        self._Refresh = refresh
         self.mViewModel = DocumentViewModel(entityId: entityId, include: "orders,invoices")
     }
     
@@ -34,7 +34,7 @@ struct DocumentInvoicesView: View {
                     if self.mViewModel.Document != nil {
                         ForEach(self.mViewModel.Document!.Invoices) { invoice in
                             VStack {
-                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, result: $ActionResult), tag: invoice.Id, selection:  $InvoiceId)  {
+                                NavigationLink(destination: InvoiceView(entityId: invoice.Id, mode: ModeView.View, refresh: $Refresh))  {
                                     InvoicesRowView(invoice)
                                 }
                             }
@@ -51,6 +51,11 @@ struct DocumentInvoicesView: View {
         .onAppear {
             if self.mViewModel.Document == nil {
                 self.mViewModel.loadData()
+            }
+        }
+        .onChange(of: self.Refresh) { newValue in
+            if newValue != nil {
+                self.mViewModel.Document = nil
             }
         }
     }

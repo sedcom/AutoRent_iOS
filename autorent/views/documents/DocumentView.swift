@@ -14,13 +14,14 @@ struct DocumentView: View {
     @State var SelectedTab: Int = 0
     @StateObject var SelectedStatus = StatusObservable()
     @State var Action: Int?
-    @Binding var ActionResult: OperationResult?
+    @State var ActionResult: OperationResult?
+    @Binding var Refresh: Bool?
     
-    init(entityId: Int, names: [String] = [], mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, names: [String] = [], mode: ModeView, refresh: Binding<Bool?>) {
         self.mEntityId = entityId
         self.mNames = names
         self.mCurrentMode = mode
-        self._ActionResult = result
+        self._Refresh = refresh
     }
     
     var body: some View {
@@ -29,7 +30,7 @@ struct DocumentView: View {
                 case 0:
                     DocumentMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
-                    DocumentInvoicesView(entityId: self.mEntityId)
+                    DocumentInvoicesView(entityId: self.mEntityId, refresh: $Refresh)
                 case 2:
                     DocumentHistoryView(entityId: self.mEntityId)
                 default:
@@ -66,5 +67,12 @@ struct DocumentView: View {
                     }
                 }
         })
+        .onChange(of: self.ActionResult) { newValue in
+            if newValue != nil {
+                if newValue != OperationResult.Error {
+                    self.Refresh = true
+                }
+            }
+        }
     }
 }

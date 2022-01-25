@@ -99,6 +99,8 @@ struct OrderMainView: View, Equatable {
                     switch(newValue!) {
                         case 2:
                             self.ShowBottomSheet.toggle()
+                        case 3:
+                            self.mViewModel.changeStatus(statusId: 6)
                         default: ()
                     }
                     self.Action = nil
@@ -107,18 +109,25 @@ struct OrderMainView: View, Equatable {
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
-                        case OperationResult.Update:
-                            self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
-                            self.mViewModel.loadData()
+                        case OperationResult.Error:
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
                         case OperationResult.Accept:
                             self.ToastMessage = NSLocalizedString("message_order_accept_success", comment: "")
-                            self.mViewModel.loadData()
                         case OperationResult.Reject:
                             self.ToastMessage = NSLocalizedString("message_order_reject_success", comment: "")
-                            self.mViewModel.loadData()
+                        case OperationResult.Complete:
+                            self.ToastMessage = NSLocalizedString("message_order_complete_success", comment: "")
                         default: ()
                     }
+                    self.mViewModel.Order = Order()
+                    self.mViewModel.loadData()
                     self.ActionResult = nil
+                }
+            }
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
+                if newValue != nil {
+                    self.ActionResult = newValue
+                    self.mViewModel.ActionResult = nil
                 }
             }
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
@@ -126,12 +135,12 @@ struct OrderMainView: View, Equatable {
                     CustomText("menu_order_approve", bold: true, image: "iconmonstr-check", color: Color.textDark)
                         .padding(.bottom, 8)
                         .onTapGesture {
-                            self.ActionResult = OperationResult.Accept
+                            self.mViewModel.changeStatus(statusId: 3)
                             self.ShowBottomSheet = false
                         }
                     CustomText("menu_order_reject", bold: true, image: "iconmonstr-forbidden", color: Color.textDark)
                         .onTapGesture {
-                            self.ActionResult = OperationResult.Reject
+                            self.mViewModel.changeStatus(statusId: 8)
                             self.ShowBottomSheet = false
                         }
                 }
