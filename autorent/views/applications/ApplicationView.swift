@@ -11,7 +11,8 @@ struct ApplicationView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @State var SelectedTab: Int = 0
-    @State var SelectedStatus: Int?
+    @StateObject var SelectedStatus = StatusObservable()
+    @State var EditMode: Bool?
     @State var Action: Int?
     @Binding var ActionResult: OperationResult?
     
@@ -25,7 +26,7 @@ struct ApplicationView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode, status: $SelectedStatus, result: $ActionResult)
+                    ApplicationMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
                     ApplicationDocumentsView(entityId: self.mEntityId)
                 case 2:
@@ -45,16 +46,21 @@ struct ApplicationView: View {
         .edgesIgnoringSafeArea(.horizontal)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(false)
-        .navigationBarTitle(String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), displayMode: .inline)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CustomTitle(title: String(format: NSLocalizedString("title_application", comment: ""), String(self.mEntityId)), subtitle: self.SelectedStatus.Status?.Name)
+            }
+        }
         .navigationBarItems(trailing:
             HStack(spacing: 10) {
                 if self.SelectedTab == 0 {
-                    if self.SelectedStatus == 1 {
+                    if self.SelectedStatus.Status?.Id == 1 {
                         Image("iconmonstr-edit")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
-                                self.Action = 1
+                                self.EditMode = true
                             }
                         Image("paper-plane")
                             .renderingMode(.template)
@@ -65,8 +71,8 @@ struct ApplicationView: View {
                     }
                 }
         })
-        
-        NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: 1, selection: $Action)  { }
+    
+        NavigationLink(destination: ApplicationEditView(entityId: self.mEntityId, mode: ModeView.Edit, result: $ActionResult), tag: true, selection: $EditMode)  { }
     }
 }
 

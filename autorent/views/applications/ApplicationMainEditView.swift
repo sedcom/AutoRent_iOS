@@ -149,18 +149,18 @@ struct ApplicationMainEditView: View, Equatable {
                         self.SelectedItems.removeAll()
                     default: ()
                 }
-                self.Action = 0
+                self.Action = nil
             }
             .onChange(of: self.mViewModel.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
                         case OperationResult.Error:
                             self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
-                        case OperationResult.Create:
+                        case OperationResult.Create: ()
                             presentationMode.wrappedValue.dismiss()
-                        case OperationResult.Update:
+                        case OperationResult.Update: ()
                             presentationMode.wrappedValue.dismiss()
-                        case OperationResult.Send:
+                        case OperationResult.Send: ()
                             presentationMode.wrappedValue.dismiss()
                         default: ()
                     }

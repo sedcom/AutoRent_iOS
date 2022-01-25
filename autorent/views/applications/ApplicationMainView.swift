@@ -11,14 +11,16 @@ struct ApplicationMainView: View, Equatable {
     @ObservedObject var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
-    @Binding var SelectedStatus: Int?
+    @ObservedObject var SelectedStatus: StatusObservable
+    @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
     
-    init(entityId: Int, mode: ModeView, status: Binding<Int?>, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, selectedStatus: StatusObservable, action: Binding<Int?>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
-        self._SelectedStatus = status
+        self.SelectedStatus = selectedStatus
+        self._Action = action
         self._ActionResult = result
         self.mViewModel = ApplicationViewModel(entityId: entityId, include: "companies,items,history,userprofiles")
     }
@@ -79,23 +81,52 @@ struct ApplicationMainView: View, Equatable {
             }
             .onChange(of: self.mViewModel.Application) { newValue in
                 if (newValue != nil) {
-                    self.SelectedStatus = newValue!.getStatus().Status.Id
+                    if newValue!.History.count > 0 {
+                        self.SelectedStatus.Status = newValue!.getStatus().Status
+                    }
+                }
+            }
+            .onChange(of: self.Action) { newValue in
+                if newValue != nil {
+                    switch(newValue!) {
+                        case 2:
+                            self.mViewModel.changeStatus(statusId: 2)
+                        default: ()
+                    }
+                    self.Action = nil
                 }
             }
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
                     switch(newValue!) {
+                        case OperationResult.Error:
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
                         case OperationResult.Update:
                             self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
                             self.mViewModel.loadData()
                         case OperationResult.Send:
                             self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
+                            self.mViewModel.Application = Application()
                             self.mViewModel.loadData()
-                        default: print()
+                        default: ()
                     }
                     self.ActionResult = nil
                 }
-            }                
+            }
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
+                if newValue != nil {
+                    switch(newValue!) {
+                        case OperationResult.Error:
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
+                        case OperationResult.Send:
+                            self.ToastMessage = NSLocalizedString("message_application_send_success", comment: "")
+                            self.mViewModel.Application = Application()
+                            self.mViewModel.loadData()
+                        default: ()
+                    }
+                    self.ActionResult = nil
+                }
+            }
             ToastView($ToastMessage)
         }
     }

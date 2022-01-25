@@ -200,7 +200,7 @@ class ApplicationViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish changeStatus")
                 self.IsLoading = false
-                self.ActionResult = OperationResult.Send
-        })
+                self.ActionResult = result ? OperationResult.Send : OperationResult.Error
+            })
     }
 }

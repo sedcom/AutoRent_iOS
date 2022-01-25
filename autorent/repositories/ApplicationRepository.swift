@@ -35,7 +35,7 @@ class ApplicationRepository {
     }
     
     public func changeStatus(applicationId: Int, statusId: Int) -> AnyPublisher<Bool, AFError> {
-        let publisher = NetworkService.getInstance().request(url: "/application/changestatus", method: .post, parameters: ["applicationId": applicationId, "statusId": statusId]).publishDecodable(type: Bool.self)
+        let publisher = NetworkService.getInstance().request(url: String(format: "/application/changestatus?applicationId=%@&statusId=%@", String(applicationId), String(statusId)), method: .post).publishDecodable(type: Bool.self)
         return publisher.value();
     }
 }

@@ -21,11 +21,11 @@ class  NetworkService {
         return NetworkService.mInstance!
     }
     
-    public func request(url: String, method: HTTPMethod, parameters: [String: Any]) -> DataRequest {
+    public func request(url: String, method: HTTPMethod, parameters: [String: Any]? = nil) -> DataRequest {
         return AF.request(NetworkService.BASE_URL + url, method: method, parameters: parameters, headers: [.authorization(NetworkService.TOKEN)])
     }
     
-    public func request(url: String, method: HTTPMethod, parameters: [String: Any], encoding: JSONEncoding) -> DataRequest {
+    public func request(url: String, method: HTTPMethod, parameters: [String: Any]? = nil, encoding: JSONEncoding) -> DataRequest {
         return AF.request(NetworkService.BASE_URL + url, method: method, parameters: parameters, encoding: encoding, headers: [.authorization(NetworkService.TOKEN)])
     }
 }

@@ -39,5 +39,3 @@ struct CustomText: View {
         .frame(maxWidth: .infinity, alignment: self.mAlignment)
     }
 }
-
-

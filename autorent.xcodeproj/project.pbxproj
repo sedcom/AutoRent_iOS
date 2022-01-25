@@ -106,6 +106,8 @@
 		F6A06752279E1546008AC3D5 /* UserProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */; };
 		F6A06754279E9B83008AC3D5 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06753279E9B83008AC3D5 /* BottomSheet.swift */; };
 		F6A06756279EBE8B008AC3D5 /* MapWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A06755279EBE8B008AC3D5 /* MapWrapperView.swift */; };
+		F6A0675827A00B4D008AC3D5 /* CustomTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0675727A00B4D008AC3D5 /* CustomTitle.swift */; };
+		F6A0675A27A00FD0008AC3D5 /* StatusObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0675927A00FD0008AC3D5 /* StatusObservable.swift */; };
 		F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */; };
 		F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */; };
 		F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */; };
@@ -237,6 +239,8 @@
 		F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEditView.swift; sourceTree = "<group>"; };
 		F6A06753279E9B83008AC3D5 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F6A06755279EBE8B008AC3D5 /* MapWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWrapperView.swift; sourceTree = "<group>"; };
+		F6A0675727A00B4D008AC3D5 /* CustomTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitle.swift; sourceTree = "<group>"; };
+		F6A0675927A00FD0008AC3D5 /* StatusObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusObservable.swift; sourceTree = "<group>"; };
 		F6ADCC26277B2FB100A1CE80 /* ApplicationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItem.swift; sourceTree = "<group>"; };
 		F6ADCC28277B307600A1CE80 /* ApplicationItemVehicleParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationItemVehicleParams.swift; sourceTree = "<group>"; };
 		F6ADCC2A277B30EE00A1CE80 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
@@ -513,6 +517,7 @@
 			children = (
 				F6A066B927973AB3008AC3D5 /* AddressObservable.swift */,
 				F6A066E0279B205D008AC3D5 /* CompanyObservable.swift */,
+				F6A0675927A00FD0008AC3D5 /* StatusObservable.swift */,
 				F6A066BC27973E23008AC3D5 /* VehicleTypeObservable.swift */,
 			);
 			path = observable;
@@ -537,6 +542,7 @@
 				F6A066B12790178C008AC3D5 /* CustomTabItem.swift */,
 				F6A066D32799DFCB008AC3D5 /* CustomText.swift */,
 				F6A066D5279B1116008AC3D5 /* CustomTextField.swift */,
+				F6A0675727A00B4D008AC3D5 /* CustomTitle.swift */,
 				F6ADCC4B278730C900A1CE80 /* DatetimePicker.swift */,
 			);
 			path = controls;
@@ -916,6 +922,7 @@
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
 				F6A066FE279B774F008AC3D5 /* OrderHistoryView.swift in Sources */,
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
+				F6A0675827A00B4D008AC3D5 /* CustomTitle.swift in Sources */,
 				F6ADCC422785B62100A1CE80 /* ApplicationMainEditView.swift in Sources */,
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */,
@@ -930,6 +937,7 @@
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
 				F6A06730279C6D7F008AC3D5 /* ApplicationDocumentsView.swift in Sources */,
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
+				F6A0675A27A00FD0008AC3D5 /* StatusObservable.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
 				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
