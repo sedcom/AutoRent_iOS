@@ -19,4 +19,9 @@ class InvoiceRepository {
         let publisher = NetworkService.getInstance().request(url: "/invoice", method: .get, parameters: ["invoiceId": invoiceId, "include": include]).publishDecodable(type: Invoice.self)
         return publisher.value();
     }
+    
+    public func changeStatus(invoiceId: Int, statusId: Int) -> AnyPublisher<Bool, AFError> {
+        let publisher = NetworkService.getInstance().request(url: String(format: "/invoice/changestatus?invoiceId=%@&statusId=%@", String(invoiceId), String(statusId)), method: .post).publishDecodable(type: Bool.self)
+        return publisher.value();
+    }
 }

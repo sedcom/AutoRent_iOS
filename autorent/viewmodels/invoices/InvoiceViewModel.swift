@@ -44,6 +44,32 @@ class InvoiceViewModel: ObservableObject {
                 self.objectWillChange.send()
         })
     }
+    
+    public func changeStatus(statusId: Int) {
+        debugPrint("Start changeStatus")
+        self.IsLoading = true
+        self.objectWillChange.send()
+        self.cancellation = self.mInvoiceRepository.changeStatus(invoiceId: self.mEntityId, statusId: statusId)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Error
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish changeStatus")
+                self.IsLoading = false
+                if result {
+                    switch (statusId) {
+                        case 4: self.ActionResult = OperationResult.Cancel
+                        default: ()
+                    }
+                }
+                else {
+                    self.ActionResult = OperationResult.Error
+                }
+            })
+    }
 }
 
 

@@ -34,11 +34,11 @@ class ApplicationViewModel: ObservableObject {
         application.Address = Address()
         application.Address!.AddressType = AddressType(id: 3, name: "")
         let item = ApplicationItem()
-        item.StartDate = Date()
-        item.FinishDate = Date()
-        item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Test")
+        //item.StartDate = Date()
+        //item.FinishDate = Date()
+        //item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Test")
         application.Items.append(item)
-        application.Notes = "Test iOS"
+        //application.Notes = "Test iOS"
         self.Application = application
         self.AddedItems.append(item)
         self.objectWillChange.send()

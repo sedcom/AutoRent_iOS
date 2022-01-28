@@ -34,6 +34,7 @@ struct CustomTabView: View {
                                 .foregroundColor(item.Disabled == false ? self.SelectedTab  == item.Index ? Color.secondary : Color.textLight :  Color.textDark)
                                 .font(.system(size: 16))
                                 .font(Font.headline.weight(.bold))
+                                .lineLimit(1)
                         }
                     }
                     if index < self.mItems.count - 1 {

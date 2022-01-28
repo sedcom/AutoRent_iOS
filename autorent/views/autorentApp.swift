@@ -37,13 +37,11 @@ struct autorentApp: App {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.secondary)
         UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textDark)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textLight)], for: .normal)
-        //
-        
     }
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            LoginView()
         }
     }
 }

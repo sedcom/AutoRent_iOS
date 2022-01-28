@@ -27,6 +27,11 @@
 		E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B397227539DD6004CE06A /* ApplicationRepository.swift */; };
 		E29B39782753DC79004CE06A /* ApplicationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */; };
 		E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29B3979275430D3004CE06A /* ApplicationViewModel.swift */; };
+		F639E18227A46ECF00FBD3C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18127A46ECF00FBD3C0 /* LoginView.swift */; };
+		F639E18527A49BFA00FBD3C0 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18427A49BFA00FBD3C0 /* AuthenticationViewModel.swift */; };
+		F639E18727A49E7300FBD3C0 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18627A49E7300FBD3C0 /* TokenModel.swift */; };
+		F639E18927A49FAB00FBD3C0 /* ResultTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */; };
+		F639E18B27A4A73D00FBD3C0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18A27A4A73D00FBD3C0 /* AuthenticationService.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -160,6 +165,12 @@
 		E29B397227539DD6004CE06A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
 		E29B39772753DC78004CE06A /* ApplicationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewModel.swift; sourceTree = "<group>"; };
 		E29B3979275430D3004CE06A /* ApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewModel.swift; sourceTree = "<group>"; };
+		F639E18127A46ECF00FBD3C0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F639E18327A47CDC00FBD3C0 /* autorent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = autorent.entitlements; sourceTree = "<group>"; };
+		F639E18427A49BFA00FBD3C0 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		F639E18627A49E7300FBD3C0 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTokenModel.swift; sourceTree = "<group>"; };
+		F639E18A27A4A73D00FBD3C0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -410,8 +421,9 @@
 				E219C2882752EC9600870896 /* models */,
 				E219C28A2752ECC200870896 /* views */,
 				E219C2892752ECB900870896 /* viewmodels */,
-				E2589B1027523A4F00BFF698 /* Info.plist */,
+				F639E18327A47CDC00FBD3C0 /* autorent.entitlements */,
 				E2589B0B27523A4F00BFF698 /* Assets.xcassets */,
+				E2589B1027523A4F00BFF698 /* Info.plist */,
 				E2550F0D2757C3780059B96C /* Localizable.strings */,
 				E2589B0D27523A4F00BFF698 /* Preview Content */,
 			);
@@ -456,8 +468,8 @@
 		E29B397127539DB3004CE06A /* repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F639E18C27A4A74100FBD3C0 /* services */,
 				F6ADCC592789B93D00A1CE80 /* models */,
-				F6ADCC542788512F00A1CE80 /* NetworkService.swift */,
 				E29B397227539DD6004CE06A /* ApplicationRepository.swift */,
 				F6A066DE279B1F93008AC3D5 /* CompanyRepository.swift */,
 				F6ADCC52278850F200A1CE80 /* DictionaryRepository.swift */,
@@ -477,6 +489,15 @@
 				9ECB5D45DAEC621C4F164619 /* Pods-autorent.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F639E18C27A4A74100FBD3C0 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				F639E18A27A4A73D00FBD3C0 /* AuthenticationService.swift */,
+				F6ADCC542788512F00A1CE80 /* NetworkService.swift */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 		F692786727793B6E003BD0D5 /* user */ = {
@@ -665,6 +686,7 @@
 		F6A0673F279DDF59008AC3D5 /* users */ = {
 			isa = PBXGroup;
 			children = (
+				F639E18127A46ECF00FBD3C0 /* LoginView.swift */,
 				F6A06740279DDFC3008AC3D5 /* UserProfileView.swift */,
 				F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */,
 				F6A06747279DED2F008AC3D5 /* NotificationsView.swift */,
@@ -676,6 +698,7 @@
 		F6A06742279DE05F008AC3D5 /* users */ = {
 			isa = PBXGroup;
 			children = (
+				F639E18427A49BFA00FBD3C0 /* AuthenticationViewModel.swift */,
 				F6A06743279DE072008AC3D5 /* UserProfileViewModel.swift */,
 				F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */,
 			);
@@ -722,6 +745,8 @@
 			children = (
 				F6ADCC5A2789B94B00A1CE80 /* ApplicationModel.swift */,
 				F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */,
+				F639E18627A49E7300FBD3C0 /* TokenModel.swift */,
+				F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -883,10 +908,12 @@
 				F6ADCC36277BEB3700A1CE80 /* ApplicationHistoryView.swift in Sources */,
 				F6927879277A84C6003BD0D5 /* Address.swift in Sources */,
 				F6A06702279B7A60008AC3D5 /* Document.swift in Sources */,
+				F639E18227A46ECF00FBD3C0 /* LoginView.swift in Sources */,
 				E28538852755BE560008F6FB /* ApplicationsRowView.swift in Sources */,
 				F6ADCC552788512F00A1CE80 /* NetworkService.swift in Sources */,
 				F6A066D42799DFCB008AC3D5 /* CustomText.swift in Sources */,
 				F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */,
+				F639E18927A49FAB00FBD3C0 /* ResultTokenModel.swift in Sources */,
 				F6A06706279B7A88008AC3D5 /* DocumentType.swift in Sources */,
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6A0673C279D8D34008AC3D5 /* File.swift in Sources */,
@@ -900,6 +927,7 @@
 				F6ADCC32277BE9F400A1CE80 /* BaseHistory.swift in Sources */,
 				F6ADCC2E277BE8D000A1CE80 /* BaseStatus.swift in Sources */,
 				E2550F052757B9AC0059B96C /* EmptyView.swift in Sources */,
+				F639E18527A49BFA00FBD3C0 /* AuthenticationViewModel.swift in Sources */,
 				F6A0674A279DEDB5008AC3D5 /* NotificationsRepository.swift in Sources */,
 				F6A066E3279B5529008AC3D5 /* OrderRepository.swift in Sources */,
 				F6A066EC279B58E4008AC3D5 /* OrderHistory.swift in Sources */,
@@ -932,6 +960,7 @@
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
 				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,
 				F6A0672A279C681A008AC3D5 /* InvoiceHistoryView.swift in Sources */,
+				F639E18727A49E7300FBD3C0 /* TokenModel.swift in Sources */,
 				F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */,
 				F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */,
 				E2550F142757D72D0059B96C /* ButtonFilterStyle.swift in Sources */,
@@ -948,6 +977,7 @@
 				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */,
+				F639E18B27A4A73D00FBD3C0 /* AuthenticationService.swift in Sources */,
 				F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */,
 				F6A06714279B87C3008AC3D5 /* DocumentViewModel.swift in Sources */,
 				F6A06736279D6C86008AC3D5 /* InvoiceMainView.swift in Sources */,
@@ -1032,7 +1062,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1088,7 +1118,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1104,17 +1134,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
+				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = autorent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sedcom.autorent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1126,17 +1160,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
+				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = autorent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sedcom.autorent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -16,7 +16,8 @@ struct ApplicationsView: View, Equatable {
     
     init() {
         self.mCurrentFilter = 1
-        self.mViewModel = ApplicationsViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
+        let user = AuthenticationService.getInstance().getCurrentUser()
+        self.mViewModel = ApplicationsViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "companies,items,history,userprofiles", filter: "")
     }
 
     static func == (lhs: ApplicationsView, rhs: ApplicationsView) -> Bool {

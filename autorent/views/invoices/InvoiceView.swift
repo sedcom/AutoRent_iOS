@@ -28,7 +28,7 @@ struct InvoiceView: View {
         VStack(spacing: 0) {
             switch self.SelectedTab {
                 case 0:
-                    InvoiceMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, result: $ActionResult)
+                    InvoiceMainView(entityId: self.mEntityId, mode: self.mCurrentMode, selectedStatus: self.SelectedStatus, action: $Action, result: $ActionResult)
                 case 1:
                     InvoiceHistoryView(entityId: self.mEntityId)
                 default:
@@ -54,12 +54,12 @@ struct InvoiceView: View {
             HStack(spacing: 10) {
                 if self.SelectedTab == 0 {
                     if self.SelectedStatus.Status?.Id == 2 {
-                        Image("reply")
+                        /*Image("reply")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
                                 self.Action = 1
-                            }
+                            }*/
                         Image("visa")
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum OperationResult {
-   case Error, Create, Update, Send, Accept, Reject, Complete
+   case Error, Create, Update, Send, Accept, Reject, Complete, Cancel
 }
 
 struct MainView: View {
@@ -25,11 +25,12 @@ struct MainView: View {
                     case 2: OrdersView()
                     case 3: InvoicesView()
                     case 4:
+                        let user = AuthenticationService.getInstance().getCurrentUser()
                         if self.UserProfileMode == 1 {
-                            UserProfileEditView(entityId: 1, mode: $UserProfileMode)
+                            UserProfileEditView(entityId: user!.Id, mode: $UserProfileMode)
                         }
                         else {
-                            UserProfileView(entityId: 1, mode: $UserProfileMode)
+                            UserProfileView(entityId: user!.Id, mode: $UserProfileMode)
                         }
                     default: VStack {}
                 }

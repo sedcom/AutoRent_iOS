@@ -15,7 +15,8 @@ struct PickerCompanyView: View {
 
     init(selectedCompany: CompanyObservable) {
         self.SelectedCompany = selectedCompany
-        self.mViewModel = CompaniesViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Name asc", include: "", filter: "")
+        let user = AuthenticationService.getInstance().getCurrentUser()
+        self.mViewModel = CompaniesViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Name asc", include: "", filter: "")
     }
     
     var body: some View {

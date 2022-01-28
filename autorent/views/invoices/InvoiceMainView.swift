@@ -12,13 +12,15 @@ struct InvoiceMainView: View, Equatable {
     var mCurrentMode: ModeView
     var mEntityId: Int
     @ObservedObject var SelectedStatus: StatusObservable
+    @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
     
-    init(entityId: Int, mode: ModeView, selectedStatus: StatusObservable , result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, selectedStatus: StatusObservable, action: Binding<Int?>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
         self.SelectedStatus = selectedStatus
+        self._Action = action
         self._ActionResult = result
         self.mViewModel = InvoiceViewModel(entityId: entityId, include: "documents,items,files,history")
     }
@@ -99,10 +101,34 @@ struct InvoiceMainView: View, Equatable {
                     }
                 }
             }
+            .onChange(of: self.Action) { newValue in
+                if (newValue != nil) {
+                    switch(newValue!) {
+                        case 1:
+                            self.mViewModel.changeStatus(statusId: 4)
+                        default: ()
+                    }
+                    self.Action = nil
+                }
+            }
             .onChange(of: self.ActionResult) { newValue in
                 if newValue != nil {
-                    //TODO
+                    switch(newValue!) {
+                        case OperationResult.Error:
+                            self.ToastMessage = NSLocalizedString("message_save_error", comment: "")
+                        case OperationResult.Cancel:
+                            self.ToastMessage = NSLocalizedString("message_invoice_cancel_success", comment: "")
+                        default: ()
+                    }
+                    self.mViewModel.Invoice = Invoice()
+                    self.mViewModel.loadData()
                     self.ActionResult = nil
+                }
+            }
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
+                if newValue != nil {
+                    self.ActionResult = newValue
+                    self.mViewModel.ActionResult = nil
                 }
             }
             ToastView($ToastMessage)
