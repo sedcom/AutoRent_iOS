@@ -12,14 +12,16 @@ import Alamofire
 struct MapView: UIViewRepresentable {
     @ObservedObject var SelectedMapAddress: AddressObservable
     var mMap: MKMapView
+    @Binding var ActionMode: Int?
     
-    init(map: MKMapView, selectedMapAddress: AddressObservable) {
+    init(map: MKMapView, mode: Binding<Int?>, selectedMapAddress: AddressObservable) {
         self.mMap = map
+        self._ActionMode = mode
         self.SelectedMapAddress = selectedMapAddress
     }
     
     func makeCoordinator() -> MapViewCoordinator {
-        MapViewCoordinator(self.mMap, self.SelectedMapAddress)
+        MapViewCoordinator(self.mMap, $ActionMode, self.SelectedMapAddress)
     }
     
     func makeUIView(context: Context) -> MKMapView {
@@ -41,10 +43,12 @@ struct MapView: UIViewRepresentable {
 
 class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelegate {
     var mMap: MKMapView
+    @Binding var ActionMode: Int?
     @ObservedObject var SelectedMapAddress: AddressObservable
     
-    init (_ map: MKMapView, _ selectedMapAddress: AddressObservable) {
+    init (_ map: MKMapView, _ mode: Binding<Int?>, _ selectedMapAddress: AddressObservable) {
         self.mMap = map
+        self._ActionMode = mode
         self.SelectedMapAddress = selectedMapAddress
         super.init()
     }
@@ -69,9 +73,11 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelega
     
     @objc func tapHandler(gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
-        let location = gesture.location(in: self.mMap)
-        let coordinate = self.mMap.convert(location, toCoordinateFrom: self.mMap)
-        self.setAddressMarker(coordinate)
+        if self.ActionMode == 1 {
+            let location = gesture.location(in: self.mMap)
+            let coordinate = self.mMap.convert(location, toCoordinateFrom: self.mMap)
+            self.setAddressMarker(coordinate)
+        }
     }
     
     func setAddressMarker(_ coordinate: CLLocationCoordinate2D){

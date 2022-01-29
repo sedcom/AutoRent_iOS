@@ -43,10 +43,8 @@ struct ApplicationMainView: View, Equatable {
                         VStack {
                             VStack {
                                 CustomText("string_client", maxLines: 1, bold: true)
-                                if self.mViewModel.Application!.Company == nil {
-                                    CustomText(self.mViewModel.Application!.User!.Profile.getUserName(), image: "user")
-                                }
-                                else {
+                                CustomText(self.mViewModel.Application!.User!.Profile.getUserName(), image: "user")
+                                if self.mViewModel.Application!.Company != nil {
                                     CustomText(self.mViewModel.Application!.Company!.getCompanyName(), image: "address-book")
                                 }
                             }

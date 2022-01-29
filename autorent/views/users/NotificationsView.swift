@@ -12,7 +12,8 @@ struct NotificationsView: View  {
     @State var ToastMessage: String?
      
     init() {
-        self.mViewModel = NotificationsViewModel(userId: 1, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "", filter: "")
+        let user = AuthenticationService.getInstance().getCurrentUser()
+        self.mViewModel = NotificationsViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Id desc", include: "", filter: "")
     }
 
     var body: some View {

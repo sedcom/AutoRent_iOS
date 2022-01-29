@@ -11,6 +11,7 @@ import MapKit
 struct MapWrapperView: View {
     @StateObject var SelectedMapAddress = AddressObservable()
     var mMap = MKMapView()
+    @State var ActionMode: Int?
     @State var SelectedPoint: Bool = false
     @State var ShowBottomSheet: Bool = false
     @State var Action: Int?
@@ -18,7 +19,7 @@ struct MapWrapperView: View {
     
     var body: some View {
         ZStack {
-            MapView(map: self.mMap, selectedMapAddress: self.SelectedMapAddress)
+            MapView(map: self.mMap, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
             ZStack {
                 VStack {
                     Image("iconmonstr-flag")
@@ -32,6 +33,7 @@ struct MapWrapperView: View {
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(self.SelectedPoint ? Color.textDark : Color.textLight, lineWidth: 1))
                 .onTapGesture {
                     self.SelectedPoint.toggle()
+                    self.ActionMode = self.SelectedPoint ? 1 : 0
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

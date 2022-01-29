@@ -11,6 +11,7 @@ import MapKit
 struct PickerMapAddressView: View {
     @Environment(\.presentationMode) var presentationMode
     var mMap = MKMapView()
+    @State var ActionMode: Int? = 1
     @ObservedObject var SelectedMapAddress: AddressObservable
     
     init(selectedMapAddress: AddressObservable) {
@@ -18,7 +19,23 @@ struct PickerMapAddressView: View {
     }
     
     var body: some View {
-        MapView(map: self.mMap, selectedMapAddress: self.SelectedMapAddress)
+        ZStack {
+            MapView(map: self.mMap, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
+            ZStack {
+                VStack {
+                    Image("iconmonstr-flag")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color.textDark)
+                }
+                .padding(.all, 8)
+                .background(Color.secondary)
+                .cornerRadius(8)
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.textDark, lineWidth: 1))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .offset(x: 10, y: 10)
+        }
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)
