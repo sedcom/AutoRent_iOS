@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PickerMapAddressView: View {
     @Environment(\.presentationMode) var presentationMode
+    var mMap = MKMapView()
     @ObservedObject var SelectedMapAddress: AddressObservable
     
     init(selectedMapAddress: AddressObservable) {
@@ -16,7 +18,7 @@ struct PickerMapAddressView: View {
     }
     
     var body: some View {
-        MapView(selectedMapAddress: self.SelectedMapAddress)
+        MapView(map: self.mMap, selectedMapAddress: self.SelectedMapAddress)
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)

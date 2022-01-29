@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var mViewModel: AuthenticationViewModel
     @State var Authenticated: Bool = false
-    @State var Login: String = ""
-    @State var Password: String = ""
+    @State var Login: String = "info@sedcom.ru"
+    @State var Password: String = "password"
     
     init () {
         self.mViewModel = AuthenticationViewModel()

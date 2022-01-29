@@ -10,21 +10,23 @@ import SwiftUI
 struct ApplicationEditView: View {
     var mCurrentMode: ModeView
     var mEntityId: Int
+    var mAddress: Address?
     @State var SelectedItem: Int = 0
     @State var SelectedItems: [UUID] = []
     @State var Action: Int?
     @Binding var ActionResult: OperationResult?
     
-    init(entityId: Int, mode: ModeView, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, address: Address? = nil, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
+        self.mAddress = address
         self._ActionResult = result
     }
     
     var body: some View {
         VStack(spacing: 0) {
             switch self.SelectedItem {
-                case 0: ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, action: $Action, selectedItems: $SelectedItems, result: $ActionResult).equatable()
+            case 0: ApplicationMainEditView(entityId: self.mEntityId, mode: self.mCurrentMode, address:  self.mAddress, action: $Action, selectedItems: $SelectedItems, result: $ActionResult).equatable()
                 default: VStack {}
             }
             CustomTabView(items: [

@@ -28,10 +28,10 @@ class ApplicationViewModel: ObservableObject {
         self.mInclude = include        
     }
 
-    public func createItem() {
+    public func createItem(address: Address? = nil) {
         let application = autorent.Application()
-        application.User = User()
-        application.Address = Address()
+        application.User = AuthenticationService.getInstance().getCurrentUser()
+        application.Address = address ?? Address()
         application.Address!.AddressType = AddressType(id: 3, name: "")
         let item = ApplicationItem()
         //item.StartDate = Date()

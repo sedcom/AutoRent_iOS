@@ -12,6 +12,7 @@ struct ApplicationMainEditView: View, Equatable {
     @ObservedObject public var mViewModel: ApplicationViewModel
     var mCurrentMode: ModeView
     var mEntityId: Int
+    var mAddress: Address?
     @State var ShowDatePicker: Bool = false
     @State var SelectedDate: Date = Date()
     @State var SelectedUserType: Int = 1
@@ -22,9 +23,10 @@ struct ApplicationMainEditView: View, Equatable {
     @Binding var ActionResult: OperationResult?
     @State var ToastMessage: String?
     
-    init(entityId: Int, mode: ModeView, action: Binding<Int?>, selectedItems: Binding<[UUID]>, result: Binding<OperationResult?>) {
+    init(entityId: Int, mode: ModeView, address: Address? = nil, action: Binding<Int?>, selectedItems: Binding<[UUID]>, result: Binding<OperationResult?>) {
         self.mEntityId = entityId
         self.mCurrentMode = mode
+        self.mAddress = address
         self._Action = action
         self._SelectedItems = selectedItems
         self._ActionResult = result
@@ -121,7 +123,7 @@ struct ApplicationMainEditView: View, Equatable {
             .onAppear {
                 if self.mViewModel.Application == nil {
                     if self.mCurrentMode == ModeView.Create {
-                        self.mViewModel.createItem()
+                        self.mViewModel.createItem(address: self.mAddress)
                     }
                     else {
                         self.mViewModel.loadData()

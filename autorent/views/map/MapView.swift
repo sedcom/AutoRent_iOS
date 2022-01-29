@@ -11,9 +11,10 @@ import Alamofire
 
 struct MapView: UIViewRepresentable {
     @ObservedObject var SelectedMapAddress: AddressObservable
-    let mMap = MKMapView()
+    var mMap: MKMapView
     
-    init(selectedMapAddress: AddressObservable) {
+    init(map: MKMapView, selectedMapAddress: AddressObservable) {
+        self.mMap = map
         self.SelectedMapAddress = selectedMapAddress
     }
     

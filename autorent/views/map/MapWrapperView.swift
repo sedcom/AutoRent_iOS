@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapWrapperView: View {
     @StateObject var SelectedMapAddress = AddressObservable()
+    var mMap = MKMapView()
     @State var SelectedPoint: Bool = false
     @State var ShowBottomSheet: Bool = false
     @State var Action: Int?
@@ -16,7 +18,7 @@ struct MapWrapperView: View {
     
     var body: some View {
         ZStack {
-            MapView(selectedMapAddress: self.SelectedMapAddress)
+            MapView(map: self.mMap, selectedMapAddress: self.SelectedMapAddress)
             ZStack {
                 VStack {
                     Image("iconmonstr-flag")
@@ -45,6 +47,7 @@ struct MapWrapperView: View {
                     CustomText("menu_point_remove", bold: true, image: "iconmonstr-flag-white", color: Color.textDark)
                         .onTapGesture {
                             self.ShowBottomSheet = false
+                            self.mMap.removeAnnotations(self.mMap.annotations)
                         }
                 }
                 .padding(.all, 12)
@@ -56,7 +59,7 @@ struct MapWrapperView: View {
             }
         }
         
-        NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create, result: $ActionResult), tag: 1, selection: $Action)  { }
+        NavigationLink(destination: ApplicationEditView(entityId: 0, mode: ModeView.Create, address: self.SelectedMapAddress.Address, result: $ActionResult), tag: 1, selection: $Action)  { }
     }
 }
 
