@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct MapWrapperView: View {
-    @StateObject var Address = AddressObservable()
     @StateObject var SelectedMapAddress = AddressObservable()
     var mMap = MKMapView()
     @State var ActionMode: Int?
@@ -20,7 +19,7 @@ struct MapWrapperView: View {
     
     var body: some View {
         ZStack {
-            MapView(map: self.mMap, address: self.Address, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
+            MapView(map: self.mMap, currentMapAddress: AddressObservable(), mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
             ZStack {
                 VStack {
                     Image("iconmonstr-flag")

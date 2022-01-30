@@ -16,7 +16,7 @@ struct PickerCompanyView: View, Equatable  {
     init(selectedCompany: CompanyObservable) {
         self.SelectedCompany = selectedCompany
         let user = AuthenticationService.getInstance().getCurrentUser()
-        self.mViewModel = CompaniesViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Name asc", include: "", filter: "")
+        self.mViewModel = CompaniesViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Name asc", include: "addresses", filter: "")
     }
     
     static func == (lhs: PickerCompanyView, rhs: PickerCompanyView) -> Bool {
@@ -44,12 +44,15 @@ struct PickerCompanyView: View, Equatable  {
                                         LoadingRowView()
                                     }
                                     else {
-                                        Text(company.getCompanyName())
-                                            .padding(.all, 8)
-                                            .foregroundColor(self.mSelectedItem == company ? Color.textDark : Color.textLight)
-                                            .onTapGesture {
-                                                self.mSelectedItem = company
-                                            }
+                                        VStack {
+                                            CustomText(company.getCompanyName(), color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                            CustomText(company.Addresses.first?.getAddressName() ?? "", color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                        }
+                                        .padding(.all, 8)
+                                        .onTapGesture {
+                                            self.mSelectedItem = company
+                                        }
+                                        
                                     }
                                 }
                                 .listRowBackground(self.mSelectedItem == company ? Color.secondary : Color.primaryDark)

@@ -79,7 +79,7 @@ struct ApplicationMainEditView: View, Equatable {
                                 .padding(.bottom, 4)
                                 VStack {
                                     CustomText("string_application_address", maxLines: 1, bold: true)
-                                    NavigationLink(destination: PickerMapAddressView(address: AddressObservable(self.mViewModel.Application!.Address), selectedMapAddress: self.SelectedMapAddress)) {
+                                    NavigationLink(destination: PickerMapAddressView(currentMapAddress: AddressObservable(self.mViewModel.Application!.Address), selectedMapAddress: self.SelectedMapAddress)) {
                                         CustomTextField(Binding(get: { self.mViewModel.Application!.Address!.getAddressName() }, set: { _ in }), disabled: true)
                                             .onChange(of: self.SelectedMapAddress.Address) { newValue in
                                                 if newValue != nil {

@@ -13,11 +13,11 @@ struct PickerMapAddressView: View, Equatable {
     var mMap = MKMapView()
     var mAddress: Address?
     @State var ActionMode: Int? = 1
-    @ObservedObject var Address: AddressObservable
+    @ObservedObject var CurrentMapAddress: AddressObservable
     @ObservedObject var SelectedMapAddress: AddressObservable
     
-    init(address: AddressObservable, selectedMapAddress: AddressObservable) {
-        self.Address = address
+    init(currentMapAddress: AddressObservable, selectedMapAddress: AddressObservable) {
+        self.CurrentMapAddress = currentMapAddress
         self.SelectedMapAddress = selectedMapAddress
     }
     
@@ -27,7 +27,7 @@ struct PickerMapAddressView: View, Equatable {
     
     var body: some View {
         ZStack {
-            MapView(map: self.mMap, address: self.Address, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
+            MapView(map: self.mMap, currentMapAddress: self.CurrentMapAddress, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
             ZStack {
                 VStack {
                     Image("iconmonstr-flag")

@@ -10,14 +10,14 @@ import MapKit
 import Alamofire
 
 struct MapView: UIViewRepresentable {
-    @ObservedObject var Address: AddressObservable
+    @ObservedObject var CurrentMapAddress: AddressObservable
     @ObservedObject var SelectedMapAddress: AddressObservable
     var mMap: MKMapView
     @Binding var ActionMode: Int?
     
-    init(map: MKMapView, address: AddressObservable, mode: Binding<Int?>, selectedMapAddress: AddressObservable) {
+    init(map: MKMapView, currentMapAddress: AddressObservable, mode: Binding<Int?>, selectedMapAddress: AddressObservable) {
         self.mMap = map
-        self.Address = address
+        self.CurrentMapAddress = currentMapAddress
         self._ActionMode = mode
         self.SelectedMapAddress = selectedMapAddress
     }
@@ -35,8 +35,8 @@ struct MapView: UIViewRepresentable {
         self.mMap.delegate = context.coordinator
         let recognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapViewCoordinator.tapHandler(gesture:)))
         self.mMap.addGestureRecognizer(recognizer)
-        if self.Address.Address != nil {
-            self.selectAddress(self.Address.Address!.getAddressName())
+        if self.CurrentMapAddress.Address != nil {
+            self.selectAddress(self.CurrentMapAddress.Address!.getAddressName())
         }
         return self.mMap
     }
