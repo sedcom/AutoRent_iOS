@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PickerCompanyView: View {
+struct PickerCompanyView: View, Equatable  {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: CompaniesViewModel
     @ObservedObject var SelectedCompany: CompanyObservable
@@ -17,6 +17,10 @@ struct PickerCompanyView: View {
         self.SelectedCompany = selectedCompany
         let user = AuthenticationService.getInstance().getCurrentUser()
         self.mViewModel = CompaniesViewModel(userId: user!.Id, maxItems: 10, skipCount: 0, orderBy: "Name asc", include: "", filter: "")
+    }
+    
+    static func == (lhs: PickerCompanyView, rhs: PickerCompanyView) -> Bool {
+        return true
     }
     
     var body: some View {
@@ -30,10 +34,6 @@ struct PickerCompanyView: View {
             else {
                 if self.mViewModel.Data.Elements.count == 0 {
                     EmptyView()
-                        .onTapGesture {
-                            self.mViewModel.clearData()
-                            self.mViewModel.loadData()
-                        }
                 }
                 else {
                     VStack {

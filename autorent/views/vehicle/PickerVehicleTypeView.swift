@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PickerVehicleTypeView: View {
+struct PickerVehicleTypeView: View, Equatable {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: VehicleTypesViewModel
     @ObservedObject var SelectedVehicleType: VehicleTypeObservable
@@ -16,6 +16,10 @@ struct PickerVehicleTypeView: View {
     init(selectedVehicleType: VehicleTypeObservable) {
         self.SelectedVehicleType = selectedVehicleType
         self.mViewModel = VehicleTypesViewModel(orderBy: "Name asc", include: "options")
+    }
+    
+    static func == (lhs: PickerVehicleTypeView, rhs: PickerVehicleTypeView) -> Bool {
+        return true
     }
     
     var body: some View {

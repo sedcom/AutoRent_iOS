@@ -10,12 +10,14 @@ import MapKit
 import Alamofire
 
 struct MapView: UIViewRepresentable {
+    @ObservedObject var Address: AddressObservable
     @ObservedObject var SelectedMapAddress: AddressObservable
     var mMap: MKMapView
     @Binding var ActionMode: Int?
     
-    init(map: MKMapView, mode: Binding<Int?>, selectedMapAddress: AddressObservable) {
+    init(map: MKMapView, address: AddressObservable, mode: Binding<Int?>, selectedMapAddress: AddressObservable) {
         self.mMap = map
+        self.Address = address
         self._ActionMode = mode
         self.SelectedMapAddress = selectedMapAddress
     }
@@ -33,11 +35,38 @@ struct MapView: UIViewRepresentable {
         self.mMap.delegate = context.coordinator
         let recognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapViewCoordinator.tapHandler(gesture:)))
         self.mMap.addGestureRecognizer(recognizer)
+        if self.Address.Address != nil {
+            self.selectAddress(self.Address.Address!.getAddressName())
+        }
         return self.mMap
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
+    }
+    
+    func selectAddress(_ addressName: String) {
+        let url = "https://nominatim.openstreetmap.org/search"
+        try AF.request(url, method: .get, parameters: ["format": "json", "accept-languange": "ru", "addressdetails": "1", "limit": "10", "q": addressName], headers: [.userAgent("autorent/1.0")]).responseJSON { response in
+            if response.data != nil {
+                let jsonData = try? JSONSerialization.jsonObject(with: response.data!, options: [])
+                let items = (jsonData as! NSArray)
+                if items.count > 0 {
+                    let jsonElement = (items[0] as! NSDictionary)["address"]
+                    let jsonData = try? JSONSerialization.data(withJSONObject: jsonElement!, options: .prettyPrinted)
+                    let addressModel = try! JSONDecoder().decode(MapAddressModel.self, from: jsonData!)
+                    let address = addressModel.convertToAddress()
+                    let marker = MKPointAnnotation()
+                    let lat = Double((items[0] as! NSDictionary)["lat"] as! String)
+                    let lon = Double((items[0] as! NSDictionary)["lon"] as! String)
+                    marker.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+                    marker.title = address.getAddressName()
+                    marker.subtitle = nil
+                    self.mMap.removeAnnotations(self.mMap.annotations)
+                    self.mMap.addAnnotation(marker)
+                }
+            }
+        }
     }
 }
 
@@ -76,11 +105,11 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelega
         if self.ActionMode == 1 {
             let location = gesture.location(in: self.mMap)
             let coordinate = self.mMap.convert(location, toCoordinateFrom: self.mMap)
-            self.setAddressMarker(coordinate)
+            self.selectAddress(coordinate)
         }
     }
     
-    func setAddressMarker(_ coordinate: CLLocationCoordinate2D){
+    func selectAddress(_ coordinate: CLLocationCoordinate2D) {
         let url = "https://nominatim.openstreetmap.org/reverse"
         try AF.request(url, method: .get, parameters: ["lat": String(coordinate.latitude), "lon": String(coordinate.longitude), "format": "json", "accept-languange": "ru"], headers: [.userAgent("autorent/1.0")]).responseJSON { response in
             var address: autorent.Address?

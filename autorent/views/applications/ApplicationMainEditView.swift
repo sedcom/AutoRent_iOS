@@ -17,6 +17,7 @@ struct ApplicationMainEditView: View, Equatable {
     @State var SelectedDate: Date = Date()
     @State var SelectedUserType: Int = 1
     @StateObject var SelectedCompany = CompanyObservable()
+    @StateObject var Address = AddressObservable()
     @StateObject var SelectedMapAddress = AddressObservable()
     @Binding var SelectedItems: [UUID]
     @Binding var Action: Int?
@@ -50,6 +51,7 @@ struct ApplicationMainEditView: View, Equatable {
                     GeometryReader { geo in
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack {
+                                NavigationLink(destination: EmptyView()) {}
                                 VStack {
                                     CustomText("string_client", maxLines: 1, bold: true)
                                     Picker("", selection: $SelectedUserType) {
@@ -77,7 +79,7 @@ struct ApplicationMainEditView: View, Equatable {
                                 .padding(.bottom, 4)
                                 VStack {
                                     CustomText("string_application_address", maxLines: 1, bold: true)
-                                    NavigationLink(destination: PickerMapAddressView(selectedMapAddress: self.SelectedMapAddress)) {
+                                    NavigationLink(destination: PickerMapAddressView(address: AddressObservable(self.mViewModel.Application!.Address), selectedMapAddress: self.SelectedMapAddress)) {
                                         CustomTextField(Binding(get: { self.mViewModel.Application!.Address!.getAddressName() }, set: { _ in }), disabled: true)
                                             .onChange(of: self.SelectedMapAddress.Address) { newValue in
                                                 if newValue != nil {
@@ -87,7 +89,7 @@ struct ApplicationMainEditView: View, Equatable {
                                                     self.mViewModel.objectWillChange.send()
                                                 }
                                             }
-                                    }
+                                         }
                                 }
                                 .padding(.bottom, 4)
                                 VStack {

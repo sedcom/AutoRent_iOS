@@ -8,19 +8,26 @@
 import SwiftUI
 import MapKit
 
-struct PickerMapAddressView: View {
+struct PickerMapAddressView: View, Equatable {
     @Environment(\.presentationMode) var presentationMode
     var mMap = MKMapView()
+    var mAddress: Address?
     @State var ActionMode: Int? = 1
+    @ObservedObject var Address: AddressObservable
     @ObservedObject var SelectedMapAddress: AddressObservable
     
-    init(selectedMapAddress: AddressObservable) {
+    init(address: AddressObservable, selectedMapAddress: AddressObservable) {
+        self.Address = address
         self.SelectedMapAddress = selectedMapAddress
+    }
+    
+    static func == (lhs: PickerMapAddressView, rhs: PickerMapAddressView) -> Bool {
+        return true
     }
     
     var body: some View {
         ZStack {
-            MapView(map: self.mMap, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
+            MapView(map: self.mMap, address: self.Address, mode: $ActionMode, selectedMapAddress: self.SelectedMapAddress)
             ZStack {
                 VStack {
                     Image("iconmonstr-flag")
@@ -38,6 +45,7 @@ struct PickerMapAddressView: View {
         }
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
+        //.navigationViewStyle(StackNavigationViewStyle())
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack {
