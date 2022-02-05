@@ -1,45 +1,46 @@
 //
-//  AuthenticationViewModel.swift
+//  RegistrationViewModel.swift
 //  autorent
 //
-//  Created by Viacheslav Lazarev on 28.01.2022.
+//  Created by Viacheslav Lazarev on 05.02.2022.
 //
 
 import Foundation
 import Combine
 
-class AuthenticationViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
     var mUserRepository: UserRepository
+    var RegistrationModel: autorent.RegistrationModel
     var IsLoading: Bool = false
     var IsError: Bool = false
     var cancellation: AnyCancellable?
-    @Published var Result: Bool?
+    
+    @Published var Result: Bool = false
     
     init() {
         self.mUserRepository =  UserRepository()
+        self.RegistrationModel = autorent.RegistrationModel()
     }
     
-    public func authenticateUser (login: String, password: String) -> Void {
-        debugPrint("Start autenticateUser")
+    public func createUser () -> Void {
+        debugPrint("Start createUser")
         self.IsLoading = true
         self.IsError = false
         self.objectWillChange.send()
-        let model = TokenModel(login: login, password: password)
-        self.cancellation = self.mUserRepository.getToken(model)
+        self.cancellation = self.mUserRepository.createUser(self.RegistrationModel)
             .mapError({ (error) -> Error in
                 debugPrint(error)
                 self.IsError = true
                 self.IsLoading = false
+                self.Result = true
                 self.objectWillChange.send()
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish autenticateUser")
+                debugPrint("Finish createUser")
                 self.IsLoading = false
-                self.Result = result.Token != nil
-                if (result.Token != nil) {
-                    AuthenticationService.getInstance().setUser(result)
-                }                
+                self.Result = result.Login != nil
         })
     }
 }
+

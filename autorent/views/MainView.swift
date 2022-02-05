@@ -47,7 +47,6 @@ struct MainView: View {
             .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
-            //.navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle(self.getTitle(), displayMode: .inline)
             .navigationBarItems(trailing:
                 HStack(spacing: 10) {

@@ -97,8 +97,11 @@ struct ApplicationMainEditView: View, Equatable {
                                         let index = self.mViewModel.Application!.Items.firstIndex { $0.id == item.id }!
                                         ApplicationItemEditView(viewModel: self.mViewModel, mode: self.mCurrentMode, index: index, showDatePicker: $ShowDatePicker, selectedDate: $SelectedDate, selectedItems: $SelectedItems)
                                     }
-                                    Button("button_add", action: {
+                                    Button(action: {
                                         self.mViewModel.addApplicationItem()
+                                    }, label: {
+                                        Text("button_add")
+                                            .frame(maxWidth: .infinity)
                                     })
                                     .frame(width: geo.size.width * 0.6)
                                     .padding(.all, 12)

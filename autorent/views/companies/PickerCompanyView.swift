@@ -44,15 +44,23 @@ struct PickerCompanyView: View, Equatable  {
                                         LoadingRowView()
                                     }
                                     else {
-                                        VStack {
-                                            CustomText(company.getCompanyName(), color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
-                                            CustomText(company.Addresses.first?.getAddressName() ?? "", color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                        HStack {
+                                            VStack {
+                                                Image("address-book")
+                                                    .resizable()
+                                                    .frame(width: 25, height: 25)
+                                                    .foregroundColor(self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                            }
+                                            VStack {
+                                                CustomText(company.getCompanyName(), color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                                CustomText(company.Addresses.first?.getAddressName() ?? "", color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                                            }
+                                            .padding(.leading, 4)
+                                            .onTapGesture {
+                                                self.mSelectedItem = company
+                                            }
                                         }
                                         .padding(.all, 8)
-                                        .onTapGesture {
-                                            self.mSelectedItem = company
-                                        }
-                                        
                                     }
                                 }
                                 .listRowBackground(self.mSelectedItem == company ? Color.secondary : Color.primaryDark)

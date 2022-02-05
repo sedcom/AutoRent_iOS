@@ -32,6 +32,10 @@
 		F639E18727A49E7300FBD3C0 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18627A49E7300FBD3C0 /* TokenModel.swift */; };
 		F639E18927A49FAB00FBD3C0 /* ResultTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */; };
 		F639E18B27A4A73D00FBD3C0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639E18A27A4A73D00FBD3C0 /* AuthenticationService.swift */; };
+		F662577427AE7ED0008E6C93 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577327AE7ED0008E6C93 /* RegistrationView.swift */; };
+		F662577627AE8D8E008E6C93 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577527AE8D8E008E6C93 /* RegistrationViewModel.swift */; };
+		F662577827AE8E54008E6C93 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577727AE8E54008E6C93 /* RegistrationModel.swift */; };
+		F662577A27AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577927AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -171,6 +175,10 @@
 		F639E18627A49E7300FBD3C0 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTokenModel.swift; sourceTree = "<group>"; };
 		F639E18A27A4A73D00FBD3C0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		F662577327AE7ED0008E6C93 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		F662577527AE8D8E008E6C93 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		F662577727AE8E54008E6C93 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		F662577927AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -461,6 +469,7 @@
 			children = (
 				E2853888275658F50008F6FB /* Color.swift */,
 				F6ADCC452785D0CC00A1CE80 /* ModeView.swift */,
+				F662577927AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -691,6 +700,7 @@
 				F6A06751279E1546008AC3D5 /* UserProfileEditView.swift */,
 				F6A06747279DED2F008AC3D5 /* NotificationsView.swift */,
 				F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */,
+				F662577327AE7ED0008E6C93 /* RegistrationView.swift */,
 			);
 			path = users;
 			sourceTree = "<group>";
@@ -699,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				F639E18427A49BFA00FBD3C0 /* AuthenticationViewModel.swift */,
+				F662577527AE8D8E008E6C93 /* RegistrationViewModel.swift */,
 				F6A06743279DE072008AC3D5 /* UserProfileViewModel.swift */,
 				F6A0674D279DEF69008AC3D5 /* NotificationsViewModel.swift */,
 			);
@@ -747,6 +758,7 @@
 				F6A066C6279868A3008AC3D5 /* MapAddressModel.swift */,
 				F639E18627A49E7300FBD3C0 /* TokenModel.swift */,
 				F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */,
+				F662577727AE8E54008E6C93 /* RegistrationModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -898,6 +910,7 @@
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6A06744279DE072008AC3D5 /* UserProfileViewModel.swift in Sources */,
+				F662577827AE8E54008E6C93 /* RegistrationModel.swift in Sources */,
 				F6A0670D279B7E6F008AC3D5 /* DocumentsRowView.swift in Sources */,
 				F6A06752279E1546008AC3D5 /* UserProfileEditView.swift in Sources */,
 				F6A06718279C5685008AC3D5 /* InvoiceType.swift in Sources */,
@@ -918,6 +931,7 @@
 				F6ADCC63278B401100A1CE80 /* MainView.swift in Sources */,
 				F6A0673C279D8D34008AC3D5 /* File.swift in Sources */,
 				F6A0671F279C5812008AC3D5 /* InvoicesViewModel.swift in Sources */,
+				F662577A27AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6A066BA27973AB3008AC3D5 /* AddressObservable.swift in Sources */,
 				F6A066CC27998879008AC3D5 /* Company.swift in Sources */,
@@ -948,6 +962,7 @@
 				F6A066EF279B595B008AC3D5 /* OrdersViewModel.swift in Sources */,
 				E27EA41927577CCD001F7BB4 /* LoadingView.swift in Sources */,
 				E27EA4132756AB03001F7BB4 /* Entity.swift in Sources */,
+				F662577427AE7ED0008E6C93 /* RegistrationView.swift in Sources */,
 				F6A066FE279B774F008AC3D5 /* OrderHistoryView.swift in Sources */,
 				F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */,
 				F6A0675827A00B4D008AC3D5 /* CustomTitle.swift in Sources */,
@@ -990,6 +1005,7 @@
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
 				F6A06754279E9B83008AC3D5 /* BottomSheet.swift in Sources */,
 				F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */,
+				F662577627AE8D8E008E6C93 /* RegistrationViewModel.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,
 				F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */,
 			);
@@ -1136,7 +1152,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
 				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;
@@ -1146,6 +1162,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sedcom.autorent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -1162,7 +1179,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
 				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;
@@ -1172,6 +1189,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sedcom.autorent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

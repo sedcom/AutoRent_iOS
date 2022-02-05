@@ -45,7 +45,6 @@ struct PickerMapAddressView: View, Equatable {
         }
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
-        //.navigationViewStyle(StackNavigationViewStyle())
         .navigationBarTitle(NSLocalizedString("title_picker_mapaddress", comment: ""), displayMode: .inline)
         .navigationBarItems(trailing:
             HStack {

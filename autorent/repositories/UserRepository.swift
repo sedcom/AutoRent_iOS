@@ -21,4 +21,11 @@ class UserRepository {
         let publisher = NetworkService.getInstance().request(url: "/user/login", method: .post, parameters: parameters, encoding: JSONEncoding.default).publishDecodable(type: ResultTokenModel.self)
         return publisher.value()
     }
+    
+    public func createUser(_ model: RegistrationModel) -> AnyPublisher<User, AFError> {
+        let jsonData = try! JSONEncoder().encode(model)
+        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+        let publisher = NetworkService.getInstance().request(url: "/user", method: .post, parameters: parameters, encoding: JSONEncoding.default).publishDecodable(type: User.self)
+        return publisher.value()
+    }
 }

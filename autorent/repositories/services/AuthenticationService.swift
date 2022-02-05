@@ -25,7 +25,7 @@ class AuthenticationService {
         self.mUser!.Login = token.Login!
         self.mUser!.Profile = UserProfile()
         self.mUser!.Profile.FirstName = token.FirstName!
-        self.mUser!.Profile.MiddleName = token.MiddleName!
+        self.mUser!.Profile.MiddleName = token.MiddleName
         self.mUser!.Profile.LastName = token.LastName!
         self.mToken = token.Token
         
