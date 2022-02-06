@@ -27,12 +27,8 @@ struct RegistrationView: View {
                         switch self.mViewModel.ActionResult {
                             case 1:
                                 VStack {
-                                    Text("message_registration_success")
-                                        .frame(alignment: .center)
+                                    CustomText("message_registration_success", alignment: .center, maxLines: 1, bold: true, size: 18)
                                         .padding(.bottom, 4)
-                                        .foregroundColor(Color.textLight)
-                                        .font(.system(size: 18, weight: .bold))
-                                        .lineLimit(1)
                                     VStack {
                                         if self.SelectedActivateType == 1 {
                                             CustomText("message_registration_email_success", alignment: .center)
@@ -78,11 +74,7 @@ struct RegistrationView: View {
                             default:
                                 VStack {
                                     VStack {
-                                        Text("app_owner")
-                                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                            .foregroundColor(Color.textLight)
-                                            .font(.system(size: 22, weight: .bold))
-                                            .lineLimit(1)
+                                        CustomText("app_owner", alignment: .center, maxLines: 1, bold: true, size: 22)
                                         CustomText("app_name", alignment: .center, bold: true)
                                     }
                                     .padding(.bottom, 12)

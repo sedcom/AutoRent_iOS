@@ -135,13 +135,13 @@ struct DocumentMainView: View, Equatable {
             }
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
                 VStack {
-                    CustomText("menu_document_approve", bold: true, image: "iconmonstr-check", color: Color.textDark)
+                    CustomText("menu_document_approve", bold: true, color: Color.textDark, image: "iconmonstr-check")
                         .padding(.bottom, 8)
                         .onTapGesture {
                             self.mViewModel.changeStatus(statusId: 3)
                             self.ShowBottomSheet = false
                         }
-                    CustomText("menu_document_reject", bold: true, image: "iconmonstr-forbidden", color: Color.textDark)
+                    CustomText("menu_document_reject", bold: true, color: Color.textDark, image: "iconmonstr-forbidden")
                         .onTapGesture {
                             self.mViewModel.changeStatus(statusId: 4)
                             self.ShowBottomSheet = false

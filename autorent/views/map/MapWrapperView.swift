@@ -40,13 +40,13 @@ struct MapWrapperView: View {
             .offset(x: 10, y: 10)
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
                 VStack {
-                    CustomText("menu_application_create", bold: true, image: "paper-plane", color: Color.textDark)
+                    CustomText("menu_application_create", bold: true, color: Color.textDark, image: "paper-plane")
                         .padding(.bottom, 8)
                         .onTapGesture {
                             self.ShowBottomSheet = false
                             self.Action = 1
                         }
-                    CustomText("menu_point_remove", bold: true, image: "iconmonstr-flag-white", color: Color.textDark)
+                    CustomText("menu_point_remove", bold: true, color: Color.textDark, image: "iconmonstr-flag-white")
                         .onTapGesture {
                             self.ShowBottomSheet = false
                             self.mMap.removeAnnotations(self.mMap.annotations)

@@ -30,11 +30,7 @@ struct LoginView: View {
                             ScrollView(.vertical, showsIndicators: false) {
                                 VStack {
                                     VStack {
-                                        Text("app_owner")
-                                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                            .foregroundColor(Color.textLight)
-                                            .font(.system(size: 22, weight: .bold))
-                                            .lineLimit(1)
+                                        CustomText("app_owner", alignment: .center, maxLines: 1, bold: true, size: 22)
                                         CustomText("app_name", alignment: .center, bold: true)
                                     }
                                     .padding(.bottom, 12)
@@ -67,7 +63,10 @@ struct LoginView: View {
                                     .padding(.bottom, 4)
                                     HStack {
                                         NavigationLink(destination: RegistrationView()) {
-                                            CustomText("string_user_registration")
+                                            CustomText("string_user_registration", maxLines: 1, size: 14)
+                                        }
+                                        NavigationLink(destination: RegistrationView()) {
+                                            CustomText("string_user_restorepassword", alignment: .trailing, maxLines: 1, size: 14)
                                         }
                                     }
                                 }

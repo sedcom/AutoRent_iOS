@@ -132,13 +132,13 @@ struct OrderMainView: View, Equatable {
             }
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
                 VStack {
-                    CustomText("menu_order_approve", bold: true, image: "iconmonstr-check", color: Color.textDark)
+                    CustomText("menu_order_approve", bold: true, color: Color.textDark, image: "iconmonstr-check")
                         .padding(.bottom, 8)
                         .onTapGesture {
                             self.mViewModel.changeStatus(statusId: 3)
                             self.ShowBottomSheet = false
                         }
-                    CustomText("menu_order_reject", bold: true, image: "iconmonstr-forbidden", color: Color.textDark)
+                    CustomText("menu_order_reject", bold: true, color: Color.textDark, image: "iconmonstr-forbidden")
                         .onTapGesture {
                             self.mViewModel.changeStatus(statusId: 8)
                             self.ShowBottomSheet = false

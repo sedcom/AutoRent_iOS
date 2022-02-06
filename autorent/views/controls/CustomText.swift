@@ -12,15 +12,17 @@ struct CustomText: View {
     let mAlignment: Alignment
     let mMaxLines: Int?
     let mBold: Bool
-    let mImage: String?
+    let mSize: Int?
     let mColor: Color?
+    let mImage: String?
     
-    init(_ text: String, alignment: Alignment = .leading, maxLines: Int? = nil, bold: Bool = false, image: String? = nil, color: Color = Color.textLight) {
+    init(_ text: String, alignment: Alignment = .leading, maxLines: Int? = nil, bold: Bool = false,  size: Int? = 16, color: Color = Color.textLight, image: String? = nil) {
         self.mText = NSLocalizedString(text, comment: "")
         self.mAlignment = alignment
         self.mMaxLines = maxLines
         self.mBold = bold
         self.mImage = image
+        self.mSize = size
         self.mColor = color
     }
     
@@ -32,7 +34,7 @@ struct CustomText: View {
             }
             Text(self.mText)
                 .foregroundColor(self.mColor)
-                .font(Font.headline.weight(self.mBold ? .bold : .regular))                
+                .font(.system(size: CGFloat(self.mSize!), weight: self.mBold ? .bold : .regular))
                 .fixedSize(horizontal: false, vertical: true)
                 .lineLimit(self.mMaxLines)
         }
