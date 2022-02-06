@@ -33,4 +33,9 @@ class UserRepository {
         let publisher = NetworkService.getInstance().request(url: String(format: "/user/activate?login=%@&key=%@", login, pinCode), method: .post).publishDecodable(type: User.self)
         return publisher.value()
     }
+    
+    public func restorePassword(_ login: String) -> AnyPublisher<Bool, AFError> {
+        let publisher = NetworkService.getInstance().request(url: String(format: "/user/restorepassword?login=%@", login), method: .post).publishDecodable(type: Bool.self)
+        return publisher.value()
+    }
 }

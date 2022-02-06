@@ -42,4 +42,24 @@ class AuthenticationViewModel: ObservableObject {
                 }                
         })
     }
+    
+    public func restorePassword (login: String) -> Void {
+        debugPrint("Start restorePassword")
+        self.IsLoading = true
+        self.IsError = false
+        self.objectWillChange.send()
+        self.cancellation = self.mUserRepository.restorePassword(login)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsError = true
+                self.IsLoading = false
+                self.ActionResult = false
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish restorePassword")
+                self.IsLoading = false
+                self.ActionResult = result
+        })
+    }
 }

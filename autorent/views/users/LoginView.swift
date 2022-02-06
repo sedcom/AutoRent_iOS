@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var mViewModel: AuthenticationViewModel
     @State var Authenticated: Bool = false
-    @State var Login: String = ""//info@sedcom.ru"
-    @State var Password: String = ""//password"
+    @State var Login: String = ""
+    @State var Password: String = ""
     @State var ToastMessage: String?
     
     init () {
@@ -65,8 +65,9 @@ struct LoginView: View {
                                         NavigationLink(destination: RegistrationView()) {
                                             CustomText("string_user_registration", maxLines: 1, size: 14)
                                         }
-                                        NavigationLink(destination: RegistrationView()) {
+                                        NavigationLink(destination: RestorePasswordView()) {
                                             CustomText("string_user_restorepassword", alignment: .trailing, maxLines: 1, size: 14)
+                                                .fixedSize()
                                         }
                                     }
                                 }

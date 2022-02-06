@@ -10,7 +10,6 @@ import SwiftUI
 struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var mViewModel: RegistrationViewModel
-    @State var Field: String = ""
     @State var SelectedActivateType: Int = 1
     @State var PinCode: String = ""
     @State var ToastMessage: String?

@@ -36,6 +36,7 @@
 		F662577627AE8D8E008E6C93 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577527AE8D8E008E6C93 /* RegistrationViewModel.swift */; };
 		F662577827AE8E54008E6C93 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577727AE8E54008E6C93 /* RegistrationModel.swift */; };
 		F662577A27AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577927AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift */; };
+		F662577C27B04592008E6C93 /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577B27B04592008E6C93 /* RestorePasswordView.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -179,6 +180,7 @@
 		F662577527AE8D8E008E6C93 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		F662577727AE8E54008E6C93 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		F662577927AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
+		F662577B27B04592008E6C93 /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				F6A06747279DED2F008AC3D5 /* NotificationsView.swift */,
 				F6A0674F279DF6DE008AC3D5 /* NotificationsRowView.swift */,
 				F662577327AE7ED0008E6C93 /* RegistrationView.swift */,
+				F662577B27B04592008E6C93 /* RestorePasswordView.swift */,
 			);
 			path = users;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */,
 				F6A0675A27A00FD0008AC3D5 /* StatusObservable.swift in Sources */,
 				E27EA41727576CDB001F7BB4 /* LoadingRowView.swift in Sources */,
+				F662577C27B04592008E6C93 /* RestorePasswordView.swift in Sources */,
 				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
