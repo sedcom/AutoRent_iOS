@@ -28,4 +28,9 @@ class UserRepository {
         let publisher = NetworkService.getInstance().request(url: "/user", method: .post, parameters: parameters, encoding: JSONEncoding.default).publishDecodable(type: User.self)
         return publisher.value()
     }
+    
+    public func activateUser(_ login: String, _ pinCode: String) -> AnyPublisher<User, AFError> {
+        let publisher = NetworkService.getInstance().request(url: String(format: "/user/activate?login=%@&key=%@", login, pinCode), method: .post).publishDecodable(type: User.self)
+        return publisher.value()
+    }
 }

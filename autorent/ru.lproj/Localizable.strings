@@ -58,6 +58,7 @@
 "menu_zoom_out" = "Уменьшить";
 "message_activate_error" = "Ошибка активации учетной записи!";
 "message_activate_success" = "Учетная запись успешно активирована!";
+"message_authentication_error" = "Логин или пароль неверный!";
 "message_address_error" = "Адрес не найден!";
 "message_application_rate_error" = "Ошибка оценки заявки на услугу!";
 "message_application_rate_success" = "Заявка на услуги оценена успешно!";

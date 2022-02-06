@@ -12,6 +12,7 @@ struct LoginView: View {
     @State var Authenticated: Bool = false
     @State var Login: String = ""//info@sedcom.ru"
     @State var Password: String = ""//password"
+    @State var ToastMessage: String?
     
     init () {
         self.mViewModel = AuthenticationViewModel()
@@ -76,6 +77,7 @@ struct LoginView: View {
                             }
                             .navigationBarHidden(!self.Authenticated)
                             .frame(width: geo.size.width)
+                            ToastView($ToastMessage)
                         }
                     }
                     .padding(EdgeInsets(top: 24, leading: 0, bottom: 24, trailing: 0))
@@ -84,21 +86,18 @@ struct LoginView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.primaryDark)
             .edgesIgnoringSafeArea(.all)
-            .onChange(of: self.mViewModel.Result) { newValue in
+            .onChange(of: self.mViewModel.ActionResult) { newValue in
                 if newValue != nil {
                     self.Authenticated = newValue!
-                    self.Password = newValue! ? self.Password : ""
+                    if newValue! == false {
+                        self.ToastMessage = NSLocalizedString("message_authentication_error", comment: "")
+                        self.Password = ""
+                    }
+                    self.mViewModel.ActionResult = nil
                 }
-                self.mViewModel.Result = nil
             }
         }
         .environment(\.horizontalSizeClass, .compact)
         .environment(\.verticalSizeClass, .compact)
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
     }
 }

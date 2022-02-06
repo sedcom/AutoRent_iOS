@@ -13,14 +13,14 @@ class AuthenticationViewModel: ObservableObject {
     var IsLoading: Bool = false
     var IsError: Bool = false
     var cancellation: AnyCancellable?
-    @Published var Result: Bool?
+    @Published var ActionResult: Bool?
     
     init() {
         self.mUserRepository =  UserRepository()
     }
     
     public func authenticateUser (login: String, password: String) -> Void {
-        debugPrint("Start autenticateUser")
+        debugPrint("Start authenticateUser")
         self.IsLoading = true
         self.IsError = false
         self.objectWillChange.send()
@@ -30,13 +30,13 @@ class AuthenticationViewModel: ObservableObject {
                 debugPrint(error)
                 self.IsError = true
                 self.IsLoading = false
-                self.objectWillChange.send()
+                self.ActionResult = false
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                debugPrint("Finish autenticateUser")
+                debugPrint("Finish authenticateUser")
                 self.IsLoading = false
-                self.Result = result.Token != nil
+                self.ActionResult = result.Token != nil
                 if (result.Token != nil) {
                     AuthenticationService.getInstance().setUser(result)
                 }                

@@ -58,6 +58,7 @@
 "menu_zoom_out" = "Zoom out";
 "message_activate_error" = "Activate has completed error!";
 "message_activate_success" = "Activate has completed success!";
+"message_authentication_error" = "Login or password incorrect!";
 "message_address_error" = "Address has not found!";
 "message_application_rate_error" = "Application has rated error!";
 "message_application_rate_success" = "Application has rated success!";

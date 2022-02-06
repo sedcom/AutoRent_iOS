@@ -14,8 +14,7 @@ class RegistrationViewModel: ObservableObject {
     var IsLoading: Bool = false
     var IsError: Bool = false
     var cancellation: AnyCancellable?
-    
-    @Published var Result: Bool = false
+    @Published var ActionResult: Int?
     
     init() {
         self.mUserRepository =  UserRepository()
@@ -32,14 +31,33 @@ class RegistrationViewModel: ObservableObject {
                 debugPrint(error)
                 self.IsError = true
                 self.IsLoading = false
-                self.Result = true
                 self.objectWillChange.send()
                 return error
             })
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 debugPrint("Finish createUser")
                 self.IsLoading = false
-                self.Result = result.Login != nil
+                self.ActionResult = 1
+        })
+    }
+    
+    public func activateUser (pinCode: String) -> Void {
+        debugPrint("Start activateUser")
+        self.IsLoading = true
+        self.IsError = false
+        self.objectWillChange.send()
+        self.cancellation = self.mUserRepository.activateUser(self.RegistrationModel.Login, pinCode)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsError = true
+                self.IsLoading = false
+                self.objectWillChange.send()
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish activateUser")
+                self.IsLoading = false
+                self.ActionResult = 2
         })
     }
 }
