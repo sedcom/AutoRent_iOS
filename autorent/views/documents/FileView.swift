@@ -30,6 +30,11 @@ struct FileView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.primary)
             }
+            else {
+                CustomText("message_preview_error", alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primary)
+            }
         }
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
