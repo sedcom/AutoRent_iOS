@@ -42,6 +42,11 @@
 		F662578227B6B889008E6C93 /* CompaniesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578127B6B889008E6C93 /* CompaniesView.swift */; };
 		F662578427B6B95E008E6C93 /* CompaniesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578327B6B95E008E6C93 /* CompaniesRowView.swift */; };
 		F662578627B6BD62008E6C93 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578527B6BD62008E6C93 /* CompanyView.swift */; };
+		F662578827B6C097008E6C93 /* VehiclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578727B6C097008E6C93 /* VehiclesView.swift */; };
+		F662578A27B6C0A8008E6C93 /* VehiclesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578927B6C0A8008E6C93 /* VehiclesRowView.swift */; };
+		F662578C27B6C0B6008E6C93 /* VehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578B27B6C0B6008E6C93 /* VehicleView.swift */; };
+		F662578E27B6C27D008E6C93 /* VehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578D27B6C27D008E6C93 /* VehicleRepository.swift */; };
+		F662579027B6C2D8008E6C93 /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578F27B6C2D8008E6C93 /* VehiclesViewModel.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -191,6 +196,11 @@
 		F662578127B6B889008E6C93 /* CompaniesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesView.swift; sourceTree = "<group>"; };
 		F662578327B6B95E008E6C93 /* CompaniesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesRowView.swift; sourceTree = "<group>"; };
 		F662578527B6BD62008E6C93 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		F662578727B6C097008E6C93 /* VehiclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesView.swift; sourceTree = "<group>"; };
+		F662578927B6C0A8008E6C93 /* VehiclesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesRowView.swift; sourceTree = "<group>"; };
+		F662578B27B6C0B6008E6C93 /* VehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleView.swift; sourceTree = "<group>"; };
+		F662578D27B6C27D008E6C93 /* VehicleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRepository.swift; sourceTree = "<group>"; };
+		F662578F27B6C2D8008E6C93 /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -498,6 +508,7 @@
 				F6A0671B279C5775008AC3D5 /* InvoiceRepository.swift */,
 				F6A06749279DEDB5008AC3D5 /* NotificationsRepository.swift */,
 				F6A066E2279B5529008AC3D5 /* OrderRepository.swift */,
+				F662578D27B6C27D008E6C93 /* VehicleRepository.swift */,
 				F6A06745279DE0A8008AC3D5 /* UserRepository.swift */,
 			);
 			path = repositories;
@@ -756,6 +767,9 @@
 		F6ADCC4F2787A17600A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
+				F662578B27B6C0B6008E6C93 /* VehicleView.swift */,
+				F662578727B6C097008E6C93 /* VehiclesView.swift */,
+				F662578927B6C0A8008E6C93 /* VehiclesRowView.swift */,
 				F6ADCC502787A1B100A1CE80 /* PickerVehicleTypeView.swift */,
 			);
 			path = vehicle;
@@ -764,6 +778,7 @@
 		F6ADCC56278859D300A1CE80 /* vehicle */ = {
 			isa = PBXGroup;
 			children = (
+				F662578F27B6C2D8008E6C93 /* VehiclesViewModel.swift */,
 				F6ADCC57278859F200A1CE80 /* VehicleTypesViewModel.swift */,
 			);
 			path = vehicle;
@@ -919,6 +934,7 @@
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6A06734279D62DA008AC3D5 /* DocumentMainView.swift in Sources */,
 				F6A06722279C58A5008AC3D5 /* InvoicesRowView.swift in Sources */,
+				F662579027B6C2D8008E6C93 /* VehiclesViewModel.swift in Sources */,
 				F6A0670A279B7E1B008AC3D5 /* OrderDocumentsView.swift in Sources */,
 				F6A066C527975079008AC3D5 /* ToastView.swift in Sources */,
 				F6A066DD279B1ECE008AC3D5 /* CompaniesViewModel.swift in Sources */,
@@ -992,10 +1008,13 @@
 				F662578027B6A7CF008E6C93 /* InvoicePaymentView.swift in Sources */,
 				F6A06716279B87EA008AC3D5 /* DocumentRepository.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
+				F662578A27B6C0A8008E6C93 /* VehiclesRowView.swift in Sources */,
 				F6ADCC29277B307600A1CE80 /* ApplicationItemVehicleParams.swift in Sources */,
+				F662578C27B6C0B6008E6C93 /* VehicleView.swift in Sources */,
 				E2589B0827523A4100BFF698 /* autorentApp.swift in Sources */,
 				F692786E277947C6003BD0D5 /* Utils.swift in Sources */,
 				F6A0672A279C681A008AC3D5 /* InvoiceHistoryView.swift in Sources */,
+				F662578E27B6C27D008E6C93 /* VehicleRepository.swift in Sources */,
 				F639E18727A49E7300FBD3C0 /* TokenModel.swift in Sources */,
 				F6927871277A83E7003BD0D5 /* AddressRegion.swift in Sources */,
 				F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */,
@@ -1015,6 +1034,7 @@
 				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
 				F662578627B6BD62008E6C93 /* CompanyView.swift in Sources */,
+				F662578827B6C097008E6C93 /* VehiclesView.swift in Sources */,
 				F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */,
 				F639E18B27A4A73D00FBD3C0 /* AuthenticationService.swift in Sources */,
 				F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */,

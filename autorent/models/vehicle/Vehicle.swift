@@ -13,6 +13,7 @@ class Vehicle: Entity {
     var Model: String?
     var Year: Int?
     var VehicleType: autorent.VehicleType?
+    var Company: autorent.Company?
     
     override init() {
         super.init()
@@ -25,14 +26,16 @@ class Vehicle: Entity {
         self.Model = container.contains(.Model) ? try container.decode(String.self, forKey: .Model) : nil
         self.Year = container.contains(.Year) ? try container.decode(Int.self, forKey: .Year) : nil
         self.VehicleType = container.contains(.VehicleType) ? try container.decode(autorent.VehicleType.self, forKey: .VehicleType) : nil
+        self.Company = container.contains(.Company) ? try container.decode(autorent.Company.self, forKey: .Company) : nil
         try super.init(from: decoder)
     }
     
     private enum CodingKeys: String, CodingKey {
         case RegNumber = "regNumber"
-        case VehicleType = "vehicleType"
         case Producer = "producer"
         case Model = "model"
         case Year = "year"
+        case VehicleType = "vehicleType"
+        case Company = "company"
     }
 }

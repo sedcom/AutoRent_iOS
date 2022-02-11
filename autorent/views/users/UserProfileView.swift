@@ -96,11 +96,13 @@ struct UserProfileView: View, Equatable {
                                     .cornerRadius(5)
                                     VStack {
                                         HStack {
-                                            Image("iconmonstr-gear")
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(Color.textLight)
-                                            CustomText("string_vehicles", alignment: .center, maxLines: 1)
+                                            NavigationLink(destination: VehiclesView()) {
+                                                Image("iconmonstr-gear")
+                                                    .resizable()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundColor(Color.textLight)
+                                                CustomText("string_vehicles", alignment: .center, maxLines: 1)
+                                            }
                                         }
                                         .frame(alignment: .center)
                                         .padding(.all, 12)
