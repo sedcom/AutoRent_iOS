@@ -12,6 +12,7 @@ struct InvoiceView: View {
     var mEntityId: Int
     var mNames: [String]
     @State var SelectedTab: Int = 0
+    @State var mPaymentMode: Bool?
     @StateObject var SelectedStatus = StatusObservable()
     @State var Action: Int?
     @State var ActionResult: OperationResult?
@@ -64,7 +65,7 @@ struct InvoiceView: View {
                             .renderingMode(.template)
                             .foregroundColor(Color.textLight)
                             .onTapGesture {
-                                self.Action = 2
+                                self.mPaymentMode = true
                             }
                     }
                 }
@@ -81,6 +82,8 @@ struct InvoiceView: View {
                 
             }
         }
+        
+        NavigationLink(destination: InvoicePaymentView(entityId: self.mEntityId, title: String(format: NSLocalizedString("title_invoice", comment: ""), self.mNames[0], self.mNames[1])), tag: true, selection: $mPaymentMode)  { }
     }
 }
 
