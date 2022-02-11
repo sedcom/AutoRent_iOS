@@ -48,7 +48,7 @@ struct PickerCompanyView: View, Equatable  {
                                             VStack {
                                                 Image("address-book")
                                                     .resizable()
-                                                    .frame(width: 25, height: 25)
+                                                    .frame(width: 25, height: 30)
                                                     .foregroundColor(self.mSelectedItem == company ? Color.textDark : Color.textLight)
                                             }
                                             VStack {

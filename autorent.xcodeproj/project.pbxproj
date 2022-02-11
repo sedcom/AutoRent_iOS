@@ -39,6 +39,9 @@
 		F662577C27B04592008E6C93 /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577B27B04592008E6C93 /* RestorePasswordView.swift */; };
 		F662577E27B6688C008E6C93 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577D27B6688C008E6C93 /* FileView.swift */; };
 		F662578027B6A7CF008E6C93 /* InvoicePaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662577F27B6A7CF008E6C93 /* InvoicePaymentView.swift */; };
+		F662578227B6B889008E6C93 /* CompaniesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578127B6B889008E6C93 /* CompaniesView.swift */; };
+		F662578427B6B95E008E6C93 /* CompaniesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578327B6B95E008E6C93 /* CompaniesRowView.swift */; };
+		F662578627B6BD62008E6C93 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578527B6BD62008E6C93 /* CompanyView.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -185,6 +188,9 @@
 		F662577B27B04592008E6C93 /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
 		F662577D27B6688C008E6C93 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F662577F27B6A7CF008E6C93 /* InvoicePaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicePaymentView.swift; sourceTree = "<group>"; };
+		F662578127B6B889008E6C93 /* CompaniesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesView.swift; sourceTree = "<group>"; };
+		F662578327B6B95E008E6C93 /* CompaniesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesRowView.swift; sourceTree = "<group>"; };
+		F662578527B6BD62008E6C93 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -587,6 +593,9 @@
 		F6A066D8279B1876008AC3D5 /* companies */ = {
 			isa = PBXGroup;
 			children = (
+				F662578527B6BD62008E6C93 /* CompanyView.swift */,
+				F662578127B6B889008E6C93 /* CompaniesView.swift */,
+				F662578327B6B95E008E6C93 /* CompaniesRowView.swift */,
 				F6A066D9279B18A7008AC3D5 /* PickerCompanyView.swift */,
 			);
 			path = companies;
@@ -887,6 +896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F662578427B6B95E008E6C93 /* CompaniesRowView.swift in Sources */,
 				F6A066F2279B59F1008AC3D5 /* OrdersView.swift in Sources */,
 				F6ADCC512787A1B100A1CE80 /* PickerVehicleTypeView.swift in Sources */,
 				F6A066DA279B18A7008AC3D5 /* PickerCompanyView.swift in Sources */,
@@ -997,12 +1007,14 @@
 				F662577C27B04592008E6C93 /* RestorePasswordView.swift in Sources */,
 				F6A066D6279B1116008AC3D5 /* CustomTextField.swift in Sources */,
 				F6ADCC67278B4BA600A1CE80 /* ApplicationEditView.swift in Sources */,
+				F662578227B6B889008E6C93 /* CompaniesView.swift in Sources */,
 				F6ADCC482786E92A00A1CE80 /* ApplicationItemEditView.swift in Sources */,
 				F6A06741279DDFC3008AC3D5 /* UserProfileView.swift in Sources */,
 				F6ADCC34277BEADB00A1CE80 /* ApplicationHistory.swift in Sources */,
 				F6A06708279B7B28008AC3D5 /* DocumentHistory.swift in Sources */,
 				F6A066E8279B5632008AC3D5 /* OrderItem.swift in Sources */,
 				F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */,
+				F662578627B6BD62008E6C93 /* CompanyView.swift in Sources */,
 				F6A0670F279B86E7008AC3D5 /* DocumentView.swift in Sources */,
 				F639E18B27A4A73D00FBD3C0 /* AuthenticationService.swift in Sources */,
 				F6A0674C279DEE4E008AC3D5 /* UserNotification.swift in Sources */,

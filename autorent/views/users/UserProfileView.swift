@@ -80,11 +80,13 @@ struct UserProfileView: View, Equatable {
                                 HStack {
                                     VStack {
                                         HStack {
-                                            Image("address-book")
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(Color.textLight)
-                                            CustomText("string_companies", alignment: .center, maxLines: 1)
+                                            NavigationLink(destination: CompaniesView()) {
+                                                Image("address-book")
+                                                    .resizable()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundColor(Color.textLight)
+                                                CustomText("string_companies", alignment: .center, maxLines: 1)
+                                            }
                                         }
                                         .frame(alignment: .center)
                                         .padding(.all, 12)
