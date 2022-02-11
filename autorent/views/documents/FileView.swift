@@ -5,20 +5,31 @@
 //  Created by Viacheslav Lazarev on 11.02.2022.
 //
 
+import Foundation
 import SwiftUI
 import PDFKit
+import MobileCoreServices
+import UniformTypeIdentifiers
 
 struct FileView: View {
     var mFile: File
+    var mMimeType: String
     
     init(file: File) {
         self.mFile = file
+        self.mMimeType = UTType(filenameExtension: URL(fileURLWithPath: file.Name).pathExtension)?.preferredMIMEType ?? ""
     }
     
     var body: some View {
         VStack {
-            PDFViewer(file: self.mFile)
-            
+            if self.mMimeType == "application/pdf"{
+                PDFViewer(file: self.mFile)
+            }
+            else if self.mMimeType.hasPrefix("image") {
+                Image(uiImage: UIImage(data: Data(self.mFile.Content))!)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primary)
+            }
         }
         .background(Color.primary.edgesIgnoringSafeArea(.all))
         .navigationBarHidden(false)
