@@ -27,7 +27,10 @@ struct FileView: View {
             }
             else if self.mMimeType.hasPrefix("image") {
                 Image(uiImage: UIImage(data: Data(self.mFile.Content))!)
+                    .resizable()
+                    .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.all, 8)
                     .background(Color.primary)
             }
             else {
