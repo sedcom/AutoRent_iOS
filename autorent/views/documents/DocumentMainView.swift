@@ -74,7 +74,9 @@ struct DocumentMainView: View, Equatable {
                             .padding(.bottom, 4)
                             VStack {
                                 ForEach(self.mViewModel.Document!.Files) { file in
-                                    DocumentFileView(file: file)
+                                    NavigationLink(destination: FileView(file: file)) {
+                                        DocumentFileView(file: file)
+                                    }
                                 }
                             }
                             .padding(.bottom, 4)
