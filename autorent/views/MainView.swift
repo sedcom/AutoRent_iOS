@@ -14,7 +14,6 @@ enum OperationResult {
 struct MainView: View {
     @State private var SelectedTab: Int = 0
     @State var Action: Int?
-    @State var UserProfileMode: Int?
     
     var body: some View {
         NavigationView {
@@ -24,14 +23,7 @@ struct MainView: View {
                     case 1: ApplicationsView()
                     case 2: OrdersView()
                     case 3: InvoicesView()
-                    case 4:
-                        let user = AuthenticationService.getInstance().getCurrentUser()
-                        if self.UserProfileMode == 1 {
-                            UserProfileEditView(entityId: user!.Id, mode: $UserProfileMode)
-                        }
-                        else {
-                            UserProfileView(entityId: user!.Id, mode: $UserProfileMode)
-                        }
+                    case 4: UserProfileView()
                     default: VStack {}
                 }
                 CustomTabView(items: [
@@ -50,17 +42,15 @@ struct MainView: View {
             .navigationBarTitle(self.getTitle(), displayMode: .inline)
             .navigationBarItems(trailing:
                 HStack(spacing: 10) {
-                    if self.UserProfileMode == nil {
-                        Image("comment-dots")
-                            .renderingMode(.template)
-                            .foregroundColor(Color.textLight)
-                        Image("bell")
-                            .renderingMode(.template)
-                            .foregroundColor(Color.textLight)
-                            .onTapGesture {
-                                self.Action = 2
-                            }
-                    }
+                    /*Image("comment-dots")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)*/
+                    Image("bell")
+                        .renderingMode(.template)
+                        .foregroundColor(Color.textLight)
+                        .onTapGesture {
+                            self.Action = 2
+                        }
                 })
         }
     }

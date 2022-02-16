@@ -47,6 +47,7 @@
 		F662578C27B6C0B6008E6C93 /* VehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578B27B6C0B6008E6C93 /* VehicleView.swift */; };
 		F662578E27B6C27D008E6C93 /* VehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578D27B6C27D008E6C93 /* VehicleRepository.swift */; };
 		F662579027B6C2D8008E6C93 /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662578F27B6C2D8008E6C93 /* VehiclesViewModel.swift */; };
+		F662579227B7D165008E6C93 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662579127B7D165008E6C93 /* UserModel.swift */; };
 		F6927866277920B2003BD0D5 /* ApplicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927865277920B2003BD0D5 /* ApplicationMainView.swift */; };
 		F692786927793B89003BD0D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786827793B89003BD0D5 /* User.swift */; };
 		F692786B27793BE6003BD0D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692786A27793BE6003BD0D5 /* UserProfile.swift */; };
@@ -56,6 +57,13 @@
 		F6927875277A8465003BD0D5 /* AddressDistrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927874277A8465003BD0D5 /* AddressDistrict.swift */; };
 		F6927877277A8493003BD0D5 /* AddressStreet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927876277A8493003BD0D5 /* AddressStreet.swift */; };
 		F6927879277A84C6003BD0D5 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6927878277A84C6003BD0D5 /* Address.swift */; };
+		F6A00D0927BD931B000A8C6D /* CompanyMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D0827BD931B000A8C6D /* CompanyMainView.swift */; };
+		F6A00D0B27BD9333000A8C6D /* CompanyDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D0A27BD9333000A8C6D /* CompanyDocumentsView.swift */; };
+		F6A00D0D27BD934E000A8C6D /* CompanyHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D0C27BD934E000A8C6D /* CompanyHistoryView.swift */; };
+		F6A00D0F27BD94D8000A8C6D /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D0E27BD94D8000A8C6D /* CompanyViewModel.swift */; };
+		F6A00D1127BD9625000A8C6D /* CompanyHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D1027BD9625000A8C6D /* CompanyHistory.swift */; };
+		F6A00D1327BD96CE000A8C6D /* CompanyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D1227BD96CE000A8C6D /* CompanyEditView.swift */; };
+		F6A00D1527BD9777000A8C6D /* CompanyMainEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A00D1427BD9777000A8C6D /* CompanyMainEditView.swift */; };
 		F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066AF2790173E008AC3D5 /* CustomTabView.swift */; };
 		F6A066B22790178C008AC3D5 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B12790178C008AC3D5 /* CustomTabItem.swift */; };
 		F6A066B62791EA32008AC3D5 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A066B52791EA32008AC3D5 /* AddressType.swift */; };
@@ -201,6 +209,7 @@
 		F662578B27B6C0B6008E6C93 /* VehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleView.swift; sourceTree = "<group>"; };
 		F662578D27B6C27D008E6C93 /* VehicleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRepository.swift; sourceTree = "<group>"; };
 		F662578F27B6C2D8008E6C93 /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
+		F662579127B7D165008E6C93 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F6927865277920B2003BD0D5 /* ApplicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMainView.swift; sourceTree = "<group>"; };
 		F692786827793B89003BD0D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F692786A27793BE6003BD0D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -210,6 +219,13 @@
 		F6927874277A8465003BD0D5 /* AddressDistrict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDistrict.swift; sourceTree = "<group>"; };
 		F6927876277A8493003BD0D5 /* AddressStreet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStreet.swift; sourceTree = "<group>"; };
 		F6927878277A84C6003BD0D5 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		F6A00D0827BD931B000A8C6D /* CompanyMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMainView.swift; sourceTree = "<group>"; };
+		F6A00D0A27BD9333000A8C6D /* CompanyDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDocumentsView.swift; sourceTree = "<group>"; };
+		F6A00D0C27BD934E000A8C6D /* CompanyHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHistoryView.swift; sourceTree = "<group>"; };
+		F6A00D0E27BD94D8000A8C6D /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
+		F6A00D1027BD9625000A8C6D /* CompanyHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHistory.swift; sourceTree = "<group>"; };
+		F6A00D1227BD96CE000A8C6D /* CompanyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditView.swift; sourceTree = "<group>"; };
+		F6A00D1427BD9777000A8C6D /* CompanyMainEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyMainEditView.swift; sourceTree = "<group>"; };
 		F6A066AF2790173E008AC3D5 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		F6A066B12790178C008AC3D5 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		F6A066B52791EA32008AC3D5 /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -367,8 +383,8 @@
 				F6A066BB27973DEE008AC3D5 /* observable */,
 				E28538862755BE800008F6FB /* applications */,
 				F6A066D8279B1876008AC3D5 /* companies */,
-				F6A0670B279B7E55008AC3D5 /* documents */,
 				F6A06720279C5889008AC3D5 /* invoices */,
+				F6A0670B279B7E55008AC3D5 /* documents */,
 				F6A066F0279B59D2008AC3D5 /* orders */,
 				F692786C27794466003BD0D5 /* map */,
 				F6ADCC4F2787A17600A1CE80 /* vehicle */,
@@ -582,6 +598,7 @@
 				F6A066CB27998879008AC3D5 /* Company.swift */,
 				F6A066C927998860008AC3D5 /* CompanyType.swift */,
 				F6A066CD279988A6008AC3D5 /* OwnershipType.swift */,
+				F6A00D1027BD9625000A8C6D /* CompanyHistory.swift */,
 			);
 			path = company;
 			sourceTree = "<group>";
@@ -605,6 +622,11 @@
 			isa = PBXGroup;
 			children = (
 				F662578527B6BD62008E6C93 /* CompanyView.swift */,
+				F6A00D1227BD96CE000A8C6D /* CompanyEditView.swift */,
+				F6A00D0827BD931B000A8C6D /* CompanyMainView.swift */,
+				F6A00D1427BD9777000A8C6D /* CompanyMainEditView.swift */,
+				F6A00D0A27BD9333000A8C6D /* CompanyDocumentsView.swift */,
+				F6A00D0C27BD934E000A8C6D /* CompanyHistoryView.swift */,
 				F662578127B6B889008E6C93 /* CompaniesView.swift */,
 				F662578327B6B95E008E6C93 /* CompaniesRowView.swift */,
 				F6A066D9279B18A7008AC3D5 /* PickerCompanyView.swift */,
@@ -616,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				F6A066DC279B1ECE008AC3D5 /* CompaniesViewModel.swift */,
+				F6A00D0E27BD94D8000A8C6D /* CompanyViewModel.swift */,
 			);
 			path = companies;
 			sourceTree = "<group>";
@@ -792,6 +815,7 @@
 				F639E18627A49E7300FBD3C0 /* TokenModel.swift */,
 				F639E18827A49FAB00FBD3C0 /* ResultTokenModel.swift */,
 				F662577727AE8E54008E6C93 /* RegistrationModel.swift */,
+				F662579127B7D165008E6C93 /* UserModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -924,13 +948,16 @@
 				F6A066DF279B1F93008AC3D5 /* CompanyRepository.swift in Sources */,
 				F6ADCC27277B2FB100A1CE80 /* ApplicationItem.swift in Sources */,
 				F6A06756279EBE8B008AC3D5 /* MapWrapperView.swift in Sources */,
+				F6A00D1127BD9625000A8C6D /* CompanyHistory.swift in Sources */,
 				F6A06748279DED2F008AC3D5 /* NotificationsView.swift in Sources */,
 				F6A066E6279B55D6008AC3D5 /* Order.swift in Sources */,
 				F6A06726279C5FA7008AC3D5 /* OrderInvoicesView.swift in Sources */,
 				E2853889275658F50008F6FB /* Color.swift in Sources */,
 				F6A066B02790173E008AC3D5 /* CustomTabView.swift in Sources */,
+				F662579227B7D165008E6C93 /* UserModel.swift in Sources */,
 				F6A06746279DE0A8008AC3D5 /* UserRepository.swift in Sources */,
 				F6A06711279B8764008AC3D5 /* DocumentHistoryView.swift in Sources */,
+				F6A00D0D27BD934E000A8C6D /* CompanyHistoryView.swift in Sources */,
 				E29B397A275430D3004CE06A /* ApplicationViewModel.swift in Sources */,
 				F6A06734279D62DA008AC3D5 /* DocumentMainView.swift in Sources */,
 				F6A06722279C58A5008AC3D5 /* InvoicesRowView.swift in Sources */,
@@ -941,8 +968,10 @@
 				F6A066F8279B5FF5008AC3D5 /* OrderMainView.swift in Sources */,
 				F6ADCC6B278B68A300A1CE80 /* ApplicationView.swift in Sources */,
 				F6ADCC462785D0CC00A1CE80 /* ModeView.swift in Sources */,
+				F6A00D1527BD9777000A8C6D /* CompanyMainEditView.swift in Sources */,
 				F6ADCC58278859F200A1CE80 /* VehicleTypesViewModel.swift in Sources */,
 				E29B397327539DD6004CE06A /* ApplicationRepository.swift in Sources */,
+				F6A00D0F27BD94D8000A8C6D /* CompanyViewModel.swift in Sources */,
 				F6ADCC30277BE96500A1CE80 /* BaseDictionary.swift in Sources */,
 				F6A06744279DE072008AC3D5 /* UserProfileViewModel.swift in Sources */,
 				F662577827AE8E54008E6C93 /* RegistrationModel.swift in Sources */,
@@ -967,6 +996,7 @@
 				F6A0673C279D8D34008AC3D5 /* File.swift in Sources */,
 				F6A0671F279C5812008AC3D5 /* InvoicesViewModel.swift in Sources */,
 				F662577A27AEA2AD008E6C93 /* KeyboardResponsiveModifier.swift in Sources */,
+				F6A00D0B27BD9333000A8C6D /* CompanyDocumentsView.swift in Sources */,
 				F6A066B82794A53E008AC3D5 /* PickerMapAddressView.swift in Sources */,
 				F6A066BA27973AB3008AC3D5 /* AddressObservable.swift in Sources */,
 				F6A066CC27998879008AC3D5 /* Company.swift in Sources */,
@@ -1006,6 +1036,7 @@
 				F6ADCC2B277B30EE00A1CE80 /* VehicleType.swift in Sources */,
 				F6A0674E279DEF69008AC3D5 /* NotificationsViewModel.swift in Sources */,
 				F662578027B6A7CF008E6C93 /* InvoicePaymentView.swift in Sources */,
+				F6A00D1327BD96CE000A8C6D /* CompanyEditView.swift in Sources */,
 				F6A06716279B87EA008AC3D5 /* DocumentRepository.swift in Sources */,
 				E28538812754DE3D0008F6FB /* MapView.swift in Sources */,
 				F662578A27B6C0A8008E6C93 /* VehiclesRowView.swift in Sources */,
@@ -1049,6 +1080,7 @@
 				E27EA41B2757806C001F7BB4 /* ErrorView.swift in Sources */,
 				F6A06754279E9B83008AC3D5 /* BottomSheet.swift in Sources */,
 				F6A066FC279B67C4008AC3D5 /* OrderViewModel.swift in Sources */,
+				F6A00D0927BD931B000A8C6D /* CompanyMainView.swift in Sources */,
 				F662577627AE8D8E008E6C93 /* RegistrationViewModel.swift in Sources */,
 				F692786927793B89003BD0D5 /* User.swift in Sources */,
 				F6ADCC442785B6A500A1CE80 /* ApplicationItemView.swift in Sources */,
@@ -1196,7 +1228,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
 				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;
@@ -1223,7 +1255,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = autorent/autorent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"autorent/Preview Content\"";
 				DEVELOPMENT_TEAM = K3V742RW22;
 				ENABLE_PREVIEWS = YES;

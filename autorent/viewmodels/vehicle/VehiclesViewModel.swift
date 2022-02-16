@@ -10,6 +10,7 @@ import Combine
 
 class VehiclesViewModel: ObservableObject {
     var Data: Pagination<Vehicle>
+    var VehicleTypes: [VehicleType]
     var cancellation: AnyCancellable?
     var mVehicleRepository: VehicleRepository
     var mUserId: Int
@@ -23,6 +24,7 @@ class VehiclesViewModel: ObservableObject {
     
     init(userId: Int, maxItems: Int, skipCount: Int, orderBy: String, include: String, filter: String) {
         self.Data = Pagination<Vehicle>()
+        self.VehicleTypes = []
         self.mVehicleRepository = VehicleRepository()
         self.mUserId = userId
         self.mMaxItems = maxItems
@@ -65,6 +67,29 @@ class VehiclesViewModel: ObservableObject {
                 self.Data.SkipCount = result.SkipCount
                 self.Data.Total = result.Total
                 self.Data.Elements.append(contentsOf: result.Elements)
+                if self.VehicleTypes.count == 0 {
+                    self.loadVehicleTypes()
+                }
+                else {
+                    self.IsLoading = false
+                    self.objectWillChange.send()
+                }
+            })
+    }
+    
+    public func loadVehicleTypes() {
+        debugPrint("Start loadData")
+        self.cancellation = self.mVehicleRepository.getVehicleTypes(self.mUserId, 5)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsError = true
+                self.IsLoading = false
+                self.objectWillChange.send()
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish loadData")
+                self.VehicleTypes.append(contentsOf: result)
                 self.IsLoading = false
                 self.objectWillChange.send()
             })

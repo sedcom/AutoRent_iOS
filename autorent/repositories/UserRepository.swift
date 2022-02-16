@@ -38,4 +38,11 @@ class UserRepository {
         let publisher = NetworkService.getInstance().request(url: String(format: "/user/restorepassword?login=%@", login), method: .post).publishDecodable(type: Bool.self)
         return publisher.value()
     }
+    
+    public func updateUser(userId: Int, user: UserModel) -> AnyPublisher<User, AFError> {
+        let jsonData = try! JSONEncoder().encode(user)
+        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+        let publisher = NetworkService.getInstance().request(url: String(format: "/user?userId=%@", String(userId)), method: .put, parameters: parameters, encoding: JSONEncoding.default).publishDecodable(type: User.self)
+        return publisher.value();
+    }
 }

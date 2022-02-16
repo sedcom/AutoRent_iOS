@@ -10,6 +10,8 @@
 "app_owner" = "Россети Центр и Приволжье";
 "app_version" = "Версия %@";
 "button_add" = "Добавить";
+"button_ok" = "Выбрать";
+"button_cancel" = "Отмена";
 "menu_accept" = "Выбрать";
 "menu_application" = "Заявка";
 "menu_application_create" = "Создать заявку";

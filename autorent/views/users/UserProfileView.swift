@@ -10,13 +10,13 @@ import SwiftUI
 struct UserProfileView: View, Equatable {
     @ObservedObject var mViewModel: UserProfileViewModel
     var mEntityId: Int
-    @Binding var UserProfileMode: Int?
+    @State var mEditMode: Bool?
+    @State var ActionResult: OperationResult?
     @State var ToastMessage: String?
     
-    init(entityId: Int, mode: Binding<Int?>) {
-        self.mEntityId = entityId
-        self._UserProfileMode = mode
-        self.mViewModel = UserProfileViewModel(entityId: entityId, include: "addresses,roles")
+    init() {
+        self.mEntityId = AuthenticationService.getInstance().getCurrentUser()!.Id
+        self.mViewModel = UserProfileViewModel(entityId: self.mEntityId, include: "addresses,roles")
     }
     
     static func == (lhs: UserProfileView, rhs: UserProfileView) -> Bool {
@@ -125,7 +125,7 @@ struct UserProfileView: View, Equatable {
                             }
                             .frame(width: 60, height: 60)
                             .onTapGesture {
-                                self.UserProfileMode = 1
+                                self.mEditMode = true
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
@@ -142,6 +142,19 @@ struct UserProfileView: View, Equatable {
                     self.mViewModel.loadData()
                 }
             }
+            .onChange(of: self.ActionResult) { newValue in
+                if newValue != nil {
+                    switch(newValue!) {
+                        case OperationResult.Update:
+                            self.ToastMessage = NSLocalizedString("message_save_success", comment: "")
+                            self.mViewModel.loadData()
+                        default: ()
+                    }
+                    self.ActionResult = nil
+                }
+            }
+            
+            NavigationLink(destination: UserProfileEditView(result: $ActionResult), tag: true, selection: $mEditMode)  { }
         }
     }
 }

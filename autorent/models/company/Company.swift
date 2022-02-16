@@ -19,9 +19,11 @@ class Company: Entity {
     var Email: String?
     var MobilePhone: String?
     var Addresses: [Address]
+    var History: [CompanyHistory]
     
     override init() {
         self.Addresses = []
+        self.History = []
         super.init()
     }
     
@@ -38,6 +40,7 @@ class Company: Entity {
         self.Email = container.contains(.Email) ? try container.decode(String?.self, forKey: .Email) : nil
         self.MobilePhone = container.contains(.MobilePhone) ? try container.decode(String?.self, forKey: .MobilePhone) : nil
         self.Addresses = container.contains(.Addresses) ? try container.decode([Address].self, forKey: .Addresses) : []
+        self.History = container.contains(.History) ? try container.decode([CompanyHistory].self, forKey: .History) : []
         try super.init(from: decoder)
     }
     
@@ -53,6 +56,7 @@ class Company: Entity {
         case Email = "email"
         case MobilePhone = "mobilePhone"
         case Addresses = "addresses"
+        case History = "history"
     }
     
     public func getCompanyName() -> String {
@@ -60,5 +64,9 @@ class Company: Entity {
                                self.FirstName ?? "",
                                self.MiddleName ?? ""]
         return self.CompanyType!.Id == 1 ? String(format: "%@ %@", self.OwnershipType!.Name, self.Name!) : parts.filter{ $0 != "" }.joined(separator: " ")
+    }
+    
+    public func getStatus () -> CompanyHistory {
+        return self.History.sorted { a, b in a.Id > b.Id }.first!
     }
 }

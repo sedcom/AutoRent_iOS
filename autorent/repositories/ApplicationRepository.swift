@@ -29,7 +29,7 @@ class ApplicationRepository {
     
     public func updateItem(applicationId: Int, application: ApplicationModel) -> AnyPublisher<Application, AFError> {
         let jsonData = try! JSONEncoder().encode(application)
-        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]      
+        let parameters: [String: Any] = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
         let publisher = NetworkService.getInstance().request(url: String(format: "/application?applicationId=%@", String(applicationId)), method: .put, parameters: parameters, encoding: JSONEncoding.default).publishDecodable(type: Application.self)
         return publisher.value();
     }

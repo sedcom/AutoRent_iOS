@@ -34,18 +34,19 @@ struct VehiclesView: View, Equatable {
             }
             else {
                 VStack (spacing: 0) {
-                    /*ScrollView(.horizontal, showsIndicators: false) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack () {
                             Button("status_all", action: { self.setFilter(filterIndex: 1, filter: "") })
-                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
-                            Button("status_company_verificated", action: { self.setFilter(filterIndex: 2, filter: "statusId==3") })
-                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 2))
-                            Button("status_company_verification", action: { self.setFilter(filterIndex: 3, filter: "statusId==2") })
-                                .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 3))
+                                 .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter == 1))
+                            ForEach(self.mViewModel.VehicleTypes) { vehicleType in
+                                let index = self.mViewModel.VehicleTypes.firstIndex { $0.id == vehicleType.id }!
+                                Button(vehicleType.Name, action: { self.setFilter(filterIndex: index + 2, filter: String(format: "vehicleType==%@", String(vehicleType.Id))) })
+                                    .buttonStyle(FilterButtonStyle(selected: self.mCurrentFilter ==  (index + 2)))
+                            }
                         }
                         .padding(.all, 8)
                     }
-                    .background(Color.primaryDark)*/
+                    .background(Color.primaryDark)
                     if self.mViewModel.Data.Elements.count == 0 {
                         EmptyView()
                     }

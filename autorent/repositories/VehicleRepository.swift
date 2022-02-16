@@ -14,4 +14,9 @@ class VehicleRepository {
         let publisher = NetworkService.getInstance().request(url: "/vehicles", method: .get, parameters: ["userId": userId, "maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters]).publishDecodable(type: Pagination<Vehicle>.self)
         return publisher.value();
     }
+    
+    public func getVehicleTypes(_ userId: Int,_ maxItems: Int) -> AnyPublisher<[VehicleType], AFError> {
+        let publisher = NetworkService.getInstance().request(url: "/vehicles/types", method: .get, parameters: ["userId": userId, "maxItems": maxItems]).publishDecodable(type: [VehicleType].self)
+        return publisher.value();
+    }
 }

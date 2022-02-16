@@ -58,7 +58,7 @@ struct CompaniesView: View, Equatable {
                                             LoadingRowView()
                                         }
                                         else {
-                                            NavigationLink(destination: CompanyView(entityId: company.Id, mode: ModeView.View, refresh: $Refresh), isActive: Binding.constant(false))  {
+                                            NavigationLink(destination: CompanyView(entityId: company.Id, names: [company.getCompanyName()], mode: ModeView.View, refresh: $Refresh))  {
                                                 CompaniesRowView(company)
                                             }
                                         }

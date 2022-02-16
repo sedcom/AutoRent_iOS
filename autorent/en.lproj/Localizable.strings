@@ -10,6 +10,8 @@
 "app_owner" = "Rosseti";
 "app_version" = "Version %@";
 "button_add" = "Add";
+"button_ok" = "OK";
+"button_cancel" = "Cancel";
 "menu_accept" = "Accept";
 "menu_application" = "Application";
 "menu_application_create" = "Create application";

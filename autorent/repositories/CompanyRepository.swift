@@ -14,4 +14,9 @@ class CompanyRepository {
         let publisher = NetworkService.getInstance().request(url: "/companies", method: .get, parameters: ["userId": userId, "maxItems": maxItems, "skipCount": skipCount, "orderBy": orderBy, "include": include, "filters": filters]).publishDecodable(type: Pagination<Company>.self)
         return publisher.value();
     }
+    
+    public func loadItem(_ companyId: Int, _ include: String) -> AnyPublisher<Company, AFError> {
+        let publisher = NetworkService.getInstance().request(url: "/company", method: .get, parameters: ["companyId": companyId, "include": include]).publishDecodable(type: Company.self)
+        return publisher.value();
+    }
 }

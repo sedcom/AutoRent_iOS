@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ApplicationModel : Codable {
+class ApplicationModel: Codable {
     var CompanyId: Int?
     var Address: autorent.Address
     var Notes: String

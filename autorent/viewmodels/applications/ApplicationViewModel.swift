@@ -36,9 +36,9 @@ class ApplicationViewModel: ObservableObject {
         let item = ApplicationItem()
         //item.StartDate = Date()
         //item.FinishDate = Date()
-        //item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Test")
+        //item.VehicleParams.VehicleType = VehicleType(id: 901, name: "Vehicle")
         application.Items.append(item)
-        //application.Notes = "Test iOS"
+        //application.Notes = "Test application from mobile iOS"
         self.Application = application
         self.AddedItems.append(item)
         self.objectWillChange.send()

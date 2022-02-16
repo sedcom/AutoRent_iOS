@@ -11,6 +11,8 @@ import Combine
 class UserProfileViewModel: ObservableObject {
     var mUserRepository: UserRepository
     var User: User?
+    var AddedAddresses: [Address]
+    var RemovedAddresses: [Int]
     var mEntityId: Int
     var mInclude: String
     var IsLoading: Bool = false
@@ -20,6 +22,8 @@ class UserProfileViewModel: ObservableObject {
     
     init(entityId: Int, include: String) {
         self.mUserRepository =  UserRepository()
+        self.AddedAddresses = []
+        self.RemovedAddresses = []
         self.mEntityId = entityId
         self.mInclude = include
     }
@@ -42,6 +46,28 @@ class UserProfileViewModel: ObservableObject {
                 self.User = result
                 self.IsLoading = false
                 self.objectWillChange.send()
+        })
+    }
+    
+    public func saveItem() {
+        debugPrint("Start saveItem")
+        self.IsLoading = true
+        self.objectWillChange.send()
+        let model = UserModel(userProfile: self.User!.Profile)
+        model.AddedAddresses = self.AddedAddresses
+        model.RemovedAddresses = self.RemovedAddresses
+        self.cancellation = self.mUserRepository.updateUser(userId: self.mEntityId, user: model)
+            .mapError({ (error) -> Error in
+                debugPrint(error)
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Error
+                return error
+            })
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                debugPrint("Finish saveItem")
+                self.User = result
+                self.IsLoading = false
+                self.ActionResult = OperationResult.Update
         })
     }
 }
