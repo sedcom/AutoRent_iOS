@@ -80,8 +80,8 @@ struct CompaniesView: View, Equatable {
                             }
                             .listStyle(PlainListStyle())
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                            /*ZStack {
-                                NavigationLink(destination: CompanyEditView(entityId: 0, mode: ModeView.Create, result: $ActionResult)) {
+                            ZStack {
+                                NavigationLink(destination: CompanyEditView(entityId: 0, names: [], mode: ModeView.Create, result: $ActionResult)) {
                                     ZStack {
                                         Circle().fill(Color.secondary)
                                         Image("plus")
@@ -94,7 +94,7 @@ struct CompaniesView: View, Equatable {
                                 .frame(width: 60, height: 60)
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                            .offset(x: -10, y: -10)*/
+                            .offset(x: -10, y: -10)
                             ZStack {
                                 ToastView($ToastMessage)
                             }
