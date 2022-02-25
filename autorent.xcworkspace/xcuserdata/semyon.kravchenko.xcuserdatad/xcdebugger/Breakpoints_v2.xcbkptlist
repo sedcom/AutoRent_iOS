@@ -34,6 +34,38 @@
             endingLineNumber = "13"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "7EF01301-23DD-498D-BB66-749332D0A3A1 - 69de9d2548f50ba5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "autorent.MainView.init(Action: Swift.Optional&lt;Swift.Int&gt;) -&gt; autorent.MainView"
+                  moduleName = "autorent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semyon.kravchenko/Desktop/AutoRent_iOS/autorent/views/MainView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "7EF01301-23DD-498D-BB66-749332D0A3A1 - 9509c53eeffb5feb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "autorent.MainView.init() -&gt; autorent.MainView"
+                  moduleName = "autorent"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semyon.kravchenko/Desktop/AutoRent_iOS/autorent/views/MainView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

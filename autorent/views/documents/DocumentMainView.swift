@@ -14,6 +14,7 @@ struct DocumentMainView: View, Equatable {
     @ObservedObject var SelectedStatus: StatusObservable
     @Binding var Action: Int?
     @Binding var ActionResult: OperationResult?
+    @State var isFileOperationSuccessed: Bool?
     @State var ToastMessage: String?
     @State var ShowBottomSheet: Bool = false
     
@@ -74,9 +75,7 @@ struct DocumentMainView: View, Equatable {
                             .padding(.bottom, 4)
                             VStack {
                                 ForEach(self.mViewModel.Document!.Files) { file in
-                                    NavigationLink(destination: FileView(file: file)) {
-                                        DocumentFileView(file: file)
-                                    }
+                                    DocumentFileView(file: file, isFileOperationSuccessed: $isFileOperationSuccessed)
                                 }
                             }
                             .padding(.bottom, 4)
@@ -135,6 +134,12 @@ struct DocumentMainView: View, Equatable {
                     self.mViewModel.ActionResult = nil
                 }
             }
+            .onChange(of: self.isFileOperationSuccessed) { newValue in
+                if newValue != nil {
+                    self.ToastMessage = NSLocalizedString(newValue! ? "message_download_success" : "message_download_error", comment: "")
+                    self.isFileOperationSuccessed = nil
+                }
+            }
             BottomSheet(show: $ShowBottomSheet, maxHeight: 120) {
                 VStack {
                     CustomText("menu_document_approve", bold: true, color: Color.textDark, image: "iconmonstr-check")
@@ -155,4 +160,3 @@ struct DocumentMainView: View, Equatable {
         }
     }
 }
-
