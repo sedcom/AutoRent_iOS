@@ -12,7 +12,8 @@ struct PickerCompanyView: View, Equatable  {
     @ObservedObject var mViewModel: CompaniesViewModel
     @ObservedObject var SelectedCompany: CompanyObservable
     @State var mSelectedItem: Company?
-
+    @State var mCurrentCompany: Company?
+    
     init(selectedCompany: CompanyObservable) {
         self.SelectedCompany = selectedCompany
         let user = AuthenticationService.getInstance().getCurrentUser()
@@ -44,23 +45,7 @@ struct PickerCompanyView: View, Equatable  {
                                         LoadingRowView()
                                     }
                                     else {
-                                        HStack {
-                                            VStack {
-                                                Image("address-book")
-                                                    .resizable()
-                                                    .frame(width: 25, height: 30)
-                                                    .foregroundColor(self.mSelectedItem == company ? Color.textDark : Color.textLight)
-                                            }
-                                            VStack {
-                                                CustomText(company.getCompanyName(), color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
-                                                CustomText(company.Addresses.first?.getAddressName() ?? "", color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
-                                            }
-                                            .padding(.leading, 4)
-                                            .onTapGesture {
-                                                self.mSelectedItem = company
-                                            }
-                                        }
-                                        .padding(.all, 8)
+                                        self.render(company: company)
                                     }
                                 }
                                 .listRowBackground(self.mSelectedItem == company ? Color.secondary : Color.primaryDark)
@@ -106,5 +91,25 @@ struct PickerCompanyView: View, Equatable  {
                 self.mViewModel.loadData()
             }
         }
+    }
+    
+    func render(company: Company) -> some View {
+        return HStack {
+            VStack {
+                Image("address-book")
+                    .resizable()
+                    .frame(width: 25, height: 30)
+                    .foregroundColor(self.mSelectedItem == company ? Color.textDark : Color.textLight)
+            }
+            VStack {
+                CustomText(company.getCompanyName(), color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+                CustomText(company.Addresses.first?.getAddressName() ?? "", color: self.mSelectedItem == company ? Color.textDark : Color.textLight)
+            }
+            .padding(.leading, 4)
+            .onTapGesture {
+                self.mSelectedItem = company
+            }
+        }
+        .padding(.all, 8)
     }
 }

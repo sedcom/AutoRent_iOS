@@ -39,7 +39,7 @@ struct MainView: View {
             .edgesIgnoringSafeArea(.horizontal)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarHidden(false)
-            .navigationBarTitle(self.getTitle(), displayMode: .inline)
+            .navigationBarTitle(self.getTitle(), displayMode: .large)
             .navigationBarItems(trailing:
                 HStack(spacing: 10) {
                     /*Image("comment-dots")
@@ -53,6 +53,7 @@ struct MainView: View {
                         }
                 })
         }
+        .navigationBarHidden(true)
     }
     
     func getTitle() -> String {

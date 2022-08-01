@@ -42,7 +42,7 @@ struct BottomSheet<Content: View>: View {
             .cornerRadius(corners: [.topLeft, .topRight], radius: 16)
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max((self.Show ? 0 : self.mMaxHeight - self.mMinHeight) + self.mTranslation, 0))
-            .animation(.interactiveSpring())
+            .animation(.interactiveSpring(), value: 0)
             .gesture(
                 DragGesture().updating(self.$mTranslation) { value, state, _ in
                     state = value.translation.height

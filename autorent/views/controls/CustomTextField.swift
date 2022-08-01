@@ -24,5 +24,6 @@ struct CustomTextField: View {
             .foregroundColor(Color.textDark)
             .cornerRadius(4)
             .disabled(self.mDisabled)
+            .multilineTextAlignment(TextAlignment.leading)
     }
 }

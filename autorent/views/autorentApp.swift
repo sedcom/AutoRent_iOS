@@ -23,7 +23,7 @@ struct autorentApp: App {
         //
         let titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor(Color.textLight),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold)
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)
         ]
         UINavigationBar.appearance().backgroundColor = UIColor(Color.primary)
         UINavigationBar.appearance().barTintColor = UIColor(Color.primary)
@@ -37,6 +37,14 @@ struct autorentApp: App {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.secondary)
         UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textDark)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(Color.textLight)], for: .normal)
+        
+        /*if #available(iOS 15, *) {
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                UINavigationBar.appearance().standardAppearance = appearance
+                UINavigationBar.appearance().scrollEdgeAppearance = appearance
+                UINavigationBar.appearance().compactAppearance = appearance
+         }*/
     }
     
     var body: some Scene {

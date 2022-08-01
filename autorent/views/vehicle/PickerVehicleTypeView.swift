@@ -35,8 +35,8 @@ struct PickerVehicleTypeView: View, Equatable {
                     EmptyView()
                 }
                 else {
-                    VStack {
-                        List {
+                    VStack() {
+                        List () {
                             ForEach(self.mViewModel.Data.Elements.filter { $0.VehicleGroup == nil }) { vehicleGroup in
                                 Section(header:
                                     Text(vehicleGroup.Name)
@@ -48,19 +48,13 @@ struct PickerVehicleTypeView: View, Equatable {
                                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                                         .textCase(nil)) {
                                     ForEach(self.mViewModel.Data.Elements.filter { $0.VehicleGroup != nil && $0.VehicleGroup!.Id == vehicleGroup.Id }) { vehicleType in
-                                        VStack {
-                                            Text(vehicleType.Name)
-                                                .foregroundColor(self.mSelectedItem == vehicleType ? Color.textDark : Color.textLight)
-                                                .onTapGesture {
-                                                    self.mSelectedItem = vehicleType
-                                                }
-                                        }
-                                        .listRowBackground(self.mSelectedItem == vehicleType ? Color.secondary : Color.primaryDark)
+                                        self.render(vehicleType: vehicleType)
                                     }
                                 }
                             }
                         }
-                        .listStyle(PlainListStyle())
+                        .padding(EdgeInsets(top: 0, leading: -20, bottom: 8, trailing: -20))
+                        .listStyle(DefaultListStyle())
                     }
                     .background(Color.primaryDark)
                 }
@@ -86,5 +80,16 @@ struct PickerVehicleTypeView: View, Equatable {
             self.mViewModel.clearData()
             self.mViewModel.loadData()
         }
+    }
+    
+    func render(vehicleType: VehicleType) -> some View {
+        return VStack {
+            Text(vehicleType.Name)
+                .foregroundColor(self.mSelectedItem == vehicleType ? Color.textDark : Color.textLight)
+                .onTapGesture {
+                    self.mSelectedItem = vehicleType
+                }
+        }
+        .listRowBackground(self.mSelectedItem == vehicleType ? Color.secondary : Color.primaryDark)
     }
 }
